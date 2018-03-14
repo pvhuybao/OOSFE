@@ -22,4 +22,14 @@ export class CategoriesComponent implements OnInit {
     })
   }
 
+  addCategory(categoryName: string){
+
+    let newCategory = new CategoryModel();
+    newCategory.name = categoryName;
+
+    this.categoryService.add(newCategory).subscribe(() => {
+      this.getListCategory();
+    })
+  }
+
 }
