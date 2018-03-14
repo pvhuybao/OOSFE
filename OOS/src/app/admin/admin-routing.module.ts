@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuardService } from '../auth/auth-guard.service';
+
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
@@ -12,7 +14,11 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 
 const adminRoutes: Routes = [
   {
-    path: 'admin', component: AdminPageComponent, children: [
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuardService],
+    canActivateChild: [AuthGuardService],
+    children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
