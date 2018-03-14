@@ -9,13 +9,15 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { CategoryService } from './services/category.service'
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent]
+  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent],
+  providers: [CategoryService]
 })
 export class AdminModule { }

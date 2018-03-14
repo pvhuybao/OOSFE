@@ -9,11 +9,13 @@ import { OrderComponent } from './order/order.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { CategoryService } from './services/category.service';
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule
   ],
-  declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent]
+  declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent],
+  providers: [CategoryService]
 })
 export class ShoppingModule { }
