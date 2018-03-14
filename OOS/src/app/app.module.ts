@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
@@ -21,7 +22,7 @@ import { NotFoundPageComponent } from './not-found.component';
     ShoppingModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
