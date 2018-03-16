@@ -20,7 +20,7 @@ import { InMemoryCategory } from './InMemoryCategory.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,

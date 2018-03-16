@@ -1,0 +1,8 @@
+<p>
+  Name: <input [(ngModel)]="name" >
+  Id: <input [(ngModel)]="id" >
+</p>
+
+<div>
+  <button class="waves-effect waves-light btn right" (click)="create()" [disabled]="isDisabled" >Save</button>
+</div>
