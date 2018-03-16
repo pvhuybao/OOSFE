@@ -29,6 +29,8 @@ const adminRoutes: Routes = [
           { path: 'overview-categories', component: OverviewCategoriesComponent }
         ]
       },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'users', component: UsersComponent }
     ]
   },];
 
