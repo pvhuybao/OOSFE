@@ -1,27 +1,31 @@
 
 <div class="btn">
-  <a routerLink="/admin/order-create" routerLinkActive="active"><button  class="waves-effect waves-light btn btn-primary left">Create order</button></a>
+  <a routerLink="/admin/order/create" routerLinkActive="active"><button  class="waves-effect waves-light btn btn-primary left">Create order</button></a>
 </div>
-<table class="collection">
-  <tr>
-    <th>Order Email</th>
-    <th>User ID</th>
-    <th>Total</th>
-    <th>Action</th>
-  </tr>
-  <tr class="collection-item" *ngFor="let order of orders; let i = index">
-    <td>
-      {{order.email}}
-    </td>
-    <td>{{order.userId}}</td>
-    <td>{{order.total}}</td>
-    <td style="text-align:center;">
-      <!-- <a routerLink="/EditStudent/{{student.id}}" routerLinkActive="active">
-        <button  class="waves-effect waves-light btn btn-primary right" >Edit student</button>
-      </a> |  -->
-      <button  class="waves-effect waves-light btn btn-primary right" routerLink="/admin/order-edit/{{order.id}}" routerLinkActive="active" >Edit order</button> |
-      <button  class="waves-effect waves-light btn btn-danger right" (click)="delete(order.id)">Delete order</button>
-    </td>
-  </tr>
+<table class="table">
+  <thead class="thead-light">
+    <tr >
+      <th scope="col">Order Email</th>
+      <th scope="col"> User ID</th>
+      <th scope="col">Total</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr class="collection-item" *ngFor="let order of orders; let i = index">
+      <td scope="row">
+        {{order.email}}
+      </td>
+      <td>{{order.userId}}</td>
+      <td>{{order.total}}</td>
+      <td style="text-align:center;">
+        <!-- <a routerLink="/EditStudent/{{student.id}}" routerLinkActive="active">
+          <button  class="waves-effect waves-light btn btn-primary right" >Edit student</button>
+        </a> |  -->
+        <button  class="waves-effect waves-light btn btn-primary right" routerLink="/admin/order/edit/{{order.id}}" routerLinkActive="active" >Edit order</button> |
+        <button  class="waves-effect waves-light btn btn-danger right" (click)="delete(order.id)">Delete order</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 <br>
