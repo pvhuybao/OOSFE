@@ -15,4 +15,12 @@ export class ProductsComponent implements OnInit {
       this.products = data;
     });
   }
+
+  deleteProduct(id){
+    this.productService.delete(id).subscribe(data=>{
+      this.productService.gets().subscribe(data =>{
+        this.products = data;
+      })
+    });
+  }
   }

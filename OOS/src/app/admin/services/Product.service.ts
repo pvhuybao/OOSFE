@@ -11,7 +11,7 @@ export class ProductService {
 
   gets(): Observable<ProductModel[]> {
     return this.authHttpService.get(this.API_PATH)
-      .map(res => res.json() || []);
+      .map(res => res.json());
   }
 
   add(task: ProductModel): Observable<ProductModel> {
@@ -21,8 +21,8 @@ export class ProductService {
   get(id) :Observable<ProductModel>{
     return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);
   }
-  delete(id):Observable<ProductModel>{
-    return this.authHttpService.delete(this.API_PATH + id).map(res => res.json() || []);
+  delete(id):Observable<any>{
+    return this.authHttpService.delete(this.API_PATH + id);
   }
   setId(id){
     this.idProduct = id;
