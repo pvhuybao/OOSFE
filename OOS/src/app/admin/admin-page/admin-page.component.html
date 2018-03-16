@@ -1,8 +1,74 @@
-<p>
-  admin-page works!
-</p>
-<p>
-  <a [routerLink]="['./categories']">categories</a> |
-  <a [routerLink]="['./products']">products</a>
-</p>
-<router-outlet></router-outlet>
+<!-- HEADER -->
+<header>
+  <!-- top Header -->
+  <div id="top-header">
+    <div class="container">
+      <div class="pull-left">
+        <span>Welcome to E-shop!</span>
+      </div>
+    </div>
+  </div>
+  <!-- /top Header -->
+
+  <!-- header -->
+  <div id="header">
+    <div class="container">
+      <div class="pull-left">
+        <!-- Logo -->
+        <div class="header-logo">
+          <a class="logo" href="#">
+            <img src="assets/img/logo.png" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- /Logo -->
+</header>
+<!-- /HEADER -->
+
+<div id="home">
+  <div class="container">
+      <p>
+        <a [routerLink]="['./categories']">categories</a> |
+        <a [routerLink]="['./products']">products</a>
+      </p>
+      <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer" class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<!-- footer logo -->
+						<div class="footer-logo">
+							<a class="logo" href="#">
+		            <img src="assets/img/logo.png" alt="">
+		          </a>
+						</div>
+						<!-- /footer logo -->
+            <p>This is E-shop from OrientInternship.</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <!-- footer copyright -->
+            <div class="footer-copyright">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy; All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Orient Intern Team.
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+            <!-- /footer copyright -->
+          </div>
+        </div>
+    </div>
+</footer>
+            
