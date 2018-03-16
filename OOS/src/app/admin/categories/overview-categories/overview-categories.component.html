@@ -1,0 +1,29 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let category of listCategories; let i = index">
+
+    <tr>
+      <td>{{category.id}}</td>
+      <a href="#">
+        <td>{{category.name}}</td>
+      </a>
+      <td>{{category.description}}</td>
+      <td>
+        <button class="btn btn-outline-primary " (click)="edit()">Edit</button>
+        <button class="btn btn-outline-primary " (click)="delete(category)">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="btn-group">
+  <a class="btn btn-outline-primary " routerLink="/CreateStudent" routerLinkActive="active">Create</a>
+</div>
