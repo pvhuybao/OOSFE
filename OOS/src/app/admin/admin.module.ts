@@ -15,9 +15,10 @@ import { CategoryService } from './services/category.service';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { UserService } from './services/user.service';
-
+import { ProductService } from './services/Product.service';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
+
 
 @NgModule({
   imports: [
@@ -38,10 +39,10 @@ import { OrdersService } from './services/orders.service';
     UserCreateComponent, 
     UserEditComponent],
   providers: [
+    ProductService,
     CategoryService, 
-    OrdersService,
-    UserService
-  ]
- 
+    UserService,
+    OrdersService]
+
 })
 export class AdminModule { }
