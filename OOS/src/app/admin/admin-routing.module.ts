@@ -26,7 +26,7 @@ const adminRoutes: Routes = [
         path: 'categories', 
         component: CategoriesComponent ,
         children: [
-          { path: 'overview-categories', component: OverviewCategoriesComponent }
+          { path: '', component: OverviewCategoriesComponent }
         ]
       },
       { path: 'orders', component: OrdersComponent },
