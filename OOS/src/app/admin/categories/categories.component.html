@@ -1,8 +1,4 @@
 <p>
   categories works!
 </p>
-<input type="button" (click)="addCategory(newCategory)" value="Add">
-<input type="text" [(ngModel)] = "newCategory">
-<div *ngFor="let category of listCategory">
-  {{category.name}}
-</div>
+<router-outlet></router-outlet>

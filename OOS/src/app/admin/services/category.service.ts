@@ -5,7 +5,7 @@ import { CategoryModel } from '../../shared/category'
 
 @Injectable()
 export class CategoryService {
-  private API_PATH = '/api/categories';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Category';
 
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -17,5 +17,11 @@ export class CategoryService {
   add(task: CategoryModel): Observable<CategoryModel> {
     return this.authHttpService.post(this.API_PATH, task)
       .map(res => res.json());
+  }
+
+  delete(category: CategoryModel): Observable<any>{
+    var url: string = this.API_PATH + "/" + category.id;
+    console.log(url);
+    return this.authHttpService.delete(url)
   }
 }
