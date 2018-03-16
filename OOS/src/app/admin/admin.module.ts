@@ -16,13 +16,32 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { UserService } from './services/user.service';
 
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { OrdersService } from './services/orders.service';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent, UserCreateComponent, UserEditComponent],
-  providers: [CategoryService, UserService]
+
+  declarations: [
+    AdminPageComponent, 
+    CategoriesComponent, 
+    ProductsComponent, 
+    OrdersComponent, 
+    UsersComponent, 
+    OrderDetailComponent, 
+    ProductDetailComponent, 
+    OverviewCategoriesComponent,
+    UserCreateComponent, 
+    UserEditComponent],
+  providers: [
+    CategoryService, 
+    OrdersService,
+    UserService
+  ]
+ 
 })
 export class AdminModule { }

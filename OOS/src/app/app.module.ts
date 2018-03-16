@@ -34,7 +34,6 @@ import { NouisliderModule } from 'ng2-nouislider';
     AppRoutingModule,
     AngularFontAwesomeModule,
     NouisliderModule
-    
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]

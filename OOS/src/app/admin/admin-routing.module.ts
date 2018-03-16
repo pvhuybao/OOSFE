@@ -13,6 +13,7 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { ProductDetailComponent } from './products/product-detail/product-detail.component'
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 
 const adminRoutes: Routes = [
   {
@@ -31,7 +32,13 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'products', component: ProductsComponent },
-      { path: 'categories', component: CategoriesComponent },
+      { 
+        path: 'categories', 
+        component: CategoriesComponent ,
+        children: [
+          { path: 'overview-categories', component: OverviewCategoriesComponent }
+        ]
+      },
       { path: 'orders', component: OrdersComponent },
       { path: 'users', component: UsersComponent }
     ]
