@@ -23,4 +23,9 @@ export class CategoryService {
     return this.authHttpService.post(this.API_PATH, task)
       .map(res => res.json());
   }
+
+  deleteCategory(id): Observable<CategoryModel> {
+    return this.authHttpService.delete(this.API_PATH + "/" + id)
+      .map(res => res.json() || []);
+  }
 }
