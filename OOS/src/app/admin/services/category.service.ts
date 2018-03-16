@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-import { CategoryModel } from '../../shared/category'
+import { CategoryModel } from '../Model/models/category'
 
 @Injectable()
 export class CategoryService {
