@@ -13,6 +13,8 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/Product.service';
+import { OrdersService } from './services/orders.service';
+
 
 @NgModule({
   imports: [
