@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
-import {Orders} from '../../shared/order-models/orders';
+import { Orders } from '../Model/orders';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -12,14 +12,17 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService:OrdersService) { }
 
   ngOnInit() {
+    this.getOrderList();
+  }
+
+  getOrderList()
+  {
     this.orderService.getOrder().subscribe(data => {this.orders = data});
   }
 
   delete(id)
   {
-    this.orderService.deleteOrder(id).subscribe(data => {
-      this.orderService.getOrder().subscribe(data => {this.orders = data});
-    });
+    this.orderService.deleteOrder(id).subscribe(()=> {this.getOrderList();});
   }
 
 }
