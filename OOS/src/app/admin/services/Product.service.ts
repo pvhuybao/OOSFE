@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-import { CategoryModel } from '../models/category'
+import { ProductModel } from '../models/product';
 
 @Injectable()
-export class CategoryService {
-  private API_PATH = '/api/categories';
+export class ProductService {
+  private API_PATH = '/api/Product';
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  get(): Observable<CategoryModel[]> {
+  get(): Observable<ProductModel[]> {
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || []);
   }
 
-  add(task: CategoryModel): Observable<CategoryModel> {
+  add(task: ProductModel): Observable<ProductModel> {
     return this.authHttpService.post(this.API_PATH, task)
       .map(res => res.json());
   }
