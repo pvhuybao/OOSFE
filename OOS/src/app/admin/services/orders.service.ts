@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-import { OrdersModel } from '../Model/Order';
+import { OrdersModel } from '../models/order';
+
 
 @Injectable()
 export class OrdersService {
-
-  private HttpOptions;
 
   private API_PATH = '/api/order'
 
