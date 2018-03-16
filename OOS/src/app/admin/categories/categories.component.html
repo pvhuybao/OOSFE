@@ -1,8 +1,17 @@
 <p>
   categories works!
 </p>
-<input type="button" (click)="addCategory(newCategory)" value="Add">
-<input type="text" [(ngModel)] = "newCategory">
+<!--<input type="button" (click)="addCategory(newCategory)" value="Add">-->
+<!--<input type="text" [(ngModel)] = "newCategory">-->
+<!--<button routerLink = '/admin/CreateCategory' >Create</button>-->
+
+<button [routerLink] = "['/admin/CreateCategory']" >Create</button>
+
+<br/>
 <div *ngFor="let category of listCategory">
+  {{category.id}}
   {{category.name}}
+  {{category.description}}
+  {{category.status}}
+  <button routerLink = '/admin/EditCategory/{{category.id}}'>Edit</button>
 </div>

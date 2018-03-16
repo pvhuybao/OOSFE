@@ -2,20 +2,34 @@ import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
 import { CategoryModel } from '../../shared/category'
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CategoryService {
-  private API_PATH = '/api/categories';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Category';
 
   constructor(private authHttpService: AuthHttpService) { }
 
   get(): Observable<CategoryModel[]> {
+    //return this.authHttpService.get(this.API_PATH)
+    //  .map(res => res.json() || []);
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || []);
   }
 
-  add(task: CategoryModel): Observable<CategoryModel> {
+  add(task): Observable<CategoryModel> {
     return this.authHttpService.post(this.API_PATH, task)
+      .map(res => res.json());
+  }
+
+  getById(id): Observable<CategoryModel> {
+    return this.authHttpService.get(this.API_PATH + "/" + id)
+      .map(res => res.json() || []);
+  }
+
+  put(id, task): Observable<CategoryModel> {
+    return this.authHttpService.put(this.API_PATH + "/" + id, task)
       .map(res => res.json());
   }
 }

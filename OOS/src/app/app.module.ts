@@ -28,8 +28,7 @@ import { InMemoryCategory } from './InMemoryCategory.service';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
+    AppRoutingModule,   
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]

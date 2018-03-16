@@ -10,7 +10,9 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
+import { EditCategoryComponent } from './categories/editcategory/editcategory.component';
 
 const adminRoutes: Routes = [
   {
@@ -22,6 +24,8 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path: 'CreateCategory', component: CreateCategoryComponent },
+      { path: 'EditCategory/:id', component: EditCategoryComponent }
     ]
   },];
 
