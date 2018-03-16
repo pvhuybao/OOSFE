@@ -12,8 +12,14 @@ import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
+
 import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
+
+import { ProductService } from './services/Product.service';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { OrdersService } from './services/orders.service';
+
 
 @NgModule({
   imports: [
@@ -21,7 +27,23 @@ import { EditCategoryComponent } from './categories/editcategory/editcategory.co
     FormsModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent, CreateCategoryComponent, EditCategoryComponent],
-  providers: [CategoryService]
+    
+
+  declarations: [
+    AdminPageComponent, 
+    CreateCategoryComponent, 
+    CategoriesComponent, 
+    ProductsComponent, 
+    OrdersComponent, 
+    UsersComponent, 
+    OrderDetailComponent, 
+    ProductDetailComponent, 
+    EditCategoryComponent
+  ],
+  providers: [
+    ProductService,
+    CategoryService, 
+    OrdersService]
+
 })
 export class AdminModule { }

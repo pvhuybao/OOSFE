@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
+<<<<<<< HEAD
 import { CategoryModel } from '../Model/category'
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+=======
+import { CategoryModel } from '../models/category'
+>>>>>>> develop
 
 @Injectable()
 export class CategoryService {
@@ -29,5 +33,10 @@ export class CategoryService {
 
   put(id, task): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "/" + id, task);
+  }
+
+  delete(category: CategoryModel): Observable<any>{
+    var url: string = this.API_PATH + "/" + category.id;
+    return this.authHttpService.delete(url)
   }
 }

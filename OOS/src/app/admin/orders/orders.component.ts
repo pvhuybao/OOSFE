@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../services/orders.service';
+import { OrdersModel } from '../models/order';
 
 @Component({
   selector: 'app-orders',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor() { }
+  listOrders: Array<OrdersModel>;
+
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
   }
