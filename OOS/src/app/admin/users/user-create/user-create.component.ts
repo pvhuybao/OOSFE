@@ -13,7 +13,6 @@ export class UserCreateComponent implements OnInit {
 
   user = new UserModel;
   confirmpassword:string;
-  gender:string;
   constructor(private userservice:UserService, private router:Router) {
 
   }
@@ -22,8 +21,6 @@ export class UserCreateComponent implements OnInit {
     this.user.gender=true;
   }
   add() {
-    if(this.gender=="male") this.user.gender=true;
-    else this.user.gender=false;
     this.userservice.add(this.user).subscribe(res => {
       this.router.navigate(['../admin/users']);
     });
