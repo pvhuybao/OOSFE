@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
+import { Orders } from '../../shared/order-models/orders';
 
 @Injectable()
 export class OrdersService {
@@ -10,7 +11,7 @@ export class OrdersService {
   getOrder() {
     return this.authHttpService.get("http://fbinterns.azurewebsites.net/api/order").map(res => res.json() || []);
   }
-  deleteOrder(orderId){
+  deleteOrder(orderId) {
     return this.authHttpService.delete("http://fbinterns.azurewebsites.net/api/order/"+orderId).map(res => res.json() || []);
   }
 

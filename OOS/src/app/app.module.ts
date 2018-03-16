@@ -14,7 +14,7 @@ import { AuthHttpService } from './auth/auth-http.service';
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //--> remove after apply API
+//import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //--> remove after apply API
 import { InMemoryCategory } from './InMemoryCategory.service';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { InMemoryCategory } from './InMemoryCategory.service';
     AdminModule,
     ShoppingModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
+    //InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]
