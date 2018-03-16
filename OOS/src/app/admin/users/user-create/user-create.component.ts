@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../../shared/user';
+import { UserModel } from '../../Model/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
@@ -22,10 +22,12 @@ export class UserCreateComponent implements OnInit {
     this.user.gender=true;
   }
   add() {
-      this.user.gender=true;
+    if(this.gender=="male") this.user.gender=true;
+    else this.user.gender=false;
     this.userservice.add(this.user).subscribe(res => {
-      this.router.navigateByUrl('../');
+      this.router.navigate(['../admin/users']);
     });
   }
+    
 
 }
