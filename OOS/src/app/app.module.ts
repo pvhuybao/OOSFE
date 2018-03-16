@@ -32,10 +32,6 @@ import { NouisliderModule } from 'ng2-nouislider';
     AdminModule,
     ShoppingModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    //InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
-=======
->>>>>>> develop
     AngularFontAwesomeModule,
     NouisliderModule
   ],
