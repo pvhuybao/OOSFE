@@ -11,7 +11,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { CategoryService } from './services/category.service'
+import { CategoryService } from './services/category.service';
+import { ProductService } from './services/Product.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,14 @@ import { CategoryService } from './services/category.service'
     FormsModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent],
-  providers: [CategoryService]
+  declarations: [AdminPageComponent, 
+    CategoriesComponent, 
+    ProductsComponent, 
+    OrdersComponent, 
+    UsersComponent, 
+    OrderDetailComponent, 
+    ProductDetailComponent
+  ],
+  providers: [CategoryService,ProductService]
 })
 export class AdminModule { }
