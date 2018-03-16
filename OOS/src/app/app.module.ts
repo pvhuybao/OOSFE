@@ -29,11 +29,12 @@ import { NouisliderModule } from 'ng2-nouislider';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFontAwesomeModule,
     AdminModule,
     ShoppingModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 })
+    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
+    AngularFontAwesomeModule,
+    NouisliderModule
     
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
