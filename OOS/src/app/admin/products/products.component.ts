@@ -23,4 +23,7 @@ export class ProductsComponent implements OnInit {
       })
     });
   }
+  setId(id){
+    this.productService.setId(id);
+  }
   }
