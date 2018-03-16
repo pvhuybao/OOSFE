@@ -1,9 +1,10 @@
-<p>
-  category-detail works!
-</p>
+<h1>
+  Category Details Page
+</h1>
 
-<p>{{category.id}}</p>
-<p>{{category.name}}</p>
+<p>Id: {{category.id}}</p>
+<p>Name: {{category.name}}</p>
+<p>Description: {{category.description}}</p>
 
 <a routerLink="#"><button>Edit</button></a>
-<button (click)="deleteCategory(category.id)">Delelte</button>
+<button (click)="deleteCategory(category.id)">Delete</button>
