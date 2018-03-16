@@ -21,7 +21,6 @@ export class CategoryService {
 
   delete(category: CategoryModel): Observable<any>{
     var url: string = this.API_PATH + "/" + category.id;
-    console.log(url);
     return this.authHttpService.delete(url)
   }
 }
