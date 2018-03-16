@@ -32,10 +32,8 @@ import { NouisliderModule } from 'ng2-nouislider';
     AdminModule,
     ShoppingModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
     AngularFontAwesomeModule,
     NouisliderModule
-    
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]
