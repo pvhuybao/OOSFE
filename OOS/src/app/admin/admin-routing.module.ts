@@ -11,6 +11,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { CategoryDetailComponent } from './categories/category-detail/category-detail.component';
 
 const adminRoutes: Routes = [
   {
@@ -22,6 +23,7 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path: 'categories/:id', component: CategoryDetailComponent },
     ]
   },];
 
