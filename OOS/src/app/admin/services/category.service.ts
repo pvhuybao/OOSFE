@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-import { CategoryModel } from '../../shared/category'
+import { CategoryModel } from '../models/category'
 
 @Injectable()
 export class CategoryService {
@@ -24,8 +24,8 @@ export class CategoryService {
       .map(res => res.json());
   }
 
-  deleteCategory(id): Observable<CategoryModel> {
-    return this.authHttpService.delete(this.API_PATH + "/" + id)
-      .map(res => res.json() || []);
+  delete(category: CategoryModel): Observable<any>{
+    var url: string = this.API_PATH + "/" + category.id;
+    return this.authHttpService.delete(url)
   }
 }

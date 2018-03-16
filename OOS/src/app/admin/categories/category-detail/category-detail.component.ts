@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../shared/category';
 import { CategoryService } from '../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryModel } from '../../models/category';
 
 @Component({
   selector: 'app-category-detail',
@@ -27,8 +27,8 @@ export class CategoryDetailComponent implements OnInit {
     this.categoryService.getCategory(id).subscribe(category => this.category = category);
   }
 
-  deleteCategory(id: string){
-    this.categoryService.deleteCategory(id).subscribe( a => {
+  deleteCategory(category: CategoryModel){
+    this.categoryService.delete(category).subscribe( a => {
         this.router.navigateByUrl("");
     });
   }
