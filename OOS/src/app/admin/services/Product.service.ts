@@ -6,7 +6,7 @@ import { ProductModel } from '../models/product';
 @Injectable()
 export class ProductService {
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
-
+  idProduct : string;
   constructor(private authHttpService: AuthHttpService) { }
 
   gets(): Observable<ProductModel[]> {
@@ -20,5 +20,11 @@ export class ProductService {
   }
   get(id) :Observable<ProductModel>{
     return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);
+  }
+  delete(id):Observable<ProductModel>{
+    return this.authHttpService.delete(this.API_PATH + id).map(res => res.json() || []);
+  }
+  setId(id){
+    this.idProduct = id;
   }
 }

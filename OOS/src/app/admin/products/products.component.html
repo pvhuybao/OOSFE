@@ -18,7 +18,7 @@
         <tr *ngFor="let product of products; let i = index">
           <td class="thumb"><img src="{{product.image}}" alt=""></td>
           <td class="details">
-            <a routerLink="/admin/product-details" routerLinkActive="active" >{{product.name}}</a>
+            <a routerLink="/admin/product-details" routerLinkActive="active" class="primary-color" (click)="setId(product.id)">{{product.name}}</a>
             <ul>
               <li><span>Id:{{product.id}}</span></li>
               <li><span>Category:{{product.idCategory}}</span></li>
