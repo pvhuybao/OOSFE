@@ -11,6 +11,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+
 import { CategoryService } from './services/category.service'
 import { OrdersService } from './services/orders.service';
 
