@@ -6,7 +6,6 @@
   <tr>
     <th>Order Email</th>
     <th>User ID</th>
-    <th>Order Item</th>
     <th>Address</th>
     <th>Total</th>
   </tr>
@@ -15,14 +14,6 @@
       {{oder.email}}
     </td>
     <td>{{order.userId}}</td>
-    <td>
-      <span *ngFor="let oderdetail of order.orderDetails; let i=index">
-        {{orderdetail.idProduct}}<br>
-        {{orderdetail.quantity}}<br>
-        {{orderdetail.price}}<br>
-        {{orderdetail.totalPrice}}
-      </span>
-    </td>
     <td>{{order.total}}</td>
     <td style="text-align:center;">
       <!-- <a routerLink="/EditStudent/{{student.id}}" routerLinkActive="active">
