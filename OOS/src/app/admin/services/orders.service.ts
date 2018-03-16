@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
-import { Orders } from '../Model/orders';
+import { Orders } from '../models/orders';
 
 @Injectable()
 export class OrdersService {
