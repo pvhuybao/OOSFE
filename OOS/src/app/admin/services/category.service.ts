@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-import { CategoryModel } from '../../shared/category'
+import { CategoryModel } from '../Model/category'
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,9 +18,8 @@ export class CategoryService {
       .map(res => res.json() || []);
   }
 
-  add(task): Observable<CategoryModel> {
-    return this.authHttpService.post(this.API_PATH, task)
-      .map(res => res.json());
+  add(task): Observable<any> {
+    return this.authHttpService.post(this.API_PATH, task);
   }
 
   getById(id): Observable<CategoryModel> {
@@ -28,8 +27,7 @@ export class CategoryService {
       .map(res => res.json() || []);
   }
 
-  put(id, task): Observable<CategoryModel> {
-    return this.authHttpService.put(this.API_PATH + "/" + id, task)
-      .map(res => res.json());
+  put(id, task): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "/" + id, task);
   }
 }

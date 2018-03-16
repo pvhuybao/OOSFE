@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CategoryModel } from '../../../shared/category';
+import { CategoryModel } from '../../Model/category';
 
 @Component({
   selector: 'app-editcategory',
@@ -32,7 +32,7 @@ export class EditCategoryComponent implements OnInit {
     this.cate.description = this.cate.description;
 
     this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
-      this.router.navigateByUrl('./categories');
+      this.router.navigate(['/admin/categories']);
     });
   }
 }

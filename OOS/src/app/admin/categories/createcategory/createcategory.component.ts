@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../shared/category';
+import { CategoryModel } from '../../Model/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
 
@@ -32,7 +32,7 @@ export class CreateCategoryComponent implements OnInit {
     newCategory.description = this.description;
 
     this.categoryService.add(newCategory).subscribe(data => {
-      this.router.navigateByUrl('./categories');
+      this.router.navigate(['/admin/categories']);
     })
   }
 
