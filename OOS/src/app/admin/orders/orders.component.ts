@@ -20,9 +20,9 @@ export class OrdersComponent implements OnInit {
     this.orderService.getOrder().subscribe(data => {this.orders = data});
   }
 
-  delete(id)
+  delete(orderId)
   {
-    this.orderService.deleteOrder(id).subscribe(()=> {this.getOrderList();});
+    this.orderService.deleteOrder(orderId).subscribe(()=> {this.getOrderList();});
   }
 
 }

@@ -12,7 +12,7 @@ export class OrdersService {
     return this.authHttpService.get("http://fbinterns.azurewebsites.net/api/order").map(res => res.json() || []);
   }
   deleteOrder(orderId) {
-    return this.authHttpService.delete("http://fbinterns.azurewebsites.net/api/order/"+orderId).map(res => res.json() || []);
+    return this.authHttpService.delete("http://fbinterns.azurewebsites.net/api/order/"+orderId);
   }
 
 }

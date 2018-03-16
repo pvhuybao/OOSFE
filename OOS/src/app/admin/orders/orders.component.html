@@ -1,6 +1,6 @@
 
 <div class="btn">
-  <a routerLink="/CreateOrder" routerLinkActive="active"><button  class="waves-effect waves-light btn btn-primary right">Create order</button></a>
+  <a routerLink="/admin/create-order" routerLinkActive="active"><button  class="waves-effect waves-light btn btn-primary right">Create order</button></a>
 </div>
 <table class="collection">
   <tr>
@@ -19,7 +19,7 @@
       <!-- <a routerLink="/EditStudent/{{student.id}}" routerLinkActive="active">
         <button  class="waves-effect waves-light btn btn-primary right" >Edit student</button>
       </a> |  -->
-      <button  class="waves-effect waves-light btn btn-primary right" routerLink="/EditOrder" (click)="edit(order)">Edit order</button> |
+      <button  class="waves-effect waves-light btn btn-primary right" routerLink="/admin/edit-order/{{order.id}}" routerLinkActive="active" >Edit order</button> |
       <button  class="waves-effect waves-light btn btn-danger right" (click)="delete(order.id)">Delete order</button>
     </td>
   </tr>
