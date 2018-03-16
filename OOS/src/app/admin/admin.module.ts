@@ -11,7 +11,10 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { CategoryService } from './services/category.service'
+import { CategoryService } from './services/category.service';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component'
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -19,7 +22,7 @@ import { CategoryService } from './services/category.service'
     FormsModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent],
-  providers: [CategoryService]
+  declarations: [AdminPageComponent, CategoriesComponent, ProductsComponent, OrdersComponent, UsersComponent, OrderDetailComponent, ProductDetailComponent, UserCreateComponent, UserEditComponent],
+  providers: [CategoryService, UserService]
 })
 export class AdminModule { }

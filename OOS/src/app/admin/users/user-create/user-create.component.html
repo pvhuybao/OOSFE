@@ -1,0 +1,36 @@
+<h1>Create User</h1>
+<div class="form-group">
+  <label for="name">Username: </label>
+  <input [(ngModel)]="user.username" type="text" class="form-control" required>
+</div>
+<div class="form-group">
+  <label for="class">Password: </label>
+  <input [(ngModel)]="user.password" type="text" class="form-control" required>
+</div>
+<div class="form-group">
+    <label for="class">Confirm Password: </label>
+    <input [(ngModel)]="confirmpassword" type="text" class="form-control" required>
+  </div>
+<div class="form-group">
+  <label for="class">First Name: </label>
+  <input [(ngModel)]="user.firstname" type="text" class="form-control" required>
+</div>
+<div class="form-group">
+  <label for="class">Last Name: </label>
+  <input [(ngModel)]="user.lastname" type="text" class="form-control" required>
+</div>
+<div class="input-checkbox">
+  <label for="class">Gender: </label>
+  <input type="radio" value="male" [(ngModel)]="user.gender" checked>Nam
+  <input type="radio" value="female" [(ngModel)]="user.gender">Nữ
+</div>
+<div class="form-group">
+  <label for="class">Image: </label>
+  <input [(ngModel)]="user.image" type="text" class="form-control">
+</div>
+<div class="form-group">
+  <label for="class">Email: </label>
+  <input [(ngModel)]="user.email" type="text" class="form-control">
+</div>
+<button type="submit" class="btn btn-success" [disabled]="isDisabled" (click)="add()">Save</button>
+<button routerLink='../' class="btn Back">Back</button>

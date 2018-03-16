@@ -11,6 +11,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
 
 const adminRoutes: Routes = [
   {
@@ -20,6 +22,14 @@ const adminRoutes: Routes = [
     canActivateChild: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
+      {
+        path: 'users',
+        children: [
+          { path: '', component: UsersComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: UserEditComponent },
+          { path: 'create', component: UserCreateComponent }
+        ]
+      },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
     ]
