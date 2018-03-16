@@ -33,7 +33,8 @@ import { NouisliderModule } from 'ng2-nouislider';
     AdminModule,
     ShoppingModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 }),
+    InMemoryWebApiModule.forRoot(InMemoryCategory, { delay: 500 })
+    
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]
