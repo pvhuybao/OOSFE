@@ -5,12 +5,17 @@ import { CategoryModel } from '../../shared/category'
 
 @Injectable()
 export class CategoryService {
-  private API_PATH = '/api/categories';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Category';
 
   constructor(private authHttpService: AuthHttpService) { }
 
   get(): Observable<CategoryModel[]> {
     return this.authHttpService.get(this.API_PATH)
+      .map(res => res.json() || []);
+  }
+
+  getCategory(id): Observable<CategoryModel> {
+    return this.authHttpService.get(this.API_PATH + "/" + id)
       .map(res => res.json() || []);
   }
 
