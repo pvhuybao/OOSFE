@@ -22,7 +22,12 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
+<<<<<<< HEAD
       { path: 'orders', component: OrdersComponent}
+=======
+      { path: 'orders', component: OrdersComponent },
+      { path: 'users', component: UsersComponent }
+>>>>>>> develop
     ]
   },];
 
