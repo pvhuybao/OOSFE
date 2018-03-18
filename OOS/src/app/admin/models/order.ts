@@ -6,7 +6,7 @@ export class OrdersModel{
      email: string;
      userId: string;
      orderDetails: Array<OrderDetailModel>;
-     address: AddressModel;
+     address: Array<AddressModel>;
      total: number;
      status: number;
      createdDate: string;
