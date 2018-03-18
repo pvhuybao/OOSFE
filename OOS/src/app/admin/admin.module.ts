@@ -38,7 +38,8 @@ import { OrdersService } from './services/orders.service';
     UsersComponent, 
     OrderDetailComponent, 
     ProductDetailComponent, 
-    EditCategoryComponent
+    EditCategoryComponent,
+    OverviewCategoriesComponent
   ],
   providers: [
     ProductService,

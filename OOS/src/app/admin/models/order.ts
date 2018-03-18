@@ -1,5 +1,5 @@
-import { OrderDetailModel } from "../Model/OrderDetail";
-import { AddressModel } from "../Model/Address";
+import { OrderDetailModel } from "../models/OrderDetail";
+import { AddressModel } from "../models/Address";
 
 export class OrdersModel{
      id: string;

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service'
 import { Observable } from 'rxjs/Observable';
-<<<<<<< HEAD
-import { CategoryModel } from '../Model/category'
+
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-=======
-import { CategoryModel } from '../models/category'
->>>>>>> develop
+
+import { CategoryModel } from '../models/category';
 
 @Injectable()
 export class CategoryService {
@@ -15,9 +13,7 @@ export class CategoryService {
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  get(): Observable<CategoryModel[]> {
-    //return this.authHttpService.get(this.API_PATH)
-    //  .map(res => res.json() || []);
+  get(): Observable<CategoryModel[]> {    
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || []);
   }

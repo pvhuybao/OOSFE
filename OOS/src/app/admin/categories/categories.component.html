@@ -1,8 +1,4 @@
 
-<!--<input type="button" (click)="addCategory(newCategory)" value="Add">-->
-<!--<input type="text" [(ngModel)] = "newCategory">-->
-<!--<button routerLink = '/admin/CreateCategory' >Create</button>-->
-
 <div class="container">
   <form id="checkout-form" class="clearfix">
 
@@ -19,8 +15,5 @@
   </form>
 </div>
 
-<p>
-  categories works!
-</p>
-<a [routerLink]="['./overview-categories']">Overview Categories</a> |
+<a [routerLink]="['./overview-categories']">Overview Categories</a>
 <router-outlet></router-outlet>

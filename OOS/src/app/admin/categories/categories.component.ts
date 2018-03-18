@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
-<<<<<<< HEAD
-import { CategoryModel } from '../Model/category';
+
 import { EventEmitter,Input, Output } from '@angular/core';
-=======
+
 import { CategoryModel } from '../models/category';
->>>>>>> develop
+
 
 @Component({
   selector: 'app-categories',
