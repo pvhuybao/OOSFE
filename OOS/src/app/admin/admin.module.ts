@@ -13,8 +13,10 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
+import { ProductService } from './services/Product.service';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
+
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { OrdersService } from './services/orders.service';
     FormsModule,
     AdminRoutingModule,
   ],
+
   declarations: [
     AdminPageComponent, 
     CategoriesComponent, 
@@ -35,7 +38,9 @@ import { OrdersService } from './services/orders.service';
   ],
     
   providers: [
+    ProductService,
     CategoryService, 
     OrdersService]
+
 })
 export class AdminModule { }

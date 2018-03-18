@@ -7,7 +7,7 @@ import { OrdersModel } from '../models/order';
 @Injectable()
 export class OrdersService {
 
-  private API_PATH = '/api/order'
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/'
 
   listOrder: Array<OrdersModel>;
 

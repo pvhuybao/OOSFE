@@ -24,6 +24,7 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories/:id', component: CategoryDetailComponent },
+      { path:'product-details',component:ProductDetailComponent},
       { 
         path: 'categories', 
         component: CategoriesComponent ,
