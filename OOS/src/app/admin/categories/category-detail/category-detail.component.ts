@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from '../../models/category';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-category-detail',
@@ -16,6 +17,7 @@ export class CategoryDetailComponent implements OnInit {
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,11 @@ export class CategoryDetailComponent implements OnInit {
 
   deleteCategory(category: CategoryModel){
     this.categoryService.delete(category).subscribe( a => {
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl("admin/categories");
     });
+  }
+
+  backClicked() {
+    this.location.back();
   }
 }

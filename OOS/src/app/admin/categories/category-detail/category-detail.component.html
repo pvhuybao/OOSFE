@@ -1,10 +1,19 @@
-<h1>
-  Category Details Page
-</h1>
-
-<p>Id: {{category.id}}</p>
-<p>Name: {{category.name}}</p>
-<p>Description: {{category.description}}</p>
-
-<a routerLink="#"><button>Edit</button></a>
-<button (click)="deleteCategory(category)">Delete</button>
+<div class="col-md-6">
+  <div class="billing-details">
+    <div class="section-title">
+      <h3 class="title">{{category.name}}</h3>
+    </div>
+    <div class="form-group">
+      <p><b>Id: </b>{{category.id}}</p>
+    </div>
+    <div class="form-group">
+        <p><b>Name: </b>{{category.name}}</p>
+    </div>
+    <div class="form-group">
+        <p><b>Description: </b>{{category.description}}</p>
+    </div>
+  </div>
+  <a routerLink="#"><button class="primary-btn">Edit</button></a>
+  <button class="primary-btn" (click)="deleteCategory(category)">Delete</button>
+  <button class="primary-btn" (click)="backClicked()">Go back</button>
+</div>
