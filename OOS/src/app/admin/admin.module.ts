@@ -12,11 +12,21 @@ import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
+<<<<<<< HEAD
 import { EditOrderComponent } from './orders/edit-order/edit-order.component'
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+=======
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component'
+import { UserService } from './services/user.service';
+import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
+import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
+
+>>>>>>> develop
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
 
 
 
@@ -26,23 +36,36 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     FormsModule,
     AdminRoutingModule,
   ],
+    
 
   declarations: [
     AdminPageComponent, 
+    CreateCategoryComponent, 
     CategoriesComponent, 
     ProductsComponent, 
     OrdersComponent, 
     UsersComponent, 
     OrderDetailComponent, 
+<<<<<<< HEAD
     ProductDetailComponent,
     EditOrderComponent,
     OverviewCategoriesComponent,
     CreateOrderComponent
   ],
 
+=======
+    ProductDetailComponent, 
+    OverviewCategoriesComponent,
+    UserCreateComponent, 
+    UserEditComponent,
+    EditCategoryComponent,
+    CreateOrderComponent
+  ],
+>>>>>>> develop
   providers: [
     ProductService,
     CategoryService, 
+    UserService,
     OrdersService]
 })
 export class AdminModule { }
