@@ -10,10 +10,9 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component';
-
 import { ProductDetailComponent } from './products/product-detail/product-detail.component'
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
@@ -54,7 +53,9 @@ const adminRoutes: Routes = [
       { path: 'orders', component: OrdersComponent },
       { path: 'users', component: UsersComponent },
       { path: 'users/:id', component: UserDetailComponent},
+      { path: 'orders/edit', component: EditOrderComponent },
       { path: 'orders/create', component: CreateOrderComponent },
+      //{ path: 'orders/edit/:id', component: EditOrdersComponent },
     ]
   },];
 
