@@ -1,7 +1,7 @@
 <div class="col-md-6">
   <div class="billing-details">
     <div class="section-title">
-      <h3 class="title">Detail{{user.lastName}}</h3>
+      <h3 class="title">{{user.lastName}}'s Detail</h3>
     </div>
     <div class="form-group">
       <p><b>Id: </b>{{user.id}}</p>
@@ -28,9 +28,9 @@
       <p><b>Email: </b>{{user.email}}</p>
     </div>
   </div>
-  <a routerLink="#">
-    <button class="primary-btn">Edit</button>
+  <a routerLink="../edit/{{user.id}}" routerLinkActive="active" class="btn primary-btn">
+    Edit
   </a>
   <button class="primary-btn" (click)="deleteUser(user)">Delete</button>
-  <button class="primary-btn" (click)="backClicked()">Go back</button>
+  <a routerLink="../" routerLinkActive="active" class="btn primary-btn">Go back</a>
 </div>
