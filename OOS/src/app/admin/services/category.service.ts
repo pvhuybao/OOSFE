@@ -28,9 +28,8 @@ export class CategoryService {
       .map(res => res.json() || []);
   }
 
-  add(task: CategoryModel): Observable<CategoryModel> {
-    return this.authHttpService.post(this.API_PATH, task)
-      .map(res => res.json());
+  add(task: CategoryModel): Observable<any> {
+    return this.authHttpService.post(this.API_PATH, task);
   }
 
   put(id, task): Observable<any> {

@@ -13,6 +13,7 @@ export class UserCreateComponent implements OnInit {
 
   user = new UserModel;
   confirmpassword: string;
+
   constructor(private userservice: UserService, private router: Router) {
 
   }
@@ -22,11 +23,9 @@ export class UserCreateComponent implements OnInit {
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
-    if (this.user.password === this.confirmpassword) {
-      this.userservice.add(this.user).subscribe(res => {
-        this.router.navigate(['../admin/users']);
-      });
-    }
+    this.userservice.add(this.user).subscribe(res => {
+      this.router.navigate(['../admin/users']);
+    });
   }
 
 
