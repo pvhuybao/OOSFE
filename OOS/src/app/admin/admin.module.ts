@@ -13,6 +13,9 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component'
+import { UserService } from './services/user.service';
 import { ProductService } from './services/Product.service';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
@@ -35,12 +38,13 @@ import { OrdersService } from './services/orders.service';
     ProductDetailComponent, 
     OverviewCategoriesComponent,
     CategoryDetailComponent,
+    UserCreateComponent, 
+    UserEditComponent
   ],
-    
   providers: [
     ProductService,
     CategoryService, 
+    UserService,
     OrdersService]
-
 })
 export class AdminModule { }

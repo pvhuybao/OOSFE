@@ -1,0 +1,36 @@
+<div class="col-md-6">
+  <div class="billing-details">
+    <div class="section-title">
+      <h3 class="title">{{user.lastname}}</h3>
+    </div>
+    <div class="form-group">
+      <p><b>Id: </b>{{user.id}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Username: </b>{{user.username}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Password: </b>{{user.password}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>First Name: </b>{{user.firstname}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Last Name: </b>{{user.lastname}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Gender: </b>{{user.gender}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Image: </b>{{user.image}}</p>
+    </div>
+    <div class="form-group">
+      <p><b>Email: </b>{{user.email}}</p>
+    </div>
+  </div>
+  <a routerLink="#">
+    <button class="primary-btn">Edit</button>
+  </a>
+  <button class="primary-btn" (click)="deleteuser(user)">Delete</button>
+  <button class="primary-btn" (click)="backClicked()">Go back</button>
+</div>
