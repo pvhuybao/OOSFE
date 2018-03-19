@@ -16,6 +16,7 @@ import { OverviewCategoriesComponent } from './categories/overview-categories/ov
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { OrdersService } from './services/orders.service';
     UsersComponent, 
     OrderDetailComponent, 
     ProductDetailComponent, 
-    OverviewCategoriesComponent],
+    OverviewCategoriesComponent, CreateOrderComponent],
   providers: [
     ProductService,
     CategoryService, 
