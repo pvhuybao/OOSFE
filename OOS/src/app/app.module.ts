@@ -27,7 +27,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFontAwesomeModule,
     NouisliderModule
   ],

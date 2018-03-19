@@ -16,11 +16,12 @@ export class ProductDetailComponent implements OnInit {
       this.id=this.productService.idProduct;
       this.productService.get(this.id).subscribe(data =>{
       this.product = data;
+
       if(this.id==null)
       {
         this.flag=false;
       }
+
       });
   }
-
 }
