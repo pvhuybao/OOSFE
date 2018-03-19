@@ -20,7 +20,9 @@ export class UserEditComponent implements OnInit {
     this.userservice.getById(this.user.id).subscribe(value => this.user = value);
   }
   edit() {
-    this.userservice.edit(this.user).subscribe();
+    this.userservice.edit(this.user).subscribe(res => {
+      this.router.navigate(['../admin/users']);
+    });
   }
 
 }

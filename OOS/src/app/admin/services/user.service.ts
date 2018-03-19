@@ -23,7 +23,7 @@ export class UserService {
   }
 
   edit(task: UserModel): Observable<any> {
-    return this.authHttpService.put(this.API_PATH, task);
+    return this.authHttpService.put(this.API_PATH + "/" + task.id, task);
   }
 
   delete(user: UserModel): Observable<any>{
