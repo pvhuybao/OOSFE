@@ -13,8 +13,8 @@
 </div>
 <div class="input-checkbox">
   <label for="class">Gender: </label>
-  <input type="radio" value="true" id="gender_male" [(ngModel)]="user.gender" checked=user.gender>Nam
-  <input type="radio" value="false" id="gender_female" [(ngModel)]="user.gender" checked=!user.gender>Nữ
+  <input type="radio" name="gender"  [value]="true"  [(ngModel)]="user.gender">Nam
+  <input type="radio" name="gender"  [value]="false"  [(ngModel)]="user.gender">Nữ
 </div>
 <div class="form-group">
   <label for="class">Image: </label>
