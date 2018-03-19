@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 
 
+import { InMemoryCategory } from './InMemoryCategory.service';
+
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 
@@ -29,7 +31,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFontAwesomeModule,
     NouisliderModule
   ],

@@ -15,6 +15,8 @@ import { CategoryService } from './services/category.service';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { UserService } from './services/user.service';
+import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
+import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
 import { ProductService } from './services/Product.service';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
@@ -26,9 +28,11 @@ import { OrdersService } from './services/orders.service';
     FormsModule,
     AdminRoutingModule,
   ],
+    
 
   declarations: [
     AdminPageComponent, 
+    CreateCategoryComponent, 
     CategoriesComponent, 
     ProductsComponent, 
     OrdersComponent, 
@@ -37,7 +41,9 @@ import { OrdersService } from './services/orders.service';
     ProductDetailComponent, 
     OverviewCategoriesComponent,
     UserCreateComponent, 
-    UserEditComponent],
+    UserEditComponent,
+    EditCategoryComponent,
+  ],
   providers: [
     ProductService,
     CategoryService, 
