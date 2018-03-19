@@ -11,8 +11,20 @@ export class OrdersService {
 
   listOrder: Array<OrdersModel>;
 
+  order: OrdersModel;
+
   constructor(private authHttpService: AuthHttpService) { }
 
+  sendData(order: OrdersModel)
+  {
+    this.order = order;
+  }
+
+  getData()
+  {
+    return this.order;
+  }
+  
   getList(): Observable<OrdersModel[]> {
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || [])
