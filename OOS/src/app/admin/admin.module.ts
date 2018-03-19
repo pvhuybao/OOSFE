@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
+import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 import { EditOrderComponent } from './orders/edit-order/edit-order.component'
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
@@ -25,6 +26,7 @@ import { OrdersService } from './services/orders.service';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,6 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
     AdminRoutingModule,
   ],
     
-
   declarations: [
     AdminPageComponent, 
     CreateCategoryComponent, 
@@ -41,7 +42,9 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
     ProductsComponent, 
     OrdersComponent, 
     UsersComponent, 
-    OrderDetailComponent, 
+    OrderDetailComponent,     
+    ProductCreateComponent,
+    ProductEditComponent,
     ProductDetailComponent,
     EditOrderComponent,
     OverviewCategoriesComponent,
@@ -50,12 +53,8 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
     UserEditComponent,
     UserDetailComponent,
     CreateOrderComponent,
-    UserCreateComponent, 
-    UserEditComponent, 
     OverviewUsersComponent,
     EditCategoryComponent,
-    UserDetailComponent,
-    CreateOrderComponent
   ],
 
   providers: [
