@@ -29,11 +29,13 @@ export class CreateOrderComponent implements OnInit {
   public Street:string ='';
 
   public IdProduct: string = '';
+  public NameProduct: string='';
+  public ImgProduct: string='http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
   public Quantity:number = 1;
   public Price: number = 0;
   public TotalPrice:number = 0;
 
-  public Total = 0;
+  public Total:number = 0;
   
 
   constructor(  private orderService : OrdersService) { }
@@ -41,6 +43,7 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit() {
     this.isDisabled = false;
   }
+
   create(){
     this.isDisabled = true; //disable the button to prevent duplicate entries
     let addressBill = new AddressModel();
