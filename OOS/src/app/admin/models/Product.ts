@@ -5,5 +5,5 @@ export class ProductModel{
     description : string;
     image : string;
     idCategory: string;
-    constructor(){}
+    constructor () {}
 }

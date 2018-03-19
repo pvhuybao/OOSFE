@@ -33,6 +33,8 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'orders', component: OrdersComponent },
+      //{ path: 'orders/create', component: CreateOrdersComponent },
+      //{ path: 'orders/edit/:id', component: EditOrdersComponent },
       { path: 'users', component: UsersComponent }
     ]
   },];
