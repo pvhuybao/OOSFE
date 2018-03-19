@@ -12,10 +12,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 export class CreateOrderComponent implements OnInit {
 
   message:string;
-<<<<<<< HEAD
-=======
   isDisabled;
->>>>>>> develop
   order : OrdersModel;
   public Email:string ='';
 

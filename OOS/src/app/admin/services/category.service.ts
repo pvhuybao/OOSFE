@@ -18,13 +18,19 @@ export class CategoryService {
       .map(res => res.json() || []);
   }
 
-  add(task): Observable<any> {
-    return this.authHttpService.post(this.API_PATH, task);
+  getCategory(id): Observable<CategoryModel> {
+    return this.authHttpService.get(this.API_PATH + "/" + id)
+    .map(res => res.json() || []);
   }
 
   getById(id): Observable<CategoryModel> {
     return this.authHttpService.get(this.API_PATH + "/" + id)
       .map(res => res.json() || []);
+  }
+
+  add(task: CategoryModel): Observable<CategoryModel> {
+    return this.authHttpService.post(this.API_PATH, task)
+      .map(res => res.json());
   }
 
   put(id, task): Observable<any> {
