@@ -41,11 +41,9 @@ export class CreateOrderComponent implements OnInit {
   constructor(  private orderService : OrdersService) { }
 
   ngOnInit() {
-    this.isDisabled = false;
   }
 
   create(){
-    this.isDisabled = true; //disable the button to prevent duplicate entries
     let addressBill = new AddressModel();
     addressBill.name = this.NameBill;
     addressBill.phone = this.PhoneBill;

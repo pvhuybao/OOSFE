@@ -5,7 +5,7 @@ import { UserModel } from '../models/user';
 
 @Injectable()
 export class UserService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/user';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User';
 
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -24,5 +24,10 @@ export class UserService {
 
   edit(task: UserModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "/" + task.id, task);
+  }
+
+  delete(user: UserModel): Observable<any>{
+    var url: string = this.API_PATH + "/" + user.id;
+    return this.authHttpService.delete(url)
   }
 }
