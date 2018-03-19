@@ -16,11 +16,16 @@ import { CategoryDetailComponent } from './categories/category-detail/category-d
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { UserService } from './services/user.service';
+import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
+import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
+
 import { ProductService } from './services/Product.service';
-import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
+
 
 
 @NgModule({
@@ -29,9 +34,11 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
     FormsModule,
     AdminRoutingModule,
   ],
+    
 
   declarations: [
     AdminPageComponent, 
+    CreateCategoryComponent, 
     CategoriesComponent, 
     ProductsComponent, 
     OrdersComponent, 
@@ -43,7 +50,9 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
     UserCreateComponent, 
     UserEditComponent, 
     OverviewUsersComponent,
-    UserDetailComponent
+    EditCategoryComponent,
+    UserDetailComponent,
+    CreateOrderComponent
   ],
   providers: [
     ProductService,

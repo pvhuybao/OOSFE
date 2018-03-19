@@ -1,3 +1,6 @@
+<div class="btn-group">
+  <button [routerLink]="['./CreateCategory']" class="primary-btn">Create New</button>
+</div>
 <div class="row">
   <form id="checkout-form" class="clearfix">
     <div class="col-md-8">
@@ -22,16 +25,12 @@
               </td>
               <td>{{category.description}}</td>
               <td>
-                <button  class="main-btn icon-btn" (click)="edit()"><i class="fa fa-edit"></i></button>
-                <button  class="main-btn icon-btn" (click)="delete(user)"><i class="fa fa-close"></i></button>
+                <button class="btn btn-outline-primary " routerLink="./EditCategory/{{category.id}}" >Edit</button>
+                <button class="btn btn-outline-primary " (click)="delete(category)">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
-
-        <div class="btn-group">
-          <a routerLink="../create" routerLinkActive="active" class="btn primary-btn">Create New</a>
-        </div>
       </div>
     </div>
   </form>
