@@ -66,7 +66,7 @@
       <div class="section-title">
           <div class="input-group">
               <input type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2">
-              <span class="input-group-addon" id="basic-addon2">Search</span>
+              <span class="input-group-addon" id="basic-addon2">Add</span>
             </div>
             <br>
         <h3 class="title">Order Review</h3>
@@ -86,17 +86,13 @@
         <tbody>
           <tr>
             <!-- <td >123</td> -->
-            <td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
+            <td class="thumb"><img src="{{ImgProduct}}" alt="product01.jpg"></td>
             <td class="details">
-              <a href="#">Product Name Goes Here</a>
-              <ul>
-                <li><span>Size: XL</span></li>
-                <li><span>Color: Camelot</span></li>
-              </ul>
+              <a href="#">{{NameProduct}}</a>
             </td>
-            <td class="price text-center"><strong #Price>32</strong><br><del class="font-weak"><small >$40.00</small></del></td>
+            <td class="price text-center"><strong>{{Price}}</strong><br></td>
             <td class="qty text-center"><input class="input" type="number" value="1" [(ngModel)]="Quantity"></td>
-            <td class="total text-center"><strong class="primary-color" #TotalPrice>3250</strong></td>
+            <td class="total text-center"><strong class="primary-color" >{{TotalPrice}}</strong></td>
             <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
           </tr>
         </tbody>
@@ -104,15 +100,22 @@
           <tr>
             <th class="empty" colspan="3"></th>
             <th>TOTAL</th>
-            <th colspan="2" class="total" #Total> 97.50</th>
+            <th colspan="2" class="total">{{Total}}</th>
           </tr>
         </tfoot>
       </table>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>
+      </div>
+      <div class="pull-left">
+        <a routerLink="/admin/orders" routerLinkActive="active">Back</a>
+      </div>
       <div class="pull-right">
-        <button class="primary-btn" (click)="create()">Create Order</button>
+        <button class="primary-btn" (click)="create()" [disabled]="isDisabled">Create Order</button>
       </div>
     </div>
+    <br>
   </div>
 <!-- </form> -->
-<br>
 
