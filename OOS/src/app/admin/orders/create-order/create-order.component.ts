@@ -27,17 +27,20 @@ export class CreateOrderComponent implements OnInit {
   public Street:string ='';
 
   public IdProduct: string = '';
+  public NameProduct: string='';
+  public ImgProduct: string='http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
   public Quantity:number = 1;
   public Price: number = 0;
   public TotalPrice:number = 0;
 
-  public Total = 0;
+  public Total:number = 0;
   
 
   constructor(  private orderService : OrdersService) { }
 
   ngOnInit() {
   }
+
   create(){
     let addressBill = new AddressModel();
     addressBill.name = this.NameBill;
