@@ -11,6 +11,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 })
 export class CreateOrderComponent implements OnInit {
 
+  message:string;
   order : OrdersModel;
   public Email:string ='';
 
@@ -72,7 +73,12 @@ export class CreateOrderComponent implements OnInit {
     newOrder.total = this.Total;
 
     this.orderService.add(newOrder).subscribe((data)=>{
+      this.message = "success";
       console.log(data);
     });
+  }
+
+  removeAlert(){
+    this.message=null;
   }
 }

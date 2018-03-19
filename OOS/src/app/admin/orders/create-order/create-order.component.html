@@ -86,7 +86,7 @@
         <tbody>
           <tr>
             <!-- <td >123</td> -->
-            <td class="thumb"><img src="{{ImgProduct}}" alt="product01.jpg"></td>
+            <td class="thumb"><img src="{{ImgProduct}}" alt=""></td>
             <td class="details">
               <a href="#">{{NameProduct}}</a>
             </td>
@@ -104,6 +104,13 @@
           </tr>
         </tfoot>
       </table>
+      <div class="pull-left">
+          <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
+        </div>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>    
+      </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="create()">Create Order</button>
       </div>
