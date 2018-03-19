@@ -107,14 +107,14 @@
       <div class="pull-left">
           <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
         </div>
-      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
-        Add new order successfully
-        <a class="close" (click)="removeAlert()">&times;</a>    
-      </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="create()">Create Order</button>
       </div>
     </div>
+    <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>    
+      </div>
     <br>
   </div>
 <!-- </form> -->
