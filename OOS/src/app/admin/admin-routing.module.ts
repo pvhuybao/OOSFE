@@ -36,7 +36,6 @@ const adminRoutes: Routes = [
       { path: 'orders', component: OrdersComponent },
       { path: 'users', component: UsersComponent },
       { path: 'orders/create', component: CreateOrderComponent },
-
     ]
   },];
 

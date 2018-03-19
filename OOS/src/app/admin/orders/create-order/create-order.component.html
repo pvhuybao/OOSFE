@@ -104,8 +104,15 @@
           </tr>
         </tfoot>
       </table>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>
+      </div>
+      <div class="pull-left">
+        <a routerLink="/admin/orders" routerLinkActive="active">Back</a>
+      </div>
       <div class="pull-right">
-        <button class="primary-btn" (click)="create()">Create Order</button>
+        <button class="primary-btn" (click)="create()" [disabled]="isDisabled">Create Order</button>
       </div>
     </div>
     <br>
