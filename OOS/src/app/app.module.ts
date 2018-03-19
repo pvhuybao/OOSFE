@@ -17,6 +17,8 @@ import { NotFoundPageComponent } from './not-found.component';
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //--> remove after apply API
 import { InMemoryCategory } from './InMemoryCategory.service';
 
+import { InMemoryCategory } from './InMemoryCategory.service';
+
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 
@@ -31,7 +33,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFontAwesomeModule,
     NouisliderModule
   ],
