@@ -10,9 +10,16 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
+
+import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
+import { EditCategoryComponent } from './categories/editcategory/editcategory.component';
+
+import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
+
 
 const adminRoutes: Routes = [
   {
@@ -22,15 +29,24 @@ const adminRoutes: Routes = [
     canActivateChild: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
+      {
+        path: 'users',
+        children: [
+          { path: '', component: UsersComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: UserEditComponent },
+          { path: 'create', component: UserCreateComponent }
+        ]
+      },
       { path: 'products', component: ProductsComponent },
 
-      { path: 'categories', component: CategoriesComponent },
       { path:'product-details',component:ProductDetailComponent},
       { 
         path: 'categories', 
         component: CategoriesComponent ,
         children: [
-          { path: 'overview-categories', component: OverviewCategoriesComponent }
+          { path: '', component: OverviewCategoriesComponent },
+          { path: 'CreateCategory', component: CreateCategoryComponent },
+          { path: 'EditCategory/:id', component: EditCategoryComponent }
         ]
       },
       { path: 'orders', component: OrdersComponent },
