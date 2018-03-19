@@ -17,8 +17,8 @@
           <tbody *ngFor="let user of listUsers; let i = index">
             <tr>
               <td>{{user.id}}</td>
-              <td class="">
-                <a href="#">{{user.username}}</a>
+              <td>
+                <a routerLink="../{{user.id}}" routerLinkActive="active">{{user.username}}</a>
               </td>
               <td>{{user.firstName}}</td>
               <td>
