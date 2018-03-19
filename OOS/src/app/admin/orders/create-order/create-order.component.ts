@@ -12,6 +12,10 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 export class CreateOrderComponent implements OnInit {
 
   message:string;
+<<<<<<< HEAD
+=======
+  isDisabled;
+>>>>>>> develop
   order : OrdersModel;
   public Email:string ='';
 
@@ -76,9 +80,10 @@ export class CreateOrderComponent implements OnInit {
       this.message = "success";
       console.log(data);
     });
+
   }
 
   removeAlert(){
-    this.message=null;
+    this.message = null;
   }
 }
