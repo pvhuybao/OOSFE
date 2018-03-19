@@ -1,0 +1,118 @@
+<!-- <form> -->
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        <div class="section-title">
+            <h3 class="title">Billing Details</h3>
+          </div>
+      <label for="inputEmail">Email</label>
+      <input type="email" class="input" placeholder="Email" [(ngModel)]="Email">
+    </div>
+  </div>
+        <div class="form-row" >
+            <div class="col-md-12">
+                <hr>
+                <label> Địa chỉ người trả tiền </label>
+            </div>
+          <div class="form-group col-md-6">
+            <label for="inputName">Name </label>
+            <input type="text" class="input" id="inputName" [(ngModel)]="NameBill">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPhone">Phone</label>
+            <input type="text" class="input" id="inputPhone" [(ngModel)]="PhoneBill" >
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputProvince">Province</label>
+              <input type="text" class="input" id="inputProvince" placeholder="Province" [(ngModel)]="ProvinceBill">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputDistrict">District</label>
+              <input type="text" class="input" id="inputDistrict" placeholder="District" [(ngModel)]="DistrictBill">
+            </div>
+          <div class="form-group col-md-4">
+              <label for="inputStreet">Street</label>
+              <input type="text" class="input" id="inputStreet" [(ngModel)]="StreetBill">
+            </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12">
+            <hr>
+            <label> Địa chỉ người nhận </label>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputName">Name </label>
+          <input type="text" class="input" id="inputName2" [(ngModel)]="Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPhone">Phone</label>
+          <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputProvince">Province</label>
+            <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputDistrict">District</label>
+            <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District">
+          </div>
+        <div class="form-group col-md-4">
+            <label for="inputStreet">Street</label>
+            <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street">
+          </div>
+  </div>
+  
+  <div class="col-md-12">
+    <div class="order-summary clearfix">
+      <div class="section-title">
+          <div class="input-group">
+              <input type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2">
+              <span class="input-group-addon" id="basic-addon2">Search</span>
+            </div>
+            <br>
+        <h3 class="title">Order Review</h3>
+      </div>
+      <table class="shopping-cart-table table">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Product</th>
+            <th></th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Total</th>
+            <th class="text-right"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- <td >123</td> -->
+            <td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
+            <td class="details">
+              <a href="#">Product Name Goes Here</a>
+              <ul>
+                <li><span>Size: XL</span></li>
+                <li><span>Color: Camelot</span></li>
+              </ul>
+            </td>
+            <td class="price text-center"><strong #Price>32</strong><br><del class="font-weak"><small >$40.00</small></del></td>
+            <td class="qty text-center"><input class="input" type="number" value="1" [(ngModel)]="Quantity"></td>
+            <td class="total text-center"><strong class="primary-color" #TotalPrice>3250</strong></td>
+            <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="empty" colspan="3"></th>
+            <th>TOTAL</th>
+            <th colspan="2" class="total" #Total> 97.50</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="pull-right">
+        <button class="primary-btn" (click)="create()">Create Order</button>
+      </div>
+    </div>
+  </div>
+<!-- </form> -->
+<br>
+

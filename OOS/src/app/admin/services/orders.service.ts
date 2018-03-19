@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AuthHttpService } from '../../auth/auth-http.service'
+import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
+//import { Orders } from '../models/orders';
 import { OrdersModel } from '../models/order';
-
 
 @Injectable()
 export class OrdersService {
@@ -46,10 +46,9 @@ export class OrdersService {
       .map(res => res.json() || [])
   }
 
-  delete(id: string): Observable<OrdersModel[]>
+  delete(id: string)
   {
-    return this.authHttpService.delete(this.API_PATH+id)
-      .map(res => res.json() || [])
+    return this.authHttpService.delete(this.API_PATH+id);
   }
 
 }

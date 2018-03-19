@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
+
+//import { Orders } from '../Models/orders';
+
 import { OrdersModel } from '../models/order';
 
 @Component({
@@ -14,6 +17,17 @@ export class OrdersComponent implements OnInit {
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
+    this.getOrderList();
+  }
+
+  getOrderList()
+  {
+    this.ordersService.getList().subscribe(data => {this.listOrders = data});
+  }
+
+  delete(orderId)
+  {
+    this.ordersService.delete(orderId).subscribe(()=> {this.getOrderList();});
   }
 
 }

@@ -10,8 +10,9 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component'
-import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
 
 const adminRoutes: Routes = [
   {
@@ -33,7 +34,9 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'orders', component: OrdersComponent },
-      { path: 'users', component: UsersComponent }
+      { path: 'users', component: UsersComponent },
+      { path: 'orders/create', component: CreateOrderComponent },
+
     ]
   },];
 
