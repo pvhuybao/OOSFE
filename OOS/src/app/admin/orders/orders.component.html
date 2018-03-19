@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <div class="order-summary clearfix">
-      <a routerLink="/admin/order/create" routerLinkActive="active" class="btn primary-btn">Create</a>
+      <a routerLink="/admin/orders/create" routerLinkActive="active" class="btn primary-btn">Create</a>
     <div class="section-title">
       <h3 class="title">List Orders</h3>
     </div>
@@ -18,7 +18,7 @@
           <td>{{order.email}}</td>
           <td class="text-center">{{order.userId}}</td>
           <td class="text-center">{{order.total}}</td>
-          <td class="text-right"><button class="main-btn icon-btn" routerLink="/admin/order/edit/{{order.id}}" routerLinkActive="active"><i class="fa fa-edit"></i></button></td>
+          <td class="text-right"><button class="main-btn icon-btn" routerLink="/admin/orders/edit/{{order.id}}" routerLinkActive="active"><i class="fa fa-edit"></i></button></td>
           <td class="text-right"><button class="main-btn icon-btn" (click)="delete(order.id)"><i class="fa fa-close"></i></button></td>
         </tr>
       </tbody>
