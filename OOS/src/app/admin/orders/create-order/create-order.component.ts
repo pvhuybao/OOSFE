@@ -11,6 +11,8 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 })
 export class CreateOrderComponent implements OnInit {
 
+  message:string;
+  isDisabled;
   order : OrdersModel;
   public Email:string ='';
 
@@ -37,8 +39,10 @@ export class CreateOrderComponent implements OnInit {
   constructor(  private orderService : OrdersService) { }
 
   ngOnInit() {
+    this.isDisabled = false;
   }
   create(){
+    this.isDisabled = true; //disable the button to prevent duplicate entries
     let addressBill = new AddressModel();
     addressBill.name = this.NameBill;
     addressBill.phone = this.PhoneBill;
@@ -69,7 +73,13 @@ export class CreateOrderComponent implements OnInit {
     newOrder.total = this.Total;
 
     this.orderService.add(newOrder).subscribe((data)=>{
+      this.message = "success";
       console.log(data);
     });
+
+  }
+
+  removeAlert(){
+    this.message = null;
   }
 }
