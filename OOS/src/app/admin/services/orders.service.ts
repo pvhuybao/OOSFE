@@ -7,12 +7,24 @@ import { OrdersModel } from '../models/order';
 @Injectable()
 export class OrdersService {
 
-  private API_PATH = '/api/order'
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/'
 
   listOrder: Array<OrdersModel>;
 
+  order: OrdersModel;
+
   constructor(private authHttpService: AuthHttpService) { }
 
+  sendData(order: OrdersModel)
+  {
+    this.order = order;
+  }
+
+  getData()
+  {
+    return this.order;
+  }
+  
   getList(): Observable<OrdersModel[]> {
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || [])
