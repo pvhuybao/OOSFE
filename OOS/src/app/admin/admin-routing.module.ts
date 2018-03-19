@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 
 const adminRoutes: Routes = [
   {
@@ -26,7 +27,7 @@ const adminRoutes: Routes = [
       {
         path: 'users',
         children: [
-          { path: '', component: UsersComponent, pathMatch: 'full' },
+          { path: '', component: OverviewUsersComponent},
           { path: 'edit/:id', component: UserEditComponent },
           { path: 'create', component: UserCreateComponent }
         ]

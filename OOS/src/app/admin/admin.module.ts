@@ -18,6 +18,7 @@ import { UserService } from './services/user.service';
 import { ProductService } from './services/Product.service';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
+import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { OrdersService } from './services/orders.service';
     ProductDetailComponent, 
     OverviewCategoriesComponent,
     UserCreateComponent, 
-    UserEditComponent],
+    UserEditComponent, OverviewUsersComponent],
   providers: [
     ProductService,
     CategoryService, 

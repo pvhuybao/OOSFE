@@ -1,28 +1,32 @@
 <div class="row">
   <form id="checkout-form" class="clearfix">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="order-summary clearfix">
         <div class="section-title">
-          <h3 class="title">Overview Categories</h3>
+          <h3 class="title">Overview Users</h3>
         </div>
         <table class="shopping-cart-table table table">
           <thead class="thead-dark">
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
+              <th scope="col">Username</th>
+              <th scope="col">FirstName</th>
               <th></th>
             </tr>
           </thead>
-          <tbody *ngFor="let category of listCategories; let i = index">
+          <tbody *ngFor="let user of listUsers; let i = index">
             <tr>
-              <td>{{category.id}}</td>
+              <td>{{user.id}}</td>
               <td class="">
-                <a href="#">{{category.name}}</a>
+                <a href="#">{{user.username}}</a>
               </td>
-              <td>{{category.description}}</td>
+              <td>{{user.firstName}}</td>
               <td>
-                <button  class="main-btn icon-btn" (click)="edit()"><i class="fa fa-edit"></i></button>
+                <a routerLink="../edit/{{user.id}}" routerLinkActive="active">
+                  <button  class="main-btn icon-btn">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </a>
                 <button  class="main-btn icon-btn" (click)="delete(user)"><i class="fa fa-close"></i></button>
               </td>
             </tr>
