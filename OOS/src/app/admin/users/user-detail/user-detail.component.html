@@ -1,7 +1,7 @@
 <div class="col-md-6">
   <div class="billing-details">
     <div class="section-title">
-      <h3 class="title">{{user.lastname}}</h3>
+      <h3 class="title">Detail{{user.lastName}}</h3>
     </div>
     <div class="form-group">
       <p><b>Id: </b>{{user.id}}</p>
@@ -13,10 +13,10 @@
       <p><b>Password: </b>{{user.password}}</p>
     </div>
     <div class="form-group">
-      <p><b>First Name: </b>{{user.firstname}}</p>
+      <p><b>First Name: </b>{{user.firstName}}</p>
     </div>
     <div class="form-group">
-      <p><b>Last Name: </b>{{user.lastname}}</p>
+      <p><b>Last Name: </b>{{user.lastName}}</p>
     </div>
     <div class="form-group">
       <p><b>Gender: </b>{{user.gender}}</p>
@@ -31,6 +31,6 @@
   <a routerLink="#">
     <button class="primary-btn">Edit</button>
   </a>
-  <button class="primary-btn" (click)="deleteuser(user)">Delete</button>
+  <button class="primary-btn" (click)="deleteUser(user)">Delete</button>
   <button class="primary-btn" (click)="backClicked()">Go back</button>
 </div>

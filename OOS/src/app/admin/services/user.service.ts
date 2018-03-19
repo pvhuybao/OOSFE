@@ -25,4 +25,9 @@ export class UserService {
   edit(task: UserModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH, task);
   }
+
+  delete(user: UserModel): Observable<any>{
+    var url: string = this.API_PATH + "/" + user.id;
+    return this.authHttpService.delete(url)
+  }
 }
