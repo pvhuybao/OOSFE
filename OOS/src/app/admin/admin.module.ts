@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CategoryService } from './services/category.service';
+import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 import { EditOrderComponent } from './orders/edit-order/edit-order.component'
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
@@ -22,12 +23,10 @@ import { CreateCategoryComponent } from './categories/createcategory/createcateg
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
-
-
-
 
 
 @NgModule({
@@ -37,7 +36,6 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     AdminRoutingModule,
   ],
     
-
   declarations: [
     AdminPageComponent, 
     CreateCategoryComponent, 
@@ -45,12 +43,13 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     ProductsComponent, 
     OrdersComponent, 
     UsersComponent, 
-    OrderDetailComponent, 
+    OrderDetailComponent,     
+    ProductCreateComponent,
+    ProductEditComponent,
     ProductDetailComponent,
     EditOrderComponent,
     OverviewCategoriesComponent,
     CategoryDetailComponent,
-    CreateOrderComponent,
     UserCreateComponent, 
     UserEditComponent, 
     OverviewUsersComponent,

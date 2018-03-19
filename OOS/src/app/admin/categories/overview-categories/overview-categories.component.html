@@ -1,13 +1,12 @@
-<div class="btn-group">
-  <button [routerLink]="['./CreateCategory']" class="primary-btn">Create New</button>
-</div>
-<div class="row">
-  <form id="checkout-form" class="clearfix">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="order-summary clearfix">
         <div class="section-title">
           <h3 class="title">Overview Categories</h3>
         </div>
+        <div class="btn-group">
+          <button routerLink="../create" class="primary-btn">Create New</button>
+        </div>
+
         <table class="shopping-cart-table table table">
           <thead class="thead-dark">
             <tr>
@@ -25,17 +24,26 @@
               </td>
               <td>{{category.description}}</td>
               <td>
-                <button class="btn btn-outline-primary " routerLink="./EditCategory/{{category.id}}" >Edit</button>
-                <button class="btn btn-outline-primary " type="button"
-                   data-toggle="modal" data-target="#myModal" (click)="get(category.id)">Delete</button> 
+
+                  <button class="main-btn icon-btn" routerLink="../{{category.id}}">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button class="main-btn icon-btn"
+                    data-toggle="modal" data-target="#myModal" (click)="get(category.id)">
+                      <i class="fa fa-close"></i>
+                  </button>
+                                
 
                    <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                     
                       <!-- Modal content-->
-                      <div class="modal-content">                        
+                      <div class="modal-content">   
+                          <div class="modal-header">                              
+                              <h4 class="modal-title">Confirm</h4>
+                            </div>                     
                         <div class="modal-body">
-                          <h4>Are you sure ??</h4>
+                          <p>Are you sure ??</p>
                         </div>
                         <div class="modal-footer">                            
                           <button type="button" class="btn btn-default" (click)="delete()"  data-dismiss="modal">Yes</button>
@@ -44,12 +52,12 @@
                       </div>
                       
                     </div>
-                  </div>
+                  </div>                
+
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </form>
-</div>
+
