@@ -12,7 +12,9 @@ export class EditCategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
+
   public cate = new CategoryModel;
+
   public id: string;  
 
   ngOnInit() {

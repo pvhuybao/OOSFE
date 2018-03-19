@@ -14,8 +14,7 @@ import { AuthHttpService } from './auth/auth-http.service';
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 
-
-import { InMemoryCategory } from './InMemoryCategory.service';
+//import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //--> remove after apply API
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
