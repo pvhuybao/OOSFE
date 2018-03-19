@@ -1,19 +1,5 @@
 
 <div class="container">
-  <form id="checkout-form" class="clearfix">
-
-    <button [routerLink] = "['/admin/CreateCategory']" class="primary-btn" >Create</button>
-
-    <br/>
-    <div *ngFor="let category of listCategory">  
-      {{category.name}}
-      {{category.description}}
-      {{category.status}}
-      <button routerLink = '/admin/EditCategory/{{category.id}}'>Edit</button>
-    </div>
-
-  </form>
+      <router-outlet></router-outlet>
 </div>
 
-<a [routerLink]="['./overview-categories']">Overview Categories</a>
-<router-outlet></router-outlet>

@@ -26,18 +26,19 @@ const adminRoutes: Routes = [
     canActivateChild: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent },
+      { path: 'products', component: ProductsComponent },  
 
-      { path: 'categories', component: CategoriesComponent },
+      //{ path: 'CreateCategory', component: CreateCategoryComponent },
+      //{ path: 'EditCategory/:id', component: EditCategoryComponent },
 
-      { path: 'CreateCategory', component: CreateCategoryComponent },
-      { path: 'EditCategory/:id', component: EditCategoryComponent },
       { path:'product-details',component:ProductDetailComponent},
       { 
         path: 'categories', 
         component: CategoriesComponent ,
         children: [
-          { path: 'overview-categories', component: OverviewCategoriesComponent }
+          { path: '', component: OverviewCategoriesComponent },
+          { path: 'CreateCategory', component: CreateCategoryComponent },
+          { path: 'EditCategory/:id', component: EditCategoryComponent }
         ]
       },
       { path: 'orders', component: OrdersComponent },
