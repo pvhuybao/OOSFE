@@ -14,7 +14,9 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/Product.service';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
-
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { OrdersService } from './services/orders.service';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -23,14 +25,18 @@ import { ProductCreateComponent } from './products/product-create/product-create
     FormsModule,
     AdminRoutingModule,
   ],
-  declarations: [AdminPageComponent, 
+
+  declarations: [
+    AdminPageComponent, 
     CategoriesComponent, 
     ProductsComponent, 
     OrdersComponent, 
     UsersComponent, 
     OrderDetailComponent, 
     ProductDetailComponent, 
-    ProductCreateComponent
+    ProductCreateComponent,
+    OverviewCategoriesComponent,
+    ProductEditComponent
   ],
   providers: [CategoryService,ProductService]
 })

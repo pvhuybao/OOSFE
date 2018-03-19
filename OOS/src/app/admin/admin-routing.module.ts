@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuardService } from '../auth/auth-guard.service';
 
+import {  ProductCreateComponent } from './products/product-create/product-create.component';
+import {  ProductEditComponent } from './products/product-edit/product-edit.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
@@ -11,6 +13,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component'
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 
 const adminRoutes: Routes = [
   {
@@ -22,6 +25,19 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path:'product-create',component: ProductCreateComponent},
+      { path:'product-edit',component: ProductEditComponent},
+      { path:'product-details',component:ProductDetailComponent},
+      
+      { 
+        path: 'categories', 
+        component: CategoriesComponent ,
+        children: [
+          { path: 'overview-categories', component: OverviewCategoriesComponent }
+        ]
+      },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'users', component: UsersComponent }
     ]
   },];
 

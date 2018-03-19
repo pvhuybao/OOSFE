@@ -7,30 +7,30 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ProductService {
-  private API_PATH = '/api/Product';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  idProduct : string;
+  constructor(private authHttpService: AuthHttpService) { }
+  
+  get(id) :Observable<ProductModel>{
+    return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);
+  }
+  delete(id):Observable<any>{
+    return this.authHttpService.delete(this.API_PATH + id);
+  }
+  setId(id){
+    this.idProduct = id;
+  }
+  gets(): Observable<ProductModel[]> {
+    return this.authHttpService.get(this.API_PATH)
+      //.map(res => res.json() || []);
+      .map(res =>res.json());
+  }
 
-  constructor(private authHttpService: AuthHttpService,private http: HttpClient) { }
+ postProduct(product){
+    return this.authHttpService.post(this.API_PATH, product);
+  }
 
-  // get(): Observable<ProductModel[]> {
-  //   return this.authHttpService.get(this.API_PATH)
-  //     .map(res => res.json() || []);
-  // }
-
-  // add(task: ProductModel): Observable<ProductModel> {
-  //   return this.authHttpService.post(this.API_PATH, task)
-  //     .map(res => res.json());
-  // }
-
-  postProduct(name, id){ 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',        
-      })
-    };
-    var product = {
-      id: id,
-      name : name
-    };
-    return this.http.post('http://localhost:60499/API/product', product, httpOptions);
+  putProduct(task: ProductModel): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "/" + task.id, task);
   }
 }
