@@ -19,12 +19,14 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit() {
     this.user.gender = true;
-    this.user.image="http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
+    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
-    this.userservice.add(this.user).subscribe(res => {
-      this.router.navigate(['../admin/users']);
-    });
+    if (this.user.password === this.confirmpassword) {
+      this.userservice.add(this.user).subscribe(res => {
+        this.router.navigate(['../admin/users']);
+      });
+    }
   }
 
 
