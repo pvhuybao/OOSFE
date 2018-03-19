@@ -17,9 +17,11 @@ import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { UserService } from './services/user.service';
 import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
+
 import { ProductService } from './services/Product.service';
-import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { OrdersService } from './services/orders.service';
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
 
 
 @NgModule({
@@ -43,6 +45,7 @@ import { OrdersService } from './services/orders.service';
     UserCreateComponent, 
     UserEditComponent,
     EditCategoryComponent,
+    CreateOrderComponent
   ],
   providers: [
     ProductService,

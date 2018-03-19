@@ -18,6 +18,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
 
 
 const adminRoutes: Routes = [
@@ -49,7 +50,8 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'orders', component: OrdersComponent },
-      { path: 'users', component: UsersComponent }
+      { path: 'users', component: UsersComponent },
+      { path: 'orders/create', component: CreateOrderComponent },
     ]
   },];
 
