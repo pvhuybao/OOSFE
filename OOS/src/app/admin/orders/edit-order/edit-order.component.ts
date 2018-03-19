@@ -12,12 +12,17 @@ import { OrdersModel } from '../../models/order';
 })
 export class EditOrderComponent implements OnInit {
 
+  order : OrdersModel
+
   constructor(private ss: OrdersService) { }
 
   ngOnInit() {
+    this.order = this.ss.getData()
+    console.log("EditOrder order =",this.order)
   }
   
   edit(){
+    /*
     let address : AddressModel = {
       name : "lon",
       phone : "113",
@@ -42,7 +47,8 @@ export class EditOrderComponent implements OnInit {
       address : [address],
       total : 0
     }
-      this.ss.add(order).subscribe (data => console.log(data));
+    */
+      this.ss.put(this.order).subscribe (data => console.log(data));
       
     
 

@@ -16,6 +16,7 @@ import { EditOrderComponent } from './orders/edit-order/edit-order.component'
 import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
+import { CreateOrderComponent } from './orders/create-order/create-order.component';
 
 
 
@@ -35,7 +36,10 @@ import { OrdersService } from './services/orders.service';
     OrderDetailComponent, 
     ProductDetailComponent,
     EditOrderComponent,
-    OverviewCategoriesComponent],
+    OverviewCategoriesComponent,
+    CreateOrderComponent
+  ],
+
   providers: [
     ProductService,
     CategoryService, 
