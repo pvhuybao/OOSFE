@@ -29,7 +29,8 @@ export class CategoryService {
   }
 
   add(task: CategoryModel): Observable<any> {
-    return this.authHttpService.post(this.API_PATH, task);
+
+    return this.authHttpService.post(this.API_PATH, task);    
   }
 
   put(id, task): Observable<any> {
