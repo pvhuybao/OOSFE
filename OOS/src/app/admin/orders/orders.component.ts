@@ -18,9 +18,10 @@ export class OrdersComponent implements OnInit {
     this.getOrderList();
   }
 
-  getOrderList()
+  getOrderList() 
   {
     this.ordersService.getList().subscribe(data => {this.listOrders = data});
+    this.listOrders.sort
   }
 
   delete(orderId)
