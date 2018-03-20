@@ -10,7 +10,7 @@ export class ProductService {
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  getProductsByParameter(): Observable<ProductModel[]>{
+  getProductsByParameter(widgetName:string): Observable<ProductModel[]>{
     let listProduct = new Subject<ProductModel[]>(); 
     listProduct.next([{id: "0", name: "product 0"},
                       {id: "1", name: "product 1"},

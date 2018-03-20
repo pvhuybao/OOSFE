@@ -10,6 +10,8 @@ import { ProductService } from '../services/product.service';
 export class HomePageComponent implements OnInit {
 
   newestProduct : ProductModel[];
+  topSales : ProductModel[];
+  topDiscount : ProductModel[];
 
   constructor(private productService : ProductService) { }
 
@@ -17,6 +19,17 @@ export class HomePageComponent implements OnInit {
   }
 
   getListNewestProduct(){
-    this.productService.getProductsByParameter().subscribe(newestProduct => { this.newestProduct=newestProduct });
+    this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => { 
+      this.newestProduct=newestProduct });
+  }
+
+  getListTopSalesProduct(){
+    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => { 
+      this.newestProduct=newestProduct });
+  }
+
+  getListTopDiscountProduct(){
+    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => { 
+      this.newestProduct=newestProduct });
   }
 }
