@@ -31,6 +31,7 @@ export class CreateCategoryComponent implements OnInit {
     let newCategory = new CategoryModel();
     newCategory.name = this.name;
     newCategory.description = this.description;
+    newCategory.status = 1;
 
     this.categoryService.add(newCategory).subscribe(data => {
       this.router.navigate(['/admin/categories']);
