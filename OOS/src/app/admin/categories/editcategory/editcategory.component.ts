@@ -3,6 +3,7 @@ import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CategoryModel, CategoryStatus } from '../../models/category';
 import { StringDecoder } from 'string_decoder';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-editcategory',
@@ -11,9 +12,11 @@ import { StringDecoder } from 'string_decoder';
 })
 export class EditCategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private router: Router, private activatedRoute: ActivatedRoute) {
-    
-   }
+  constructor(private categoryService: CategoryService, private router: Router, 
+    private activatedRoute: ActivatedRoute,
+    private spinnerService: SpinnerService
+  ) {
+    }
 
 
   public cate = new CategoryModel;
@@ -42,11 +45,13 @@ export class EditCategoryComponent implements OnInit {
   }
 
   editCategory() {
+    this.spinnerService.startLoadingSpinner();
     this.cate.name = this.cate.name;
     this.cate.description = this.cate.description;
     this.cate.status = this.cate.status;
 
     this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
       this.router.navigate(['/admin/categories']);
     });
   }
