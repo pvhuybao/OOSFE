@@ -29,7 +29,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     ShoppingModule,
     AppRoutingModule,    
     AngularFontAwesomeModule,
-    NouisliderModule
+    NouisliderModule,
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]
