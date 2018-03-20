@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service'
-import { UserModel } from '../../models/user'
+import { UserService } from '../../services/user.service';
+import { UserModel } from '../../models/user';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-overview-users',
@@ -11,12 +12,21 @@ export class OverviewUsersComponent implements OnInit {
 
   listUsers: UserModel[];
 
+  userDel = new UserModel;
+
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private spinnerService: SpinnerService
   ) { }
 
   ngOnInit() {
     this.getListUsers();
+  }
+
+  get(id) {
+    this.userService.getById(id).subscribe(data => {
+      this.userDel = data;
+    })
   }
 
   getListUsers() {
@@ -25,8 +35,10 @@ export class OverviewUsersComponent implements OnInit {
     })
   }
 
-  delete(user: UserModel) {
-    this.userService.delete(user).subscribe(data => {
+  delete() {
+    this.spinnerService.startLoadingSpinner();
+    this.userService.delete(this.userDel).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
       this.getListUsers();
     });
   }

@@ -14,7 +14,7 @@ export class OverviewCategoriesComponent implements OnInit {
 
   listCategories: CategoryModel[];
 
-  catedel = new CategoryModel;
+  cateDel = new CategoryModel;
 
   constructor(
     private categoryService: CategoryService,
@@ -34,13 +34,13 @@ export class OverviewCategoriesComponent implements OnInit {
 
   get(id) {
     this.categoryService.getById(id).subscribe(data => {
-      this.catedel = data;
+      this.cateDel = data;
     })
   }
 
   delete() {  
     this.spinnerService.startLoadingSpinner();
-    this.categoryService.delete(this.catedel).subscribe(data => {
+    this.categoryService.delete(this.cateDel).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.getListCategories();
     });

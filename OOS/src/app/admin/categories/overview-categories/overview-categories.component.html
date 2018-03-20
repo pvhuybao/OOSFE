@@ -35,22 +35,26 @@
 
           <!-- Pop up for delete-->
           <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Confirm</h4>
-                </div>
-                <div class="modal-body">
-                  <p>Are you sure ??</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" (click)="delete()" data-dismiss="modal">Yes</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-body">
+                      <div class="section-title">
+                          <h4 class="modal-title">Confirm</h4>
+                        </div>
+                    <p>
+                      Are you sure to want to delele <strong>{{cateDel.name}}</strong> ??
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
+                    <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <!-- Pop up for delete-->
+
         </td>
       </tr>
     </tbody>
