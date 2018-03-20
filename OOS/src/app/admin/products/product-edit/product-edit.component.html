@@ -4,33 +4,24 @@
      <div class="product-view">
        <img src="{{product.image}}" alt="">
      </div>
+     <button class = "primary-btn" [routerLink]="['/admin/product']" routerLinkActive="active"
+     (click)="update()">Save</button>
   </div>
-  <button class = "primary-btn" [routerLink]="['/admin/product']" routerLinkActive="active"
-  (click)="update()">Save</button>
   </div>
   <div class="col-md-6">
     <div class="product-body">
         <div class="section-title">
             <h3 class="title">Edit Product</h3>
           </div>
-    <input [(ngModel)]="product.name"class="form-control" >
-    <h3 class="product-price">$<input [(ngModel)]="product.price"class="form-control" >
-       <del class="product-old-price"></del>
-     </h3>
+          <strong>Name:</strong>
+    <input [(ngModel)]="product.name"class="input search-input" >
+    <strong>Price:</strong><input [(ngModel)]="product.price"class="input search-input" >
     <p>
-       <strong>Id Category:</strong> <input [(ngModel)]="product.idCategory"class="form-control" ></p>
-    <p>
-       <strong>Create Date:</strong><input [(ngModel)]="product.CreateDate"class="form-control"></p>
-    <p>
-       <strong>createBy:</strong><input [(ngModel)]="product.createBy"class="form-control"></p>
+       <strong>Id Category:</strong> <input [(ngModel)]="product.idCategory"class="input search-input" ></p>
      <p>
-       <strong>Update Date:</strong> <input [(ngModel)]="product.UpdateDate"class="form-control"></p>
+      <strong>Status:</strong> <input [(ngModel)]="product.Status"class="input search-input"></p>
      <p>
-       <strong>Update By:</strong><input [(ngModel)]="product.UpdateBy"class="form-control"></p>
-     <p>
-      <strong>Status:</strong> <input [(ngModel)]="product.Status"class="form-control"></p>
-     <p>
-       <strong>Description:</strong><input [(ngModel)]="product.description"class="form-control"></p>
+       <strong>Description:</strong><input [(ngModel)]="product.description"class="input search-input"></p>
    </div>
   </div>
 </div> 

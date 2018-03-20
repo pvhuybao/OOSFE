@@ -23,11 +23,11 @@ import { CreateCategoryComponent } from './categories/createcategory/createcateg
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
-import { ProductEditComponent } from './products/product-edit/product-edit.component';
-import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
-
+import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   imports: [
@@ -51,11 +51,12 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     OverviewCategoriesComponent,
     CategoryDetailComponent,
     UserCreateComponent, 
-    UserEditComponent, 
+    UserEditComponent,
+    UserDetailComponent,
+    CreateOrderComponent,
     OverviewUsersComponent,
     EditCategoryComponent,
-    UserDetailComponent,
-    CreateOrderComponent
+    AdminLoginComponent,
   ],
 
   providers: [

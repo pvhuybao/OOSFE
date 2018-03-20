@@ -1,9 +1,14 @@
 import { ProductModel } from "./product";
 
-export class CartModel{
+export class CartItemModel{
     id: string;
     product: ProductModel;
     quantity:number;
-    total:number;
+    amount:number;
+    constructor(){}
+}
+export class CartsModel{
+    total:number=0;
+    items:CartItemModel[];
     constructor(){}
 }

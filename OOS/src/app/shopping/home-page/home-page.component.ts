@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { CartModel } from '../models/cart';
+import { CartItemModel } from '../models/cart';
 import { ProductModel } from '../models/product';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductModel } from '../models/product';
 })
 export class HomePageComponent implements OnInit {
 
-  abc:CartModel=new CartModel();
+  abc:CartItemModel=new CartItemModel();
   constructor(private cart:CartService) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
     this.addCart();
     this.abc.id="abcb";
     this.abc.quantity=5;
-    this.abc.total=this.abc.product.price*this.abc.quantity;
+    this.abc.amount=this.abc.product.price*this.abc.quantity;
     this.cart.set(this.abc);
   }
   addCart(){
