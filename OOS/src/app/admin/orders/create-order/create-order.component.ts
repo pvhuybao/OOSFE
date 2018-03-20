@@ -3,6 +3,7 @@ import { OrdersService } from '../../services/orders.service';
 import { OrdersModel } from '../../models/order';
 import { AddressModel } from '../../models/Address';
 import { OrderDetailModel } from '../../models/OrderDetail';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -11,8 +12,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 })
 export class CreateOrderComponent implements OnInit {
 
-  message:string;
-  isDisabled;
+  message:string ='';
   order : OrdersModel;
   public Email:string ='';
 
@@ -38,27 +38,57 @@ export class CreateOrderComponent implements OnInit {
   public Total:number = 0;
   
 
-  constructor(  private orderService : OrdersService) { }
+  constructor(  private orderService : OrdersService, private router: Router) { }
 
   ngOnInit() {
+    this.message="show";
+  }
+
+  copy(){
+    if(this.message =="show")
+      this.message = "hide";
+    else
+      this.message = "show";
+
   }
 
   create(){
     let addressBill = new AddressModel();
-    addressBill.name = this.NameBill;
-    addressBill.phone = this.PhoneBill;
-    addressBill.province = this.ProvinceBill;
-    addressBill.district = this.DistrictBill;
-    addressBill.street = this.StreetBill;
-    addressBill.type = 0;
-
     let address = new AddressModel();
-    address.name = this.Name;
-    address.phone = this.Phone;
-    address.province = this.Province;
-    address.district = this.District;
-    address.street = this.Street;
-    address.type = 1;
+    if(this.message=="show")
+    {
+      
+      addressBill.name = this.NameBill;
+      addressBill.phone = this.PhoneBill;
+      addressBill.province = this.ProvinceBill;
+      addressBill.district = this.DistrictBill;
+      addressBill.street = this.StreetBill;
+      addressBill.type = 0;
+
+      
+      address.name = this.Name;
+      address.phone = this.Phone;
+      address.province = this.Province;
+      address.district = this.District;
+      address.street = this.Street;
+      address.type = 1;
+    }
+    else{
+      
+      addressBill.name = this.NameBill;
+      addressBill.phone = this.PhoneBill;
+      addressBill.province = this.ProvinceBill;
+      addressBill.district = this.DistrictBill;
+      addressBill.street = this.StreetBill;
+      addressBill.type = 0;
+
+      address.name = this.NameBill;
+      address.phone = this.PhoneBill;
+      address.province = this.ProvinceBill;
+      address.district = this.DistrictBill;
+      address.street = this.StreetBill;
+      address.type = 1;
+    }
     
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
@@ -73,14 +103,8 @@ export class CreateOrderComponent implements OnInit {
     newOrder.orderDetails = [orderDetails];
     newOrder.total = this.Total;
 
-    this.orderService.add(newOrder).subscribe((data)=>{
-      this.message = "success";
-      console.log(data);
+    this.orderService.add(newOrder).subscribe(()=>{
+      this.router.navigateByUrl("/admin/orders");
     });
-
-  }
-
-  removeAlert(){
-    this.message = null;
   }
 }
