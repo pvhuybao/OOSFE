@@ -11,12 +11,13 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { ProductService } from './services/product.service';
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule
   ],
   declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
-  providers: [CategoryService]
+  providers: [CategoryService, ProductService]
 })
 export class ShoppingModule { }

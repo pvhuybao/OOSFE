@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from '../models/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  newestProduct : ProductModel[];
+
+  constructor(private productService : ProductService) { }
 
   ngOnInit() {
   }
 
+  getListNewestProduct(){
+    this.productService.getProductsByParameter().subscribe(newestProduct => { this.newestProduct=newestProduct });
+  }
 }
