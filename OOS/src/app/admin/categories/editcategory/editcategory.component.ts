@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CategoryModel } from '../../models/category';
+import { CategoryModel, CategoryStatus } from '../../models/category';
+import { StringDecoder } from 'string_decoder';
 
 @Component({
   selector: 'app-editcategory',
@@ -10,19 +11,30 @@ import { CategoryModel } from '../../models/category';
 })
 export class EditCategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private categoryService: CategoryService, private router: Router, private activatedRoute: ActivatedRoute) {
+    
+   }
 
 
   public cate = new CategoryModel;
+  public status = CategoryStatus;
+  public keys: Array<string>;  
+  public item: number;
 
   public id: string;  
 
   ngOnInit() {
+    
     let params: any = this.activatedRoute.snapshot.params;
-    this.id = params.id;
+    this.id = params.id;    
+    this.getById(this.id);    
 
-    this.getById(this.id);
-        
+    this.getStatus();    
+  }
+
+  getStatus() {
+    this.keys = Object.keys(this.status).filter(Number);
+    //this.item = CategoryStatus.Unpublish;
   }
 
   getById(id) {
@@ -32,6 +44,7 @@ export class EditCategoryComponent implements OnInit {
   editCategory() {
     this.cate.name = this.cate.name;
     this.cate.description = this.cate.description;
+    this.cate.status = this.cate.status;
 
     this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
       this.router.navigate(['/admin/categories']);

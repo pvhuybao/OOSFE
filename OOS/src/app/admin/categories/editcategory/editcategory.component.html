@@ -14,6 +14,14 @@
                     Description: <input type="text" class="input" [(ngModel)] = "cate.description"><br/>
                 </div>                
 
+                    Status:
+                <div>
+                    <select class="input custom-select" [(ngModel)] = "cate.status">                              
+                        <option *ngFor="let item of keys" [value]="item">{{status[item]}}</option>
+                        <option selected>{{cate.status[item]}}</option>
+                    </select>
+                </div>
+
                 <br/>
 
                 <input type="button" (click)="editCategory()" class="primary-btn" value="Save">
