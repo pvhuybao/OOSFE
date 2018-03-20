@@ -10,8 +10,9 @@
   </div>
         <div class="form-row" >
             <div class="col-md-12">
-                <hr>
-                <label> Địa chỉ người trả tiền </label>
+                <div class="section-title">
+                    <h5 class="title">Billing Address</h5>
+                  </div>
             </div>
           <div class="form-group col-md-6">
             <label for="inputName">Name </label>
@@ -33,33 +34,40 @@
               <label for="inputStreet">Street</label>
               <input type="text" class="input" id="inputStreet" [(ngModel)]="StreetBill">
             </div>
+            <div class="col-md-12">
+                <button (click)="copy()" class="main-btn" >Billing Details and Shipping Address are the same</button>
+            </div>
     </div>
-    <div class="form-row">
-        <div class="col-md-12">
-            <hr>
-            <label> Địa chỉ người nhận </label>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputName">Name </label>
-          <input type="text" class="input" id="inputName2" [(ngModel)]="Name">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPhone">Phone</label>
-          <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputProvince">Province</label>
-            <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputDistrict">District</label>
-            <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District">
-          </div>
-        <div class="form-group col-md-4">
-            <label for="inputStreet">Street</label>
-            <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street">
-          </div>
-  </div>
+    <div *ngIf="message == 'show'">
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h5 class="title">Shipping Address</h5>
+                  </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputName">Name </label>
+              <input type="text" class="input" id="inputName2" [(ngModel)]="Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPhone">Phone</label>
+              <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputProvince">Province</label>
+                <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputDistrict">District</label>
+                <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District">
+              </div>
+            <div class="form-group col-md-4">
+                <label for="inputStreet">Street</label>
+                <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street">
+              </div>
+      </div>
+          
+    </div>
   
   <div class="col-md-12">
     <div class="order-summary clearfix">

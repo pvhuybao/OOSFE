@@ -32,8 +32,8 @@ export class OrdersComponent implements OnInit {
 
   edit (order)
   {
-    this.ordersService.sendData(order);
-    this.router.navigateByUrl("/admin/orders/edit");
+    //this.ordersService.sendData(order);
+    this.router.navigateByUrl("/admin/orders/edit/" + order.id);
 
   }
 
