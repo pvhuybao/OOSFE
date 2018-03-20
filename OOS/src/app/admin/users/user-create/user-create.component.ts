@@ -13,13 +13,14 @@ export class UserCreateComponent implements OnInit {
 
   user = new UserModel;
   confirmpassword: string;
+
   constructor(private userservice: UserService, private router: Router) {
 
   }
 
   ngOnInit() {
     this.user.gender = true;
-    this.user.image="http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
+    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
     this.userservice.add(this.user).subscribe(res => {
