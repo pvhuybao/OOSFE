@@ -13,7 +13,8 @@ export class CreateCategoryComponent implements OnInit {
   constructor(private categoryService: CategoryService, private router: Router) { }
 
   listCategory: CategoryModel[];  
-  newCategory: CategoryModel;
+  //newCategory: CategoryModel;
+  newCategory = new CategoryModel;
   name: string = '';
   description: string = '';
 
