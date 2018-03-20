@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
-import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
@@ -40,7 +39,6 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    MatDialogModule,
     BrowserAnimationsModule
   ],
     

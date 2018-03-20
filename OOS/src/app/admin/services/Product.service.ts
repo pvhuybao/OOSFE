@@ -41,6 +41,6 @@ export class ProductService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.authHttpService.search(this.API_PATH + term +"/searchproduct").map(res => res.json() || []);
+    return this.authHttpService.get(this.API_PATH + term +"/searchproduct").map(res => res.json() || []);
   }
 }

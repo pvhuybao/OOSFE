@@ -59,12 +59,4 @@ export class AuthHttpService {
         return this.http.post(url, body, options);
     }
 
-    public search(url: string, options?: RequestOptionsArgs): Observable<Response> {
-        if (options) {
-            options = this.authService.setRequestOptions(options);
-        } else {
-            options = this.authService.setRequestOptions();
-        }
-        return this.http.get(url, options);
-    }
 }
