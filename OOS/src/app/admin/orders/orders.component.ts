@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
 import { Router } from '@angular/router';
-//import { Orders } from '../Models/orders';
-
 import { OrdersModel } from '../models/order';
-
 
 @Component({
   selector: 'app-orders',
@@ -33,9 +30,8 @@ export class OrdersComponent implements OnInit {
 
   edit (order)
   {
-    this.ordersService.sendData(order);
-    this.router.navigateByUrl("/admin/orders/edit");
+    //this.ordersService.sendData(order);
+    this.router.navigateByUrl("/admin/orders/edit/" + order.id);
 
   }
-
 }

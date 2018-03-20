@@ -8,6 +8,8 @@ import {ProductService} from '../services/Product.service'
 export class ProductsComponent implements OnInit {
 
   products : any;
+  id: string;
+  productId : string;
   constructor(private productService : ProductService) { }
 
   ngOnInit() {
@@ -15,7 +17,17 @@ export class ProductsComponent implements OnInit {
       this.products = data;
     });
   }
-  setId(id:string){
+  setId(id){
     this.productService.setId(id);
+  }
+  setIdModal(id){
+    this.productId = id; 
+  }
+  deleteProduct(){
+    this.productService.delete(this.productId).subscribe(data => {
+      this.productService.gets().subscribe(data=>{
+        this.products = data
+      });
+    });
   }
   }
