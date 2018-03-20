@@ -1,0 +1,54 @@
+<div class="col-md-12">
+  <div class="order-summary clearfix">
+    <div class="section-title">
+      <h3 class="title">List Orders</h3>
+    </div>
+    <div class="btn-group pull-right">
+        <a routerLink="/admin/orders/create" routerLinkActive="active" class="btn primary-btn">Create</a>
+    </div>
+    <table class="shopping-cart-table table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User Email</th>
+          <th>Create Date</th>
+          <th class="text-center">User ID</th>
+          <th class="text-center">Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of listOrders; let i = index">
+          <td>{{order.id}}</td>
+          <td>{{order.email}}</td>
+          <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
+          <td class="text-center">{{order.userId}}</td>
+          <td class="text-center">{{order.total}}</td>
+          <td class="text-right">
+            <button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button>
+            <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-close"></i></button>
+          </td>
+          <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content">   
+                    <div class="modal-header">                              
+                        <h4 class="modal-title">Confirm</h4>
+                      </div>                     
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete this record?</p>
+                  </div>
+                  <div class="modal-footer">                            
+                    <button type="button" class="btn btn-default" (click)="delete(order.id)"  data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>        
+                </div>
+                
+              </div>
+            </div> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

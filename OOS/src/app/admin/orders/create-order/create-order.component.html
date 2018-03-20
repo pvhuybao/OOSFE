@@ -1,0 +1,129 @@
+<!-- <form> -->
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        <div class="section-title">
+            <h3 class="title">Billing Details</h3>
+          </div>
+      <label for="inputEmail">Email</label>
+      <input type="email" class="input" placeholder="Email" [(ngModel)]="Email">
+    </div>
+  </div>
+        <div class="form-row" >
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h5 class="title">Billing Address</h5>
+                  </div>
+            </div>
+          <div class="form-group col-md-6">
+            <label for="inputName">Name </label>
+            <input type="text" class="input" id="inputName" [(ngModel)]="NameBill">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPhone">Phone</label>
+            <input type="text" class="input" id="inputPhone" [(ngModel)]="PhoneBill" >
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputProvince">Province</label>
+              <input type="text" class="input" id="inputProvince" placeholder="Province" [(ngModel)]="ProvinceBill">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputDistrict">District</label>
+              <input type="text" class="input" id="inputDistrict" placeholder="District" [(ngModel)]="DistrictBill">
+            </div>
+          <div class="form-group col-md-4">
+              <label for="inputStreet">Street</label>
+              <input type="text" class="input" id="inputStreet" [(ngModel)]="StreetBill">
+            </div>
+            <div class="col-md-12">
+                <button (click)="copy()" class="main-btn" >Billing Details and Shipping Address are the same</button>
+            </div>
+    </div>
+    <div *ngIf="message == 'show'">
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h5 class="title">Shipping Address</h5>
+                  </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputName">Name </label>
+              <input type="text" class="input" id="inputName2" [(ngModel)]="Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPhone">Phone</label>
+              <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputProvince">Province</label>
+                <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputDistrict">District</label>
+                <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District">
+              </div>
+            <div class="form-group col-md-4">
+                <label for="inputStreet">Street</label>
+                <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street">
+              </div>
+      </div>
+          
+    </div>
+  
+  <div class="col-md-12">
+    <div class="order-summary clearfix">
+      <div class="section-title">
+          <div class="input-group">
+              <input type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2">
+              <span class="input-group-addon" id="basic-addon2">Add</span>
+            </div>
+            <br>
+        <h3 class="title">Order Review</h3>
+      </div>
+      <table class="shopping-cart-table table">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Product</th>
+            <th></th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Total</th>
+            <th class="text-right"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- <td >123</td> -->
+            <td class="thumb"><img src="{{ImgProduct}}" alt=""></td>
+            <td class="details">
+              <a href="#">{{NameProduct}}</a>
+            </td>
+            <td class="price text-center"><strong>{{Price}}</strong><br></td>
+            <td class="qty text-center"><input class="input" type="number" value="1" [(ngModel)]="Quantity"></td>
+            <td class="total text-center"><strong class="primary-color" >{{TotalPrice}}</strong></td>
+            <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="empty" colspan="3"></th>
+            <th>TOTAL</th>
+            <th colspan="2" class="total">{{Total}}</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>    
+      </div>
+      <div class="pull-left">
+        <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
+      </div>
+      <div class="pull-right">
+        <button class="primary-btn" (click)="create()">Create Order</button>
+      </div>
+    </div>
+    <br>
+  </div>
+<!-- </form> -->
+
