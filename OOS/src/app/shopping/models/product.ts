@@ -1,6 +1,10 @@
 export class ProductModel{
     id: string;
+    code: string;
     name: string;
-
-    constructor(){}
+    price: number;
+    description : string;
+    image : string;
+    idCategory: string;
+    constructor () {}
 }
