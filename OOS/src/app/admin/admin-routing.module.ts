@@ -39,15 +39,15 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'products', component: ProductsComponent },
-      { path: 'categories/:id', component: CategoryDetailComponent },
       { path:'product-details',component:ProductDetailComponent},
       { 
         path: 'categories', 
         component: CategoriesComponent ,
         children: [
-          { path: '', component: OverviewCategoriesComponent },
+          { path: '', component: OverviewCategoriesComponent, pathMatch: 'full' },
           { path: 'CreateCategory', component: CreateCategoryComponent },
-          { path: 'EditCategory/:id', component: EditCategoryComponent }
+          { path: 'EditCategory/:id', component: EditCategoryComponent },
+          { path: 'categories/:id', component: CategoryDetailComponent }
         ]
       },
       { path: 'orders', component: OrdersComponent },

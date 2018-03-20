@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ import { OrdersService } from './services/orders.service';
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
+import { SpinnerService } from './services/spinner.service';
 
 
 
@@ -35,6 +37,7 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     CommonModule,
     FormsModule,
     AdminRoutingModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
     
 
@@ -63,6 +66,8 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
     ProductService,
     CategoryService, 
     UserService,
-    OrdersService]
+    OrdersService,
+    SpinnerService
+  ]
 })
 export class AdminModule { }

@@ -1,6 +1,3 @@
-<div class="btn-group">
-  <button [routerLink]="['./CreateCategory']" class="primary-btn">Create New</button>
-</div>
 <div class="row">
   <form id="checkout-form" class="clearfix">
     <div class="col-md-8">
@@ -8,6 +5,11 @@
         <div class="section-title">
           <h3 class="title">Overview Categories</h3>
         </div>
+
+        <div class="btn-group">
+          <a routerLink="../CreateCategory" routerLinkActive="active" class="btn primary-btn">Create New</a>
+        </div>
+
         <table class="shopping-cart-table table table">
           <thead class="thead-dark">
             <tr>
@@ -25,8 +27,14 @@
               </td>
               <td>{{category.description}}</td>
               <td>
-                <button class="btn btn-outline-primary " routerLink="./EditCategory/{{category.id}}" >Edit</button>
-                <button class="btn btn-outline-primary " (click)="delete(category)">Delete</button>
+                <a routerLink="../EditCategory/{{category.id}}" routerLinkActive="active">
+                  <button class="main-btn icon-btn">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </a>
+                <button class="main-btn icon-btn" (click)="delete(category)">
+                  <i class="fa fa-close"></i>
+                </button>
               </td>
             </tr>
           </tbody>
@@ -35,3 +43,4 @@
     </div>
   </form>
 </div>
+<button (click)="startLoadingSpinner()">Start Loading</button>
