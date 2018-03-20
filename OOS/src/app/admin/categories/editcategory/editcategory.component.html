@@ -13,8 +13,22 @@
                 <div class="form-group">
                     Description: <input type="text" class="input" [(ngModel)] = "cate.description"><br/>
                 </div>
+
+                <div class="dropdown">
+                    Status:<br/>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" >
+                        <li *ngFor="let status of status">
+                            <a href="#">{{category.name}}</a>
+                        </li>   
+                    </ul>
+                </div>
+                <br/>
+
                 <input type="button" (click)="editCategory()" class="primary-btn" value="Save">
                 <button routerLink='../' class="main-btn">Back</button>
+                <br/><br/>
             </div>
         </div>    
 </div>
