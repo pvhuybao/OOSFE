@@ -50,9 +50,8 @@ const adminRoutes: Routes = [
       },
       { path: 'orders', component: OrdersComponent },
       { path: 'users', component: UsersComponent },
-      { path: 'orders/edit', component: EditOrderComponent },
       { path: 'orders/create', component: CreateOrderComponent },
-      //{ path: 'orders/edit/:id', component: EditOrdersComponent },
+      { path: 'orders/edit/:id', component: EditOrderComponent },
     ]
   },];
 

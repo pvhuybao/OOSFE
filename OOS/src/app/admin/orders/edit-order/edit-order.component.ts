@@ -4,6 +4,7 @@ import { OrdersService } from '../../services/orders.service';
 import { AddressModel } from '../../models/Address';
 import { OrderDetailModel } from '../../models/OrderDetail';
 import { OrdersModel } from '../../models/order';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-order',
@@ -12,45 +13,50 @@ import { OrdersModel } from '../../models/order';
 })
 export class EditOrderComponent implements OnInit {
 
-  order : OrdersModel
-
-  constructor(private ss: OrdersService) { }
+  order: OrdersModel
+  id: string
+  constructor(private ss: OrdersService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.order = this.ss.getData()
-    console.log("EditOrder order =",this.order)
+    //this.order = this.ss.getData()
+    let params: any = this.activatedRoute.snapshot.params;
+    console.log("EditOrder params =", params)
+    this.id = params.id
+    this.ss.getById(this.id).subscribe(data => {
+      console.log("EditOrder data =", data);
+      this.order = data
+
+      console.log("EditOrder order =", this.order);
+    })
   }
-  
-  edit(){
-    /*
-    let address : AddressModel = {
-      name : "lon",
-      phone : "113",
-      street : "Lac Long Quan",
-      province : "TP HCM",
-      district : "Tan Binh",
-      type :0
-    }
 
-    let detail : OrderDetailModel = {
-      idProduct : "HH001",
-      nameProduct : 'Xe Dream',
-      quantity : 2,
-      price : 1500,
-      totalPrice : 3000
-    }
+  edit() {
+    this.ss.put(this.id, this.order).subscribe(data => console.log("EditOrder edit data =" + data))
+  }
 
-    let order : OrdersModel = {
-      email : "da@gmail.com",
-      userId : null,
-      orderDetails : [detail],
-      address : [address],
-      total : 0
+  updateTotal(orderDetail: OrderDetailModel) {
+    console.log("Edit updateTotal")
+    orderDetail.totalPrice = orderDetail.price * orderDetail.quantity
+    this.calculateTotalOrder()
+
+
+  }
+
+  delete(orderDetail: OrderDetailModel) {
+    var index = this.order.orderDetails.indexOf(orderDetail, 0);
+    if (index > -1) {
+      this.order.orderDetails.splice(index, 1);
     }
-    */
-      this.ss.put(this.order).subscribe (data => console.log(data));
-      
-    
+    this.calculateTotalOrder()
+  }
+
+  calculateTotalOrder () 
+  {
+    let total = 0
+    for (let d of this.order.orderDetails) {
+      total += d.totalPrice
+    }
+    this.order.total = total
 
   }
 
