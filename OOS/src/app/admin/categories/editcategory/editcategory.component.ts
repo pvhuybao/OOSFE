@@ -34,7 +34,7 @@ export class EditCategoryComponent implements OnInit {
     this.cate.description = this.cate.description;
 
     this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
-      this.router.navigate(['/admin/categories']);
+      this.router.navigate(['/admin/manager/categories']);
     });
   }
 }

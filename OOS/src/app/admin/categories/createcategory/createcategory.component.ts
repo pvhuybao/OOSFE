@@ -34,7 +34,7 @@ export class CreateCategoryComponent implements OnInit {
     newCategory.status = 1;
 
     this.categoryService.add(newCategory).subscribe(data => {
-      this.router.navigate(['/admin/categories']);
+      this.router.navigate(['/admin/manager/categories']);
     })
   }
 
