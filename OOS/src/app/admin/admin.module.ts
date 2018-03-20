@@ -27,6 +27,7 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { ProductEditComponent } from './products/product-edit/product-edit.compo
     CreateOrderComponent,
     OverviewUsersComponent,
     EditCategoryComponent,
+    AdminLoginComponent,
   ],
 
   providers: [

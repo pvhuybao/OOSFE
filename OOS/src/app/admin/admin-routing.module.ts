@@ -23,6 +23,7 @@ import { OverviewCategoriesComponent } from './categories/overview-categories/ov
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const adminRoutes: Routes = [
   {
@@ -31,7 +32,7 @@ const adminRoutes: Routes = [
     canActivate: [AuthGuardService],
     canActivateChild: [AuthGuardService],
     children: [
-      { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       {
         path: 'users',
         children: [
@@ -56,8 +57,13 @@ const adminRoutes: Routes = [
       { path: 'orders/edit', component: EditOrderComponent },
       { path: 'orders/create', component: CreateOrderComponent },
       //{ path: 'orders/edit/:id', component: EditOrdersComponent },
+      { path: 'login', component: AdminLoginComponent },
     ]
-  },];
+    
+  }
+
+    
+  ,];
 
 @NgModule({
   imports: [RouterModule.forChild(adminRoutes)],
