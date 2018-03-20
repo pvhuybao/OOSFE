@@ -30,7 +30,7 @@ export class OrdersService {
       .map(res => res.json() || [])
   }
 
-  getById(id: string): Observable<OrdersModel[]>
+  getById(id: string): Observable<OrdersModel>
   {
     return this.authHttpService.get(this.API_PATH+id)
       .map(res => res.json() || [])
@@ -41,9 +41,11 @@ export class OrdersService {
       .map(res => res.json());
   }
 
-  put(order: OrdersModel): Observable<OrdersModel> {
-    return this.authHttpService.put(this.API_PATH, order)
-      .map(res => res.json() || [])
+  put(id :string,order: OrdersModel): Observable<OrdersModel> {
+    return this.authHttpService.put(this.API_PATH + id, order)
+      .map(res => {
+        console.log("order service res =" + res)
+        return res.json() || []})
   }
 
   delete(id: string)
