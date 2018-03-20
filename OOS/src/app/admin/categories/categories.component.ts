@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
+
+import { EventEmitter,Input, Output } from '@angular/core';
+
 import { CategoryModel } from '../models/category';
+
 
 @Component({
   selector: 'app-categories',
@@ -20,16 +24,7 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.get().subscribe(result => {
       this.listCategory = result
     })
-  }
-
-  addCategory(categoryName: string){
-
-    let newCategory = new CategoryModel();
-    newCategory.name = categoryName;
-
-    this.categoryService.add(newCategory).subscribe(() => {
-      this.getListCategory();
-    })
-  }
+  }  
+  
 
 }
