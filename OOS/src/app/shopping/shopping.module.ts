@@ -12,7 +12,7 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
 import { WidgetProductsComponent } from './widget-products/widget-products.component';
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
-
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
 @NgModule({
   imports: [
     CommonModule,
