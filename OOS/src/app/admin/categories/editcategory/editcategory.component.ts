@@ -37,4 +37,6 @@ export class EditCategoryComponent implements OnInit {
       this.router.navigate(['/admin/categories']);
     });
   }
+
+  
 }
