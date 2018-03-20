@@ -1,0 +1,117 @@
+<form>
+    <fieldset>
+      <legend>Shipping Address</legend>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <p>Name</p>
+          <input type="text" class="form-control" id="inputName" value= "{{order.address[0].name}}">
+        </div>
+        <div class="form-group col-md-6">
+          <p>Phone</p>
+          <input type="text" class="form-control" id="inputPhone" value= "{{order.address[0].phone}}">
+        </div>
+        <div class="form-group col-md-4">
+          <p>Province</p>
+          <input type="text" class="form-control" id="inputPhone"  value= "{{order.address[0].province}}" >
+        </div>
+        <div class="form-group col-md-4">
+          <p>District</p>
+          <input type="text" class="form-control" id="inputPhone" value= "{{order.address[0].district}}" >
+        </div>
+        <div class="form-group col-md-4">
+          <p>Street</p>
+          <input type="text" class="form-control" id="inputStreet" value= "{{order.address[0].street}}">
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Billing Address</legend>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <p>Name</p>
+          <input type="text" class="form-control" id="inputName" value= "{{order.address[1].name}}">
+        </div>
+        <div class="form-group col-md-6">
+          <p>Phone</p>
+          <input type="text" class="form-control" id="inputPhone" value= "{{order.address[1].phone}}">
+        </div>
+        <div class="form-group col-md-4">
+          <p>Province</p>
+          <input type="text" class="form-control" id="inputPhone"  value= "{{order.address[1].province}}" >
+        </div>
+        <div class="form-group col-md-4">
+          <p>District</p>
+          <input type="text" class="form-control" id="inputPhone" value= "{{order.address[1].district}}" >
+        </div>
+        <div class="form-group col-md-4">
+          <p>Street</p>
+          <input type="text" class="form-control" id="inputStreet" value= "{{order.address[1].street}}">
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Confirmation</legend>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <p>Confirm Email <b>(This mail will be used to confirm your order)</b></p>
+          <input type="text" class="form-control" id="inputPhone" value= "{{order.email}}">
+        </div>
+        <div class="form-group col-md-6">
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Order detail</legend>
+      <div class="form-row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Find your product.." aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">Search</span>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr >
+            <th scope="col" class="col-md-1">ID</th>
+            <th scope="col" class="col-md-6">Name Product</th>
+            <th scope="col" class="col-md-1">Price</th>
+            <th scope="col" class="col-md-1">Quantity</th>
+            <th scope="col" class="col-md-2">Total Price</th>
+            <th scope="col" class="col-md-1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let orderDetail of order.orderDetails">
+            <th scope="row">{{orderDetail.idProduct}}</th>
+            <td>{{orderDetail.nameProduct}}</td>
+            <td>{{orderDetail.price}}</td>
+            <td>
+              <input type="number" class="form-control" id="inputQuantity" value="{{orderDetail.quantity}}">
+            </td>
+            <td>{{orderDetail.totalPrice}}</td>
+            <td>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4" ><p class="pull-right" style="font-size:18px">Total: <b>100000000000000000000</b></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-5">>
+          <div class="btn-toolbar">
+            <button type="submit" class="btn btn-danger btn-lg pull-right">Delete All</button>
+            <button type="submit" class="btn btn-primary btn-lg pull-right" (click) = "edit()">Save</button>
+            <button type="submit" class="btn btn-light btn-lg pull-right">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
