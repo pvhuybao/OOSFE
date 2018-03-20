@@ -13,6 +13,7 @@ import { CategoryService } from './services/category.service';
 import { WidgetProductsComponent } from './widget-products/widget-products.component';
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,9 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
     OrderConfirmComponent, 
     ProductListComponent, 
     ShoppingComponent, 
-    WidgetProductsComponent, WidgetBoxComponent
+    WidgetProductsComponent, 
+    WidgetBoxComponent,
+    ListCategoriesComponent
   ],
   providers: [CategoryService]
 })

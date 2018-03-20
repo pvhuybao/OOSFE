@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductModel } from '../../admin/models/product';
 
 @Component({
   selector: 'app-widget-products',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetProductsComponent implements OnInit {
 
+  @Input() productList: ProductModel[];
   
   constructor() { }
 
   ngOnInit() {
+    console.log(this.productList);
   }
 
 }

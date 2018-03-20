@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductModel } from '../models/product';
 
 @Component({
   selector: 'app-widget-box',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetBoxComponent implements OnInit {
 
+  @Input() productDetail: ProductModel;
   constructor() { }
 
   ngOnInit() {
