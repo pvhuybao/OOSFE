@@ -54,15 +54,15 @@ const adminRoutes: Routes = [
         ]
       },
       { path: 'orders', component: OrdersComponent },
-      { path: 'orders/edit', component: EditOrderComponent },
+      { path: 'users', component: UsersComponent },
       { path: 'orders/create', component: CreateOrderComponent },
       //{ path: 'orders/edit/:id', component: EditOrdersComponent },
       { path: 'login', component: AdminLoginComponent },
-    ]
-    
+      { path: 'orders/edit/:id', component: EditOrderComponent },
+    ]  
   }
 
-    
+  
   ,];
 
 @NgModule({
