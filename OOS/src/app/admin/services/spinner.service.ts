@@ -19,7 +19,7 @@ export class SpinnerService {
   turnOffSpinner(){
     setTimeout(function() {
       this.spinnerService.hide();
-    }.bind(this), 4000);
+    }.bind(this), 2000);
   }
   
 }

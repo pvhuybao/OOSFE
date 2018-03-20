@@ -13,13 +13,14 @@ import { SpinnerService } from '../../services/spinner.service';
 export class OverviewCategoriesComponent implements OnInit {
 
   listCategories: CategoryModel[];
-  name:string;
+
+  catedel = new CategoryModel;
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
     private spinnerService: SpinnerService
   ) {
-    this.name = `Angular! v${VERSION.full}`
    }
 
   ngOnInit() {
@@ -31,15 +32,17 @@ export class OverviewCategoriesComponent implements OnInit {
     })
   }
 
-  delete(category: CategoryModel) {
-    this.categoryService.delete(category).subscribe(data => {
+  get(id) {
+    this.categoryService.getById(id).subscribe(data => {
+      this.catedel = data;
+    })
+  }
+
+  delete() {  
+    this.spinnerService.startLoadingSpinner();
+    this.categoryService.delete(this.catedel).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
       this.getListCategories();
     });
   }
-
-  startLoadingSpinner(){
-    this.spinnerService.startLoadingSpinner();
-    this.spinnerService.turnOffSpinner();
-  }
-
 }

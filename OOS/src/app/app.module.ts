@@ -13,10 +13,6 @@ import { AuthHttpService } from './auth/auth-http.service';
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 

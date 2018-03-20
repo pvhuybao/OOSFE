@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { ProductService } from '../../services/Product.service';
-import { HttpClient } from '@angular/common/http';  
+import { HttpClient } from '@angular/common/http'; 
+import {CategoryService} from '../../services/category.service';
 
 @Component({
   selector: 'app-product-create',
@@ -16,13 +17,20 @@ export class ProductCreateComponent implements OnInit {
  description : string;
  image : string;
  idCategory: string;
-  constructor(private productService:ProductService,private router: Router) { 
+ categorys : any;
+  constructor(private productService:ProductService,private router: Router,
+  private categoryService :CategoryService ) { 
   }
   ngOnInit() {
     this.id=this.productService.idProduct;
      this.productService.get(this.id).subscribe(data =>{
      this.product = data;
           });
+    this.categoryService.get().subscribe(
+      data =>{
+        this.categorys = data;}
+    );
+          
   }
   create(){
     var product ={
