@@ -14,20 +14,19 @@ export class CreateOrderComponent implements OnInit {
 
   message:string ='';
   order : OrdersModel;
+  
   public Email:string ='';
-
   public NameBill:string ='';
   public PhoneBill:string ='';
   public ProvinceBill:string ='';
   public DistrictBill:string ='';
   public StreetBill:string ='';
-
+  
   public Name:string ='';
   public Phone:string ='';
   public Province:string ='';
   public District:string ='';
   public Street:string ='';
-
   public IdProduct: string = '';
   public NameProduct: string='';
   public ImgProduct: string='http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
