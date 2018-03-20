@@ -1,0 +1,170 @@
+
+<form>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="section-title">
+          <h3 class="title">Shipping Address</h3>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+  
+        <p>Name</p>
+        <input type="text" class="input" id="inputName" [(ngModel)]="order.address[0].name" [ngModelOptions]="{standalone: true}">
+  
+      </div>
+      <div class="form-group col-md-6">
+        <p>Phone</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].phone" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>Province</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].province" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>District</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].district" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>Street</p>
+        <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[0].street" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="section-title">
+          <h3 class="title">Billing Address</h3>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <p>Name</p>
+        <input type="text" class="input" id="inputName" [(ngModel)]="order.address[1].name" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-6">
+        <p>Phone</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].phone" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>Province</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].province" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>District</p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].district" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-4">
+        <p>Street</p>
+        <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[1].street" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="section-title">
+          <h3 class="title">Confirmation</h3>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <p>Confirm Email
+          <b>(This mail will be used to confirm your order)</b>
+        </p>
+        <input type="text" class="input" id="inputPhone" [(ngModel)]="order.email" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group col-md-6">
+      </div>
+    </div>
+    <!--
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="col-md-1">ID</th>
+          <th scope="col" class="col-md-6">Name Product</th>
+          <th scope="col" class="col-md-1">Price</th>
+          <th scope="col" class="col-md-1">Quantity</th>
+          <th scope="col" class="col-md-2">Total Price</th>
+          <th scope="col" class="col-md-1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orderDetail of order.orderDetails">
+          <th scope="row">{{orderDetail.idProduct}}</th>
+          <td>{{orderDetail.nameProduct}}</td>
+          <td>{{orderDetail.price}}</td>
+          <td>
+            <input type="number" class="input" id="inputQuantity" [(ngModel)]="{{orderDetail.quantity}}">
+          </td>
+          <td>{{orderDetail.totalPrice}}</td>
+          <td>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  -->
+    <div class="col-md-12">
+      <div class="order-summary clearfix">
+        <div class="section-title">
+          <h3 class="title">Order Details</h3>
+        </div>
+        <div class="input-group">
+          <input type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2">
+          <span class="input-group-addon" id="basic-addon2">Add</span>
+        </div>
+        <table class="shopping-cart-table table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th class="text-center">Name product</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Total</th>
+              <th class="text-right"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orderDetail of order.orderDetails">
+              <td class="details">
+                <a href="#">{{orderDetail.idProduct}}</a>
+              </td>
+              <td class="details">
+                <a href="#">{{orderDetail.nameProduct}}</a>
+              </td>
+              <td class="price text-center">
+                <strong>{{orderDetail.price}}</strong>
+                <br>
+              </td>
+  
+              <td class="qty text-center">
+                <input class="input" type="number" [(ngModel)]="orderDetail.quantity" [ngModelOptions]="{standalone: true}" (blur) ="updateTotal(orderDetail)">
+              </td>
+  
+              <td class="total text-center">
+                <strong class="primary-color">{{orderDetail.totalPrice}}</strong>
+              </td>
+              <td class="text-right">
+                <button class="main-btn icon-btn" (click) = "delete(orderDetail)">
+                  <i class="fa fa-close"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="empty" colspan="3"></th>
+              <th>TOTAL</th>
+              <th colspan="2" class="total">{{order.total}}</th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pull-left">
+          <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
+        </div>
+        <div class="pull-right">
+          <button class="primary-btn" (click)="edit()">Save</button>
+        </div>
+      </div>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>
+      </div>
+      <br>
+    </div>

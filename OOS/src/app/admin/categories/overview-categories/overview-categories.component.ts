@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class OverviewCategoriesComponent implements OnInit {
 
   listCategories: CategoryModel[];
+  catedel = new CategoryModel;
 
   constructor(
     private categoryService: CategoryService,
@@ -25,8 +26,14 @@ export class OverviewCategoriesComponent implements OnInit {
     })
   }
 
-  delete(category: CategoryModel) {
-    this.categoryService.delete(category).subscribe(data => {
+  get(id) {
+    this.categoryService.getById(id).subscribe(data => {
+      this.catedel = data;
+    })
+  }
+
+  delete() {  
+    this.categoryService.delete(this.catedel).subscribe(data => {
       this.getListCategories();
     });
   }

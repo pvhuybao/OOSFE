@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
@@ -13,17 +12,13 @@ import { AuthHttpService } from './auth/auth-http.service';
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
-
-//import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //--> remove after apply API
-import { InMemoryCategory } from './InMemoryCategory.service';
-
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +26,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFontAwesomeModule,
     NouisliderModule
   ],
