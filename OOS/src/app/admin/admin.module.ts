@@ -4,6 +4,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -13,9 +14,9 @@ import { UsersComponent } from './users/users.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
-import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
-import { EditOrderComponent } from './orders/edit-order/edit-order.component'
-import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component'
+import { CategoryDetailComponent } from './categories/category-detail/category-detail.component';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { OverviewCategoriesComponent } from './categories/overview-categories/overview-categories.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
@@ -38,7 +39,8 @@ import { CategoryService } from './services/category.service';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
+    BrowserAnimationsModule
   ],
     
   declarations: [
@@ -58,12 +60,14 @@ import { CategoryService } from './services/category.service';
     UserCreateComponent, 
     UserEditComponent,
     UserDetailComponent,
-    CreateOrderComponent,
     OverviewUsersComponent,
     EditCategoryComponent,
-    AdminLoginComponent,
+    CreateOrderComponent,
+    AdminLoginComponent
   ],
-
+  entryComponents:[
+    AdminLoginComponent
+  ],
   providers: [
     ProductService,
     CategoryService, 
