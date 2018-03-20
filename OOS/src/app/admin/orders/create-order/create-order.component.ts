@@ -11,7 +11,8 @@ import { Observable } from 'rxjs/Observable';
 import { debounce } from 'rxjs/operator/debounce';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
-import { of }         from 'rxjs/observable/of';
+import { of } from 'rxjs/observable/of';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -20,41 +21,46 @@ import { of }         from 'rxjs/observable/of';
 })
 export class CreateOrderComponent implements OnInit {
 
-  message:string;
-  isDisabled;
-  order : OrdersModel;
-  public Email:string ='';
+  message: string = '';
+  order: OrdersModel;
 
-  public NameBill:string ='';
-  public PhoneBill:string ='';
-  public ProvinceBill:string ='';
-  public DistrictBill:string ='';
-  public StreetBill:string ='';
+  public Email: string = '';
+  public NameBill: string = '';
+  public PhoneBill: string = '';
+  public ProvinceBill: string = '';
+  public DistrictBill: string = '';
+  public StreetBill: string = '';
 
-  public Name:string ='';
-  public Phone:string ='';
-  public Province:string ='';
-  public District:string ='';
-  public Street:string ='';
-
+  public Name: string = '';
+  public Phone: string = '';
+  public Province: string = '';
+  public District: string = '';
+  public Street: string = '';
   public IdProduct: string = '';
-  public NameProduct: string='';
-  public ImgProduct: string='http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
-  public Quantity:number = 1;
+  public NameProduct: string = '';
+  public ImgProduct: string = 'http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
+  public Quantity: number = 1;
   public Price: number = 0;
-  public TotalPrice:number = 0;
+  public TotalPrice: number = 0;
 
-  public Total:number = 0;
-  
+  public Total: number = 0;
+
   //Search product for order details
   private searchTerms = new Subject<string>();
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
+  choosedProduct: ProductModel;
 
-  constructor(private orderService : OrdersService, private productService : ProductService) { }
+  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  chooseProduct(product: ProductModel) {
+    this.searchResult = product.name;
+    this.choosedProduct = product;
+    // this.listProduct.isEmpty;
   }
 
   ngOnInit(): void {
@@ -68,30 +74,53 @@ export class CreateOrderComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.productService.searchProduct(term)),
     );
+    this.message = "show";
   }
 
-  chooseProduct(product: ProductModel)
-  {
-    this.searchResult = product.name;
+  copy() {
+    if (this.message == "show")
+      this.message = "hide";
+    else
+      this.message = "show";
   }
 
-  create(){
+  create() {
     let addressBill = new AddressModel();
-    addressBill.name = this.NameBill;
-    addressBill.phone = this.PhoneBill;
-    addressBill.province = this.ProvinceBill;
-    addressBill.district = this.DistrictBill;
-    addressBill.street = this.StreetBill;
-    addressBill.type = 0;
-
     let address = new AddressModel();
-    address.name = this.Name;
-    address.phone = this.Phone;
-    address.province = this.Province;
-    address.district = this.District;
-    address.street = this.Street;
-    address.type = 1;
-    
+    if (this.message == "show") {
+
+      addressBill.name = this.NameBill;
+      addressBill.phone = this.PhoneBill;
+      addressBill.province = this.ProvinceBill;
+      addressBill.district = this.DistrictBill;
+      addressBill.street = this.StreetBill;
+      addressBill.type = 0;
+
+
+      address.name = this.Name;
+      address.phone = this.Phone;
+      address.province = this.Province;
+      address.district = this.District;
+      address.street = this.Street;
+      address.type = 1;
+    }
+    else {
+
+      addressBill.name = this.NameBill;
+      addressBill.phone = this.PhoneBill;
+      addressBill.province = this.ProvinceBill;
+      addressBill.district = this.DistrictBill;
+      addressBill.street = this.StreetBill;
+      addressBill.type = 0;
+
+      address.name = this.NameBill;
+      address.phone = this.PhoneBill;
+      address.province = this.ProvinceBill;
+      address.district = this.DistrictBill;
+      address.street = this.StreetBill;
+      address.type = 1;
+    }
+
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
     orderDetails.price = this.Price;
@@ -101,18 +130,12 @@ export class CreateOrderComponent implements OnInit {
     let newOrder = new OrdersModel();
     newOrder.email = this.Email;
     newOrder.userId = null;
-    newOrder.address =[addressBill,address];
+    newOrder.address = [addressBill, address];
     newOrder.orderDetails = [orderDetails];
     newOrder.total = this.Total;
 
-    this.orderService.add(newOrder).subscribe((data)=>{
-      this.message = "success";
-      console.log(data);
+    this.orderService.add(newOrder).subscribe(() => {
+      this.router.navigateByUrl("/admin/orders");
     });
-
-  }
-
-  removeAlert(){
-    this.message = null;
   }
 }
