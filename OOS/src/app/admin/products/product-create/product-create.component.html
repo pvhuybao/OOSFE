@@ -28,16 +28,12 @@
         </select>
         </div>
       <strong>Status:</strong>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li *ngFor="let category of categorys">
-            <a>{{category.name}}</a>
-          </li>
-        </ul>
-      </div>
+      <div >
+          <select class="custom-select">
+            <option selected>Choose...</option>
+            <option *ngFor="let category of categorys">{{category.name}}</option>
+          </select>
+          </div>
       <p>
         <strong>Description:</strong>
         <input [(ngModel)]="description" class="input search-input">
