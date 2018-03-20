@@ -3,6 +3,15 @@ import { OrdersService } from '../../services/orders.service';
 import { OrdersModel } from '../../models/order';
 import { AddressModel } from '../../models/Address';
 import { OrderDetailModel } from '../../models/OrderDetail';
+import { ProductService } from '../../services/Product.service';
+import { Subject } from 'rxjs/Subject';
+import { IfObservable } from 'rxjs/observable/IfObservable';
+import { ProductModel } from '../../models/product';
+import { Observable } from 'rxjs/Observable';
+import { debounce } from 'rxjs/operator/debounce';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { of }         from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-create-order',
@@ -37,10 +46,33 @@ export class CreateOrderComponent implements OnInit {
 
   public Total:number = 0;
   
+  //Search product for order details
+  private searchTerms = new Subject<string>();
+  listProduct: Observable<ProductModel[]>;
+  searchResult: string = '';
 
-  constructor(  private orderService : OrdersService) { }
+  constructor(private orderService : OrdersService, private productService : ProductService) { }
 
-  ngOnInit() {
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  ngOnInit(): void {
+    this.listProduct = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(50),
+
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.productService.searchProduct(term)),
+    );
+  }
+
+  chooseProduct(product: ProductModel)
+  {
+    this.searchResult = product.name;
   }
 
   create(){
