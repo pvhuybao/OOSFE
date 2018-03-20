@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
 import { Router } from '@angular/router';
-//import { Orders } from '../Models/orders';
-
 import { OrdersModel } from '../models/order';
-
-
+import { ModalService } from '../services/modal.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -15,7 +14,7 @@ export class OrdersComponent implements OnInit {
 
   listOrders: Array<OrdersModel>;
 
-  constructor(private ordersService: OrdersService, private router: Router) { }
+  constructor(public dialog: MatDialog, private ordersService: OrdersService, private router: Router, private modal:ModalService) { }
 
   ngOnInit() {
     this.getOrderList();
@@ -38,4 +37,8 @@ export class OrdersComponent implements OnInit {
 
   }
 
+  openDialog(orderId){
+    this.modal.openDialog(orderId);
+    this.getOrderList();
+  }
 }

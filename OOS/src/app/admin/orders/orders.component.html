@@ -7,7 +7,9 @@
     <table class="shopping-cart-table table">
       <thead>
         <tr>
-          <th>Order Email</th>
+          <th>Order ID</th>
+          <th>User Email</th>
+          <th>Create Date</th>
           <th class="text-center">User ID</th>
           <th class="text-center">Total</th>
           <th></th>
@@ -15,15 +17,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let order of listOrders; let i = index">
+          <td>{{order.id}}</td>
           <td>{{order.email}}</td>
+          <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
           <td class="text-center">{{order.userId}}</td>
           <td class="text-center">{{order.total}}</td>
           <td class="text-right"><button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button></td>
-          <td class="text-right"><button class="main-btn icon-btn" (click)="delete(order.id)"><i class="fa fa-close"></i></button></td>
+          <td class="text-right"><button class="main-btn icon-btn" mat-raised-button (click)="openDialog(order.id)"><i class="fa fa-close"></i></button></td>
         </tr>
       </tbody>
       
     </table>
   </div>
-
 </div>
