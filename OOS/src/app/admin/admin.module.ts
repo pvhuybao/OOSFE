@@ -23,11 +23,9 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component'
 import { CreateCategoryComponent } from './categories/createcategory/createcategory.component';
 import { EditCategoryComponent } from './categories/editcategory/editcategory.component'
-import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 import { CategoryService } from './services/category.service';
 import { UserService } from './services/user.service';
-import { ModalService } from './services/modal.service';
 
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
@@ -66,20 +64,16 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     OverviewUsersComponent,
     EditCategoryComponent,
     CreateOrderComponent,
-    DeleteConfirmationComponent
+    AdminLoginComponent
   ],
   entryComponents:[
-    DeleteConfirmationComponent,
     AdminLoginComponent
   ],
   providers: [
     ProductService,
     CategoryService, 
     UserService,
-    OrdersService,
-    ModalService,
-    { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: [] },
+    OrdersService
   ]
 })
 export class AdminModule { }
