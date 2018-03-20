@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +27,7 @@ import { ProductEditComponent } from './products/product-edit/product-edit.compo
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 //self-services
-import { SpinnerService } from './services/spinner.service';
+import { SpinnerService } from '../shared/services/spinner.service';
 import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
@@ -39,7 +38,6 @@ import { CategoryService } from './services/category.service';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    Ng4LoadingSpinnerModule.forRoot(),
     BrowserAnimationsModule
   ],
     
