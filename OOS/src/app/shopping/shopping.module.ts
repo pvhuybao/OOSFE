@@ -11,13 +11,27 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+<<<<<<< HEAD
 import { ProductService } from './services/product.service';
+=======
+
+//self-services
+//import { SpinnerService } from '../shared/services/spinner.service';
+
+>>>>>>> develop
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule
   ],
   declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
+<<<<<<< HEAD
   providers: [CategoryService, ProductService]
+=======
+  providers: [
+    CategoryService,
+    //SpinnerService
+  ]
+>>>>>>> develop
 })
 export class ShoppingModule { }

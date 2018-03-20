@@ -3,6 +3,15 @@ import { OrdersService } from '../../services/orders.service';
 import { OrdersModel } from '../../models/order';
 import { AddressModel } from '../../models/Address';
 import { OrderDetailModel } from '../../models/OrderDetail';
+import { ProductService } from '../../services/Product.service';
+import { Subject } from 'rxjs/Subject';
+import { IfObservable } from 'rxjs/observable/IfObservable';
+import { ProductModel } from '../../models/product';
+import { Observable } from 'rxjs/Observable';
+import { debounce } from 'rxjs/operator/debounce';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +21,6 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit {
 
-  message:string ='';
   order : OrdersModel;
   
   public Email:string ='';
@@ -30,19 +38,43 @@ export class CreateOrderComponent implements OnInit {
   public Street:string ='';
 
   public IdProduct: string = '';
-  public NameProduct: string='';
-  public ImgProduct: string='http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
-  public Quantity:number = 1;
+  public NameProduct: string = '';
+  public ImgProduct: string = 'http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
+  public Quantity: number = 1;
   public Price: number = 0;
-  public TotalPrice:number = 0;
+  public TotalPrice: number = 0;
 
-  public Total:number = 0;
-  
+  public Total: number = 0;
 
-  constructor(  private orderService : OrdersService, private router: Router) { }
+  //Search product for order details
+  private searchTerms = new Subject<string>();
+  listProduct: Observable<ProductModel[]>;
+  searchResult: string = '';
+  choosedProduct: ProductModel;
 
-  ngOnInit() {
-    this.message="show";
+  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  chooseProduct(product: ProductModel) {
+    this.searchResult = product.name;
+    this.choosedProduct = product;
+    // this.listProduct.isEmpty;
+  }
+
+  ngOnInit(): void {
+    this.listProduct = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(50),
+
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.productService.searchProduct(term)),
+    );
   }
 
   copy(){
@@ -51,9 +83,10 @@ export class CreateOrderComponent implements OnInit {
     this.Province = this.ProvinceBill;
     this.District = this.DistrictBill;
     this.Street = this.StreetBill;
+
   }
 
-  create(){
+  create() {
     let addressBill = new AddressModel();
       addressBill.name = this.NameBill;
       addressBill.phone = this.PhoneBill;
@@ -61,6 +94,7 @@ export class CreateOrderComponent implements OnInit {
       addressBill.district = this.DistrictBill;
       addressBill.street = this.StreetBill;
       addressBill.type = 0;
+
 
     let address = new AddressModel();
       address.name = this.Name;
@@ -70,7 +104,6 @@ export class CreateOrderComponent implements OnInit {
       address.street = this.Street;
       address.type = 1;
 
-    
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
     orderDetails.price = this.Price;
@@ -80,11 +113,11 @@ export class CreateOrderComponent implements OnInit {
     let newOrder = new OrdersModel();
     newOrder.email = this.Email;
     newOrder.userId = null;
-    newOrder.address =[addressBill,address];
+    newOrder.address = [addressBill, address];
     newOrder.orderDetails = [orderDetails];
     newOrder.total = this.Total;
 
-    this.orderService.add(newOrder).subscribe(()=>{
+    this.orderService.add(newOrder).subscribe(() => {
       this.router.navigateByUrl("/admin/orders");
     });
   }
