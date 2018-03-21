@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './not-found.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/shopping', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'admin', redirectTo: '/admin' },
   { path: '**', component: NotFoundPageComponent }
 ];
