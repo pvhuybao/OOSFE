@@ -12,13 +12,14 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
 import { WidgetProductsComponent } from './widget-products/widget-products.component';
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
+import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductService } from './services/product.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
   ],
   declarations: [HomePageComponent, 
                   ProductDetailComponent, 
@@ -31,6 +32,6 @@ import { ProductService } from './services/product.service';
                   WidgetProductsComponent,
                   WidgetBoxComponent,
                 ],
-  providers: [CategoryService, ProductService]
+  providers: [CategoryService, ProductService, CartService]
 })
 export class ShoppingModule { }

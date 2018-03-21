@@ -71,11 +71,11 @@
       <div class="section-title">
           <div class="input-group">
               <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2" value={{searchResult}} [(ngModel)]="searchResult">
-              <span class="input-group-addon" id="basic-addon2">Add</span>
+              <span class="input-group-addon" id="basic-addon2" (click)="add()">Add</span>
           </div>
-            <ul class="list-group" style="position:absolute; z-index:100; width:100%">
+            <ul  class="list-group" style="position:absolute; z-index:100; width:100%">
               <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" >
-                  <a (click)="chooseProduct(product)" disabled="disabled" >{{product.name}}</a>
+                  <a  (click)="chooseProduct(product)" disabled="disabled" >{{product.name}}</a>
               </li>
             </ul>
             <br>
@@ -115,7 +115,7 @@
         </tfoot>
       </table>
       <div class="pull-left">
-        <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
       </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="create()">Create Order</button>
