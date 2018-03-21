@@ -18,7 +18,15 @@ import { ProductService } from './services/Product.service';
     CommonModule,
     ShoppingRoutingModule
   ],
-  declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
+  declarations: [
+    HomePageComponent, 
+    ProductDetailComponent, 
+    ShoppingCartComponent, 
+    OrderComponent, 
+    OrderConfirmComponent, 
+    ProductListComponent, 
+    ShoppingComponent, 
+    ListCategoriesComponent],
   providers: [ 
     CategoryService,
     ProductService

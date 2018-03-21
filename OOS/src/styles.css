@@ -546,6 +546,15 @@ body {
     margin-right: 15px;
     color: #F8694A;
   }
+
+  .category-list.dropdown-menu {
+    left: auto;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-radius: 0px;
+  }
   
   /*----------------------------*\
       Cart header

@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NouisliderModule } from 'ng2-nouislider';
     ShoppingModule,
     AppRoutingModule,    
     AngularFontAwesomeModule,
-    NouisliderModule
+    NouisliderModule,
+    ClickOutsideModule
   ],
   providers: [AuthService, AuthGuardService, AuthHttpService],
   bootstrap: [AppComponent]
