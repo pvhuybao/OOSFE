@@ -61,6 +61,7 @@ export class CreateOrderComponent implements OnInit {
 
   search(term: string): void {
     this.searchTerms.next(term);
+    console.log("A:"+term+"B:"+this.searchResult);
     // this.showResult = "visible";
     // console.log("C"+this.showResult);
   }
@@ -87,7 +88,7 @@ export class CreateOrderComponent implements OnInit {
   }
   chooseProduct(product: ProductModel) {
     this.choosedProduct = product;
-    this.searchResult = this.choosedProduct.name;
+    this.searchResult = '';
     console.log("A:"+product.name+"B:"+this.choosedProduct.name+"C:"+this.showResult);
     this.search('');
     // this.listProduct.isEmpty;
@@ -110,31 +111,29 @@ export class CreateOrderComponent implements OnInit {
   }
 
   copy(){
-    this.Name = this.NameBill;
-    this.Phone = this.PhoneBill;
-    this.Province = this.ProvinceBill;
-    this.District = this.DistrictBill;
-    this.Street = this.StreetBill;
-
+    this.NameBill = this.Name;
+    this.PhoneBill = this.Phone;
+    this.ProvinceBill = this.Province;
+    this.DistrictBill = this.District;
+    this.StreetBill = this.Street;
   }
 
   create() {
-    let addressBill = new AddressModel();
-      addressBill.name = this.NameBill;
-      addressBill.phone = this.PhoneBill;
-      addressBill.province = this.ProvinceBill;
-      addressBill.district = this.DistrictBill;
-      addressBill.street = this.StreetBill;
-      addressBill.type = 0;
-
-
     let address = new AddressModel();
       address.name = this.Name;
       address.phone = this.Phone;
       address.province = this.Province;
       address.district = this.District;
       address.street = this.Street;
-      address.type = 1;
+      address.type = 0;
+
+    let addressBill = new AddressModel();
+      addressBill.name = this.NameBill;
+      addressBill.phone = this.PhoneBill;
+      addressBill.province = this.ProvinceBill;
+      addressBill.district = this.DistrictBill;
+      addressBill.street = this.StreetBill;
+      addressBill.type = 1;
 
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
