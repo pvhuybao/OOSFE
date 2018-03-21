@@ -24,4 +24,8 @@ export class ProductService {
 
     return listProduct;
   }
+
+  getByCategory(id:string){
+   return this.authHttpService.get(this.API_PATH + id +"/category").map(res => res.json() || []);;
+  }
 }
