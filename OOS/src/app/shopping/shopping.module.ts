@@ -12,6 +12,10 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
 import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+
+//self-services
+//import { SpinnerService } from '../shared/services/spinner.service';
+
 @NgModule({
   imports: [
     CommonModule,

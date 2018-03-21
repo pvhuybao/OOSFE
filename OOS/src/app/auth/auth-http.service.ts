@@ -59,5 +59,4 @@ export class AuthHttpService {
         return this.http.post(url, body, options);
     }
 
-   
 }
