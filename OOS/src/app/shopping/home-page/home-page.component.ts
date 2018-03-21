@@ -9,27 +9,48 @@ import { ProductService } from '../services/product.service';
 })
 export class HomePageComponent implements OnInit {
 
-  newestProduct : ProductModel[];
-  topSales : ProductModel[];
-  topDiscount : ProductModel[];
+  newestProduct: ProductModel[] = [];
+  topSales: ProductModel[] = [];
+  topDiscount: ProductModel[] = [];
 
-  constructor(private productService : ProductService) { }
+  constructor(private productService: ProductService) { }
+
 
   ngOnInit() {
+    // this.newestProduct = [{
+    //   id: "1", code: "", name: "product 1",
+    //   price: 0, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 2",
+    //   price: 123, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 3",
+    //   price: 222, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 4",
+    //   price: 3344, description: "", image: "", idCategory: ""
+    // },]
+    this.getListNewestProduct();
   }
 
-  getListNewestProduct(){
-    this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => { 
-      this.newestProduct=newestProduct });
+  getListNewestProduct() {
+    this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
   }
 
-  getListTopSalesProduct(){
-    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => { 
-      this.newestProduct=newestProduct });
+  getListTopSalesProduct() {
+    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
   }
 
-  getListTopDiscountProduct(){
-    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => { 
-      this.newestProduct=newestProduct });
+  getListTopDiscountProduct() {
+    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
   }
 }

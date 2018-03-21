@@ -10,28 +10,30 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
+import { WidgetProductsComponent } from './widget-products/widget-products.component';
+import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
-<<<<<<< HEAD
 import { ProductService } from './services/product.service';
-=======
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
->>>>>>> develop
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule
   ],
-  declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
-<<<<<<< HEAD
+  declarations: [HomePageComponent, 
+                  ProductDetailComponent, 
+                  ShoppingCartComponent, 
+                  OrderComponent, 
+                  OrderConfirmComponent, 
+                  ProductListComponent, 
+                  ShoppingComponent, 
+                  ListCategoriesComponent,
+                  WidgetProductsComponent,
+                  WidgetBoxComponent,
+                ],
   providers: [CategoryService, ProductService]
-=======
-  providers: [
-    CategoryService,
-    //SpinnerService
-  ]
->>>>>>> develop
 })
 export class ShoppingModule { }
