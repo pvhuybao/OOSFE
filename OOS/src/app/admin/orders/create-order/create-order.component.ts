@@ -51,6 +51,7 @@ export class CreateOrderComponent implements OnInit {
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
+  listOrderDetail:Array<OrderDetailModel>;
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
 
@@ -63,6 +64,9 @@ export class CreateOrderComponent implements OnInit {
     this.searchResult = this.choosedProduct.name;
     console.log("A:"+product.name+"B:"+this.choosedProduct.name);
     this.search('');
+    // this.listProduct.isEmpty;
+   
+
   }
 
   ngOnInit(): void {

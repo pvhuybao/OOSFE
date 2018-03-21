@@ -15,9 +15,6 @@ import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductService } from './services/product.service';
 
-//self-services
-//import { SpinnerService } from '../shared/services/spinner.service';
-
 @NgModule({
   imports: [
     CommonModule,
