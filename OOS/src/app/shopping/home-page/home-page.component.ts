@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../services/cart.service';
-import { CartItemModel } from '../models/cart';
-import { ProductModel } from '../models/product';
 
 @Component({
   selector: 'app-home-page',
@@ -10,24 +7,9 @@ import { ProductModel } from '../models/product';
 })
 export class HomePageComponent implements OnInit {
 
-  abc:CartItemModel=new CartItemModel();
-  constructor(private cart:CartService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.abc.product=new ProductModel();
-    this.addCart();
-    this.abc.id="abcb";
-    this.abc.quantity=5;
-    this.abc.amount=this.abc.product.price*this.abc.quantity;
-    this.cart.set(this.abc);
-  }
-  addCart(){
-    this.abc.product.id="abc";
-    this.abc.product.idCategory="5";
-    this.abc.product.image="";
-    this.abc.product.name="aaa";
-    this.abc.product.price=50000;
-    this.abc.product.description="aaaaaaaaaa";
   }
 
 }
