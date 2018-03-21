@@ -14,10 +14,11 @@ export class ProductService {
   getProductsByParameter(widgetName: string): Observable<ProductModel[]> {
     let listProduct = new Subject<ProductModel[]>();
     setTimeout(() => {
-      listProduct.next([{ id: "0", name: "product 0" },
-      { id: "1", name: "product 1" },
-      { id: "2", name: "product 2" },
-      { id: "3", name: "product 3" },
+      listProduct.next([
+          { id: "0", name: "product 0", price: 1, description: "", image:"",idCategory:"" },
+          { id: "0", name: "product 1", price: 1, description: "", image:"",idCategory:"" },
+          { id: "0", name: "product 2", price: 1, description: "", image:"",idCategory:"" },
+          { id: "0", name: "product 3", price: 1, description: "", image:"",idCategory:"" },
       ])
     }, 500);
 
