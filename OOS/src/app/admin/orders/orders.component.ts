@@ -25,7 +25,9 @@ export class OrdersComponent implements OnInit {
 
   getOrderList() 
   {
-    this.ordersService.getList().subscribe(data => {this.listOrders = data});
+    this.ordersService.getList().subscribe(data => {
+      this.listOrders = data;
+    });
   }
 
   get(orderId)

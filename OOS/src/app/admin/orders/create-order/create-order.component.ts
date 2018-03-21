@@ -149,7 +149,7 @@ export class CreateOrderComponent implements OnInit {
     newOrder.total = this.Total;
 
     this.orderService.add(newOrder).subscribe(() => {
-      this.router.navigateByUrl("/admin/orders");
+      this.router.navigateByUrl("/admin/manager/orders");
     });
   }
 }
