@@ -14,7 +14,9 @@ import { CategoryModel } from '../models/category';
 export class CategoriesComponent implements OnInit {
   listCategory: CategoryModel[];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit() {
     this.getListCategory();
@@ -25,6 +27,4 @@ export class CategoriesComponent implements OnInit {
       this.listCategory = result
     })
   }  
-  
-
 }

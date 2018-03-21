@@ -2,5 +2,7 @@
 <ul class="category-list" >
   <li *ngFor="let category of categories; let i = index">
     <a [routerLink]="['./categories']">{{category.name}}</a>
+    <button type="button" class="main-btn" (click)=start()>Spinner</button>
   </li>
 </ul>
+

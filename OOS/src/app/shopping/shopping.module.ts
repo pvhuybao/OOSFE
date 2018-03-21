@@ -14,11 +14,18 @@ import { WidgetProductsComponent } from './widget-products/widget-products.compo
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 
+<<<<<<< HEAD
+=======
+//self-services
+//import { SpinnerService } from '../shared/services/spinner.service';
+
+>>>>>>> develop
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule
   ],
+<<<<<<< HEAD
   declarations: [HomePageComponent, 
     ProductDetailComponent, 
     ShoppingCartComponent, 
@@ -31,5 +38,12 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
     ListCategoriesComponent
   ],
   providers: [CategoryService]
+=======
+  declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
+  providers: [
+    CategoryService,
+    //SpinnerService
+  ]
+>>>>>>> develop
 })
 export class ShoppingModule { }
