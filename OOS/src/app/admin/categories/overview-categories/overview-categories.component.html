@@ -25,7 +25,7 @@
           <a routerLink="../{{category.id}}" routerLinkActive="active">{{category.name}}</a>
         </td>
         <td>{{category.description}}</td>
-        <td>
+        <td class="text-right">
           <a routerLink="../{{category.id}}" routerLinkActive="active">
             <button class="main-btn icon-btn">
               <i class="fa fa-edit"></i>
@@ -35,31 +35,31 @@
             <i class="fa fa-close"></i>
           </button>
 
-          <!-- Pop up for delete-->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-body">
-                  <div class="section-title">
-                    <h4 class="modal-title">Confirm</h4>
-                  </div>
-                  <p>
-                    Are you sure to want to delele
-                    <strong>{{cateDel.name}}</strong> ??
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
-                  <button type="button" class="main-btn" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Pop up for delete-->
-
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="section-title">
+          <h4 class="modal-title">Confirm</h4>
+        </div>
+        <p>
+          Are you sure to want to delele
+          <strong>{{cateDel.name}}</strong> ??
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
+        <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

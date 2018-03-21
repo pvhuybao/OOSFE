@@ -2,9 +2,9 @@
   <div class="col-md-6">
     <div id="product-main-view">
       <div>
-      <button class="primary-btn" routerLink="/admin/products" routerLinkActive="active" 
+      <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" 
       (click)="create()">Save</button>
-      <button class="primary-btn" routerLink="/admin/products" routerLinkActive="active" >Back</button>
+      <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
     </div>
   </div>
   </div>
@@ -26,18 +26,24 @@
       </p>
       <strong>Id Category:</strong>
       <div>
-        <p><select class=" input  custom-select">
+        <p><select class=" input  custom-select" [(ngModel)]="idCategory">
           <option selected>Choose...</option>
           <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
         </select></p>
         </div>
       <strong>Status:</strong>
       <div >
-          <select class=" input custom-select" [(ngModel)] ="status">
+          <select class=" input custom-select" >
             <option selected>Choose...</option>
-            <option *ngFor="let item of keys" [value]="item">{{status[item]}}</option>
+            <option >unpushlish</option>
           </select>
       </div>
+      <!-- <div>
+        <p><select class=" input  custom-select">
+          <option selected>Choose...</option>
+          <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
+        </select></p>
+        </div> -->
         <p>
         <strong>Description:</strong>
         <input [(ngModel)]="description" class="input search-input"></p>

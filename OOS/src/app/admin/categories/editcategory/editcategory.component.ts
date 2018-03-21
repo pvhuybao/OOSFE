@@ -51,8 +51,10 @@ export class EditCategoryComponent implements OnInit {
     this.cate.status = this.cate.status;
 
     this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
+
       this.spinnerService.turnOffSpinner();
-      this.router.navigate(['/admin/categories']);
+      //this.router.navigate(['/admin/categories']);
+      this.router.navigate(['/admin/manager/categories']);
     });
   }
 

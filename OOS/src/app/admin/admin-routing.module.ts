@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuardService } from '../auth/auth-guard.service';
 
-import {  ProductCreateComponent } from './products/product-create/product-create.component';
-import {  ProductEditComponent } from './products/product-edit/product-edit.component';
+import { ProductCreateComponent } from './products/product-create/product-create.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
@@ -23,6 +23,7 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 
 const adminRoutes: Routes = [
@@ -33,38 +34,47 @@ const adminRoutes: Routes = [
     canActivateChild: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      {
-        path: 'users',
-        children: [
-          { path: '', component: OverviewUsersComponent},
-          { path: 'create', component: UserCreateComponent },
-          { path: ':id', component: UserEditComponent },
-        ]
-      },
-       
-      { path: 'products', component: ProductsComponent },
-      { path:'products/create',component: ProductCreateComponent},
-      { path:'products/edit',component: ProductEditComponent},
-      { path:'product-details',component:ProductDetailComponent},
-      { 
-        path: 'categories', 
-        children: [
-          { path: '', component: OverviewCategoriesComponent, pathMatch: 'full' },
-          { path: 'create', component: CreateCategoryComponent },
-          { path: ':id', component: EditCategoryComponent },
-          { path: 'categories/:id', component: CategoryDetailComponent },
-        ]
-      },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'orders/create', component: CreateOrderComponent },
-      //{ path: 'orders/edit/:id', component: EditOrdersComponent },
       { path: 'login', component: AdminLoginComponent },
-      { path: 'orders/edit/:id', component: EditOrderComponent },
-    ]  
+      {
+        path: 'manager', component: AdminManagementComponent,
+        canActivate: [AuthGuardService],
+        canActivateChild: [AuthGuardService],
+        children: [
+          { path: '', redirectTo: 'products', pathMatch: 'full' },
+          {
+            path: 'users',
+            children: [
+              { path: '', component: OverviewUsersComponent },
+              { path: 'create', component: UserCreateComponent },
+              { path: ':id', component: UserEditComponent },
+            ]
+          },
+
+          { path: 'products', component: ProductsComponent },
+          { path: 'products/create', component: ProductCreateComponent },
+          { path: 'products/edit', component: ProductEditComponent },
+          { path: 'product-details', component: ProductDetailComponent },
+          {
+            path: 'categories',
+            children: [
+              { path: '', component: OverviewCategoriesComponent },
+              { path: 'create', component: CreateCategoryComponent },
+              { path: ':id', component: EditCategoryComponent },
+            ]
+          },
+          { path: 'orders', component: OrdersComponent },
+          { path: 'users', component: UsersComponent },
+          { path: 'orders/create', component: CreateOrderComponent },
+          //{ path: 'orders/edit/:id', component: EditOrdersComponent },
+          { path: 'login', component: AdminLoginComponent },
+          { path: 'orders/edit/:id', component: EditOrderComponent },
+        ]
+      },
+
+    ]
   }
 
-  
+
   ,];
 
 @NgModule({

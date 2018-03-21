@@ -56,7 +56,7 @@ export class ProductCreateComponent implements OnInit {
       code: this.code
     }
      this.productService.postProduct(product).subscribe(data => {
-       this.router.navigateByUrl('/admin/products');
+       this.router.navigateByUrl('/admin/manager/products');
      });
     }
 }

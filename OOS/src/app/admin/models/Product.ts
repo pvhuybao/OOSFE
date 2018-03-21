@@ -11,7 +11,7 @@ export class ProductModel{
     description : string;
     image : string;
     idCategory: string;
-    // status: number;
+    //status: number;
     
     constructor () {}
 }
