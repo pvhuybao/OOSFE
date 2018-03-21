@@ -39,7 +39,10 @@ export class CreateCategoryComponent implements OnInit {
 
     this.categoryService.add(newCategory).subscribe(data => {
       this.spinnerService.turnOffSpinner();
-      this.router.navigate(['/admin/categories']);
+      //this.router.navigate(['/admin/categories']);
+
+      this.router.navigate(['/admin/manager/categories']);
+
     })
   }
 
