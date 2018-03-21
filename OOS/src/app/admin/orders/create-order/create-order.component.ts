@@ -50,18 +50,46 @@ export class CreateOrderComponent implements OnInit {
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
+  showResult : boolean = false;
+  shows: string = "hidden";
+  orderDetails= new OrderDetailModel;
+  listOrderDetails = new Array<OrderDetailModel>();
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
+    // this.showResult = "visible";
+    // console.log("C"+this.showResult);
   }
 
+  hide()
+  {
+    this.search("");
+  }
+  
+  // hide() {
+  //   this.showResult = "hidden";
+  // }
+
+  // show(){
+  //   this.search(this.searchResult);
+  //   console.log(this.showResult);
+  // }
+  add()
+  {
+    this.orderDetails.nameProduct = this.choosedProduct.name;
+    this.orderDetails.quantity = 1;
+    this.listOrderDetails.push(this.orderDetails);
+    console.log(this.listOrderDetails[0].nameProduct);
+  }
   chooseProduct(product: ProductModel) {
     this.choosedProduct = product;
     this.searchResult = this.choosedProduct.name;
-    console.log("A:"+product.name+"B:"+this.choosedProduct.name);
+    console.log("A:"+product.name+"B:"+this.choosedProduct.name+"C:"+this.showResult);
     this.search('');
+    // if(this.searchTerms.isEmpty) this.show = "hidden";
+    // else this.show = "visible";
   }
 
   ngOnInit(): void {
