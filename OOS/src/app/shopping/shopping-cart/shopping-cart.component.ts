@@ -20,19 +20,13 @@ export class ShoppingCartComponent implements OnInit {
   }
   get() {
     this.cart = this.cartService.get();
-    this.updateTotal();
+    if (this.cart)
+      this.updateTotal();
   }
   remove(item) {
     this.cartService.remove(item);
     this.get();
   }
-  add(product, quantity) {
-    var item: CartModel = new CartModel();
-    item.product = product;
-    item.quantity = quantity;
-    this.cartService.set(item);
-  }
-
   addCart(id) {
     var product = new ProductModel();
     product.id = id.value;
@@ -41,7 +35,7 @@ export class ShoppingCartComponent implements OnInit {
     product.name = id.value;
     product.price = 50000;
     product.description = id.value;
-    this.add(product, 8);
+    this.cartService.set(product);
     this.get();
   }
   updateTotal() {
