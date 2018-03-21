@@ -37,7 +37,6 @@ import { CategoryService } from './services/category.service';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    //MatDialogModule,
     BrowserAnimationsModule
   ],
     

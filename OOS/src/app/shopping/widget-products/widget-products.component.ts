@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductModel } from '../../admin/models/product';
+import { ProductModel } from '../models/product';
 
 @Component({
   selector: 'app-widget-products',
