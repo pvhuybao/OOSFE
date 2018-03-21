@@ -73,9 +73,16 @@
     <div class="order-summary clearfix">
       <div class="section-title">
           <div class="input-group">
-              <input type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2">
+              <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2" value="{{searchResult}}">
               <span class="input-group-addon" id="basic-addon2">Add</span>
-            </div>
+          </div>
+          <div class="input-group">
+            <ul class="search-result">
+              <li  *ngFor="let product of listProduct | async" >
+                  <p (click)="chooseProduct(product)">{{product.name}}</p>
+              </li>
+            </ul>
+          </div>
             <br>
         <h3 class="title">Order Review</h3>
       </div>
@@ -112,9 +119,13 @@
           </tr>
         </tfoot>
       </table>
+      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
+        Add new order successfully
+        <a class="close" (click)="removeAlert()">&times;</a>    
+      </div>
       <div class="pull-left">
-          <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
-        </div>
+        <a routerLink="/admin/orders" routerLinkActive="active" class="primary-btn">Back</a>
+      </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="create()">Create Order</button>
       </div>

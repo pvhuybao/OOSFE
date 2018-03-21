@@ -24,6 +24,7 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
+import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 
 const adminRoutes: Routes = [
   {
@@ -69,7 +70,6 @@ const adminRoutes: Routes = [
           { path: 'orders/edit/:id', component: EditOrderComponent },
         ]
       },
-      
     ]  
   }
 
