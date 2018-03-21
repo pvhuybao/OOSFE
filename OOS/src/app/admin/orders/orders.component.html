@@ -5,7 +5,7 @@
 
     <div class="pull-right">
       <div class="btn-group">
-        <a routerLink="/admin/orders/create" routerLinkActive="active" class="primary-btn">Create New</a>
+        <a routerLink="/admin/manager/orders/create" routerLinkActive="active" class="primary-btn">Create New</a>
       </div>
     </div>
 
@@ -26,30 +26,29 @@
           <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
           <td class="text-center">{{order.total}}</td>
           <td class="text-right">
-            <button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button>
+            <button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/manager/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button>
             <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(order.id)"><i class="fa fa-close"></i></button>
-            
-            <div class="modal fade" id="myModal" role="dialog">
-              <div class="modal-dialog">
-              
-                <!-- Modal content-->
-                <div class="modal-content">   
-                    <div class="modal-header">                              
-                        <h4 class="modal-title">Confirm</h4>
-                      </div>                     
-                  <div class="modal-body">
-                    <p>Are you sure you want to delete this record?</p>
-                  </div>
-                  <div class="modal-footer">                            
-                    <button type="button" class="btn btn-default" (click)="delete()"  data-dismiss="modal">Yes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>        
-                </div>
-                
-              </div>
-            </div> 
           </td>          
         </tr>
       </tbody>
     </table>
 </div>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">  
+      <div class="modal-body"> 
+        <div class="section-title">
+          <h4 class="modal-title">Confirm</h4>
+        </div>                   
+        <p>Are you sure you want to delete this record?</p>
+      </div>
+      <div class="modal-footer">                            
+        <button type="button" class="primary-btn" (click)="delete()"  data-dismiss="modal">Yes</button>
+        <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+      </div>        
+    </div>
+    
+  </div>
+</div> 
