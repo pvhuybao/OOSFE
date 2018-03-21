@@ -35,10 +35,9 @@
               <input type="text" class="input" id="inputStreet" [(ngModel)]="StreetBill">
             </div>
             <div class="col-md-12">
-                <button (click)="copy()" class="main-btn" >Billing Details and Shipping Address are the same</button>
+                <button (click)="copy()" class="main-btn" >Copy Billing Address</button>
             </div>
     </div>
-    <div *ngIf="message == 'show'">
         <div class="form-row">
             <div class="col-md-12">
                 <div class="section-title">
@@ -47,38 +46,36 @@
             </div>
             <div class="form-group col-md-6">
               <label for="inputName">Name </label>
-              <input type="text" class="input" id="inputName2" [(ngModel)]="Name">
+              <input type="text" class="input" id="inputName2" [(ngModel)]="Name" value="Name">
             </div>
             <div class="form-group col-md-6">
               <label for="inputPhone">Phone</label>
-              <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone">
+              <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone" value="Phone">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputProvince">Province</label>
-                <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province">
+                <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province" value="Province">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputDistrict">District</label>
-                <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District">
+                <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District" value="District">
               </div>
             <div class="form-group col-md-4">
                 <label for="inputStreet">Street</label>
-                <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street">
+                <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street" value="Street">
               </div>
       </div>
-          
-    </div>
   
   <div class="col-md-12">
     <div class="order-summary clearfix">
       <div class="section-title">
           <div class="input-group">
               <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2" value={{searchResult}} [(ngModel)]="searchResult">
-              <span class="input-group-addon" id="basic-addon2">Add</span>
+              <span class="input-group-addon" id="basic-addon2" (click)="add()">Add</span>
           </div>
-            <ul class="list-group" style="position:absolute; z-index:100; width:100%">
+            <ul  class="list-group" style="position:absolute; z-index:100; width:100%">
               <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" >
-                  <a (click)="chooseProduct(product)" disabled="disabled" >{{product.name}}</a>
+                  <a  (click)="chooseProduct(product)" disabled="disabled" >{{product.name}}</a>
               </li>
             </ul>
             <br>
@@ -117,15 +114,11 @@
           </tr>
         </tfoot>
       </table>
-      <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
-        Add new order successfully
-        <a class="close" (click)="removeAlert()">&times;</a>    
-      </div>
       <div class="pull-left">
-        <a routerLink="/admin/orders" routerLinkActive="active" class="main-btn">Back</a>
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
       </div>
       <div class="pull-right">
-        <button class="primary-btn" (click)="create()">Save</button>
+        <button class="primary-btn" (click)="create()">Create Order</button>
       </div>
     </div>
     <br>
