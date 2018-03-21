@@ -59,14 +59,15 @@ export class CreateOrderComponent implements OnInit {
   }
 
   chooseProduct(product: ProductModel) {
-    this.searchResult = product.name;
     this.choosedProduct = product;
-    // this.listProduct.isEmpty;
+    this.searchResult = this.choosedProduct.name;
+    console.log("A:"+product.name+"B:"+this.choosedProduct.name);
+    this.search('');
   }
 
   ngOnInit(): void {
     this.listProduct = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
+      // wait 50ms after each keystroke before considering the term
       debounceTime(50),
 
       // ignore new term if same as previous term
