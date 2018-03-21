@@ -32,10 +32,10 @@
 								</ul>
 							</div>
 							<select class="input search-categories" style="width:40%">
-								<option value="0">All Categories</option>
-								<option *ngFor="let category of categories">{{category.name}}</option>
+								<option value="all">All Categories</option>
+								<option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
 							</select>
-							<button class="search-btn" [disabled]="true"><i class="fa fa-search"></i></button>
+							<button class="search-btn" (click)="setSearch()"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->
@@ -131,7 +131,7 @@
                     <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
                     <ul class="category-list dropdown-menu" [style.display]="block">
                             <li *ngFor="let category of categories; let i = index">
-                              <a [routerLink]="['./categories']">{{category.name}}</a>
+                              <a [routerLink]="['../category/'] + category.id + ['_'] + category.name">{{category.name}}</a>
                             </li>
                     </ul>
 				</div>

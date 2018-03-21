@@ -15,6 +15,7 @@ import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductService } from './services/product.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ProductService } from './services/product.service';
                   ListCategoriesComponent,
                   WidgetProductsComponent,
                   WidgetBoxComponent,
+                  SearchComponent,
                 ],
   providers: [CategoryService, ProductService, CartService]
 })
