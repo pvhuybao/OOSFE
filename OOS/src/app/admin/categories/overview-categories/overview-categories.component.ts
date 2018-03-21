@@ -1,4 +1,4 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service'
 import { CategoryModel } from '../../models/category'
 import { Router } from '@angular/router';
