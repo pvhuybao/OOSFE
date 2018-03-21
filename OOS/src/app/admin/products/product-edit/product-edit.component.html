@@ -8,7 +8,7 @@
       <div>
       <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" 
       (click)="update()">Save</button>
-      <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
+      <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
     </div>
   </div>
   </div>
@@ -27,19 +27,17 @@
             <input [(ngModel)]="product.image" class="input search-input">
           </p>
           <strong>Category:</strong>
-          <div >
-           <p> <select class=" input custom-select"[(ngModel)]="idCategory">
-              <option selected>Choose...</option>
-              <option *ngFor="let category of categorys" [value]="category.id">{{category.name}}</option>
-            </select></p>
-            </div>
-          <strong>Status:</strong>
-          <div >
-              <p><select class=" input custom-select"[(ngModel)]="product.idCategory">
-                <option selected>Choose...</option>
-                <option *ngFor="let category of categorys" value="{{product.idCategory}}">{{category.name}}</option>
+          <div>
+              <p><select class=" input custom-select" [(ngModel)]="product.idCategory">
+                <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
               </select></p>
               </div>
+          <strong>Status:</strong>
+          <div>
+              <p><select class="input custom-select" [(ngModel)]="product.status">
+                  <option *ngFor="let item of keys" [value]="item">{{status1[item]}}</option>
+              </select></p>
+          </div>
             <p>
             <strong>Description:</strong>
             <input [(ngModel)]="product.description" class="input search-input"></p>

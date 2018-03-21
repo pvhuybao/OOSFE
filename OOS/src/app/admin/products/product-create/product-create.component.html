@@ -4,7 +4,7 @@
       <div>
       <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" 
       (click)="create()">Save</button>
-      <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
+      <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
     </div>
   </div>
   </div>
@@ -19,31 +19,24 @@
         <input [(ngModel)]="code" class="input search-input"></p>
       <p>
       <strong>Price:</strong>
-      <input [(ngModel)]="price" class="input search-input"></p>
+      <input [(ngModel)]="price" class="input search-input">
+    </p>
       <p>
         <strong>Image:</strong>
         <input [(ngModel)]="image" class="input search-input">
       </p>
-      <strong>Id Category:</strong>
+      <strong>Category:</strong>
       <div>
-        <p><select class=" input  custom-select" [(ngModel)]="idCategory">
-          <option selected>Choose...</option>
-          <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
+        <p><select class=" input custom-select" [(ngModel)]="idCategory" >
+          <option *ngFor="let category of categorys" [value]="category.id" selected >{{category.name}}</option>
         </select></p>
         </div>
       <strong>Status:</strong>
-      <div >
-          <select class=" input custom-select" >
-            <option selected>Choose...</option>
-            <option >unpushlish</option>
-          </select>
+      <div>
+          <p><select class="input custom-select" [(ngModel)]="status">
+              <option *ngFor="let item of keys" [value]="item">{{status1[item]}}</option>
+          </select></p>
       </div>
-      <!-- <div>
-        <p><select class=" input  custom-select">
-          <option selected>Choose...</option>
-          <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
-        </select></p>
-        </div> -->
         <p>
         <strong>Description:</strong>
         <input [(ngModel)]="description" class="input search-input"></p>
