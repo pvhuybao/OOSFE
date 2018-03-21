@@ -19,7 +19,7 @@
       </thead>
       <tbody  *ngFor="let order of listOrders; let i = index">
         <tr>
-          <td>{{order.id}}</td>
+          <td>{{order.idBill}}</td>
           <td>{{order.email}}</td>
           <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
           <td class="text-center">{{order.userId}}</td>
