@@ -118,8 +118,6 @@ export class EditOrderComponent implements OnInit {
     this.calculateTotalOrder()
   }
 
-
-
   calculateTotalOrder() {
     let total = 0
     for (let d of this.order.orderDetails) {
