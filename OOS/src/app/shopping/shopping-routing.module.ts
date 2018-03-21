@@ -9,18 +9,39 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderComponent } from './order/order.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { PaymentComponent } from './cart/payment/payment.component';
+import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
+import { ThankyouComponent } from './cart/thankyou/thankyou.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
 
 const shoppingRoutes: Routes = [
   {
-    path: 'shopping', component: ShoppingComponent, children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomePageComponent },
-      { path: 'products/?categoryId', component: ProductListComponent },
-      { path: 'products', component: ProductListComponent },
-      { path: 'product/:id', component: ProductDetailComponent },
-      { path: 'cart', component: ShoppingCartComponent },
-      { path: 'order', component: OrderComponent },
-      { path: 'confirm', component: OrderConfirmComponent },
+    path: '',
+    component: ShoppingComponent,
+    children: [
+      { path: '', component: HomePageComponent, pathMatch: 'full' },
+      {
+        path: 'cart',
+        children: [
+          { path: '', component: ShoppingCartComponent },
+          { path: 'shipping-info', component: ShippingInfoComponent },
+          { path: 'payment', component: PaymentComponent },
+          { path: 'thankyou', component: ThankyouComponent },
+        ]
+      },
+      {
+        path: 'category',
+        children: [
+          { path: 'id', component: ProductListComponent },
+        ]
+      },
+      {
+        path: 'product',
+        children: [
+          { path: ':id', component: ProductDetailComponent },
+        ]
+      }
+
     ]
   },
 ];
