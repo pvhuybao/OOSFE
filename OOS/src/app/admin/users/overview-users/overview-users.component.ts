@@ -32,11 +32,16 @@ export class OverviewUsersComponent implements OnInit {
   getListUsers() {
     this.userService.get().subscribe(data => {
       this.listUsers = data;
+      // reverse sort
+      this.listUsers.sort((a,b)=>{
+        return 1; //reverse the array
+      })
     })
   }
 
   delete() {
     this.spinnerService.startLoadingSpinner();
+
     this.userService.delete(this.userDel).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.getListUsers();
