@@ -73,3 +73,8 @@
     display: block;
     margin-top: 10px;
 }
+
+.shiftleft{
+    padding-left: 10px;
+    margin-left: 10px;
+}

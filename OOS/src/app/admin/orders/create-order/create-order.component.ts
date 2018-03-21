@@ -21,21 +21,22 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit {
 
-  message: string = '';
-  order: OrdersModel;
+  order : OrdersModel;
+  
+  public Email:string ='';
 
-  public Email: string = '';
-  public NameBill: string = '';
-  public PhoneBill: string = '';
-  public ProvinceBill: string = '';
-  public DistrictBill: string = '';
-  public StreetBill: string = '';
+  public NameBill:string ='';
+  public PhoneBill:string ='';
+  public ProvinceBill:string ='';
+  public DistrictBill:string ='';
+  public StreetBill:string ='';
+  
+  public Name:string ='';
+  public Phone:string ='';
+  public Province:string ='';
+  public District:string ='';
+  public Street:string ='';
 
-  public Name: string = '';
-  public Phone: string = '';
-  public Province: string = '';
-  public District: string = '';
-  public Street: string = '';
   public IdProduct: string = '';
   public NameProduct: string = '';
   public ImgProduct: string = 'http://moziru.com/images/grumpy-cat-clipart-nope-15.png';
@@ -50,18 +51,49 @@ export class CreateOrderComponent implements OnInit {
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
+  showResult : boolean = false;
+  shows: string = "hidden";
+  orderDetails= new OrderDetailModel;
+  listOrderDetails = new Array<OrderDetailModel>();
+
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
+    // this.showResult = "visible";
+    // console.log("C"+this.showResult);
   }
 
+  hide()
+  {
+    this.search("");
+  }
+  
+  // hide() {
+  //   this.showResult = "hidden";
+  // }
+
+  // show(){
+  //   this.search(this.searchResult);
+  //   console.log(this.showResult);
+  // }
+  add()
+  {
+    this.orderDetails.nameProduct = this.choosedProduct.name;
+    this.orderDetails.quantity = 1;
+    this.listOrderDetails.push(this.orderDetails);
+    console.log(this.listOrderDetails[0].nameProduct);
+  }
   chooseProduct(product: ProductModel) {
     this.choosedProduct = product;
     this.searchResult = this.choosedProduct.name;
-    console.log("A:"+product.name+"B:"+this.choosedProduct.name);
+    console.log("A:"+product.name+"B:"+this.choosedProduct.name+"C:"+this.showResult);
     this.search('');
+    // this.listProduct.isEmpty;
+    // if(this.searchTerms.isEmpty) this.show = "hidden";
+    // else this.show = "visible";
+
   }
 
   ngOnInit(): void {
@@ -75,21 +107,19 @@ export class CreateOrderComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.productService.searchProduct(term)),
     );
-    this.message = "show";
   }
 
-  copy() {
-    if (this.message == "show")
-      this.message = "hide";
-    else
-      this.message = "show";
+  copy(){
+    this.Name = this.NameBill;
+    this.Phone = this.PhoneBill;
+    this.Province = this.ProvinceBill;
+    this.District = this.DistrictBill;
+    this.Street = this.StreetBill;
+
   }
 
   create() {
     let addressBill = new AddressModel();
-    let address = new AddressModel();
-    if (this.message == "show") {
-
       addressBill.name = this.NameBill;
       addressBill.phone = this.PhoneBill;
       addressBill.province = this.ProvinceBill;
@@ -98,29 +128,13 @@ export class CreateOrderComponent implements OnInit {
       addressBill.type = 0;
 
 
+    let address = new AddressModel();
       address.name = this.Name;
       address.phone = this.Phone;
       address.province = this.Province;
       address.district = this.District;
       address.street = this.Street;
       address.type = 1;
-    }
-    else {
-
-      addressBill.name = this.NameBill;
-      addressBill.phone = this.PhoneBill;
-      addressBill.province = this.ProvinceBill;
-      addressBill.district = this.DistrictBill;
-      addressBill.street = this.StreetBill;
-      addressBill.type = 0;
-
-      address.name = this.NameBill;
-      address.phone = this.PhoneBill;
-      address.province = this.ProvinceBill;
-      address.district = this.DistrictBill;
-      address.street = this.StreetBill;
-      address.type = 1;
-    }
 
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
