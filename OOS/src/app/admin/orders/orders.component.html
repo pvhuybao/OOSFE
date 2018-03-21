@@ -4,7 +4,7 @@
       <h3 class="title">List Orders</h3>
     </div>
     <div class="btn-group pull-right">
-        <a routerLink="/admin/orders/create" routerLinkActive="active" class="btn primary-btn">Create</a>
+        <a routerLink="/admin/orders/create" routerLinkActive="active" class="primary-btn">Create New</a>
     </div>
     <table class="shopping-cart-table table">
       <thead>
@@ -17,18 +17,18 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let order of listOrders; let i = index">
+      <tbody  *ngFor="let order of listOrders; let i = index">
+        <tr>
           <td>{{order.id}}</td>
           <td>{{order.email}}</td>
           <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
           <td class="text-center">{{order.userId}}</td>
           <td class="text-center">{{order.total}}</td>
-          <td class="text-right">
+          <td>
             <button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button>
-            <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-close"></i></button>
-          </td>
-          <div class="modal fade" id="myModal" role="dialog">
+            <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(order.id)"><i class="fa fa-close"></i></button>
+            
+            <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
               
                 <!-- Modal content-->
@@ -40,13 +40,14 @@
                     <p>Are you sure you want to delete this record?</p>
                   </div>
                   <div class="modal-footer">                            
-                    <button type="button" class="btn btn-default" (click)="delete(order.id)"  data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" (click)="delete()"  data-dismiss="modal">Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>        
                 </div>
                 
               </div>
             </div> 
+          </td>          
         </tr>
       </tbody>
     </table>
