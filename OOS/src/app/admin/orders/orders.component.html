@@ -12,7 +12,6 @@
           <th>Order ID</th>
           <th>User Email</th>
           <th>Create Date</th>
-          <th class="text-center">User ID</th>
           <th class="text-center">Total</th>
           <th></th>
         </tr>
@@ -22,7 +21,6 @@
           <td>{{order.idBill}}</td>
           <td>{{order.email}}</td>
           <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
-          <td class="text-center">{{order.userId}}</td>
           <td class="text-center">{{order.total}}</td>
           <td>
             <button class="main-btn icon-btn" (click) = "edit(order)" routerLink="/admin/orders/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button>
