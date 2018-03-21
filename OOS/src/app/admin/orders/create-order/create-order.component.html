@@ -70,16 +70,14 @@
     <div class="order-summary clearfix">
       <div class="section-title">
           <div class="input-group">
-              <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2" value="{{searchResult}}">
+              <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2" value={{searchResult}} [(ngModel)]="searchResult">
               <span class="input-group-addon" id="basic-addon2">Add</span>
           </div>
-          <div class="input-group">
-            <ul class="search-result">
-              <li  *ngFor="let product of listProduct | async" >
-                  <p (click)="chooseProduct(product)">{{product.name}}</p>
+            <ul class="list-group" style="position:absolute; z-index:100; width:100%">
+              <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" >
+                  <a (click)="chooseProduct(product)" disabled="disabled" >{{product.name}}</a>
               </li>
             </ul>
-          </div>
             <br>
         <h3 class="title">Order Review</h3>
       </div>
