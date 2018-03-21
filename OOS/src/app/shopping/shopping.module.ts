@@ -10,6 +10,7 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
+import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 
 //self-services
@@ -18,12 +19,10 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
   ],
+
   declarations: [HomePageComponent, ProductDetailComponent, ShoppingCartComponent, OrderComponent, OrderConfirmComponent, ProductListComponent, ShoppingComponent, ListCategoriesComponent],
-  providers: [
-    CategoryService,
-    //SpinnerService
-  ]
+  providers: [CategoryService, CartService]
 })
 export class ShoppingModule { }
