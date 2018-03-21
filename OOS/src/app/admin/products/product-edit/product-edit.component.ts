@@ -20,6 +20,7 @@ export class ProductEditComponent implements OnInit {
     this.product = data;
          });
   }
+
   update()
   {
     this.productService.putProduct(this.product).subscribe(data => {

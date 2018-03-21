@@ -1,43 +1,46 @@
 <div class="product product-details clearfix">
   <div class="col-md-6">
     <div id="product-main-view">
-      <div class="product-view">
-        <img src="{{product.image}}" alt="">
-      </div>
-      <button class="primary-btn" [routerLink]="['/admin/product']" routerLinkActive="active" (click)="create()">Save</button>
+      <div>
+      <button class="primary-btn" routerLink="/admin/products" routerLinkActive="active" 
+      (click)="create()">Save</button>
+      <button class="primary-btn" routerLink="/admin/products" routerLinkActive="active" >Back</button>
     </div>
+  </div>
   </div>
   <div class="col-md-6">
     <div class="product-body">
       <div class="section-title">
         <h3 class="title">Create Product</h3>
       </div>
-      <strong>Name:</strong>
-      <input [(ngModel)]="name" class="input search-input">
+      <p><strong>Name:</strong>
+      <input [(ngModel)]="name" class="input search-input"></p>
+      <p><strong>Code:</strong>
+        <input [(ngModel)]="code" class="input search-input"></p>
+      <p>
       <strong>Price:</strong>
-      <input [(ngModel)]="price" class="input search-input">
+      <input [(ngModel)]="price" class="input search-input"></p>
       <p>
         <strong>Image:</strong>
         <input [(ngModel)]="image" class="input search-input">
       </p>
-      <strong>Id Category:</strong>
+      <strong>Category:</strong>
       <div >
-        <select class="custom-select">
+       <p> <select class=" input custom-select"  [(ngModel)]="idCategory">
           <option selected>Choose...</option>
-          <option *ngFor="let category of categorys">{{category.name}}</option>
-        </select>
+          <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
+        </select></p>
         </div>
       <strong>Status:</strong>
       <div >
-          <select class="custom-select">
+          <select class=" input custom-select" [(ngModel)] ="status">
             <option selected>Choose...</option>
-            <option *ngFor="let category of categorys">{{category.name}}</option>
+            <option *ngFor="let item of keys" [value]="item">{{status[item]}}</option>
           </select>
-          </div>
-      <p>
+      </div>
+        <p>
         <strong>Description:</strong>
-        <input [(ngModel)]="description" class="input search-input">
-      </p>
+        <input [(ngModel)]="description" class="input search-input"></p>
     </div>
   </div>
 </div>
