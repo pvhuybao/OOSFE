@@ -20,10 +20,11 @@ export class ProductEditComponent implements OnInit {
     this.product = data;
          });
   }
+
   update()
   {
     this.productService.putProduct(this.product).subscribe(data => {
-      this.router.navigateByUrl('/admin/products');
+      this.router.navigateByUrl('/admin/manager/products');
   });
   }
 }
