@@ -5,16 +5,16 @@ import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
-import { AuthHttpService } from './auth/auth-http.service';
+import { AuthHttpService } from './auth/auth-http.service'
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
-import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   declarations: [
@@ -30,9 +30,13 @@ import { ClickOutsideModule } from 'ng4-click-outside';
     AppRoutingModule,    
     AngularFontAwesomeModule,
     NouisliderModule,
-    ClickOutsideModule
+    Ng4LoadingSpinnerModule
   ],
-  providers: [AuthService, AuthGuardService, AuthHttpService],
+  providers: [
+    AuthService, 
+    AuthGuardService, 
+    AuthHttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

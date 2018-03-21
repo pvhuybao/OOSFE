@@ -10,26 +10,28 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { CategoryService } from './services/category.service';
+import { WidgetProductsComponent } from './widget-products/widget-products.component';
+import { WidgetBoxComponent } from './widget-box/widget-box.component';
+import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
-
 import { ProductService } from './services/Product.service';
+
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
   ],
-  declarations: [
-    HomePageComponent, 
-    ProductDetailComponent, 
-    ShoppingCartComponent, 
-    OrderComponent, 
-    OrderConfirmComponent, 
-    ProductListComponent, 
-    ShoppingComponent, 
-    ListCategoriesComponent],
-  providers: [ 
-    CategoryService,
-    ProductService
-  ]
+  declarations: [HomePageComponent, 
+                  ProductDetailComponent, 
+                  ShoppingCartComponent, 
+                  OrderComponent, 
+                  OrderConfirmComponent, 
+                  ProductListComponent, 
+                  ShoppingComponent, 
+                  ListCategoriesComponent,
+                  WidgetProductsComponent,
+                  WidgetBoxComponent,
+                ],
+  providers: [CategoryService, ProductService, CartService]
 })
 export class ShoppingModule { }

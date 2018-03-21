@@ -1,3 +1,67 @@
-<p>
-  shopping-cart works!
-</p>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="order-summary clearfix">
+					<div class="section-title">
+						<h3 class="title">Order Review</h3>
+					</div>
+						<input class="input" type="text" value="" #id placeholder="Product">
+						<button class="primary-btn" (click)="addCart(id)">Add to Cart</button>
+					<table class="shopping-cart-table table">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th></th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Quantity</th>
+								<th class="text-center">Total</th>
+								<th class="text-right"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of cart">
+								<td class="thumb">
+									<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
+								</td>
+								<td class="details">
+									<a href="#">{{item.product.name}}</a>
+									<ul>
+										<li>
+											<span>Description: {{item.product.description}}</span>
+										</li>
+									</ul>
+								</td>
+								<td class="price text-center">
+									<strong>{{item.product.price}}</strong>
+									<br>
+								</td>
+								<td class="qty text-center">
+									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item,quantity)">
+								</td>
+								<td class="total text-center">
+									<strong class="primary-color">{{item.product.price*item.quantity}}</strong>
+								</td>
+								<td class="text-right">
+									<button class="main-btn icon-btn" (click)="remove(item)">
+										<i class="fa fa-close"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="empty" colspan="3"></th>
+								<th>TOTAL</th>
+								<th colspan="2" class="total">{{total}}</th>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="pull-right">
+						<button class="primary-btn">Place Order</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
