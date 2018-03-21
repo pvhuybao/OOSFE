@@ -24,9 +24,9 @@
         <strong>Image:</strong>
         <input [(ngModel)]="image" class="input search-input">
       </p>
-      <strong>Category:</strong>
-      <div >
-       <p> <select class=" input custom-select"  [(ngModel)]="idCategory">
+      <strong>Id Category:</strong>
+      <div>
+        <p><select class=" input  custom-select">
           <option selected>Choose...</option>
           <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
         </select></p>

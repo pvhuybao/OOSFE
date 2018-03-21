@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryModel } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-createcategory',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class CreateCategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private router: Router) { }
+  constructor(private categoryService: CategoryService, private router: Router,
+    private spinnerService: SpinnerService
+  ) { }
 
   listCategory: CategoryModel[];  
   //newCategory: CategoryModel;
@@ -28,11 +31,14 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   addCategory(){
+    this.spinnerService.startLoadingSpinner();
     let newCategory = new CategoryModel();
     newCategory.name = this.name;
     newCategory.description = this.description;
+    newCategory.status = 1;
 
     this.categoryService.add(newCategory).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
       this.router.navigate(['/admin/categories']);
     })
   }

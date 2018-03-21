@@ -23,6 +23,7 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CreateOrderComponent } from './orders/create-order/create-order.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 
 const adminRoutes: Routes = [
   {
@@ -48,9 +49,10 @@ const adminRoutes: Routes = [
       { 
         path: 'categories', 
         children: [
-          { path: '', component: OverviewCategoriesComponent },
+          { path: '', component: OverviewCategoriesComponent, pathMatch: 'full' },
           { path: 'create', component: CreateCategoryComponent },
           { path: ':id', component: EditCategoryComponent },
+          { path: 'categories/:id', component: CategoryDetailComponent },
         ]
       },
       { path: 'orders', component: OrdersComponent },

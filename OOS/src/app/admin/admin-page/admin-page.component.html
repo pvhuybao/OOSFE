@@ -22,6 +22,16 @@
   <!-- container -->
   <div class="container">
     <div id="responsive-nav">
+      <!-- category nav -->
+      <div class="category-nav">
+          <span class="category-header">Modules</span>
+          <ul class="category-list">
+            <li><a [routerLink]="['./categories']">Categories</a></li>
+            <li><a [routerLink]="['./products']">Products</a></li>
+            <li><a [routerLink]="['./users']">Users</a></li>
+            <li><a [routerLink]="['./orders']">Orders</a></li>
+          </ul>
+        </div>
       <!-- menu nav -->
       <div class="menu-nav">
         <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
@@ -44,18 +54,6 @@
 <div id="home">
       <!-- container -->
       <div class="container">
-        <div id="responsive-nav">
-          <!-- category nav -->
-          <div class="category-nav">
-            <span class="category-header">Modules</span>
-            <ul class="category-list" style="position:relative">
-              <li><a [routerLink]="['./categories']">Categories</a></li>
-              <li><a [routerLink]="['./products']">Products</a></li>
-              <li><a [routerLink]="['./users']">Users</a></li>
-              <li><a [routerLink]="['./orders']">Orders</a></li>
-            </ul>
-          </div>
-        </div>
         <!-- router -->
         <div class="home-wrap" style="min-height:700px">
             <router-outlet></router-outlet>

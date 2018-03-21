@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { ProductService } from '../../services/Product.service';
 import { HttpClient } from '@angular/common/http'; 
 import {CategoryService } from '../../services/category.service';
-import { ProductStatus } from '../../models/Product';
+//import { ProductStatus } from '../../models/Product';
 
 
 @Component({
@@ -21,9 +21,9 @@ export class ProductCreateComponent implements OnInit {
  categorys : any;
  code :string;
  idCategory:string = '';
-public status = ProductStatus;
+// public status = ProductStatus;
 //  public item: number;
- public keys: any;
+//  public keys: any;
 
   constructor(private productService:ProductService,private router: Router,
   private categoryService :CategoryService ) { 
@@ -43,9 +43,9 @@ public status = ProductStatus;
           
   }
 
-  getStatus() {
-     this.keys = Object.keys(this.status).filter(Number);
-   }
+  // getStatus() {
+  //    this.keys = Object.keys(this.status).filter(Number);
+  //  }
   create(){
     var product ={
       name : this.name,
