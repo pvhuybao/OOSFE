@@ -25,6 +25,7 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
 import { OverviewUsersComponent } from './users/overview-users/overview-users.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminManagementComponent } from './admin-management/admin-management.component';
 
 //self-services
 import { SpinnerService } from '../shared/services/spinner.service';
@@ -60,8 +61,9 @@ import { CategoryService } from './services/category.service';
     UserDetailComponent,
     OverviewUsersComponent,
     EditCategoryComponent,
+    AdminLoginComponent,
+    AdminManagementComponent,
     CreateOrderComponent,
-    AdminLoginComponent
   ],
   entryComponents:[
     AdminLoginComponent

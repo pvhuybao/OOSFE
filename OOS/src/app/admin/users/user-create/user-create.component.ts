@@ -24,7 +24,7 @@ export class UserCreateComponent implements OnInit {
   }
   add() {
     this.userservice.add(this.user).subscribe(res => {
-      this.router.navigate(['../admin/users']);
+      this.router.navigate(['../admin/manager/users']);
     });
   }
 

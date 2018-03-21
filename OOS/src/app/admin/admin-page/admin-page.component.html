@@ -12,54 +12,12 @@
         </div>
       </div>
     </div>
-  </div>
-        <!-- /Logo -->
+  </div>        <!-- /Logo -->
 </header>
 <!-- /HEADER -->
-
-<!-- NAVIGATION -->
-<div id="navigation">
-  <!-- container -->
-  <div class="container">
-    <div id="responsive-nav">
-      <!-- category nav -->
-      <div class="category-nav">
-          <span class="category-header">Modules</span>
-          <ul class="category-list">
-            <li><a [routerLink]="['./categories']">Categories</a></li>
-            <li><a [routerLink]="['./products']">Products</a></li>
-            <li><a [routerLink]="['./users']">Users</a></li>
-            <li><a [routerLink]="['./orders']">Orders</a></li>
-          </ul>
-        </div>
-      <!-- menu nav -->
-      <div class="menu-nav">
-        <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
-        <ul class="menu-list">
-          <li><a routerLink="./admin/products" routerLinkActive="active">Home</a></li>
-          <li><a>Shop</a></li>
-          <li><a>Sales</a></li> 
-          <li><a>Pages</a></li> 
-          <li><a>Contacts</a></li>    
-        </ul>
-      </div>
-      <!-- menu nav -->
-    </div>
-  </div>
-  <!-- /container -->
-</div>
-<!-- /NAVIGATION -->
-
-    <!-- NAVIGATION -->
-<div id="home">
-      <!-- container -->
-      <div class="container">
-        <!-- router -->
-        <div class="home-wrap" style="min-height:700px">
-            <router-outlet></router-outlet>
-        </div>
-      </div>
-</div>
+<body>
+  <router-outlet></router-outlet>
+</body>
 
 <!-- FOOTER -->
 <footer id="footer" class="section section-grey">
