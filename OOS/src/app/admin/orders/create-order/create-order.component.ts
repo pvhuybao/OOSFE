@@ -87,7 +87,7 @@ export class CreateOrderComponent implements OnInit {
   }
   chooseProduct(product: ProductModel) {
     this.choosedProduct = product;
-    this.searchResult = this.choosedProduct.name;
+    this.searchResult = '';
     console.log("A:"+product.name+"B:"+this.choosedProduct.name+"C:"+this.showResult);
     this.search('');
     // this.listProduct.isEmpty;
