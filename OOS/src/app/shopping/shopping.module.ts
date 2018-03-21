@@ -14,7 +14,7 @@ import { WidgetProductsComponent } from './widget-products/widget-products.compo
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
-import { ProductService } from './services/Product.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   imports: [
