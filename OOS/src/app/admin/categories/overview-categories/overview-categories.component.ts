@@ -29,6 +29,10 @@ export class OverviewCategoriesComponent implements OnInit {
   getListCategories() {
     this.categoryService.get().subscribe(data => {
       this.listCategories = data;
+      // reverse sort
+      this.listCategories.sort((a,b)=>{
+        return 1; //reverse the array
+      })
     })
   }
 
@@ -40,6 +44,7 @@ export class OverviewCategoriesComponent implements OnInit {
 
   delete() {  
     this.spinnerService.startLoadingSpinner();
+    
     this.categoryService.delete(this.cateDel).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.getListCategories();
