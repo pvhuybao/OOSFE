@@ -14,7 +14,13 @@ export class AdminManagementComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbService.addFriendlyNameForRoute('/admin', 'Admin');
-    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager', 'Manager'); 
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager', 'Manager');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/orders', 'Orders');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/orders/create', 'Create'); 
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/products', 'Products'); 
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/users', 'Users');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/users/create', 'Create');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/categories/create', 'Create');  
   }
 
 }
