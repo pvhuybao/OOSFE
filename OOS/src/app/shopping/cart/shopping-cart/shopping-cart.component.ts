@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../services/cart.service';
-import { CartModel } from '../models/cart';
-import { ProductModel } from '../models/product';
+import { CartService } from '../../services/cart.service';
+import { CartModel } from '../../models/cart';
+import { ProductModel } from '../../models/product';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,22 +11,25 @@ import { ProductModel } from '../models/product';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  cart: any[] = [];
+  cart: CartModel[] = [];
   total: number = 0;
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private spinner:SpinnerService) {
   }
 
   ngOnInit() {
     this.get();
   }
   get() {
-    this.cart = this.cartService.get();
+    this.cartService.get().subscribe(x => { 
+      this.cart = x; 
+    });
+    this.cartService.init()
     if (this.cart)
       this.updateTotal();
   }
-  remove(item) {
-    this.cartService.remove(item);
-    this.get();
+  remove(product) {
+    this.cartService.remove(product);
+    this.updateTotal();
   }
   addCart(id) {
     var product = new ProductModel();
@@ -36,7 +40,7 @@ export class ShoppingCartComponent implements OnInit {
     product.price = 50000;
     product.description = id.value;
     this.cartService.set(product);
-    this.get();
+    this.updateTotal();
   }
   updateTotal() {
     var total = 0;
@@ -45,8 +49,8 @@ export class ShoppingCartComponent implements OnInit {
     })
     this.total = total;
   }
-  updateQuantity(item, quantity) {
-    this.cartService.updateQuantity(item, quantity.value);
-    this.get();
+  updateQuantity(product, quantity) {
+    this.cartService.updateQuantity(product, quantity.value);
+    this.updateTotal();
   }
 }

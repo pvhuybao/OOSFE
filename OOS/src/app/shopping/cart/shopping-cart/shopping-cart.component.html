@@ -37,13 +37,13 @@
 									<br>
 								</td>
 								<td class="qty text-center">
-									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item,quantity)">
+									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity)">
 								</td>
 								<td class="total text-center">
 									<strong class="primary-color">{{item.product.price*item.quantity}}</strong>
 								</td>
 								<td class="text-right">
-									<button class="main-btn icon-btn" (click)="remove(item)">
+									<button class="main-btn icon-btn" (click)="remove(item.product)">
 										<i class="fa fa-close"></i>
 									</button>
 								</td>
