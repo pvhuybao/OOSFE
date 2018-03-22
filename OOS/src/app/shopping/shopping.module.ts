@@ -14,6 +14,7 @@ import { WidgetProductsComponent } from './widget-products/widget-products.compo
 import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ProductService } from './services/product.service';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
@@ -36,6 +37,7 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
                   ListCategoriesComponent,
                   WidgetProductsComponent,
                   WidgetBoxComponent,
+                  CategoryDetailsComponent,
                   CartComponent,
                   PaymentComponent,
                   ThankyouComponent,
