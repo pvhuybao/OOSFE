@@ -13,6 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-create-order',
@@ -57,7 +58,7 @@ export class CreateOrderComponent implements OnInit {
   listOrderDetails = new Array<OrderDetailModel>();
 
 
-  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
+  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router,private spinnerService: SpinnerService) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
@@ -174,8 +175,10 @@ export class CreateOrderComponent implements OnInit {
     newOrder.orderDetails = this.listOrderDetails;
     newOrder.total = this.Total;
 
+    this.spinnerService.startLoadingSpinner();
     this.orderService.add(newOrder).subscribe(() => {
       this.router.navigateByUrl("/admin/manager/orders");
+      this.spinnerService.turnOffSpinner();
     });
   }
 }
