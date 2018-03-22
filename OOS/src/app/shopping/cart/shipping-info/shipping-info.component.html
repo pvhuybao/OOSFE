@@ -1,3 +1,62 @@
-<p>
-  shipping-info works!
-</p>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="billing-details">
+                    <!-- <p>Already a customer ?
+                        <a href="#">Login</a>
+                    </p> -->
+                    <div class="section-title">
+                        <h3 class="title">shipping information</h3>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" placeholder="Name" >
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" placeholder="Phone" >
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email" placeholder="Street" >
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" placeholder="District" >
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" placeholder="Province" >
+                    </div>                                                            
+
+                    <div class="pull-right">
+                        <button class="primary-btn" (click)="saveAddress()">Place Order</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="shiping-methods">
+                    <div class="section-title">
+                        <h4 class="title">Shiping Methods</h4>
+                    </div>
+                    <div class="input-checkbox">
+                        <input type="radio" name="shipping" id="shipping-1" checked>
+                        <label for="shipping-1">Free Shiping - $0.00</label>
+                        <div class="caption">
+                            <p>M
+                                <p>
+                        </div>
+                    </div>
+                    <div class="input-checkbox">
+                        <input type="radio" name="shipping" id="shipping-2">
+                        <label for="shipping-2">Standard - $4.00</label>
+                        <div class="caption">
+                            <p>asd
+                                <p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
