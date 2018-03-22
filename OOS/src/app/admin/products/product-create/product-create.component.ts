@@ -3,7 +3,8 @@ import {Router} from '@angular/router';
 import { ProductService } from '../../services/Product.service';
 import { HttpClient } from '@angular/common/http'; 
 import {CategoryService } from '../../services/category.service';
-//import { ProductStatus } from '../../models/Product';
+import { SpinnerService } from '../../../shared/services/spinner.service';
+import { ProductStatus } from '../../models/product';
 
 
 @Component({
@@ -17,16 +18,18 @@ export class ProductCreateComponent implements OnInit {
  name : string;
  price : number;
  description : string;
- image : string ;
+ image : string = 'http://shfcs.org/en/wp-content/uploads/2015/11/MedRes_Product-presentation-2.jpg' ;
  categorys : any;
  code :string;
  idCategory:string = '';
-// public status = ProductStatus;
-//  public item: number;
-//  public keys: any;
+ status: number;
+public status1 = ProductStatus;
+ public item: number;
+ public keys: any;
 
   constructor(private productService:ProductService,private router: Router,
-  private categoryService :CategoryService ) { 
+  private categoryService :CategoryService,
+  private spinnerService: SpinnerService ) { 
   }
 
   ngOnInit() {
@@ -39,23 +42,26 @@ export class ProductCreateComponent implements OnInit {
         this.categorys = data;}
     );
 
-    // this.getStatus();
+     this.getStatus();
           
   }
 
-  // getStatus() {
-  //    this.keys = Object.keys(this.status).filter(Number);
-  //  }
+  getStatus() {
+     this.keys = Object.keys(this.status1).filter(Number);
+   }
   create(){
     var product ={
       name : this.name,
       price : this.price,
       description : this.description,
       image :this.image,
-     idCategory :this.idCategory,
-      code: this.code
+      idCategory :this.idCategory,
+      code: this.code,
+      status: this.status
     }
+    this.spinnerService.startLoadingSpinner();
      this.productService.postProduct(product).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
        this.router.navigateByUrl('/admin/manager/products');
      });
     }
