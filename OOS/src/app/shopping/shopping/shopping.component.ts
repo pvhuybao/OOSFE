@@ -3,9 +3,8 @@ import { ProductService } from '../services/product.service';
 import { CategoryService } from '../services/category.service';
 import { ProductModel } from '../models/product';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { SearchService } from '../services/search.service';
+import { debounceTime, distinctUntilChanged, switchMap, delay } from 'rxjs/operators';
+import { Router, NavigationStart} from '@angular/router';
 
 @Component({
   selector: 'app-shopping',
@@ -23,10 +22,19 @@ export class ShoppingComponent implements OnInit {
   block : string;
   idCategory: string = "all";
   keyword: string;
-    constructor(private categoryService: CategoryService, private productService: ProductService, private searchService: SearchService,
-      private router: Router) { }
+  expanded: boolean;
+    constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) { 
+      router.events.subscribe(event => {
+        if(event instanceof NavigationStart) {
+          if(this.router.url === "/") this.block = "block";
+          else this.block = "";
+        }
+      });
+    }
   
     ngOnInit() {
+      if(this.router.url === "/") this.block = "block";
+      else this.block = "";
       this.categoryService.get().subscribe(
         data =>{
           this.categories = data;}
@@ -44,9 +52,7 @@ export class ShoppingComponent implements OnInit {
         switchMap((term: string) => this.productService.searchProduct(term)),
       );
     }
-
     
-
     search(term: string): void {
       if(term === "") this.hidden = true;
       else this.hidden = false;
@@ -57,13 +63,10 @@ export class ShoppingComponent implements OnInit {
       this.hidden = true;
     }
 
-    searchProduct(idCategory: string, keyword: string) {
-      if (keyword === undefined || keyword === "") {}
+    searchProduct() {
+      if (this.keyword === undefined || this.keyword === "") {}
       else {
-        this.searchService.setSearchIdCategory(idCategory);
-        this.searchService.setSearchKeyword(keyword);
-        var path = "";
-        this.router.navigateByUrl(path);
+        this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword} });
       }
     }
 }

@@ -35,7 +35,7 @@
 								<option value="all" >All Categories</option>
 								<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
                             </select>
-							<button class="search-btn" (click)="searchProduct(idCategory,keyword)"><i class="fa fa-search"></i></button>
+							<button class="search-btn" (click)="searchProduct()"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->
@@ -127,11 +127,11 @@
 			<div id="responsive-nav">
 				<!-- category nav -->
 				<div class="category-nav">
-                    <span class="category-header dropdown-toggle" data-toggle="dropdown">Categories <i class="fa fa-list"></i></span> 
+                    <span class="category-header dropdown-toggle" data-toggle="dropdown" [style.aria-expanded]="expand">Categories <i class="fa fa-list"></i></span> 
                     <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
                     <ul class="category-list dropdown-menu" [style.display]="block">
                             <li *ngFor="let category of categories; let i = index">
-                              <a [routerLink]="['../category/'] + category.id + ['_'] + category.name">{{category.name}}</a>
+                              <a routerLink="../category/{{category.id}}_{{category.name}}" routerLinkActive="active">{{category.name}}</a>
                             </li>
                     </ul>
 				</div>

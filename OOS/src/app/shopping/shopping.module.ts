@@ -19,7 +19,6 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ProductService } from './services/product.service';
 import { SearchComponent } from './search/search.component';
-import { SearchService } from './services/search.service';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
@@ -56,8 +55,7 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
   providers: [
     CategoryService, 
     ProductService, 
-    CartService,
-    SearchService
+    CartService
   ]
 })
 export class ShoppingModule { }
