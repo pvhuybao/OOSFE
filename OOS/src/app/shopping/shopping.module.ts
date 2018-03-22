@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FormsModule } from '@angular/forms';
 
 import { ShoppingRoutingModule } from './shopping-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -17,6 +18,7 @@ import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ProductService } from './services/product.service';
+import { SearchComponent } from './search/search.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
@@ -25,34 +27,42 @@ import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
 
 
+
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
-
-
 
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule,
-    FormsModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [HomePageComponent, 
-                  ProductDetailComponent, 
-                  ShoppingCartComponent, 
-                  OrderComponent, 
-                  OrderConfirmComponent, 
-                  ProductListComponent, 
-                  ShoppingComponent, 
-                  ListCategoriesComponent,
-                  WidgetProductsComponent,
-                  WidgetBoxComponent,
-                  CategoryDetailsComponent,
-                  CartComponent,
-                  PaymentComponent,
-                  ThankyouComponent,
-                  ShippingInfoComponent,
-                  ContactComponent,
-                ],
-  providers: [CategoryService, ProductService, CartService, EmailService]
+  declarations: [
+    HomePageComponent, 
+    ProductDetailComponent, 
+    ShoppingCartComponent, 
+    OrderComponent, 
+    OrderConfirmComponent, 
+    ProductListComponent, 
+    ShoppingComponent, 
+    ListCategoriesComponent,
+    WidgetProductsComponent,
+    WidgetBoxComponent,
+    SearchComponent,
+    CategoryDetailsComponent,
+    CartComponent,
+    PaymentComponent,
+    ThankyouComponent,
+    ShippingInfoComponent,
+    ContactComponent,
+  ],
+  providers: [
+    CategoryService, 
+    ProductService, 
+    CartService,
+    EmailService
+  ]
 })
 export class ShoppingModule { }

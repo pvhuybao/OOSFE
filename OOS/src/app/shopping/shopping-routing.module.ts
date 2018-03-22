@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -15,6 +16,7 @@ import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import {ContactComponent} from'./contact/contact.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
+import { SearchComponent } from './search/search.component';
 
 
 const shoppingRoutes: Routes = [
@@ -50,8 +52,8 @@ const shoppingRoutes: Routes = [
         children: [
           { path: '', component: ContactComponent },
         ]
-      }
-
+      },
+      { path: 'search', component: SearchComponent }
 
     ]
   },
