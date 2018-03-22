@@ -1,3 +1,8 @@
+//  export enum ProductStatus {
+//      Publish = 1,
+//      Unpublish
+//  }
+
 export class ProductModel{
     id: string;
     code: string;
@@ -6,5 +11,8 @@ export class ProductModel{
     description : string;
     image : string;
     idCategory: string;
+    //status: number;
+    categoryName:string;
     constructor () {}
 }
+
