@@ -104,9 +104,9 @@
         <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2"
           [(ngModel)]="searchResult">
         <ul class="list-group" style="position:absolute; z-index:100; width:100%">
-          <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async">
-            <a (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
-          </li>
+          <!-- <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async"> -->
+            <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
+          <!-- </li> -->
         </ul>
       </div>
 
@@ -190,7 +190,7 @@
         </tfoot>
       </table>
       <div class="pull-left">
-        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="main-btn">Back</a>
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
       </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="edit()">Save</button>

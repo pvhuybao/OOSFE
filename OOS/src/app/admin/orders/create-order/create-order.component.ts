@@ -80,7 +80,8 @@ export class CreateOrderComponent implements OnInit {
         nameProduct: product.name,
         quantity: 1,
         price: product.price,
-        totalPrice: product.price
+        totalPrice: product.price,
+        code: product.id
       }
       this.listOrderDetails.push(detail)
     }
