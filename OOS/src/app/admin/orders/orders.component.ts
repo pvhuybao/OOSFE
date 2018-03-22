@@ -25,7 +25,9 @@ export class OrdersComponent implements OnInit {
 
   getOrderList() 
   {
-    this.ordersService.getList().subscribe(data => {this.listOrders = data});
+    this.ordersService.getList().subscribe(data => {
+      this.listOrders = data;
+    });
   }
 
   get(orderId)
@@ -46,7 +48,7 @@ export class OrdersComponent implements OnInit {
   edit (order)
   {
     //this.ordersService.sendData(order);
-    this.router.navigateByUrl("/admin/orders/edit/" + order.id);
+    this.router.navigateByUrl("/admin/manager/orders/edit/" + order.id);
 
   }
 }

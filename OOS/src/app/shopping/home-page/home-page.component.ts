@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from '../models/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  newestProduct: ProductModel[] = [];
+  topSales: ProductModel[] = [];
+  topDiscount: ProductModel[] = [];
+
+  constructor(private productService: ProductService) { }
+
 
   ngOnInit() {
+    // this.newestProduct = [{
+    //   id: "1", code: "", name: "product 1",
+    //   price: 0, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 2",
+    //   price: 123, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 3",
+    //   price: 222, description: "", image: "", idCategory: ""
+    // },
+    // {
+    //   id: "1", code: "", name: "product 4",
+    //   price: 3344, description: "", image: "", idCategory: ""
+    // },]
+    this.getListNewestProduct();
   }
 
+  getListNewestProduct() {
+    this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
+  }
+
+  getListTopSalesProduct() {
+    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
+  }
+
+  getListTopDiscountProduct() {
+    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => {
+      this.newestProduct = newestProduct
+    });
+  }
 }

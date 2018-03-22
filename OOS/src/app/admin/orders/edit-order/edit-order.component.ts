@@ -59,7 +59,7 @@ export class EditOrderComponent implements OnInit {
       this.order.orderDetails.push(detail)
     }
     this.calculateTotalOrder()
-
+    this.search("");
 
   }
 
@@ -117,8 +117,6 @@ export class EditOrderComponent implements OnInit {
     }
     this.calculateTotalOrder()
   }
-
-
 
   calculateTotalOrder() {
     let total = 0
