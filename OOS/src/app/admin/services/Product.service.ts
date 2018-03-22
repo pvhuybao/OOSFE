@@ -9,7 +9,7 @@ import { map } from 'rxjs/operator/map';
 
 @Injectable()
 export class ProductService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/product/';
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
 
