@@ -21,21 +21,21 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit {
 
-  order : OrdersModel;
-  
-  public Email:string ='';
+  order: OrdersModel;
 
-  public NameBill:string ='';
-  public PhoneBill:string ='';
-  public ProvinceBill:string ='';
-  public DistrictBill:string ='';
-  public StreetBill:string ='';
-  
-  public Name:string ='';
-  public Phone:string ='';
-  public Province:string ='';
-  public District:string ='';
-  public Street:string ='';
+  public Email: string = '';
+
+  public NameBill: string = '';
+  public PhoneBill: string = '';
+  public ProvinceBill: string = '';
+  public DistrictBill: string = '';
+  public StreetBill: string = '';
+
+  public Name: string = '';
+  public Phone: string = '';
+  public Province: string = '';
+  public District: string = '';
+  public Street: string = '';
 
   public IdProduct: string = '';
   public NameProduct: string = '';
@@ -51,9 +51,9 @@ export class CreateOrderComponent implements OnInit {
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
-  showResult : boolean = false;
+  showResult: boolean = false;
   shows: string = "hidden";
-  orderDetails= new OrderDetailModel;
+  orderDetail = new OrderDetailModel;
   listOrderDetails = new Array<OrderDetailModel>();
 
 
@@ -61,39 +61,64 @@ export class CreateOrderComponent implements OnInit {
 
   search(term: string): void {
     this.searchTerms.next(term);
-    // this.showResult = "visible";
-    // console.log("C"+this.showResult);
   }
 
-  hide()
-  {
-    this.search("");
-  }
-  
-  // hide() {
-  //   this.showResult = "hidden";
-  // }
-
-  // show(){
-  //   this.search(this.searchResult);
-  //   console.log(this.showResult);
-  // }
-  add()
-  {
-    this.orderDetails.nameProduct = this.choosedProduct.name;
-    this.orderDetails.quantity = 1;
-    this.listOrderDetails.push(this.orderDetails);
-    console.log(this.listOrderDetails[0].nameProduct);
-  }
   chooseProduct(product: ProductModel) {
-    this.choosedProduct = product;
-    this.searchResult = '';
-    console.log("A:"+product.name+"B:"+this.choosedProduct.name+"C:"+this.showResult);
-    this.search('');
-    // this.listProduct.isEmpty;
-    // if(this.searchTerms.isEmpty) this.show = "hidden";
-    // else this.show = "visible";
 
+    this.searchResult = '';
+    // check duplicate ****
+    let indexMatch = this.indexDetailMatch(product.id);
+    if (indexMatch > -1) {
+      this.listOrderDetails[indexMatch].quantity += 1
+      let quantity = this.listOrderDetails[indexMatch].quantity
+      let price = this.listOrderDetails[indexMatch].price
+      this.listOrderDetails[indexMatch].totalPrice = quantity * price
+    }
+    else {
+      let detail: OrderDetailModel = {
+        idProduct: product.id,
+        nameProduct: product.name,
+        quantity: 1,
+        price: product.price,
+        totalPrice: product.price
+      }
+      this.listOrderDetails.push(detail)
+    }
+    this.calculateTotalOrder();
+    this.search('');
+  }
+
+  indexDetailMatch(id: string) {
+    for (let d of this.listOrderDetails) {
+      if (d.idProduct == id) {
+        let index = this.listOrderDetails.indexOf(d, 0)
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  calculateTotalOrder() {
+    let total = 0
+    for (let d of this.listOrderDetails) {
+      total += d.totalPrice
+    }
+    this.Total = total
+
+  }
+
+  updateTotal(orderDetail: OrderDetailModel) {
+    console.log("Edit updateTotal")
+    orderDetail.totalPrice = orderDetail.price * orderDetail.quantity
+    this.calculateTotalOrder()
+  }
+
+  delete(orderDetail: OrderDetailModel) {
+    var index = this.listOrderDetails.indexOf(orderDetail, 0);
+    if (index > -1) {
+      this.listOrderDetails.splice(index, 1);
+    }
+    this.calculateTotalOrder()
   }
 
   ngOnInit(): void {
@@ -109,7 +134,7 @@ export class CreateOrderComponent implements OnInit {
     );
   }
 
-  copy(){
+  copy() {
     this.Name = this.NameBill;
     this.Phone = this.PhoneBill;
     this.Province = this.ProvinceBill;
@@ -120,21 +145,21 @@ export class CreateOrderComponent implements OnInit {
 
   create() {
     let addressBill = new AddressModel();
-      addressBill.name = this.NameBill;
-      addressBill.phone = this.PhoneBill;
-      addressBill.province = this.ProvinceBill;
-      addressBill.district = this.DistrictBill;
-      addressBill.street = this.StreetBill;
-      addressBill.type = 0;
+    addressBill.name = this.NameBill;
+    addressBill.phone = this.PhoneBill;
+    addressBill.province = this.ProvinceBill;
+    addressBill.district = this.DistrictBill;
+    addressBill.street = this.StreetBill;
+    addressBill.type = 0;
 
 
     let address = new AddressModel();
-      address.name = this.Name;
-      address.phone = this.Phone;
-      address.province = this.Province;
-      address.district = this.District;
-      address.street = this.Street;
-      address.type = 1;
+    address.name = this.Name;
+    address.phone = this.Phone;
+    address.province = this.Province;
+    address.district = this.District;
+    address.street = this.Street;
+    address.type = 1;
 
     let orderDetails = new OrderDetailModel();
     orderDetails.idProduct = null;
