@@ -59,16 +59,20 @@ export class CreateOrderComponent implements OnInit {
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
 
+  hide()
+  {
+    // this.searchTerms = new Subject<string>();
+    // this.searchResult = '';
+    // if(this.choosedProduct!=null)
+    // this.search('');
+    console.log("TEST HIDE()");
+  }
   search(term: string): void {
     this.searchTerms.next(term);
     // this.showResult = "visible";
     // console.log("C"+this.showResult);
   }
 
-  hide()
-  {
-    this.search("");
-  }
   
   // hide() {
   //   this.showResult = "hidden";

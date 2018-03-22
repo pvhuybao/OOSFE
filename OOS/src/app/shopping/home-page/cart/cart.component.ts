@@ -20,10 +20,11 @@ export class CartComponent implements OnInit {
   get() {
     this.cartService.get().subscribe(x => { 
       this.cart = x; 
+      if (this.cart)
+      this.updateTotal();
     });
     this.cartService.init()
-    if (this.cart)
-      this.updateTotal();
+    
   }
   updateTotal() {
     var total = 0;

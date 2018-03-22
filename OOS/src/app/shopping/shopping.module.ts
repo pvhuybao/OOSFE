@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -19,27 +21,39 @@ import { CartComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
+import { SearchComponent } from './search/search.component';
+//self-services
+//import { SpinnerService } from '../shared/services/spinner.service';
 
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [HomePageComponent, 
-                  ProductDetailComponent, 
-                  ShoppingCartComponent, 
-                  OrderComponent, 
-                  OrderConfirmComponent, 
-                  ProductListComponent, 
-                  ShoppingComponent, 
-                  ListCategoriesComponent,
-                  WidgetProductsComponent,
-                  WidgetBoxComponent,
-                  CartComponent,
-                  PaymentComponent,
-                  ThankyouComponent,
-                  ShippingInfoComponent,
-                ],
-  providers: [CategoryService, ProductService, CartService]
+  declarations: [
+    HomePageComponent, 
+    ProductDetailComponent, 
+    ShoppingCartComponent, 
+    OrderComponent, 
+    OrderConfirmComponent, 
+    ProductListComponent, 
+    ShoppingComponent, 
+    ListCategoriesComponent,
+    WidgetProductsComponent,
+    WidgetBoxComponent,
+    SearchComponent,
+    CartComponent,
+    PaymentComponent,
+    ThankyouComponent,
+    ShippingInfoComponent
+  ],
+  providers: [
+    CategoryService, 
+    ProductService, 
+    CartService
+  ]
 })
 export class ShoppingModule { }

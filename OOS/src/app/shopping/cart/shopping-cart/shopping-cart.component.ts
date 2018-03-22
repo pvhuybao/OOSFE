@@ -31,17 +31,17 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.remove(product);
     this.updateTotal();
   }
-  addCart(id) {
-    var product = new ProductModel();
-    product.id = id.value;
-    product.idCategory = "5";
-    product.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png"
-    product.name = id.value;
-    product.price = 50000;
-    product.description = id.value;
-    this.cartService.set(product);
-    this.updateTotal();
-  }
+  // addCart(id) {
+  //   var product = new ProductModel();
+  //   product.id = id.value;
+  //   product.idCategory = "5";
+  //   product.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png"
+  //   product.name = id.value;
+  //   product.price = 50000;
+  //   product.description = id.value;
+  //   this.cartService.set(product);
+  //   this.updateTotal();
+  // }
   updateTotal() {
     var total = 0;
     this.cart.forEach(function (item) {
