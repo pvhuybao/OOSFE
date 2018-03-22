@@ -73,12 +73,13 @@
       <h3 class="title">Order Review</h3>
     </div>
     <div class="section-title-search">
-        <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2"
+        <!-- (blur)="hide()" -->
+        <input #searchBox  (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2"
           value={{searchResult}} [(ngModel)]="searchResult">
       <ul class="list-group" style="position:absolute; z-index:100; width:100%">
-        <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async">
-          <a (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
-        </li>
+        <!-- <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async"> -->
+          <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
+        <!-- </li> -->
       </ul>
     </div>
     <table class="shopping-cart-table table">

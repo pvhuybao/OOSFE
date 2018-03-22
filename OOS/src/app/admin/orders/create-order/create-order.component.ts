@@ -60,6 +60,12 @@ export class CreateOrderComponent implements OnInit {
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router,private spinnerService: SpinnerService) { }
 
+  // hide()
+  // {
+  //   this.searchTerms = new Subject<string>();
+  //   // this.searchResult = '';
+  //   this.search('');
+  // }
   search(term: string): void {
     this.searchTerms.next(term);
   }
