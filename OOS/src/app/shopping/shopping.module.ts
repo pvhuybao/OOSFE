@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
+import { FormsModule } from '@angular/forms';
 
 import { ShoppingRoutingModule } from './shopping-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -21,6 +22,7 @@ import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { ContactComponent } from './contact/contact.component';
+import { EmailService } from './services/email.service';
 
 
 //self-services
@@ -32,6 +34,7 @@ import { ContactComponent } from './contact/contact.component';
   imports: [
     CommonModule,
     ShoppingRoutingModule,
+    FormsModule
   ],
   declarations: [HomePageComponent, 
                   ProductDetailComponent, 
@@ -50,6 +53,6 @@ import { ContactComponent } from './contact/contact.component';
                   ShippingInfoComponent,
                   ContactComponent,
                 ],
-  providers: [CategoryService, ProductService, CartService]
+  providers: [CategoryService, ProductService, CartService, EmailService]
 })
 export class ShoppingModule { }
