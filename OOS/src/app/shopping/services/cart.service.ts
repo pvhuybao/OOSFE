@@ -9,15 +9,18 @@ export class CartService {
   get() {
     return JSON.parse(localStorage.getItem(this.key));
   }
-  set(item) {
+  set(product) {
     var data = JSON.parse(localStorage.getItem(this.key));
     if (!data) data = [];
-    if (!data.find(x => x.product.id == item.product.id)) {
+    if (!data.find(x => x.product.id == product.id)) {
+      var item = new CartModel();
+      item.product=product;
+      item.quantity=1;
       data.splice(0, 0, item);
       localStorage.setItem(this.key, JSON.stringify(data));
     }
     else{
-      this.updateQuantity(item,data.find(x => x.product.id == item.product.id).quantity+1);
+      this.updateQuantity(product,data.find(x => x.product.id == product.id).quantity+1);
     }
   }
   remove(item) {

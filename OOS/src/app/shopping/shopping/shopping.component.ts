@@ -27,8 +27,6 @@ export class ShoppingComponent implements OnInit {
       private router: Router) { }
   
     ngOnInit() {
-      if(this.router.url === "/shopping/home") this.block = "block";
-
       this.categoryService.get().subscribe(
         data =>{
           this.categories = data;}
@@ -46,6 +44,8 @@ export class ShoppingComponent implements OnInit {
         switchMap((term: string) => this.productService.searchProduct(term)),
       );
     }
+
+    
 
     search(term: string): void {
       if(term === "") this.hidden = true;

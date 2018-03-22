@@ -19,12 +19,15 @@ export class ProductService {
   get(id): Observable<ProductModel> {
     return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);
   }
+
   delete(id): Observable<any> {
     return this.authHttpService.delete(this.API_PATH + id);
   }
+
   setId(id) {
     this.idProduct = id;
   }
+
   gets(): Observable<ProductModel[]> {
     return this.authHttpService.get(this.API_PATH)
       //.map(res => res.json() || []);
@@ -61,6 +64,10 @@ export class ProductService {
     return listProduct;
   }
 
+  getByCategory(id:string) {
+    return this.authHttpService.get(this.API_PATH + id +"/category").map(res => res.json() || []);
+  }
+
   searchProductByIdCategory(idCategory: string, keyword: string): Observable<ProductModel[]>  {
     if (!keyword.trim()) {
       // if not search term, return empty array.
@@ -69,4 +76,5 @@ export class ProductService {
     var path = this.API_PATH + idCategory + "&" + keyword + "/search";
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
+  
 }
