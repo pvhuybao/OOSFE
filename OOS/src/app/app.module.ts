@@ -6,7 +6,7 @@ import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import {Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';

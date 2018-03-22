@@ -23,7 +23,7 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule,
+    ShoppingRoutingModule
   ],
   declarations: [HomePageComponent, 
                   ProductDetailComponent, 
@@ -38,7 +38,7 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
                   CartComponent,
                   PaymentComponent,
                   ThankyouComponent,
-                  ShippingInfoComponent,
+                  ShippingInfoComponent
                 ],
   providers: [CategoryService, ProductService, CartService]
 })

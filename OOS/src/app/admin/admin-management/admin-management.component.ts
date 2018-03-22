@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from "ng5-breadcrumb";
 
 @Component({
   selector: 'app-admin-management',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private breadcrumbService:BreadcrumbService ) {
+    
+  }
 
   ngOnInit() {
   }
