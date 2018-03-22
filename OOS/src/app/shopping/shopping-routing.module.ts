@@ -14,6 +14,8 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import {ContactComponent} from'./contact/contact.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
+
 
 const shoppingRoutes: Routes = [
   {
@@ -34,6 +36,7 @@ const shoppingRoutes: Routes = [
         path: 'category',
         children: [
           { path: 'id', component: ProductListComponent },
+          { path:':id',component: CategoryDetailsComponent}
         ]
       },
       {
