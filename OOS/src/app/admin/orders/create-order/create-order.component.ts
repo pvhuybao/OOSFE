@@ -161,17 +161,17 @@ export class CreateOrderComponent implements OnInit {
     address.street = this.Street;
     address.type = 1;
 
-    let orderDetails = new OrderDetailModel();
-    orderDetails.idProduct = null;
-    orderDetails.price = this.Price;
-    orderDetails.quantity = this.Quantity;
-    orderDetails.totalPrice = this.TotalPrice;
+    // let orderDetails = new OrderDetailModel();
+    // orderDetails.idProduct = null;
+    // orderDetails.price = this.Price;
+    // orderDetails.quantity = this.Quantity;
+    // orderDetails.totalPrice = this.TotalPrice;
 
     let newOrder = new OrdersModel();
     newOrder.email = this.Email;
     newOrder.userId = null;
     newOrder.address = [addressBill, address];
-    newOrder.orderDetails = [orderDetails];
+    newOrder.orderDetails = this.listOrderDetails;
     newOrder.total = this.Total;
 
     this.orderService.add(newOrder).subscribe(() => {
