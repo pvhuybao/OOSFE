@@ -8,11 +8,13 @@ import { BreadcrumbService } from "ng5-breadcrumb";
 })
 export class AdminManagementComponent implements OnInit {
 
-  constructor(private breadcrumbService:BreadcrumbService ) {
-    
-  }
+  constructor(
+    private breadcrumbService:BreadcrumbService
+  ) { }
 
   ngOnInit() {
+    this.breadcrumbService.addFriendlyNameForRoute('/admin', 'Admin');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager', 'Manager'); 
   }
 
 }

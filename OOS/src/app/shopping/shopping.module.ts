@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { Ng5BreadcrumbModule, BreadcrumbService } from 'ng5-breadcrumb';
 import { ShoppingRoutingModule } from './shopping-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -23,7 +23,8 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
+    Ng5BreadcrumbModule
   ],
   declarations: [HomePageComponent, 
                   ProductDetailComponent, 
@@ -40,6 +41,6 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
                   ThankyouComponent,
                   ShippingInfoComponent
                 ],
-  providers: [CategoryService, ProductService, CartService]
+  providers: [CategoryService, ProductService, CartService, BreadcrumbService]
 })
 export class ShoppingModule { }
