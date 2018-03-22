@@ -13,6 +13,7 @@ import { PaymentComponent } from './cart/payment/payment.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { CategoryDetailComponent } from '../admin/categories/category-detail/category-detail.component';
 
 const shoppingRoutes: Routes = [
   {
@@ -32,7 +33,7 @@ const shoppingRoutes: Routes = [
       {
         path: 'category',
         children: [
-          { path: 'id', component: ProductListComponent },
+          { path: ':id', component: CategoryDetailComponent },
         ]
       },
       {

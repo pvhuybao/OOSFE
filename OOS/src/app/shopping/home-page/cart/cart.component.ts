@@ -11,11 +11,12 @@ export class CartComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
-  quantity:number;
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    this.get();
   }
+
   get() {
     this.cartService.get().subscribe(x => { 
       this.cart = x; 
@@ -31,5 +32,8 @@ export class CartComponent implements OnInit {
     })
     this.total = total;
   }
-
+  remove(product) {
+    this.cartService.remove(product);
+    this.updateTotal();
+  }
 }
