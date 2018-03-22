@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -16,24 +18,34 @@ import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductService } from './services/product.service';
 import { SearchComponent } from './search/search.component';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   imports: [
     CommonModule,
     ShoppingRoutingModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [HomePageComponent, 
-                  ProductDetailComponent, 
-                  ShoppingCartComponent, 
-                  OrderComponent, 
-                  OrderConfirmComponent, 
-                  ProductListComponent, 
-                  ShoppingComponent, 
-                  ListCategoriesComponent,
-                  WidgetProductsComponent,
-                  WidgetBoxComponent,
-                  SearchComponent,
-                ],
-  providers: [CategoryService, ProductService, CartService]
+  declarations: [
+    HomePageComponent, 
+    ProductDetailComponent, 
+    ShoppingCartComponent, 
+    OrderComponent, 
+    OrderConfirmComponent, 
+    ProductListComponent, 
+    ShoppingComponent, 
+    ListCategoriesComponent,
+    WidgetProductsComponent,
+    WidgetBoxComponent,
+    SearchComponent,
+  ],
+  providers: [
+    CategoryService, 
+    ProductService, 
+    CartService,
+    SearchService
+  ]
 })
 export class ShoppingModule { }

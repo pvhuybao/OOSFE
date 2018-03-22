@@ -60,4 +60,13 @@ export class ProductService {
 
     return listProduct;
   }
+
+  searchProductByIdCategory(idCategory: string, keyword: string): Observable<ProductModel[]>  {
+    if (!keyword.trim()) {
+      // if not search term, return empty array.
+      return of([]);
+    }
+    var path = this.API_PATH + idCategory + "&" + keyword + "/search";
+    return this.authHttpService.get(path).map(res => res.json() || []);
+  }
 }

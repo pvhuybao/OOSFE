@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
@@ -24,6 +24,7 @@ import { NouisliderModule } from 'ng2-nouislider';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AdminModule,
     ShoppingModule,

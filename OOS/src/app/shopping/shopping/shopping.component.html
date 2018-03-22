@@ -15,7 +15,7 @@
 					<!-- Search -->
 					<div class="header-search">
 						<form >
-							<input class="input search-input input-group" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)" (click)="search(searchBox.value)" type="text" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2" value="{{searchResult}}">
+							<input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)" (click)="search(searchBox.value)" type="text" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2" value="{{searchResult}}">
 							<div class="input-group" style="position:absolute; z-index:100; background:white; width:100%" >
 								<ul [hidden]="hidden" class="search-result">
 									<li  class="list-group" *ngFor="let product of listProduct | async" >
@@ -30,12 +30,12 @@
 										</div>
 									</li>
 								</ul>
-							</div>
-							<select class="input search-categories" style="width:40%">
-								<option value="all">All Categories</option>
-								<option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
-							</select>
-							<button class="search-btn" (click)="setSearch()"><i class="fa fa-search"></i></button>
+                            </div>
+							<select class="input search-categories" [(ngModel)]="idCategory" name="idCategory" style="width:40%">
+								<option value="all" >All Categories</option>
+								<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+                            </select>
+							<button class="search-btn" (click)="searchProduct(idCategory,keyword)"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->

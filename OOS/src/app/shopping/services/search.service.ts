@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SearchService {
-searchCategoryId : string;
-searchKeywords : string;
+searchIdCategory : string;
+searchKeyword : string;
   constructor() { }
 
-  getSearchCategory() {
-    return this.searchCategoryId;
+  public getSearchIdCategory() {
+    return this.searchIdCategory;
   }
 
-  setSearchCategory(searchCategoryId) {
-    this.searchCategoryId = searchCategoryId;
+  public setSearchIdCategory(searchCategoryId: string) {
+    this.searchIdCategory = searchCategoryId;
   }
 
-  getSearchKeywords() {
-    return this.searchKeywords;
+  public getSearchKeyword() {
+    return this.searchKeyword;
   }
 
-  setSearchKeywords(searchKeywords) {
-    this.searchKeywords = searchKeywords;
+  public setSearchKeyword(searchKeyword: string) {
+    this.searchKeyword = searchKeyword;
   }
 
 }

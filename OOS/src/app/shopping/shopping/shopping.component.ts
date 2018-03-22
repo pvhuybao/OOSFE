@@ -5,6 +5,7 @@ import { ProductModel } from '../models/product';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-shopping',
@@ -20,7 +21,10 @@ export class ShoppingComponent implements OnInit {
   choosedProduct: ProductModel;
   hidden : boolean = false;
   block : string;
-    constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) { }
+  idCategory: string = "all";
+  keyword: string;
+    constructor(private categoryService: CategoryService, private productService: ProductService, private searchService: SearchService,
+      private router: Router) { }
   
     ngOnInit() {
       if(this.router.url === "/shopping/home") this.block = "block";
@@ -51,5 +55,15 @@ export class ShoppingComponent implements OnInit {
   
     hide() {
       this.hidden = true;
+    }
+
+    searchProduct(idCategory: string, keyword: string) {
+      if (keyword === undefined || keyword === "") {}
+      else {
+        this.searchService.setSearchIdCategory(idCategory);
+        this.searchService.setSearchKeyword(keyword);
+        var path = "";
+        this.router.navigateByUrl(path);
+      }
     }
 }
