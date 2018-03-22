@@ -4,7 +4,7 @@
     <div class="product product-single">
       <div class="product-thumb">
         <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-        <img src="/assets/img/banner01.jpg" alt="">
+        <img src="{{productDetail.image}}" alt="">
       </div>
       <div class="product-body">
         <h3 class="product-price">$ {{productDetail.price}}</h3>
@@ -19,7 +19,7 @@
         <div class="product-btns">
           <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
           <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-          <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+          <button class="primary-btn add-to-cart" (click)="addProductCart(productDetail)"><i class="fa fa-shopping-cart" ></i> Add to Cart</button>
         </div>
       </div>
     </div>

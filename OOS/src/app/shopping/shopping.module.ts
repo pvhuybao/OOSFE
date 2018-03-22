@@ -19,6 +19,7 @@ import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
                   PaymentComponent,
                   ThankyouComponent,
                   ShippingInfoComponent,
+                  ContactComponent,
                 ],
   providers: [CategoryService, ProductService, CartService]
 })
