@@ -36,12 +36,12 @@ export class EditOrderComponent implements OnInit {
   constructor(private ss: OrdersService, private productService: ProductService, private activatedRoute: ActivatedRoute, private spinnerService: SpinnerService) { }
 
   search(term: string): void {
-    console.log("EditOrder term =" + term)
     this.searchTerms.next(term);
+    console.log("A:"+term+"B:"+this.searchResult);
   }
 
   chooseProduct(product: ProductModel) {
-    this.searchResult = product.name;
+    this.searchResult = '';
     this.choosedProduct = product;
     // this.listProduct.isEmpty;
     let indexMatch = this.indexDetailMatch(product.id)

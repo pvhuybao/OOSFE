@@ -75,7 +75,7 @@ export class CreateOrderComponent implements OnInit {
   chooseProduct(product: ProductModel) {
 
     this.searchResult = '';
-    // check duplicate ****
+    // check duplicate **
     let indexMatch = this.indexDetailMatch(product.id);
     if (indexMatch > -1) {
       this.listOrderDetails[indexMatch].quantity += 1
@@ -90,7 +90,7 @@ export class CreateOrderComponent implements OnInit {
         quantity: 1,
         price: product.price,
         totalPrice: product.price,
-        code: product.id
+        code: product.code
       }
       this.listOrderDetails.push(detail)
     }
@@ -119,7 +119,8 @@ export class CreateOrderComponent implements OnInit {
 
   updateTotal(orderDetail: OrderDetailModel) {
     console.log("Edit updateTotal")
-    orderDetail.totalPrice = orderDetail.price * orderDetail.quantity
+    orderDetail.totalPrice = orderDetail.price  
+    orderDetail.quantity
     this.calculateTotalOrder()
   }
 

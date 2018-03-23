@@ -6,8 +6,8 @@
 					<div class="section-title">
 						<h3 class="title">Order Review</h3>
 					</div>
-						<input class="input" type="text" value="" #id placeholder="Product">
-						<button class="primary-btn" (click)="addCart(id)">Add to Cart</button>
+						<!-- <input class="input" type="text" value="" #id placeholder="Product">
+						<button class="primary-btn" (click)="addCart(id)">Add to Cart</button> -->
 					<table class="shopping-cart-table table">
 						<thead>
 							<tr>
@@ -37,13 +37,13 @@
 									<br>
 								</td>
 								<td class="qty text-center">
-									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item,quantity)">
+									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity)">
 								</td>
 								<td class="total text-center">
 									<strong class="primary-color">{{item.product.price*item.quantity}}</strong>
 								</td>
 								<td class="text-right">
-									<button class="main-btn icon-btn" (click)="remove(item)">
+									<button class="main-btn icon-btn" (click)="remove(item.product)">
 										<i class="fa fa-close"></i>
 									</button>
 								</td>
@@ -58,7 +58,7 @@
 						</tfoot>
 					</table>
 					<div class="pull-right">
-						<button class="primary-btn">Place Order</button>
+						<button class="primary-btn" routerLink="shipping-info">Place Order</button>
 					</div>
 				</div>
 			</div>
