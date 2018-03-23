@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 
 @Component({
@@ -12,9 +13,16 @@ import { Router } from '@angular/router';
 export class UserCreateComponent implements OnInit {
 
   user = new UserModel;
-  confirmpassword: string;
 
-  constructor(private userservice: UserService, private router: Router) {
+  isInvalid = false;
+
+  userValidation: any;
+
+  constructor(
+    private userservice: UserService,
+    private router: Router,
+    private spinnerService: SpinnerService
+  ) {
 
   }
 
@@ -23,9 +31,20 @@ export class UserCreateComponent implements OnInit {
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
-    this.userservice.add(this.user).subscribe(res => {
-      this.router.navigate(['../admin/manager/users']);
-    });
+    this.spinnerService.startLoadingSpinner();
+
+    this.userservice.add(this.user)
+      .subscribe(res => {
+        this.router.navigate(['../admin/manager/users']);
+      },
+        (error) => {
+          this.spinnerService.turnOffSpinner();
+
+          console.log(JSON.parse(error._body));
+          this.userValidation = JSON.parse(error._body);
+          this.isInvalid = true;
+        }
+      )
   }
 
 

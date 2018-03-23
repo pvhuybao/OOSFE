@@ -6,8 +6,6 @@
 					<div class="section-title">
 						<h3 class="title">Order Review</h3>
 					</div>
-						<!-- <input class="input" type="text" value="" #id placeholder="Product">
-						<button class="primary-btn" (click)="addCart(id)">Add to Cart</button> -->
 					<table class="shopping-cart-table table">
 						<thead>
 							<tr>
@@ -37,7 +35,7 @@
 									<br>
 								</td>
 								<td class="qty text-center">
-									<input class="input" type="number" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity)">
+									<input class="input" type="number" min="1" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
 								</td>
 								<td class="total text-center">
 									<strong class="primary-color">{{item.product.price*item.quantity}}</strong>
