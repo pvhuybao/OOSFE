@@ -5,6 +5,7 @@ import { OrdersModel } from '../models/order';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { StatusOrder } from '../models/statusOrder';
 
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -18,6 +19,7 @@ export class OrdersComponent implements OnInit {
   constructor(
     private ordersService: OrdersService, 
     private router: Router, 
+
     private spinnerService: SpinnerService) 
     { 
       this.listStatus.push(new StatusOrder(0,"Confirming"))
@@ -26,6 +28,8 @@ export class OrdersComponent implements OnInit {
       this.listStatus.push(new StatusOrder(3,"Shipped"))
       
     }
+
+   
 
   ngOnInit() {
     this.getOrderList();

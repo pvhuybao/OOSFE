@@ -100,10 +100,8 @@ export class EditOrderComponent implements OnInit {
       console.log("EditOrder data =", data);
       this.order = data
       console.log("EditOrder order =", this.order);
-    })
+    })   
   }
-
-
 
   edit() {
     this.spinnerService.startLoadingSpinner()

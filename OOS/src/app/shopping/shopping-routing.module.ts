@@ -35,7 +35,7 @@ const shoppingRoutes: Routes = [
       {
         path: 'category',
         children: [
-          { path: 'id', component: ProductListComponent },
+          { path: ':id', component: ProductListComponent },
           { path:':id',component: CategoryDetailsComponent}
         ]
       },

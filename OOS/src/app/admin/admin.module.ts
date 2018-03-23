@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,7 +39,8 @@ import { CategoryService } from './services/category.service';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng5BreadcrumbModule
   ],
     
   declarations: [
@@ -72,7 +74,8 @@ import { CategoryService } from './services/category.service';
     CategoryService, 
     UserService,
     OrdersService,
-    SpinnerService
+    SpinnerService,
+    BreadcrumbService
   ]
 })
 export class AdminModule { }
