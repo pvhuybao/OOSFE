@@ -22,6 +22,7 @@ import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { SearchComponent } from './search/search.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -48,7 +49,8 @@ import { SearchComponent } from './search/search.component';
     CartComponent,
     PaymentComponent,
     ThankyouComponent,
-    ShippingInfoComponent
+    ShippingInfoComponent,
+    CategoryDetailsComponent,
   ],
   providers: [
     CategoryService, 
