@@ -19,7 +19,7 @@ export class UserCreateComponent implements OnInit {
   userValidation: any;
 
   constructor(
-    private userservice: UserService, 
+    private userservice: UserService,
     private router: Router,
     private spinnerService: SpinnerService
   ) {
@@ -31,18 +31,20 @@ export class UserCreateComponent implements OnInit {
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
-    this.userservice.add(this.user)
-    .subscribe(res => {
-      this.router.navigate(['../admin/manager/users']);
-    },
-    (error) => {
-      this.spinnerService.turnOffSpinner();
+    this.spinnerService.startLoadingSpinner();
 
-      console.log(JSON.parse(error._body));
-      this.userValidation = JSON.parse(error._body);
-      this.isInvalid = true;
-    }
-  )
+    this.userservice.add(this.user)
+      .subscribe(res => {
+        this.router.navigate(['../admin/manager/users']);
+      },
+        (error) => {
+          this.spinnerService.turnOffSpinner();
+
+          console.log(JSON.parse(error._body));
+          this.userValidation = JSON.parse(error._body);
+          this.isInvalid = true;
+        }
+      )
   }
 
 
