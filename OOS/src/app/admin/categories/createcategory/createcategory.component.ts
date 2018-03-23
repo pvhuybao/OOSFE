@@ -21,7 +21,7 @@ export class CreateCategoryComponent implements OnInit {
   name: string = '';
   description: string = '';
 
-  categoryValidation: any;
+  categoryValidation = new Object;
 
   isInvalid = false;
 
