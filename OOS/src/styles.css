@@ -403,6 +403,27 @@ body {
     background-color: #F8694A;
   }
   
+  .section-title-search {
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-bottom: 1px solid #DADADA;
+  }
+  
+  .section-title-search .title {
+    display: inline-block;
+    text-transform: uppercase;
+  }
+  
+  .section-title-search:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1.5px;
+    height: 3px;
+    width: 60px;
+    background-color: transparent;
+  }
   /*----------------------------*\
       Breadcrumb
   \*----------------------------*/
