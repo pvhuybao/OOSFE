@@ -13,6 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-create-order',
@@ -57,8 +58,16 @@ export class CreateOrderComponent implements OnInit {
   listOrderDetails = new Array<OrderDetailModel>();
 
 
-  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router) { }
+  constructor(private orderService: OrdersService, private productService: ProductService, private router: Router,private spinnerService: SpinnerService) { }
 
+  hide()
+  {
+    // this.searchTerms = new Subject<string>();
+    // this.searchResult = '';
+    // if(this.choosedProduct!=null)
+    // this.search('');
+    console.log("TEST HIDE()");
+  }
   search(term: string): void {
     this.searchTerms.next(term);
   }
@@ -66,7 +75,7 @@ export class CreateOrderComponent implements OnInit {
   chooseProduct(product: ProductModel) {
 
     this.searchResult = '';
-    // check duplicate ****
+    // check duplicate **
     let indexMatch = this.indexDetailMatch(product.id);
     if (indexMatch > -1) {
       this.listOrderDetails[indexMatch].quantity += 1
@@ -80,7 +89,8 @@ export class CreateOrderComponent implements OnInit {
         nameProduct: product.name,
         quantity: 1,
         price: product.price,
-        totalPrice: product.price
+        totalPrice: product.price,
+        code: product.code
       }
       this.listOrderDetails.push(detail)
     }
@@ -109,7 +119,8 @@ export class CreateOrderComponent implements OnInit {
 
   updateTotal(orderDetail: OrderDetailModel) {
     console.log("Edit updateTotal")
-    orderDetail.totalPrice = orderDetail.price * orderDetail.quantity
+    orderDetail.totalPrice = orderDetail.price  
+    orderDetail.quantity
     this.calculateTotalOrder()
   }
 
@@ -161,21 +172,23 @@ export class CreateOrderComponent implements OnInit {
     address.street = this.Street;
     address.type = 1;
 
-    let orderDetails = new OrderDetailModel();
-    orderDetails.idProduct = null;
-    orderDetails.price = this.Price;
-    orderDetails.quantity = this.Quantity;
-    orderDetails.totalPrice = this.TotalPrice;
+    // let orderDetails = new OrderDetailModel();
+    // orderDetails.idProduct = null;
+    // orderDetails.price = this.Price;
+    // orderDetails.quantity = this.Quantity;
+    // orderDetails.totalPrice = this.TotalPrice;
 
     let newOrder = new OrdersModel();
     newOrder.email = this.Email;
     newOrder.userId = null;
     newOrder.address = [addressBill, address];
-    newOrder.orderDetails = [orderDetails];
+    newOrder.orderDetails = this.listOrderDetails;
     newOrder.total = this.Total;
 
+    this.spinnerService.startLoadingSpinner();
     this.orderService.add(newOrder).subscribe(() => {
       this.router.navigateByUrl("/admin/manager/orders");
+      this.spinnerService.turnOffSpinner();
     });
   }
 }

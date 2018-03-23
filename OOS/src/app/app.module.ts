@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import {Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
@@ -25,6 +25,7 @@ import { NouisliderModule } from 'ng2-nouislider';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AdminModule,
     ShoppingModule,

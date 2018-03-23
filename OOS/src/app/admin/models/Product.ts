@@ -12,7 +12,7 @@ export class ProductModel{
     image : string;
     idCategory: string;
     //status: number;
-    categoryName:string;
+    
     constructor () {}
 }
 

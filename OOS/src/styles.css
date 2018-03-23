@@ -402,7 +402,7 @@ body {
     width: 60px;
     background-color: #F8694A;
   }
-
+  
   .section-title-search {
     position: relative;
     margin-bottom: 15px;
@@ -424,7 +424,6 @@ body {
     width: 60px;
     background-color: transparent;
   }
-  
   /*----------------------------*\
       Breadcrumb
   \*----------------------------*/
@@ -567,6 +566,15 @@ body {
   .header-account.dropdown .custom-menu>li>a>i {
     margin-right: 15px;
     color: #F8694A;
+  }
+
+  .category-list.dropdown-menu {
+    left: auto;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-radius: 0px;
   }
   
   /*----------------------------*\
@@ -2073,7 +2081,9 @@ body {
     opacity: .75;
     color: black;
 }
-
+ul.breadcrumb li+li:before {
+  content: ">";
+}
   
 
 

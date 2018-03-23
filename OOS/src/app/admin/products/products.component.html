@@ -25,8 +25,8 @@
           <td class="details">
             <a routerLink="/admin/manager/product-details" routerLinkActive="active" class="primary-color" (click)="setId(product.id)">{{product.name}}</a>
             <ul>
-              <li><span>Code: {{product.code}}</span></li>
-              <li><span>Category: {{product.categoryName}}</span></li>
+              <li><span>Id:{{product.id}}</span></li>
+              <li><span>Category:{{product.idCategory}}</span></li>
             </ul>
           </td>
           <td class="price text-center"><strong>{{product.price}}</strong><br><del class="font-weak"><small>{{product.price}}</small></del></td>
