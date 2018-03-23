@@ -36,5 +36,6 @@ export class CartComponent implements OnInit {
   remove(product) {
     this.cartService.remove(product);
     this.updateTotal();
+    event.stopPropagation();​
   }
 }
