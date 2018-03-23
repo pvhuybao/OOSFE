@@ -23,6 +23,8 @@ import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
+import { ContactComponent } from './contact/contact.component';
+import { EmailService } from './services/email.service';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -51,11 +53,13 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
     ThankyouComponent,
     ShippingInfoComponent,
     CategoryDetailsComponent,
+    ContactComponent
   ],
   providers: [
     CategoryService, 
     ProductService, 
-    CartService
+    CartService,
+    EmailService
   ]
 })
 export class ShoppingModule { }

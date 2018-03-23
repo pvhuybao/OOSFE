@@ -15,8 +15,10 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { CategoryDetailComponent } from '../admin/categories/category-detail/category-detail.component';
+import {ContactComponent} from'./contact/contact.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { SearchComponent } from './search/search.component';
+
 
 const shoppingRoutes: Routes = [
   {
@@ -36,8 +38,7 @@ const shoppingRoutes: Routes = [
       {
         path: 'category',
         children: [
-          { path: ':id', component: ProductListComponent },
-          { path:':id',component: CategoryDetailsComponent}
+          { path: ':id', component: CategoryDetailsComponent}
         ]
       },
       {
@@ -46,7 +47,14 @@ const shoppingRoutes: Routes = [
           { path: ':id', component: ProductDetailComponent },
         ]
       },
+      {
+        path: 'contact',
+        children: [
+          { path: '', component: ContactComponent },
+        ]
+      },
       { path: 'search', component: SearchComponent }
+
     ]
   },
 ];

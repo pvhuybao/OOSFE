@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductModel } from '../models/product';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-widget-box',
@@ -8,10 +9,15 @@ import { ProductModel } from '../models/product';
 })
 export class WidgetBoxComponent implements OnInit {
 
+  id:string='';
   @Input() productDetail: ProductModel;
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
+  }
+
+  addProductCart(product){
+    this.cartService.set(product);
   }
 
 }
