@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 import { CategoryService } from '../services/category.service';
 import { ProductModel } from '../models/product';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, delay } from 'rxjs/operators';
-import { Router, NavigationStart} from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, ChildActivationEnd} from '@angular/router';
+import normalize, { normalizeSync } from 'normalize-diacritics';
 
 @Component({
   selector: 'app-shopping',
   templateUrl: './shopping.component.html',
   styleUrls: ['./shopping.component.css']
 })
-export class ShoppingComponent implements OnInit {
+export class ShoppingComponent implements OnInit, PipeTransform {
+  transform(value: string) {
+    let newvalue = value.replace(' ', '_');
+    return newvalue;
+  }
   categories: any;
   //Search product for order details
   private searchTerms = new Subject<string>();
@@ -20,26 +25,25 @@ export class ShoppingComponent implements OnInit {
   searchResult: string = '';
   choosedProduct: ProductModel;
   hidden : boolean = false;
-  block : string;
   idCategory: string = "all";
   keyword: string;
   expanded: boolean;
+  test: string;
+  path: string;
+  dblock: string;
     constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) { 
       router.events.subscribe(event => {
-        if(event instanceof NavigationStart) {
-          if(this.router.url === "/") this.block = "block";
-          else this.block = "";
+        if(event instanceof ChildActivationEnd) {
+          if (this.router.url == "/") this.dblock = "block";
+          else this.dblock = "";
         }
       });
     }
   
     ngOnInit() {
-      if(this.router.url === "/") this.block = "block";
-      else this.block = "";
-      this.categoryService.get().subscribe(
-        data =>{
-          this.categories = data;}
-      );
+      this.categoryService.get().subscribe(data =>{
+        this.categories = data;
+      });
   
       this.listProduct = this.searchTerms.pipe(
         
@@ -64,6 +68,14 @@ export class ShoppingComponent implements OnInit {
       this.hidden = true;
     }
 
+    routeCategory(idCategory: string, categoryName: any) {
+      categoryName = normalizeSync(categoryName);
+      var path = "/category/"+ idCategory + "_" + this.transform(categoryName);
+      this.router.navigateByUrl(path);
+    }
+
+
+    
     searchProduct() {
       if (this.keyword === undefined || this.keyword === "") {}
       else {

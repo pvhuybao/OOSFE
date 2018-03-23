@@ -14,10 +14,10 @@ idCategory: string;
 keyword: string;
 products: any[]=[];
 check: boolean;
-  constructor(private router: ActivatedRoute, private productService: ProductService) {}
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit() {
-    this.router.queryParams
+    this.activatedRoute.queryParams
       .filter(params => params.cat)
       .filter(params => params.op)
       .subscribe(params => {
@@ -27,8 +27,7 @@ check: boolean;
           this.products = data;
           if(this.products.length == 0) this.check = true;
           else this.check = false;
-        });
-        
+        }); 
       });
   }
 }
