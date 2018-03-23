@@ -9,5 +9,6 @@ export class OrdersModel{
     orderDetails: Array<OrderDetailModel>;
     address: Array<AddressModel>;
     total: number;
+    
     constructor(){}
 }
