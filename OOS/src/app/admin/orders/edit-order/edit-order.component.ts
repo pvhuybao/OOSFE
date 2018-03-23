@@ -93,10 +93,8 @@ export class EditOrderComponent implements OnInit {
       console.log("EditOrder data =", data);
       this.order = data
       console.log("EditOrder order =", this.order);
-    })
+    })   
   }
-
-
 
   edit() {
     this.ss.put(this.id, this.order).subscribe(data => console.log("EditOrder edit data =" + data))
