@@ -10,22 +10,22 @@ import 'rxjs/add/operator/filter';
 })
 export class CategoryDetailsComponent implements OnInit {
 
-  constructor(private productService : ProductService, private activatedRoute: ActivatedRoute) { }
-  idCategory : string;
-  products : any;
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  idCategory: string;
+  products: any;
   ngOnInit() {
     this.activatedRoute.params
       .filter(params => params.id)
       .subscribe(params => {
-        this.idCategory= this.GetIdCategory(params.id);
+        this.idCategory = this.GetIdCategory(params.id);
         this.productService.getByCategory(this.idCategory).subscribe(data => {
           this.products = data;
         });
-    });
+      });
   }
-    
-  GetIdCategory(id:string){
-     return  id.slice(0,id.indexOf("_"));
+
+  GetIdCategory(id: string) {
+    return id.slice(0, id.indexOf("_"));
   }
 
 }
