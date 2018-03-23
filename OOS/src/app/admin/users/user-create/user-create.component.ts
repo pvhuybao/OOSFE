@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class UserCreateComponent implements OnInit {
   user = new UserModel;
   confirmpassword: string;
 
-  constructor(private userservice: UserService, private router: Router) {
+  constructor(private userservice: UserService, private router: Router,
+    private spinnerService: SpinnerService
+  ) {
 
   }
 
@@ -23,7 +26,9 @@ export class UserCreateComponent implements OnInit {
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
   }
   add() {
+    this.spinnerService.startLoadingSpinner();
     this.userservice.add(this.user).subscribe(res => {
+      this.spinnerService.turnOffSpinner();
       this.router.navigate(['../admin/manager/users']);
     });
   }
