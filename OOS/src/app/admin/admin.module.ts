@@ -33,6 +33,7 @@ import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { CategoryService } from './services/category.service';
     FormsModule,
     AdminRoutingModule,
     BrowserAnimationsModule,
-    Ng5BreadcrumbModule
+    Ng5BreadcrumbModule,
+    Ng2SmartTableModule 
   ],
     
   declarations: [

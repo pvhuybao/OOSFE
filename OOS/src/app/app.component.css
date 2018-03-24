@@ -1,0 +1,12 @@
+/* action */
+:host /deep/ ng2-smart-table thead > tr > th { background-color:dimgray;
+    border: 1px solid gray; color:#F8694A ;  text-align:center;}
+/* title */
+:host /deep/ ng2-smart-table a { color: #F8694A;  text-align:center; }
+
+:host /deep/ ng2-smart-table  {
+       font-size:16px;
+   }
+:host   /deep/  tr > td,th{
+               border: 1px solid gainsboro;
+     }  
