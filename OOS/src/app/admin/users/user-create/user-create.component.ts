@@ -13,9 +13,14 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 export class UserCreateComponent implements OnInit {
 
   user = new UserModel;
-  confirmpassword: string;
 
-  constructor(private userservice: UserService, private router: Router,
+  isInvalid = false;
+
+  userValidation: any;
+
+  constructor(
+    private userservice: UserService,
+    private router: Router,
     private spinnerService: SpinnerService
   ) {
 
@@ -27,10 +32,19 @@ export class UserCreateComponent implements OnInit {
   }
   add() {
     this.spinnerService.startLoadingSpinner();
-    this.userservice.add(this.user).subscribe(res => {
-      this.spinnerService.turnOffSpinner();
-      this.router.navigate(['../admin/manager/users']);
-    });
+
+    this.userservice.add(this.user)
+      .subscribe(res => {
+        this.router.navigate(['../admin/manager/users']);
+      },
+        (error) => {
+          this.spinnerService.turnOffSpinner();
+
+          console.log(JSON.parse(error._body));
+          this.userValidation = JSON.parse(error._body);
+          this.isInvalid = true;
+        }
+      )
   }
 
 

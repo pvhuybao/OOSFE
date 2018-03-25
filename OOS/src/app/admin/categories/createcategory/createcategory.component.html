@@ -6,11 +6,17 @@
         <div class="form-group">
             Name:
             <input type="text" class="input" [(ngModel)]="name">
+            <ul class="alert alert-danger" *ngFor="let record of categoryValidation.Name; let i = index">
+                <li>{{record}}</li>
+            </ul>
             <br/>
         </div>
         <div class="form-group">
             Description:
             <input type="text" class="input" [(ngModel)]="description">
+            <ul class="alert alert-danger" *ngFor="let record of categoryValidation.Description; let i = index">
+                <li>{{record}}</li>
+            </ul>
             <br/>
         </div>
 

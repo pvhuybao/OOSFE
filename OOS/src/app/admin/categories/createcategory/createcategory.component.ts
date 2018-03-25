@@ -3,6 +3,7 @@ import { CategoryModel, CategoryStatus } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { AnonymousSubject } from 'rxjs';
 
 @Component({
   selector: 'app-createcategory',
@@ -15,17 +16,19 @@ export class CreateCategoryComponent implements OnInit {
     private spinnerService: SpinnerService
   ) { }
 
-  listCategory: CategoryModel[];  
-  //newCategory: CategoryModel;
+  listCategory: CategoryModel[];
   newCategory = new CategoryModel;
   name: string = '';
   description: string = '';
   public status = CategoryStatus;
   public keys: Array<string>;  
   status1: number = 1;
+  categoryValidation: any;
+  isInvalid = false;
+
 
   ngOnInit() {    
-    this.keys = Object.keys(this.status).filter(Number);           
+    this.keys = Object.keys(this.status).filter(Number);             
   }
 
   getListCategory() {
@@ -34,20 +37,27 @@ export class CreateCategoryComponent implements OnInit {
     })
   }
 
-  addCategory(){
+  addCategory() {
     this.spinnerService.startLoadingSpinner();
     let newCategory = new CategoryModel();
     newCategory.name = this.name;
     newCategory.description = this.description;
     newCategory.status = this.status1;
 
-    this.categoryService.add(newCategory).subscribe(data => {
-      this.spinnerService.turnOffSpinner();
-      //this.router.navigate(['/admin/categories']);
+    this.categoryService.add(newCategory)
+      .subscribe(
+        data => {
+          this.spinnerService.turnOffSpinner();
+          this.router.navigate(['/admin/manager/categories']);
+        },
+        (error) => {
+          this.spinnerService.turnOffSpinner();
 
-      this.router.navigate(['/admin/manager/categories']);
+          this.categoryValidation = JSON.parse(error._body);
+          this.isInvalid = true;
+        }
+      )
 
-    })
   }
 
 }
