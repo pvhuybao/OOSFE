@@ -3,6 +3,7 @@ import { AddressModel } from "./address";
 
 
 export class OrdersModel{
+    id: string;
     idBill:string;
     email: string;
     userId: string;

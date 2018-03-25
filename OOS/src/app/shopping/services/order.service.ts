@@ -8,10 +8,25 @@ export class OrderService {
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/';
+  public order: OrdersModel;  
+
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/';  
 
   add(order: OrdersModel): Observable<any> {
     return this.authHttpService.post(this.API_PATH, order);      
+  }  
+
+  getOderDetails(id): Observable<OrdersModel[]> {
+    return this.authHttpService.get(this.API_PATH + "/" + id)
+      .map(res => res.json() || [])
+  }
+
+  setOrder(order) {
+    this.order = order;
+  }
+
+  getOrder() {
+    return this.order;
   }
 
 }

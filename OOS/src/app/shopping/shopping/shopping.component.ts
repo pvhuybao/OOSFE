@@ -24,7 +24,9 @@ export class ShoppingComponent implements OnInit {
   idCategory: string = "all";
   keyword: string;
   expanded: boolean;
-    constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) { 
+    constructor(private categoryService: CategoryService, 
+                private productService: ProductService, 
+                private router: Router) { 
       router.events.subscribe(event => {
         if(event instanceof NavigationStart) {
           if(this.router.url === "/") this.block = "block";

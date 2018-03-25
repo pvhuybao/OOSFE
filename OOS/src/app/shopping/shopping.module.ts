@@ -40,7 +40,7 @@ import { EmailService } from './services/email.service';
     ShoppingRoutingModule,  
     FormsModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule   
   ],
   declarations: [HomePageComponent, 
                   ProductDetailComponent, 
