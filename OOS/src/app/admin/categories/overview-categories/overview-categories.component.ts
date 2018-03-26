@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service'
-import { CategoryModel } from '../../models/category'
+import { CategoryModel, CategoryStatus } from '../../models/category'
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 
@@ -15,6 +15,7 @@ export class OverviewCategoriesComponent implements OnInit {
   listCategories: CategoryModel[];
 
   cateDel = new CategoryModel;
+  public status = CategoryStatus;  
 
   constructor(
     private categoryService: CategoryService,
@@ -25,6 +26,7 @@ export class OverviewCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.getListCategories();
+    
   }
   getListCategories() {
     this.spinnerService.startLoadingSpinner();
@@ -47,6 +49,11 @@ export class OverviewCategoriesComponent implements OnInit {
     })
   }
 
+  getCate(category:CategoryModel)
+  {
+    this.categoryService.getCate(category);
+  }
+  
   delete() {  
     this.spinnerService.startLoadingSpinner();
     

@@ -5,6 +5,8 @@ import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { Ng2SmartTableModule } from './ng2-smart-table';
+
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
@@ -42,7 +44,8 @@ import { ConfigurationService } from './services/configuration.service';
     FormsModule,
     AdminRoutingModule,
     BrowserAnimationsModule,
-    Ng5BreadcrumbModule
+    Ng5BreadcrumbModule,
+    Ng2SmartTableModule
   ],
     
   declarations: [

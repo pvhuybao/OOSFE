@@ -19,6 +19,14 @@
             </ul>
             <br/>
         </div>
+
+        Status:
+        <div>
+            <select class="input custom-select" [(ngModel)]="status1">
+                <option *ngFor="let item of keys" [value]="item">{{status[item]}}</option>
+            </select>
+        </div>
+        <br/>
         <input type="button" (click)="addCategory()" class="primary-btn" value="Save">
         <button routerLink='../' class="main-btn">Back</button>
     </div>
