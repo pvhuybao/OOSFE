@@ -22,7 +22,11 @@ export class ConfigurationComponent implements OnInit {
   }
 
   get() {
-    this.configService.get().subscribe(data => this.configuration = data);
+    this.spinnerService.startLoadingSpinner();
+    this.configService.get().subscribe(data => {
+      this.configuration = data;
+      this.spinnerService.turnOffSpinner();
+    });
   }
 
   delete(i) {
@@ -30,8 +34,8 @@ export class ConfigurationComponent implements OnInit {
   }
 
   add() {
-    if (this.configuration.carousel[this.configuration.carousel.length - 1] !== "")
-      this.configuration.carousel.push("");
+    if (this.configuration.carousel[0] !== "")
+      this.configuration.carousel.splice(0,0,"");
   }
 
   save() {

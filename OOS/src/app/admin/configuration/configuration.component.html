@@ -14,6 +14,13 @@
     <h5 class="title">Carousel</h5>
   </div>
   <div class="form-group">
+    <button type="submit" class="primary-btn" [disabled]="isDisabled" (click)="save()">Save</button>
+    <button routerLink='../' class="main-btn">Back</button>
+    <a class="pull-right">
+      <button type="submit" class="primary-btn" (click)="add()" align="right">+</button>
+    </a>
+  </div>
+  <div class="form-group">
     <a *ngFor="let item of configuration.carousel, let i = index">
       <div class="img-wrap">
         <button class="close" (click)="delete(i)">
@@ -24,9 +31,4 @@
       <input [(ngModel)]="configuration.carousel[i]" type="text" class="input" placeholder="Picture URL">
     </a>
   </div>
-  <button type="submit" class="primary-btn" [disabled]="isDisabled" (click)="save()">Save</button>
-  <button routerLink='../' class="main-btn">Back</button>
-  <a class="pull-right">
-    <button type="submit" class="primary-btn" (click)="add()" align="right">+</button>
-  </a>
 </div>
