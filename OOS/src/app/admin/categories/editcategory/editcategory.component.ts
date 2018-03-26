@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CategoryModel, CategoryStatus } from '../../models/category';
 import { StringDecoder } from 'string_decoder';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { BreadcrumbService } from 'ng5-breadcrumb';
 
 @Component({
   selector: 'app-editcategory',
@@ -14,7 +15,8 @@ export class EditCategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private router: Router,
     private activatedRoute: ActivatedRoute,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private breadcrumbService:BreadcrumbService
   ) {
   }
 
@@ -23,7 +25,6 @@ export class EditCategoryComponent implements OnInit {
   public status = CategoryStatus;
   public keys: Array<string>;
   public item: number;
-
   public id: string;
 
   ngOnInit() {
@@ -31,8 +32,13 @@ export class EditCategoryComponent implements OnInit {
     let params: any = this.activatedRoute.snapshot.params;
     this.id = params.id;
     this.getById(this.id);
-
     this.getStatus();
+    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
+  }
+
+  displayNameForCategory():string{
+    var cate = this.categoryService.setCate();
+    return cate.name;
   }
 
   getStatus() {
