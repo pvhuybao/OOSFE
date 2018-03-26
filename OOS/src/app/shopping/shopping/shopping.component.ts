@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ElementRef } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 import { CategoryService } from '../services/category.service';
@@ -21,8 +21,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
   //Search product for order details
   private searchTerms = new Subject<string>();
-  categories: CategoryModel[];
-  catid : any[];
+  categories: any;
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
@@ -34,7 +33,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   path: string;
   dblock: string;
 
-  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) {
+  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router, private ele: ElementRef) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
         if (this.router.url == "/") this.dblock = "block";
@@ -54,10 +53,10 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       debounceTime(50),
 
       // ignore new term if same as previous term
-      distinctUntilChanged(),
+      //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProduct(term)),
+      switchMap((term: string) => this.productService.searchProductByIdCategory(this.idCategory, term)),
     );
   }
 
@@ -88,7 +87,6 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     }
     return name;
   }
-
 
   searchProduct() {
     if (this.keyword === undefined || this.keyword === "") { }
