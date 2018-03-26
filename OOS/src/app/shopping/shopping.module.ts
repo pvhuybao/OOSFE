@@ -21,46 +21,47 @@ import { CartComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
-
-import { OrderService } from './services/order.service';
-
-
-
 import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
-
+import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
+import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
+import { FaqComponent } from './faq/faq.component';
+import { OrderService } from './services/order.service';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    ShoppingRoutingModule,  
-    FormsModule,
+    ShoppingRoutingModule,
     BrowserModule,
-    ReactiveFormsModule   
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [HomePageComponent, 
-                  ProductDetailComponent, 
-                  ShoppingCartComponent, 
-                  OrderComponent, 
-                  OrderConfirmComponent, 
-                  ProductListComponent, 
-                  ShoppingComponent, 
-                  ListCategoriesComponent,
-                  WidgetProductsComponent,
-                  WidgetBoxComponent,
-                  CategoryDetailsComponent,
-                  CartComponent,
-                  PaymentComponent,
-                  ThankyouComponent,
-                  ShippingInfoComponent,
-                  SearchComponent,
-                  ContactComponent
-                ],  
-
+  declarations: [
+    HomePageComponent, 
+    ProductDetailComponent, 
+    ShoppingCartComponent, 
+    OrderComponent, 
+    OrderConfirmComponent, 
+    ProductListComponent, 
+    ShoppingComponent, 
+    ListCategoriesComponent,
+    WidgetProductsComponent,
+    WidgetBoxComponent,
+    SearchComponent,
+    CartComponent,
+    PaymentComponent,
+    ThankyouComponent,
+    ShippingInfoComponent,
+    CategoryDetailsComponent,
+    ContactComponent,
+    ShippingReturnComponent,
+    ShippingGuideComponent,
+    FaqComponent
+  ],
   providers: [
     CategoryService, 
     ProductService, 

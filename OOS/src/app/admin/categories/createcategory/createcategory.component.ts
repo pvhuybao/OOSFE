@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel, CategoryStatus } from '../../models/category';
+import { CategoryModel } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
@@ -20,15 +20,12 @@ export class CreateCategoryComponent implements OnInit {
   newCategory = new CategoryModel;
   name: string = '';
   description: string = '';
-  public status = CategoryStatus;
-  public keys: Array<string>;  
-  status1: number = 1;
-  categoryValidation: any;
+
+  categoryValidation = new Object;
+
   isInvalid = false;
 
-
-  ngOnInit() {    
-    this.keys = Object.keys(this.status).filter(Number);             
+  ngOnInit() {
   }
 
   getListCategory() {
@@ -42,7 +39,7 @@ export class CreateCategoryComponent implements OnInit {
     let newCategory = new CategoryModel();
     newCategory.name = this.name;
     newCategory.description = this.description;
-    newCategory.status = this.status1;
+    newCategory.status = 1;
 
     this.categoryService.add(newCategory)
       .subscribe(
