@@ -47,6 +47,11 @@ export class OverviewCategoriesComponent implements OnInit {
     })
   }
 
+  getCate(category:CategoryModel)
+  {
+    this.categoryService.getCate(category);
+  }
+  
   delete() {  
     this.spinnerService.startLoadingSpinner();
     

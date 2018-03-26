@@ -51,4 +51,9 @@ export class OverviewUsersComponent implements OnInit {
       this.getListUsers();
     });
   }
+
+  getUser(user:UserModel)
+  {
+    this.userService.getUser(user);
+  }
 }
