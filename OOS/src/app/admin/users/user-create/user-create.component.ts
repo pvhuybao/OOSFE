@@ -16,7 +16,7 @@ export class UserCreateComponent implements OnInit {
 
   isInvalid = false;
 
-  userValidation: any;
+  userValidation = new Object;
 
   constructor(
     private userservice: UserService,
@@ -40,7 +40,6 @@ export class UserCreateComponent implements OnInit {
         (error) => {
           this.spinnerService.turnOffSpinner();
 
-          console.log(JSON.parse(error._body));
           this.userValidation = JSON.parse(error._body);
           this.isInvalid = true;
         }
