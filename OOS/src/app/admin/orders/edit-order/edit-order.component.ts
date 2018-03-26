@@ -13,6 +13,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 import { OrdersModel } from '../../models/order';
 import { ProductModel } from '../../models/product';
 import { ProductService } from '../../services/Product.service';
+import { BreadcrumbService } from 'ng5-breadcrumb';
 
 @Component({
   selector: 'app-edit-order',
@@ -30,7 +31,7 @@ export class EditOrderComponent implements OnInit {
   searchResult: string = '';
   choosedProduct: ProductModel;
 
-  constructor(private ss: OrdersService, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private breadcrumbService:BreadcrumbService, private ss: OrdersService, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   search(term: string): void {
     console.log("EditOrder term =" + term)
@@ -93,7 +94,13 @@ export class EditOrderComponent implements OnInit {
       console.log("EditOrder data =", data);
       this.order = data
       console.log("EditOrder order =", this.order);
-    })   
+    });
+    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/orders/edit/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForOrder());
+  }
+
+  displayNameForOrder(){
+    var order = this.ss.getData();
+    return "ID Bill: " + order.idBill;
   }
 
   edit() {

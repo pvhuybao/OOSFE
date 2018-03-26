@@ -49,7 +49,7 @@ export class OrdersComponent implements OnInit {
 
   edit (order)
   {
-    //this.ordersService.sendData(order);
+    this.ordersService.sendData(order);
     this.router.navigateByUrl("/admin/manager/orders/edit/" + order.id);
 
   }

@@ -26,7 +26,7 @@
         </td>
         <td>{{user.firstName}}</td>
         <td class="text-right">
-          <button class="main-btn icon-btn" routerLink="../{{user.id}}">
+          <button class="main-btn icon-btn" routerLink="../{{user.id}}" (click)="getUser(user)">
             <i class="fa fa-edit"></i>
           </button>
           <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(user.id)">

@@ -27,7 +27,7 @@
         <td>{{category.description}}</td>
         <td class="text-right">
           <a routerLink="../{{category.id}}" routerLinkActive="active">
-            <button class="main-btn icon-btn">
+            <button class="main-btn icon-btn" (click)="getCate(category)">
               <i class="fa fa-edit"></i>
             </button>
           </a>
