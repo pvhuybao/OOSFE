@@ -12,8 +12,6 @@ export class SpinnerService {
 
   startLoadingSpinner() {
     this.spinnerService.show();
-
-
   }
 
   turnOffSpinner() {

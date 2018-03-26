@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <div id="product-main-view">
       <div class="product-view">
-        <img src="{{product.image}}" alt="">
+        <img src="" alt="">
       </div>
       <br>
       <div>
@@ -19,30 +19,23 @@
           </div>
           <p><strong>Name:</strong>
           <input [(ngModel)]="product.name" class="input search-input"></p>
-          <p>
-          <strong>Price:</strong>
-          <input [(ngModel)]="product.price" class="input search-input"></p>
-          <p>
-            <strong>Image:</strong>
-            <input [(ngModel)]="product.image" class="input search-input">
-          </p>
           <strong>Category:</strong>
-          <div >
-           <p> <select class=" input custom-select"[(ngModel)]="idCategory">
-              <option selected>Choose...</option>
-              <option *ngFor="let category of categorys" [value]="category.id">{{category.name}}</option>
-            </select></p>
-            </div>
-          <strong>Status:</strong>
-          <div >
-              <p><select class=" input custom-select"[(ngModel)]="product.idCategory">
-                <option selected>Choose...</option>
-                <option *ngFor="let category of categorys" value="{{product.idCategory}}">{{category.name}}</option>
+          <div>
+              <p><select class=" input custom-select" [(ngModel)]="product.idCategory">
+                <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
               </select></p>
               </div>
+          <strong>Status:</strong>
+          <div>
+              <p><select class="input custom-select" [(ngModel)]="product.status">
+                  <option *ngFor="let item of keys" [value]="item">{{status1[item]}}</option>
+              </select></p>
+          </div>
             <p>
             <strong>Description:</strong>
             <input [(ngModel)]="product.description" class="input search-input"></p>
    </div>
   </div>
 </div> 
+<hr />
+  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
