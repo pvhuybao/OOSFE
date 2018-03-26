@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
 
   listOrders: Array<OrdersModel>
   listStatus = new Array<StatusOrder>()
-  orderToDelete: any;
+  orderToDelete: OrdersModel;
   constructor(
     private ordersService: OrdersService, 
     private router: Router, 

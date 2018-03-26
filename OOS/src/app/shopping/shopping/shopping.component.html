@@ -17,19 +17,19 @@
 				<div class="header-search" style="width:70%; max-width:600px">
 					<form>
 						<input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)"
-						 (click)="search(searchBox.value)" type="text" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2"
+						 (click)="search(searchBox.value)" type="text" autocomplete="off" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2"
 						 value="{{searchResult}}">
-						<div class="input-group" style="position:absolute; z-index:100; background:white; width:100%">
-							<ul [hidden]="hidden" class="search-result">
-								<li *ngFor="let product of listProduct | async">
-									<a>
-										<p style="font-weight:bold">{{product.name}}</p>
-										<p>{{product.price}}</p>
-									</a>
+						<div class="input-group" style="position:absolute; left:25%; z-index:100; background:white; width:75%">
+							<ul [hidden]="hidden" >
+								<li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product.id)" style="padding:15px; cursor:pointer">
+									<span>
+											<p style="display:inline; font-weight:bold">{{product.name}}</p> in 
+											<p style="display:inline; color:blueviolet">{{categoryName(product.idCategory)}}</p>
+									</span>
 								</li>
 							</ul>
 						</div>
-						<select class="input search-categories" [(ngModel)]="idCategory" name="idCategory" style="width:25%">
+						<select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="width:25%">
 							<option value="all">All Categories</option>
 							<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
 						</select>
