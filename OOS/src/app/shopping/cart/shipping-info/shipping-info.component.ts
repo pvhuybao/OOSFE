@@ -16,7 +16,7 @@ export class ShippingInfoComponent implements OnInit {
 
   public order = new OrdersModel;
   public address = new AddressModel;
-  //public address2 = new AddressModel;
+  public address2 = new AddressModel;
   public email: string = "";
   public name: string = "";
   public phone: string = "";
@@ -64,13 +64,13 @@ export class ShippingInfoComponent implements OnInit {
     this.address.street = this.street;
     this.address.type = 0;
 
-    //this.address2 = this.address;
+    this.address2 = this.address;
     
     
 
     this.order.email = this.email;
     this.order.userId = null;
-    this.order.address = [this.address];
+    this.order.address = [this.address,this.address2];
     this.order.orderDetails = this.listOrderDetails;
     this.order.total = 0;   
 
