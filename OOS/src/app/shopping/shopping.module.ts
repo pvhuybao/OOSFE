@@ -25,6 +25,9 @@ import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
+import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
+import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
+import { FaqComponent } from './faq/faq.component';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -53,7 +56,10 @@ import { EmailService } from './services/email.service';
     ThankyouComponent,
     ShippingInfoComponent,
     CategoryDetailsComponent,
-    ContactComponent
+    ContactComponent,
+    ShippingReturnComponent,
+    ShippingGuideComponent,
+    FaqComponent
   ],
   providers: [
     CategoryService, 

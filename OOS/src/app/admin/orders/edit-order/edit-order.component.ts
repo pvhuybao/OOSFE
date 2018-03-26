@@ -57,8 +57,10 @@ export class EditOrderComponent implements OnInit {
         idProduct: product.id,
         nameProduct: product.name,
         quantity: 1,
-        price: product.price,
-        totalPrice: product.price,
+        // price: product.price,
+        // totalPrice: product.price,
+        price: 0,
+        totalPrice: 0,
         code: product.code
       }
       this.order.orderDetails.push(detail)
