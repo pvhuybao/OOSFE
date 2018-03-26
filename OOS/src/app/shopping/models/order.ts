@@ -1,6 +1,6 @@
+import { OrderDetailModel } from "./OrderDetail";
+import { AddressModel } from "./address";
 
-import { OrderDetailModel } from "../models/OrderDetail";
-import { AddressModel } from "../models/Address";
 
 export class OrdersModel{
     id: string;
@@ -10,8 +10,6 @@ export class OrdersModel{
     orderDetails: Array<OrderDetailModel>;
     address: Array<AddressModel>;
     total: number;
-    status: number
-    constructor(){
-        
-    }
+    
+    constructor(){}
 }
