@@ -45,6 +45,7 @@ export class ProductEditComponent implements OnInit {
   }
   update()
   {
+    this.product.productTails = this.data;
     this.spinnerService.startLoadingSpinner();
     this.productService.putProduct(this.product).subscribe(data => {
       this.spinnerService.turnOffSpinner();
