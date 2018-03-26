@@ -25,6 +25,7 @@ import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
+import { CarouselComponent } from './home-page/carousel/carousel.component';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -53,7 +54,8 @@ import { EmailService } from './services/email.service';
     ThankyouComponent,
     ShippingInfoComponent,
     CategoryDetailsComponent,
-    ContactComponent
+    ContactComponent,
+    CarouselComponent
   ],
   providers: [
     CategoryService, 

@@ -18,6 +18,7 @@ import { CategoryDetailComponent } from '../admin/categories/category-detail/cat
 import {ContactComponent} from'./contact/contact.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { SearchComponent } from './search/search.component';
+import { CarouselComponent } from './home-page/carousel/carousel.component';
 
 
 const shoppingRoutes: Routes = [
