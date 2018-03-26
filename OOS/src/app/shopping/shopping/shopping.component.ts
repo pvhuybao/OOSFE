@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, delay } from 'rxjs/operators';
 import { Router, NavigationStart, NavigationEnd, ChildActivationEnd } from '@angular/router';
 import normalize, { normalizeSync } from 'normalize-diacritics';
+import { CategoryModel } from '../models/category';
 
 @Component({
   selector: 'app-shopping',
@@ -18,9 +19,10 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     let newvalue = value.replace(' ', '_');
     return newvalue;
   }
-  categories: any;
   //Search product for order details
   private searchTerms = new Subject<string>();
+  categories: CategoryModel[];
+  catid : any[];
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
@@ -75,6 +77,17 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     this.router.navigateByUrl(path);
   }
 
+  routeProduct(productid: string) {
+    this.router.navigateByUrl("/product/"+productid);
+  }
+
+  categoryName(catid: string):string {
+    var name;
+    for(var i=0; i < this.categories.length; i++) {
+      if(catid == this.categories[i].id) name = this.categories[i].name;
+    }
+    return name;
+  }
 
 
   searchProduct() {

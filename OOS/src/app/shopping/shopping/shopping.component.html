@@ -17,14 +17,16 @@
 				<div class="header-search" style="width:70%; max-width:600px">
 					<form>
 						<input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)"
-						 (click)="search(searchBox.value)" type="text" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2"
+						 (click)="search(searchBox.value)" type="text" autocomplete="off" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2"
 						 value="{{searchResult}}">
-						<div class="input-group" style="position:absolute; z-index:100; background:white; width:100%">
+						<div class="input-group" style="position:absolute; left:25%; z-index:100; background:white; width:75%">
 							<ul [hidden]="hidden" class="search-result">
-								<li *ngFor="let product of listProduct | async">
-									<a>
-										<p style="font-weight:bold">{{product.name}}</p>
-										<p>{{product.price}}</p>
+								<li *ngFor="let product of listProduct | async" style="padding:5px; border: 1px whitesmoke solid; cursor: pointer">
+									<a (mousedown)="routeProduct(product.id)">
+									<span>
+										<p style="display:inline; font-weight:bold">{{product.name}}</p> in 
+										<p style="display:inline; color:blueviolet">{{categoryName(product.idCategory)}}</p>
+									</span>
 									</a>
 								</li>
 							</ul>
