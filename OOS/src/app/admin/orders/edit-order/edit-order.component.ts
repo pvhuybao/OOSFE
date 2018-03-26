@@ -13,6 +13,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 import { OrdersModel } from '../../models/order';
 import { ProductModel } from '../../models/product';
 import { ProductService } from '../../services/Product.service';
+import { BreadcrumbService } from 'ng5-breadcrumb';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
@@ -33,7 +34,7 @@ export class EditOrderComponent implements OnInit {
   searchResult: string = '';
   choosedProduct: ProductModel;
 
-  constructor(private ss: OrdersService, private productService: ProductService, private activatedRoute: ActivatedRoute, private spinnerService: SpinnerService) { }
+  constructor(private breadcrumbService:BreadcrumbService, private ss: OrdersService, private productService: ProductService, private activatedRoute: ActivatedRoute, private spinnerService: SpinnerService) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
@@ -56,8 +57,10 @@ export class EditOrderComponent implements OnInit {
         idProduct: product.id,
         nameProduct: product.name,
         quantity: 1,
-        price: product.price,
-        totalPrice: product.price,
+        // price: product.price,
+        // totalPrice: product.price,
+        price: 0,
+        totalPrice: 0,
         code: product.code
       }
       this.order.orderDetails.push(detail)
@@ -100,7 +103,13 @@ export class EditOrderComponent implements OnInit {
       console.log("EditOrder data =", data);
       this.order = data
       console.log("EditOrder order =", this.order);
-    })   
+    });
+    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/orders/edit/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForOrder());
+  }
+
+  displayNameForOrder(){
+    var order = this.ss.getData();
+    return "ID Bill: " + order.idBill;
   }
 
   edit() {
