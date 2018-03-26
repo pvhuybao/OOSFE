@@ -3,8 +3,7 @@ import {Router} from '@angular/router';
 import { ProductService } from '../../services/Product.service';
 import { HttpClient } from '@angular/common/http'; 
 import {CategoryService } from '../../services/category.service';
-import { SpinnerService } from '../../../shared/services/spinner.service';
-import { ProductStatus } from '../../models/product';
+//import { ProductStatus } from '../../models/Product';
 
 
 @Component({
@@ -18,18 +17,16 @@ export class ProductCreateComponent implements OnInit {
  name : string;
  price : number;
  description : string;
- image : string = 'http://shfcs.org/en/wp-content/uploads/2015/11/MedRes_Product-presentation-2.jpg' ;
+ image : string ;
  categorys : any;
  code :string;
  idCategory:string = '';
- status: number;
-public status1 = ProductStatus;
- public item: number;
- public keys: any;
+// public status = ProductStatus;
+//  public item: number;
+//  public keys: any;
 
   constructor(private productService:ProductService,private router: Router,
-  private categoryService :CategoryService,
-  private spinnerService: SpinnerService ) { 
+  private categoryService :CategoryService ) { 
   }
 
   ngOnInit() {
@@ -42,26 +39,23 @@ public status1 = ProductStatus;
         this.categorys = data;}
     );
 
-     this.getStatus();
+    // this.getStatus();
           
   }
 
-  getStatus() {
-     this.keys = Object.keys(this.status1).filter(Number);
-   }
+  // getStatus() {
+  //    this.keys = Object.keys(this.status).filter(Number);
+  //  }
   create(){
     var product ={
       name : this.name,
       price : this.price,
       description : this.description,
       image :this.image,
-      idCategory :this.idCategory,
-      code: this.code,
-      status: this.status
+     idCategory :this.idCategory,
+      code: this.code
     }
-    this.spinnerService.startLoadingSpinner();
      this.productService.postProduct(product).subscribe(data => {
-      this.spinnerService.turnOffSpinner();
        this.router.navigateByUrl('/admin/manager/products');
      });
     }

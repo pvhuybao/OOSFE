@@ -402,7 +402,7 @@ body {
     width: 60px;
     background-color: #F8694A;
   }
-
+  
   .section-title-search {
     position: relative;
     margin-bottom: 15px;
@@ -424,7 +424,6 @@ body {
     width: 60px;
     background-color: transparent;
   }
-  
   /*----------------------------*\
       Breadcrumb
   \*----------------------------*/

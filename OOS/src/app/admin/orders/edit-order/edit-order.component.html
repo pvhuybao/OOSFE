@@ -1,8 +1,19 @@
-<form>
+<div *ngIf="order">
   <div class="form-row">
     <div class="form-group col-md-12">
       <div class="section-title">
-        <h3 class="title">Shipping Address</h3>
+        <h3 class="title">Order information</h3>
+      </div>
+      <p>Email
+        <b>(This mail will be used to confirm your order)</b>
+        <p>
+          <input type="email" class="input" placeholder="Email" [(ngModel)]="order.email" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12">
+      <div class="section-title">
+        <h5 class="title">Shipping Address</h5>
       </div>
     </div>
     <div class="form-group col-md-6">
@@ -31,7 +42,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <div class="section-title">
-        <h3 class="title">Billing Address</h3>
+        <h5 class="title">Billing Address</h5>
       </div>
     </div>
     <div class="form-group col-md-6">
@@ -53,21 +64,6 @@
     <div class="form-group col-md-4">
       <p>Street</p>
       <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[1].street" [ngModelOptions]="{standalone: true}">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <div class="section-title">
-        <h3 class="title">Confirmation</h3>
-      </div>
-    </div>
-    <div class="form-group col-md-6">
-      <p>Confirm Email
-        <b>(This mail will be used to confirm your order)</b>
-      </p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.email" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group col-md-6">
     </div>
   </div>
   <!--
@@ -104,21 +100,25 @@
       <div class="section-title">
         <h3 class="title">Order Details</h3>
       </div>
-      <div class="input-group">
+
+      <div class="section-title-search">
         <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2"
-          value="{{searchResult}}" [(ngModel)]="searchResult">
-        <span class="input-group-addon" id="basic-addon2">Add</span>
+          [(ngModel)]="searchResult">
+        <ul class="list-group" style="position:absolute; z-index:100; width:100%">
+          <!-- <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async"> -->
+          <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)"
+            disabled="disabled">{{product.name}}</a>
+          <!-- </li> -->
+        </ul>
+
+
       </div>
-      <ul class="list-group" style="position:absolute; z-index:100; width:100%">
-        <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async">
-          <a (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
-        </li>
-      </ul>
 
       <table class="shopping-cart-table table">
         <thead>
           <tr>
-            <th>ID</th>
+
+            <th>Code</th>
             <th class="text-center">Product</th>
             <th class="text-center">Price</th>
             <th class="text-center">Quantity</th>
@@ -129,10 +129,12 @@
         <tbody>
           <tr *ngFor="let orderDetail of order.orderDetails">
             <td class="details">
-              <a href="#">{{orderDetail.idProduct}}</a>
+
+              <a href="#">{{orderDetail.code}}</a>
             </td>
             <td class="price text-center">
               <strong>{{orderDetail.nameProduct}}</strong>
+
             </td>
             <td class="price text-center">
               <strong>{{orderDetail.price}}</strong>
@@ -140,17 +142,51 @@
             </td>
 
             <td class="qty text-center">
-              <input class="input" type="number" [(ngModel)]="orderDetail.quantity" [ngModelOptions]="{standalone: true}" (blur)="updateTotal(orderDetail)">
+              <input class="input" type="number" [(ngModel)]="orderDetail.quantity" [ngModelOptions]="{standalone: true}" min=1 (click)="updateTotal(orderDetail)"
+                (keyup)="updateTotal(orderDetail)">
             </td>
 
             <td class="total text-center">
               <strong class="primary-color">{{orderDetail.totalPrice}}</strong>
             </td>
             <td class="text-right">
-              <button class="main-btn icon-btn" (click)="delete(orderDetail)">
+              <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setDetailDelete(orderDetail)">
                 <i class="fa fa-close"></i>
               </button>
             </td>
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Confirm</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete this product?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="delete()" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="myModal2" role="dialog" *ngIf="saved">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Success</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>You have successfully updated this order.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="setBackSaved()" data-dismiss="modal">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </tr>
         </tbody>
         <tfoot>
@@ -162,15 +198,12 @@
         </tfoot>
       </table>
       <div class="pull-left">
-        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="main-btn">Back</a>
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
       </div>
       <div class="pull-right">
         <button class="primary-btn" (click)="edit()">Save</button>
       </div>
     </div>
-    <div *ngIf="message == 'success'" class="alert alert-success alert-dismissable">
-      Add new order successfully
-      <a class="close" (click)="removeAlert()">&times;</a>
-    </div>
+
     <br>
   </div>

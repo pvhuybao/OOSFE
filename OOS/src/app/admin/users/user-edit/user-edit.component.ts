@@ -3,6 +3,8 @@ import { UserModel } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'ng5-breadcrumb';
+import { SpinnerService } from '../../../shared/services/spinner.service';
+
 
 @Component({
   selector: 'app-user-edit',
@@ -11,7 +13,13 @@ import { BreadcrumbService } from 'ng5-breadcrumb';
 })
 export class UserEditComponent implements OnInit {
   user = new UserModel();
-  constructor(private breadcrumbService:BreadcrumbService, private userservice: UserService, private router: Router, private activatedroute: ActivatedRoute) { }
+  constructor(
+    private userservice: UserService,
+    private router: Router,
+    private activatedroute: ActivatedRoute,
+    private spinnerService: SpinnerService,
+    private breadcrumbService:BreadcrumbService
+  ) { }
 
   ngOnInit() {
     this.user.id = this.activatedroute.snapshot.params.id;
@@ -26,12 +34,24 @@ export class UserEditComponent implements OnInit {
   }
 
   getId() {
-    this.userservice.getById(this.user.id).subscribe(value => this.user = value);
+    this.spinnerService.startLoadingSpinner();
+
+    this.userservice.getById(this.user.id).subscribe(value => {
+      this.spinnerService.turnOffSpinner();
+
+      this.user = value;
+
+    });
   }
   edit() {
-    this.userservice.edit(this.user).subscribe(res => {
-      this.router.navigate(['../admin/manager/users']);
-    });
+    this.spinnerService.startLoadingSpinner();
+
+    this.userservice.edit(this.user).
+      subscribe(res => {
+        this.spinnerService.turnOffSpinner();
+
+        this.router.navigate(['../admin/manager/users']);
+      });
   }
 
 }

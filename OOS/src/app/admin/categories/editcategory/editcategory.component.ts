@@ -13,27 +13,27 @@ import { BreadcrumbService } from 'ng5-breadcrumb';
 })
 export class EditCategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private router: Router, 
+  constructor(private categoryService: CategoryService, private router: Router,
     private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
     private breadcrumbService:BreadcrumbService
   ) {
-    }
+  }
 
 
   public cate = new CategoryModel;
   public status = CategoryStatus;
-  public keys: Array<string>;  
+  public keys: Array<string>;
   public item: number;
-  public id: string;  
+  public id: string;
 
   ngOnInit() {
-    
+
     let params: any = this.activatedRoute.snapshot.params;
     this.id = params.id;
     this.getById(this.id);
+    this.getStatus();
     this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
-    this.getStatus();    
   }
 
   displayNameForCategory():string{
@@ -47,22 +47,29 @@ export class EditCategoryComponent implements OnInit {
   }
 
   getById(id) {
-    this.categoryService.getById(id).subscribe(category => this.cate = category);
+    this.spinnerService.startLoadingSpinner();
+
+    this.categoryService.getById(id).subscribe(category => {
+      this.spinnerService.turnOffSpinner();
+
+      this.cate = category;
+    });
   }
 
   editCategory() {
     this.spinnerService.startLoadingSpinner();
+
     this.cate.name = this.cate.name;
     this.cate.description = this.cate.description;
     this.cate.status = this.cate.status;
 
-    this.categoryService.put(this.cate.id,this.cate).subscribe(data => {
-
+    this.categoryService.put(this.cate.id, this.cate).subscribe(data => {
       this.spinnerService.turnOffSpinner();
+
       //this.router.navigate(['/admin/categories']);
       this.router.navigate(['/admin/manager/categories']);
     });
   }
 
-  
+
 }
