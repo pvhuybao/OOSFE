@@ -18,6 +18,7 @@ import { CategoryDetailComponent } from '../admin/categories/category-detail/cat
 import {ContactComponent} from'./contact/contact.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { SearchComponent } from './search/search.component';
+import { PaypalComponent } from './cart/paypal/paypal.component';
 
 
 const shoppingRoutes: Routes = [
@@ -25,6 +26,7 @@ const shoppingRoutes: Routes = [
     path: '',
     component: ShoppingComponent,
     children: [
+      { path: 'paypal', component: PaypalComponent },
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       {
         path: 'cart',
