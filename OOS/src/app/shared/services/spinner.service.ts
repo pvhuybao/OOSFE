@@ -4,7 +4,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Injectable()
 export class SpinnerService {
 
-  name:string;
+  name: string;
 
   constructor(
     private spinnerService: Ng4LoadingSpinnerService
@@ -12,11 +12,10 @@ export class SpinnerService {
 
   startLoadingSpinner() {
     this.spinnerService.show();
-    
-    
   }
 
   turnOffSpinner(){
     this.spinnerService.hide();
-  }  
+  }
+    
 }

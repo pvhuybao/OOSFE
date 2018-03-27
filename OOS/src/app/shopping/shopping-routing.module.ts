@@ -15,11 +15,13 @@ import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.compon
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { CategoryDetailComponent } from '../admin/categories/category-detail/category-detail.component';
-import {ContactComponent} from'./contact/contact.component';
+import { ContactComponent } from './contact/contact.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './search/search.component'
 import { PaypalComponent } from './cart/paypal/paypal.component';
-
+import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
+import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
+import { FaqComponent } from './faq/faq.component';
 
 const shoppingRoutes: Routes = [
   {
@@ -40,7 +42,7 @@ const shoppingRoutes: Routes = [
       {
         path: 'category',
         children: [
-          { path: ':id', component: CategoryDetailsComponent}
+          { path: ':id', component: CategoryDetailsComponent }
         ]
       },
       {
@@ -55,7 +57,10 @@ const shoppingRoutes: Routes = [
           { path: '', component: ContactComponent },
         ]
       },
-      { path: 'search', component: SearchComponent }
+      { path: 'search', component: SearchComponent },
+      { path: 'shipping-return', component: ShippingReturnComponent },
+      { path: 'shipping-guide', component: ShippingGuideComponent },
+      { path: 'faq', component: FaqComponent }
 
     ]
   },

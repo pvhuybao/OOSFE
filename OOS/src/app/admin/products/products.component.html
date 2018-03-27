@@ -16,6 +16,7 @@
           <th></th>
           <th class="text-center">Price</th>
           <th class="text-center">Quantity</th>
+          <th class="text-center">Status</th>
           <th class="text-right"></th>
         </tr>
       </thead>
@@ -25,12 +26,13 @@
           <td class="details">
             <a routerLink="/admin/manager/product-details" routerLinkActive="active" class="primary-color" (click)="setId(product.id)">{{product.name}}</a>
             <ul>
-              <li><span>Id:{{product.id}}</span></li>
-              <li><span>Category:{{product.idCategory}}</span></li>
+              <li><span>Code:{{product.code}}</span></li>
+              <li><span>Category:{{product.categoryName}}</span></li>
             </ul>
           </td>
           <td class="price text-center"><strong>{{product.price}}</strong><br><del class="font-weak"><small>{{product.price}}</small></del></td>
           <td class="qty text-center">1</td>
+          <td class="qty text-center">{{product.status}}</td>
           <td class="text-right"><button class="main-btn icon-btn" (click)="setId(product.id)" routerLink="/admin/manager/products/edit" routerLinkActive="active"><i class="fa fa-edit"></i></button></td>
           <td class="text-right"><button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setIdModal(product.id)"><i class="fa fa-close"></i></button></td>  
           

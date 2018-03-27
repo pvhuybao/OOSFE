@@ -12,7 +12,7 @@ export class CategoryService {
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/Category';
 
   constructor(private authHttpService: AuthHttpService) { }
-
+  
   get(): Observable<CategoryModel[]> {    
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || []);
@@ -40,5 +40,16 @@ export class CategoryService {
   delete(category: CategoryModel): Observable<any>{
     var url: string = this.API_PATH + "/" + category.id;
     return this.authHttpService.delete(url)
+  }
+
+  cate:CategoryModel; //
+  getCate(category:CategoryModel)
+  {
+    return this.cate = category;
+  }
+
+  setCate()
+  {
+    return this.cate;
   }
 }

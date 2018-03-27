@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
 
   listOrders: Array<OrdersModel>
   listStatus = new Array<StatusOrder>()
-  orderToDelete: any;
+  orderToDelete: OrdersModel;
   constructor(
     private ordersService: OrdersService, 
     private router: Router, 
@@ -59,7 +59,7 @@ export class OrdersComponent implements OnInit {
 
   edit (order)
   {
-    //this.ordersService.sendData(order);
+    this.ordersService.sendData(order);
     this.router.navigateByUrl("/admin/manager/orders/edit/" + order.id);
 
   }
