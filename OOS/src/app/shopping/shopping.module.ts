@@ -25,6 +25,7 @@ import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
+import { CarouselComponent } from './home-page/carousel/carousel.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
@@ -58,6 +59,7 @@ import { OrderService } from './services/order.service';
     ShippingInfoComponent,
     CategoryDetailsComponent,
     ContactComponent,
+    CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
     FaqComponent

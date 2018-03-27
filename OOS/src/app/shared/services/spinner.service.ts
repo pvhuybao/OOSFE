@@ -14,8 +14,10 @@ export class SpinnerService {
     this.spinnerService.show();
   }
 
-  turnOffSpinner(){
-    this.spinnerService.hide();
+  turnOffSpinner() {
+    setTimeout(function () {
+      this.spinnerService.hide();
+    }.bind(this), 500
+    );
   }
-    
 }
