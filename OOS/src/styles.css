@@ -3,6 +3,16 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~font-awesome/css/font-awesome.css";
 
+#suggest-box
+{
+  position:absolute; 
+  left: 25%; 
+  z-index: 100; 
+  background: white; 
+  width: 420px;
+  margin-top: 1px
+}
+
 .search-result:hover
 {
   background-color: lightgray;
