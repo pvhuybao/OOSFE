@@ -40,6 +40,8 @@ export class ConfigurationComponent implements OnInit {
 
   save() {
     this.spinnerService.startLoadingSpinner();
+    if (this.configuration.carousel[0] === "")
+      this.configuration.carousel.splice(0,1);
     this.configService.edit(this.configuration).subscribe(res => {
       this.spinnerService.turnOffSpinner();
     });

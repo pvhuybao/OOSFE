@@ -5,7 +5,7 @@ import { ConfigurationModel } from '../models/configuration';
 
 @Injectable()
 export class ConfigurationService {
-  private API_PATH = 'http://localhost:51741/api/Configuration';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Configuration';
 
   constructor(private authHttpService: AuthHttpService) { }
   get(): Observable<ConfigurationModel> {
