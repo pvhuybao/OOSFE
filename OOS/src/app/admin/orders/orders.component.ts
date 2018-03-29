@@ -20,6 +20,8 @@ export class OrdersComponent implements OnInit {
   email: string="";
   phone: string="";
   page: number=1;
+
+  status: string;
   constructor(
     private ordersService: OrdersService, 
     private router: Router, 
@@ -70,14 +72,17 @@ export class OrdersComponent implements OnInit {
 
   }
 
-  updateStatus(order)
+  updateStatus(order: OrdersModel)
   {
-    this.spinnerService.startLoadingSpinner()
-    console.log("Overview Order status = ",order.id)
-    this.ordersService.put(order.id,order).subscribe(data => {
-      this.spinnerService.turnOffSpinner()
-
-
-    })
+    this.spinnerService.startLoadingSpinner();
+    // order.status = 
+    this.ordersService.getById(order.id).subscribe(ord=>{
+      ord.status = order.status;
+      this.ordersService.put(ord.id,ord).subscribe(data => {
+        this.spinnerService.turnOffSpinner();
+        console.log(order.status);
+      });
+    });
+    
   }
 }
