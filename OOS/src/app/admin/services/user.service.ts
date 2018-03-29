@@ -30,4 +30,16 @@ export class UserService {
     var url: string = this.API_PATH + "/" + user.id;
     return this.authHttpService.delete(url)
   }
+
+  public user:UserModel;
+
+  getUser(user:UserModel)
+  {
+    return this.user = user;
+  }
+
+  setUser()
+  {
+    return this.user;
+  }
 }

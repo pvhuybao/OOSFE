@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { Ng2SmartTableModule } from './ng2-smart-table';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -33,13 +35,17 @@ import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationService } from './services/configuration.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng5BreadcrumbModule,
+    Ng2SmartTableModule
   ],
     
   declarations: [
@@ -64,6 +70,7 @@ import { CategoryService } from './services/category.service';
     AdminLoginComponent,
     AdminManagementComponent,
     CreateOrderComponent,
+    ConfigurationComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -73,7 +80,9 @@ import { CategoryService } from './services/category.service';
     CategoryService, 
     UserService,
     OrdersService,
-    SpinnerService
+    SpinnerService,
+    BreadcrumbService,
+    ConfigurationService
   ]
 })
 export class AdminModule { }

@@ -11,22 +11,24 @@
 
   <table class="shopping-cart-table table table">
     <thead class="thead-dark">
-      <tr>
-        <th scope="col">ID</th>
+      <tr>        
         <th scope="col">Username</th>
         <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
         <th></th>
       </tr>
     </thead>
     <tbody *ngFor="let user of listUsers; let i = index">
       <tr>
-        <td>{{user.id}}</td>
         <td>
           <a routerLink="../{{user.id}}" routerLinkActive="active">{{user.username}}</a>
         </td>
         <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
         <td class="text-right">
-          <button class="main-btn icon-btn" routerLink="../{{user.id}}">
+          <button class="main-btn icon-btn" routerLink="../{{user.id}}" (click)="getUser(user)">
             <i class="fa fa-edit"></i>
           </button>
           <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(user.id)">
