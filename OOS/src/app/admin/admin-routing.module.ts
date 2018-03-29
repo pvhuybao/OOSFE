@@ -26,6 +26,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { EditorComponent } from './editor/editor.component';
 
 const adminRoutes: Routes = [
   {
@@ -69,7 +70,11 @@ const adminRoutes: Routes = [
           //{ path: 'orders/edit/:id', component: EditOrdersComponent },
           { path: 'login', component: AdminLoginComponent },
           { path: 'orders/edit/:id', component: EditOrderComponent },
-          { path: 'config', component: ConfigurationComponent }
+          { path: 'config', component: ConfigurationComponent },
+          { path: 'shipping-return', component: EditorComponent, data: { page: "return"}},
+          { path: 'shipping-guide', component: EditorComponent, data: { page: "guide"}},
+          { path: 'faq', component: EditorComponent, data: { page: "faq"}}
+
         ]
       },
 
