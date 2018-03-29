@@ -16,5 +16,9 @@ export class ProductModel{
     // color : string;
     // size : string;
     constructor () {}
+    minPrice:number;
+    maxPrice:number;
+    totalQuantity:number;
+    basicImage:string;
 }
 
