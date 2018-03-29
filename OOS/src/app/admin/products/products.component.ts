@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../services/Product.service'
 import { CategoryService } from '../services/category.service';
+import { ProductStatus } from '../models/product';
 import { SpinnerService } from '../../shared/services/spinner.service';
 @Component({
   selector: 'app-products',
@@ -8,7 +9,7 @@ import { SpinnerService } from '../../shared/services/spinner.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
+  statusDefine = ProductStatus;
   products : any;
   id: string;
   productId : string;
@@ -16,8 +17,13 @@ export class ProductsComponent implements OnInit {
     private spinnerService: SpinnerService) { }
 
   ngOnInit() {
+    this.loadProducts();
+  }
+  loadProducts(){
+    this.spinnerService.startLoadingSpinner();
     this.productService.gets().subscribe(data =>{
       this.products = data;
+      this.spinnerService.turnOffSpinner();
     });
   }
   setId(id){
@@ -27,12 +33,8 @@ export class ProductsComponent implements OnInit {
     this.productId = id; 
   }
   deleteProduct(){
-    this.spinnerService.startLoadingSpinner();
     this.productService.delete(this.productId).subscribe(data => {
-      this.productService.gets().subscribe(data=>{
-        this.spinnerService.turnOffSpinner();
-        this.products = data
-      });
+      this.loadProducts();
     });
   }
   }

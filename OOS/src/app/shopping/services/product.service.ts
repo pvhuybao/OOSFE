@@ -76,5 +76,4 @@ export class ProductService {
     var path = this.API_PATH + idCategory + "&" + keyword + "/search";
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
-  
 }

@@ -45,6 +45,7 @@ export class OrdersService {
     return this.authHttpService.put(this.API_PATH + id, order)
       .map(res => {
         console.log("order service res =" + res)
+        console.log("order service res.json =" + res.json())
         return res.json() || []})
   }
 
