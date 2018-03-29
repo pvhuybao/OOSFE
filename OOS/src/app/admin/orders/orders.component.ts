@@ -13,9 +13,13 @@ import { StatusOrder } from '../models/statusOrder';
 })
 export class OrdersComponent implements OnInit {
 
-  listOrders: Array<OrdersModel>
+  listOrders: Array<Object>
   listStatus = new Array<StatusOrder>()
   orderToDelete: OrdersModel;
+
+  email: string="";
+  phone: string="";
+  page: number=1;
   constructor(
     private ordersService: OrdersService, 
     private router: Router, 
@@ -37,8 +41,8 @@ export class OrdersComponent implements OnInit {
 
   getOrderList() 
   {
-    this.ordersService.getList().subscribe(data => {
-      this.listOrders = data;
+    this.ordersService.getList(this.email,this.phone,this.page).subscribe(data=>{
+      this.listOrders = data.items;
     });
   }
 
