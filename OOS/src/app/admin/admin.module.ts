@@ -35,6 +35,8 @@ import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationService } from './services/configuration.service';
 
 @NgModule({
   imports: [
@@ -68,6 +70,7 @@ import { CategoryService } from './services/category.service';
     AdminLoginComponent,
     AdminManagementComponent,
     CreateOrderComponent,
+    ConfigurationComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -78,7 +81,8 @@ import { CategoryService } from './services/category.service';
     UserService,
     OrdersService,
     SpinnerService,
-    BreadcrumbService
+    BreadcrumbService,
+    ConfigurationService
   ]
 })
 export class AdminModule { }
