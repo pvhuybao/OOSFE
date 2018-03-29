@@ -41,7 +41,9 @@ export class OrdersComponent implements OnInit {
 
   getOrderList() 
   {
+    this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email,this.phone,this.page).subscribe(data=>{
+      this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
     });
   }
