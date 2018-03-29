@@ -11,20 +11,23 @@ export class CartComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+
+  }
 
   ngOnInit() {
     this.get();
   }
 
   get() {
-    this.cartService.get().subscribe(x => { 
-      this.cart = x; 
-      if (this.cart)
-      this.updateTotal();
+    this.cartService.get().subscribe(x => {
+      this.cart = x;
+      if (this.cart) {
+        this.updateTotal();
+      }
+      else this.cart = [];
     });
     this.cartService.init()
-    
   }
   updateTotal() {
     var total = 0;
@@ -36,6 +39,6 @@ export class CartComponent implements OnInit {
   remove(product) {
     this.cartService.remove(product);
     this.updateTotal();
-    event.stopPropagation();​
+    event.stopPropagation();
   }
 }
