@@ -30,7 +30,11 @@ export class OverviewUsersComponent implements OnInit {
   }
 
   getListUsers() {
+    this.spinnerService.startLoadingSpinner();
+
     this.userService.get().subscribe(data => {
+      this.spinnerService.turnOffSpinner();
+
       this.listUsers = data;
       // reverse sort
       this.listUsers.sort((a,b)=>{
@@ -46,5 +50,10 @@ export class OverviewUsersComponent implements OnInit {
       this.spinnerService.turnOffSpinner();
       this.getListUsers();
     });
+  }
+
+  getUser(user:UserModel)
+  {
+    this.userService.getUser(user);
   }
 }

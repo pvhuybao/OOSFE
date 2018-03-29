@@ -3,6 +3,10 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~font-awesome/css/font-awesome.css";
 
+.search-result:hover
+{
+  background-color: lightgray;
+}
 /* Slider */
 .slick-slider
 {
@@ -402,7 +406,7 @@ body {
     width: 60px;
     background-color: #F8694A;
   }
-
+  
   .section-title-search {
     position: relative;
     margin-bottom: 15px;
@@ -424,7 +428,6 @@ body {
     width: 60px;
     background-color: transparent;
   }
-  
   /*----------------------------*\
       Breadcrumb
   \*----------------------------*/

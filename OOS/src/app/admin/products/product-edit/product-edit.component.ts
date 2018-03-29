@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from '../../services/Product.service';
-import { ProductModel } from '../../../shopping/models/product';
+import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { ProductStatus } from '../../models/product';
 import {CategoryService } from '../../services/category.service';
@@ -19,6 +19,7 @@ export class ProductEditComponent implements OnInit {
   public item: number;
   public keys: any;
   categorys : any;
+  data :any;
  
   constructor( private productService:ProductService,private router: Router,
     private spinnerService: SpinnerService,
@@ -28,12 +29,15 @@ export class ProductEditComponent implements OnInit {
     this.id=this.productService.idProduct;
     this.productService.get(this.id).subscribe(data =>{
     this.product = data;
+    this.data = this.product.productTails;
          });
-         this.categoryService.get().subscribe(
+         
+    this.categoryService.get().subscribe(
           data =>{
             this.categorys = data;}
         );
          this.getStatus();
+    
   }
 
   getStatus() {
@@ -47,4 +51,33 @@ export class ProductEditComponent implements OnInit {
       this.router.navigateByUrl('/admin/manager/products');
   });
   }
+
+  settings = {
+    columns: {
+      image: {
+        title: 'Image',
+        filter: false,
+      },
+      color: {
+        title: 'Color',
+        filter: false,
+      },
+      size: {
+        title: 'Size',
+        filter: false,
+      },
+      price: {
+        title: 'Price',
+        filter: false,
+        validation:'number',
+      },
+      quantity: {
+        title: 'Quantity',
+        filter: false,
+        validation: 'number',
+      },
+    },
+  };
+  
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
+import { BannerModel } from '../models/banner';
 
 @Component({
   selector: 'app-home-page',
@@ -12,6 +13,24 @@ export class HomePageComponent implements OnInit {
   newestProduct: ProductModel[] = [];
   topSales: ProductModel[] = [];
   topDiscount: ProductModel[] = [];
+
+  listBanners: BannerModel[] = [
+    {
+      image: "/assets/img/banner01.jpg",
+      title: "BAGS SALE",
+      content: "Up to 50% Discount"
+    },
+    {
+      image: "/assets/img/banner02.jpg",
+      title: "BAGS SALE",
+      content: "Up to 50% Discount"
+    },
+    {
+      image: "/assets/img/banner03.jpg",
+      title: "BAGS SALE",
+      content: "Up to 50% Discount"
+    }
+  ];
 
   constructor(private productService: ProductService) { }
 
