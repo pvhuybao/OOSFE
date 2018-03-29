@@ -21,18 +21,26 @@ export class ProductEditComponent implements OnInit {
   categorys: any;
   data: any;
 
-  constructor(private productService: ProductService, private router: Router,
+  constructor(private productService: ProductService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
     private categoryService: CategoryService, ) { }
-
-  ngOnInit() {
-    this.spinnerService.startLoadingSpinner();
-    this.id = this.productService.idProduct;
+  getById(id) {
     this.productService.get(this.id).subscribe(data => {
       this.product = data;
       this.data = this.product.productTails;
       this.spinnerService.turnOffSpinner();
     });
+  }
+  ngOnInit() {
+    this.spinnerService.startLoadingSpinner();
+    // get id
+    let params: any = this.activatedRoute.snapshot.params;
+    this.id = params.id;
+    this.getById(this.id);
+    // this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
+
 
     this.categoryService.get().subscribe(
       data => {

@@ -6,36 +6,46 @@
       </div>
       <br>
       <div>
-      <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" 
-      (click)="update()">Save</button>
-      <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" >Back</button>
+        <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" (click)="update()">Save</button>
+        <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+      </div>
     </div>
-  </div>
   </div>
   <div class="col-md-6">
     <div class="product-body">
-        <div class="section-title">
-            <h3 class="title">Edit Product</h3>
-          </div>
-          <p><strong>Name:</strong>
-          <input [(ngModel)]="product.name" class="input search-input"></p>
-          <strong>Category:</strong>
-          <div>
-              <p><select class=" input custom-select" [(ngModel)]="product.idCategory">
-                <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
-              </select></p>
-              </div>
-          <strong>Status:</strong>
-          <div>
-              <p><select class="input custom-select" [(ngModel)]="product.status">
-                  <option *ngFor="let item of keys" [value]="item">{{statusDefine[item]}}</option>
-              </select></p>
-          </div>
-            <p>
-            <strong>Description:</strong>
-            <input [(ngModel)]="product.description" class="input search-input"></p>
-   </div>
+      <div class="section-title">
+        <h3 class="title">Edit Product</h3>
+      </div>
+      <p>
+        <strong>Name:</strong>
+        <input [(ngModel)]="product.name" class="input search-input">
+      </p>
+      <p>
+        <strong>Code:</strong>
+        <input [(ngModel)]="product.code" class="input search-input">
+      </p>
+      <strong>Category:</strong>
+      <div>
+        <p>
+          <select class=" input custom-select" [(ngModel)]="product.idCategory">
+            <option *ngFor="let category of categorys" [value]="category.id">{{category.name}}</option>
+          </select>
+        </p>
+      </div>
+      <strong>Status:</strong>
+      <div>
+        <p>
+          <select class="input custom-select" [(ngModel)]="product.status">
+            <option *ngFor="let item of keys" [value]="item">{{statusDefine[item]}}</option>
+          </select>
+        </p>
+      </div>
+      <p>
+        <strong>Description:</strong>
+        <input [(ngModel)]="product.description" class="input search-input">
+      </p>
+    </div>
   </div>
-</div> 
+</div>
 <hr />
-  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+<ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
