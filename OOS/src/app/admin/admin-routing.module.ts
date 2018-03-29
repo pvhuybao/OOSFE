@@ -51,35 +51,31 @@ const adminRoutes: Routes = [
             ]
           },
 
-          {
-            path: 'products', component: ProductsComponent
-          },
+          { path: 'products', component: ProductsComponent },
           { path: 'products/create', component: ProductCreateComponent },
           { path: 'products/edit/:id', component: ProductEditComponent },
+          { path: 'product-details', component: ProductDetailComponent },
+          {
+            path: 'categories',
+            children: [
+              { path: '', component: OverviewCategoriesComponent },
+              { path: 'create', component: CreateCategoryComponent },
+              { path: ':id', component: EditCategoryComponent },
+            ]
+          },
+          { path: 'orders', component: OrdersComponent },
+          { path: 'users', component: UsersComponent },
+          { path: 'orders/create', component: CreateOrderComponent },
+          //{ path: 'orders/edit/:id', component: EditOrdersComponent },
+          { path: 'login', component: AdminLoginComponent },
+          { path: 'orders/edit/:id', component: EditOrderComponent },
+          { path: 'config', component: ConfigurationComponent }
         ]
       },
 
-      {
-        path: 'categories',
-        children: [
-          { path: '', component: OverviewCategoriesComponent },
-          { path: 'create', component: CreateCategoryComponent },
-          { path: ':id', component: EditCategoryComponent },
-        ]
-      },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'orders/create', component: CreateOrderComponent },
-      //{ path: 'orders/edit/:id', component: EditOrdersComponent },
-      { path: 'login', component: AdminLoginComponent },
-      { path: 'orders/edit/:id', component: EditOrderComponent },
-      { path: 'config', component: ConfigurationComponent }
     ]
-  },
-
-]
-
-
+  }
+  ,];
 @NgModule({
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]

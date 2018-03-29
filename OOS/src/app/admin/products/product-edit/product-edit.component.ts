@@ -5,6 +5,7 @@ import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { ProductStatus } from '../../models/product';
 import { CategoryService } from '../../services/category.service';
+import { BreadcrumbService } from 'ng5-breadcrumb';
 
 @Component({
   selector: 'app-product-edit',
@@ -12,7 +13,7 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
+  productIsExist: boolean=true;
   id: string;
   product: any;
   public statusDefine = ProductStatus;
@@ -25,11 +26,20 @@ export class ProductEditComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
-    private categoryService: CategoryService, ) { }
+    private categoryService: CategoryService,
+    private breadcrumbService:BreadcrumbService ) { }
   getById(id) {
     this.productService.get(this.id).subscribe(data => {
-      this.product = data;
-      this.data = this.product.productTails;
+      
+      if(data.id==null)//id is invalid
+      {
+        this.productIsExist=false;
+      }
+      else
+      {
+        this.product = data;
+        this.data = this.product.productTails;
+      }
       this.spinnerService.turnOffSpinner();
     });
   }
@@ -39,7 +49,7 @@ export class ProductEditComponent implements OnInit {
     let params: any = this.activatedRoute.snapshot.params;
     this.id = params.id;
     this.getById(this.id);
-    // this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
+    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/products/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForProduct());
 
 
     this.categoryService.get().subscribe(
@@ -51,7 +61,9 @@ export class ProductEditComponent implements OnInit {
     this.getStatus();
 
   }
-
+  displayNameForProduct(){
+    return "Edit Product: ";
+  }
   getStatus() {
     this.keys = Object.keys(this.statusDefine).filter(Number);
   }
