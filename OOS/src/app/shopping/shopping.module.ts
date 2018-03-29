@@ -30,6 +30,8 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToasterModule } from 'angular2-toaster';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -39,7 +41,9 @@ import { OrderService } from './services/order.service';
     ShoppingRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot()
   ],
   declarations: [
     HomePageComponent, 
