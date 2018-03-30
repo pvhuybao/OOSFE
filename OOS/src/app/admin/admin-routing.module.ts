@@ -25,6 +25,7 @@ import { CreateOrderComponent } from './orders/create-order/create-order.compone
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 const adminRoutes: Routes = [
   {
@@ -52,7 +53,7 @@ const adminRoutes: Routes = [
 
           { path: 'products', component: ProductsComponent },
           { path: 'products/create', component: ProductCreateComponent },
-          { path: 'products/edit', component: ProductEditComponent },
+          { path: 'products/edit/:id', component: ProductEditComponent },
           { path: 'product-details', component: ProductDetailComponent },
           {
             path: 'categories',
@@ -68,15 +69,13 @@ const adminRoutes: Routes = [
           //{ path: 'orders/edit/:id', component: EditOrdersComponent },
           { path: 'login', component: AdminLoginComponent },
           { path: 'orders/edit/:id', component: EditOrderComponent },
+          { path: 'config', component: ConfigurationComponent }
         ]
       },
 
     ]
   }
-
-
   ,];
-
 @NgModule({
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]
