@@ -13,6 +13,8 @@ import { AddressModel } from '../../models/address';
 export class PaymentComponent implements OnInit {
 
   public order: OrdersModel;
+  public listDetails: OrderDetailModel[];
+  public address: AddressModel;
 
   constructor(private orderService: OrderService,
               private router: Router) { 
@@ -22,16 +24,13 @@ export class PaymentComponent implements OnInit {
                   this.router.navigate(['./cart/shipping-info']);
                 }
 
-              }
-  
-  public listDetails: OrderDetailModel[];
-  public address: AddressModel;
+              }  
 
   ngOnInit() {    
     this.listDetails = this.order.orderDetails;
   }
 
-  Checkout() {        
+  Checkout() {    
     this.orderService.put(this.order.id,this.order).subscribe(data =>
       this.router.navigate(['./cart/thankyou']));    
   }

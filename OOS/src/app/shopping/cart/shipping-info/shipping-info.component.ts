@@ -58,14 +58,14 @@ export class ShippingInfoComponent implements OnInit {
     this.address = this.addressInput;
     this.address.type = 0;
 
-    this.address2 = this.address;
-    
+    this.address2 = this.address; 
+    this.address2.type = 1   
         
     this.order.email = this.email;
     this.order.userId = null;
     this.order.address = [this.address,this.address2];
     this.order.orderDetails = this.listOrderDetails;
-    this.order.total = 0;       
+    this.order.total = 0;
     
     this.orderService.add(this.order).subscribe(() => {      
       this.orderService.setOrder(this.order);
