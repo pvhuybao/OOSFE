@@ -24,7 +24,7 @@ export class ProductDetailComponent implements OnInit {
   listImages =[];
   available : string;
   flagCartButton : boolean = true;
-  quantity : number;
+  quantity : number = 1;
   productCart : ProductCartModel;
   constructor(private productService : ProductService,private activatedRoute: ActivatedRoute, private cartService: CartService) { }
 
@@ -39,7 +39,6 @@ export class ProductDetailComponent implements OnInit {
       this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
       this.listColor = this.getColorOption();
     });
-    
   }
   GetIdProduct(id:string){
     return  id.slice(0,id.indexOf("_"));
