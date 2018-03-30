@@ -47,7 +47,7 @@
 						<div class="product-btns" style="margin-top:10px">
 							<div class="qty-input">
 								<span class="text-uppercase">QTY: </span>
-								<input class="input" type="number" min="0" max ="5" value="1">
+								<input class="input" type="number" min="0" max ="5" value="1" [(ngModel)]="quantity">
 							</div>
 							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 							<div class="pull-right">

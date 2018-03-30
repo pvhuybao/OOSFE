@@ -5,7 +5,8 @@ import { ProductService } from '../services/product.service';
 import { ProductTail } from '../../admin/models/ProductTail';
 import { takeLast } from 'rxjs/operators';
 import { BannerModel } from '../models/banner';
-
+import { CartService } from '../services/cart.service';
+import { ProductCartModel } from '../models/productCart';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -23,7 +24,9 @@ export class ProductDetailComponent implements OnInit {
   listImages =[];
   available : string;
   flagCartButton : boolean = true;
-  constructor(private productService : ProductService,private activatedRoute: ActivatedRoute) { }
+  quantity : number;
+  productCart : ProductCartModel;
+  constructor(private productService : ProductService,private activatedRoute: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit() {
     let params: any = this.activatedRoute.snapshot.params;
@@ -101,6 +104,13 @@ return unique_array
 }
 
 AddToCart(){
-
+  var product = {
+    id : this.product.id,
+    description : this.product.description,
+    image : this.image,
+    name: this.product.name,
+    price: this.price
+  }
+  this.cartService.set(product,this.quantity);
 }
 }

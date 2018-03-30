@@ -1,0 +1,4 @@
+option:checked, option:hover {
+    border: 2px;
+    border-color: coral;
+}
