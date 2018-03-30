@@ -14,12 +14,6 @@ export class OrdersService {
 
   order: OrdersModel;
 
-  pageSize: number = 15;
-  page: number = 1;
-  pageCount: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
-
   constructor(private authHttpService: AuthHttpService) { }
 
   sendData(order: OrdersModel)
@@ -32,8 +26,8 @@ export class OrdersService {
     return this.order;
   }
   
-  getList(email: string, phone: string, page: number): Observable<PagingModel> {
-    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone+"&PageSize=15&Page=1")
+  getList(email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
+    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone+"&PageSize="+pageSize+"&Page="+page)
       .map(res => res.json() || [])
   }
 

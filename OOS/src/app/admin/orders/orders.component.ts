@@ -20,6 +20,7 @@ export class OrdersComponent implements OnInit {
   email: string = "";
   phone: string = "";
   page: number = 1;
+  pageSize: number = 10;
   pageCount: number;
   hasPreviousPage: boolean;
   hasNextPage: boolean;
@@ -49,7 +50,7 @@ export class OrdersComponent implements OnInit {
   
   getOrderList() {
     this.spinnerService.startLoadingSpinner();
-    this.ordersService.getList(this.email, this.phone, this.page).subscribe(data => {
+    this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
       this.pageCount = data.pageCount;
