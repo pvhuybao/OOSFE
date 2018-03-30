@@ -4,7 +4,8 @@ import { ProductService } from '../../services/Product.service';
 import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { ProductStatus } from '../../models/product';
-import {CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../services/category.service';
+import { BreadcrumbService } from 'ng5-breadcrumb';
 
 @Component({
   selector: 'app-product-edit',
@@ -12,44 +13,66 @@ import {CategoryService } from '../../services/category.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
-  id:string;
-  product:any;
-  public status1 = ProductStatus;
+  productIsExist: boolean=true;
+  id: string;
+  product: any;
+  public statusDefine = ProductStatus;
   public item: number;
   public keys: any;
-  categorys : any;
-  data :any;
- 
-  constructor( private productService:ProductService,private router: Router,
+  categorys: any;
+  data: any;
+
+  constructor(private productService: ProductService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
-    private categoryService :CategoryService,) { }
-
+    private categoryService: CategoryService,
+    private breadcrumbService:BreadcrumbService ) { }
+  getById(id) {
+    this.productService.get(this.id).subscribe(data => {
+      
+      if(data.id==null)//id is invalid
+      {
+        this.productIsExist=false;
+      }
+      else
+      {
+        this.product = data;
+        this.data = this.product.productTails;
+      }
+      this.spinnerService.turnOffSpinner();
+    });
+  }
   ngOnInit() {
-    this.id=this.productService.idProduct;
-    this.productService.get(this.id).subscribe(data =>{
-    this.product = data;
-    this.data = this.product.productTails;
-         });
-         
-    this.categoryService.get().subscribe(
-          data =>{
-            this.categorys = data;}
-        );
-         this.getStatus();
-    
-  }
+    this.spinnerService.startLoadingSpinner();
+    // get id
+    let params: any = this.activatedRoute.snapshot.params;
+    this.id = params.id;
+    this.getById(this.id);
+    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/products/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForProduct());
 
-  getStatus() {
-    this.keys = Object.keys(this.status1).filter(Number);
+
+    this.categoryService.get().subscribe(
+      data => {
+        this.categorys = data;
+        this.spinnerService.turnOffSpinner();
+      }
+    );
+    this.getStatus();
+
   }
-  update()
-  {
+  displayNameForProduct(){
+    return "Edit Product: ";
+  }
+  getStatus() {
+    this.keys = Object.keys(this.statusDefine).filter(Number);
+  }
+  update() {
     this.spinnerService.startLoadingSpinner();
     this.productService.putProduct(this.product).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.router.navigateByUrl('/admin/manager/products');
-  });
+    });
   }
 
   settings = {
@@ -69,7 +92,7 @@ export class ProductEditComponent implements OnInit {
       price: {
         title: 'Price',
         filter: false,
-        validation:'number',
+        validation: 'number',
       },
       quantity: {
         title: 'Quantity',
@@ -78,6 +101,6 @@ export class ProductEditComponent implements OnInit {
       },
     },
   };
-  
+
 
 }
