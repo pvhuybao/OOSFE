@@ -22,7 +22,7 @@ export class CreateCategoryComponent implements OnInit {
   description: string = '';
   public keys: Array<string>;
   status = CategoryStatus;
-  status1: number = 1;
+  status1: number = 1;  // gan status mac dinh
   categoryValidation = new Object;
 
   isInvalid = false;
