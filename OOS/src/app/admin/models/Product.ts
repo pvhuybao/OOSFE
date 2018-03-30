@@ -19,6 +19,6 @@ export class ProductModel{
     minPrice:number;
     maxPrice:number;
     totalQuantity:number;
-    basicImage:string;
+    defaultImage:string;
 }
 
