@@ -16,12 +16,20 @@ export class OrderService {
     return this.authHttpService.post(this.API_PATH, order);      
   }  
 
-  getOderDetails(id): Observable<OrdersModel[]> {
+  getOderDetails(id): Observable<OrdersModel> {
     return this.authHttpService.get(this.API_PATH + "/" + id)
       .map(res => res.json() || [])
   }
 
-  setOrder(order) {
+  put(id :string,order: OrdersModel): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + id, order)
+      .map(res => {
+        console.log("order service res =" + res)
+        console.log("order service res.json =" + res.json())
+        return res.json() || []})
+  }
+
+  setOrder(order): void {
     this.order = order;
   }
 
