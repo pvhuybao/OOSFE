@@ -31,6 +31,7 @@ import { ShippingGuideComponent } from './shipping-guide/shipping-guide.componen
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
 import { ConfigurationService } from './services/configuration.service';
+import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -40,7 +41,7 @@ import { ConfigurationService } from './services/configuration.service';
     ShoppingRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     HomePageComponent, 
@@ -63,7 +64,8 @@ import { ConfigurationService } from './services/configuration.service';
     CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
-    FaqComponent
+    FaqComponent,
+    CarouselProductComponent
   ],
   providers: [
     CategoryService, 

@@ -3,6 +3,7 @@ import { CartModel } from '../models/cart';
 import { ProductModel } from '../models/product'
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs';
+import { ProductCartModel } from '../models/productCart';
 
 @Injectable()
 export class CartService {
@@ -18,13 +19,13 @@ export class CartService {
     this.value.next(JSON.parse(localStorage.getItem(this.key)));
   }
 
-  set(product: ProductModel) {
+  set(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     if (!data) data = [];
     if (!data.find(x => x.product.id == product.id)) {
       var item = new CartModel();
       item.product = product;
-      item.quantity = 1;
+      item.quantity = quantity;
       data.splice(0, 0, item);
       localStorage.setItem(this.key, JSON.stringify(data));
       this.value.next(data);
@@ -41,7 +42,7 @@ export class CartService {
     this.value.next(data);
   }
 
-  updateQuantity(product: ProductModel, quantity: number) {
+  updateQuantity(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     data.filter(x => x.product.id == product.id)[0].quantity = quantity;
     localStorage.setItem(this.key, JSON.stringify(data));

@@ -54,7 +54,7 @@ const adminRoutes: Routes = [
 
           { path: 'products', component: ProductsComponent },
           { path: 'products/create', component: ProductCreateComponent },
-          { path: 'products/edit', component: ProductEditComponent },
+          { path: 'products/edit/:id', component: ProductEditComponent },
           { path: 'product-details', component: ProductDetailComponent },
           {
             path: 'categories',
@@ -80,10 +80,7 @@ const adminRoutes: Routes = [
 
     ]
   }
-
-
   ,];
-
 @NgModule({
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]
