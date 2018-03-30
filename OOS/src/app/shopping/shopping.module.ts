@@ -26,6 +26,7 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
 import { PaypalComponent } from './cart/paypal/paypal.component';
+import { CarouselComponent } from './home-page/carousel/carousel.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
@@ -60,6 +61,7 @@ import { OrderService } from './services/order.service';
     CategoryDetailsComponent,
     ContactComponent,
     PaypalComponent,
+    CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
     FaqComponent

@@ -114,14 +114,14 @@ export class EditOrderComponent implements OnInit {
 
   edit() {
     this.spinnerService.startLoadingSpinner()
+
     this.ss.put(this.id, this.order).subscribe(data => {
       this.spinnerService.turnOffSpinner();
+
       this.saved = true
       console.log("EditOrder edit data =" + data)
     }
     )
-   // this.spinnerService.turnOffSpinner();
-    //this.saved = true
   }
 
   setBackSaved() {

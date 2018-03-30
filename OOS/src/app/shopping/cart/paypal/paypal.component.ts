@@ -1,5 +1,7 @@
-import { Component, AfterViewChecked } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, AfterViewChecked, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { OrderService } from '../../services/order.service';
+import { OrdersModel } from '../../models/order';
 
 declare let paypal: any;
 
@@ -9,74 +11,44 @@ declare let paypal: any;
   styleUrls: ['./paypal.component.css']
 })
 export class PaypalComponent implements AfterViewChecked {
-
-  constructor(private router: Router) { }
+  @Input() order: OrdersModel;
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   addScript: boolean = false;
-  paypalLoad: boolean = true;
-
-  finalAmount: number = 10;
 
   paypalConfig = {
-    env: 'sandbox',
+    env: "sandbox",
     client: {
-      sandbox: 'Ab_kqVcRvhdOBaCbw7l9PMb_QV77A7dlLRn-XrJgtGgf3tb9F75Q9Lq4xuRbJ892oizds7EkiueVUX6R',
-      production: '<your-production-key here>'
+      sandbox: 'AS_F2isdOalHFYG4JN-jeCXgZoGEVBqWFbNIoHYe5ZTGlm7Y9NenKKuplRxt_nhQ0OahWby92FlJYCjh',
+      production: 'AXh5J33BEHGN1r78tGpnrpWzo00J4zMBGQEYWyThRNu4ZOYhbBURFfNqAb5jDXNKQ0A8xhjD2mWFnFlU'
     },
     commit: true,
     payment: (data, actions) => {
       return actions.payment.create({
         payment: {
           transactions: [
-            { 
+            {
               amount: {
-                total: this.finalAmount, currency: 'USD',
-                details: {
-                  subtotal: "5",
-                  tax: "0",
-                  shipping: "5",
-                }
+                total: 10, currency: 'USD',
               },
               description: "Orient Online Shop Payment Description",
-              item_list: {
-                items: [
-                  {
-                    name: "hat",
-                    description: "Brown hat.",
-                    quantity: "1",
-                    price: "2",
-                    currency: "USD"
-                  },
-                  {
-                    name: "handbag",
-                    description: "Black handbag.",
-                    quantity: "1",
-                    price: "3",
-                    currency: "USD"
-                  }
-                ],
-                shipping_address: {
-                  recipient_name: "Barr454545ack Obama",
-                  line1: "4th45454 Floor",
-                  line2: "Uni4545t #34",
-                  city: "San Jose",
-                  country_code: "US",
-                  postal_code: "95131",
-                  phone: "01186224545412345678",
-                  state: "CA"
-                }
-              }
-
             },
           ]
-        }
+        },
+        experience: {
+          input_fields: {
+            no_shipping: 1
+          }
+        },
       });
     },
+
     onAuthorize: (data, actions) => {
-      return actions.payment.execute().then((payment) => {
+      actions.payment.execute().then((payment) => {
+        console.log("Authorized)")
         //Do something when payment is successful.
-        this.router.navigate(['/']);
-      })
+        this.router.navigate(['../thankyou'], { relativeTo: this.route });
+      });
     }
   };
 
@@ -84,7 +56,6 @@ export class PaypalComponent implements AfterViewChecked {
     if (!this.addScript) {
       this.addPaypalScript().then(() => {
         paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
-        this.paypalLoad = false;
       })
     }
   }
@@ -98,5 +69,4 @@ export class PaypalComponent implements AfterViewChecked {
       document.body.appendChild(scripttagElement);
     })
   }
-
 }
