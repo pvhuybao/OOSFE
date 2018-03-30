@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ConfigurationService } from '../services/configuration.service';
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.css']
 })
 export class FaqComponent implements OnInit {
-htmlString="<p><strong>AAA</strong></p><p><strong><em>aaa</em></strong></p><p>aaa</p>";
-  constructor() { }
+content: string;
+  constructor(private configService: ConfigurationService) { }
 
   ngOnInit() {
+    this.configService.get().subscribe(data => {
+      this.content = data.faqHtml;
+    });
   }
 
 }
