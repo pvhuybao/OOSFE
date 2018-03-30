@@ -46,13 +46,14 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.getOrderList();
   }
-
+  
   getOrderList() {
     this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email, this.phone, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
       this.pageCount = data.pageCount;
+
     });
   }
 
