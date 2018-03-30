@@ -12,12 +12,12 @@ export class ProductsComponent implements OnInit {
   statusDefine = ProductStatus;
   products : any;
   id: string;
-  productId : string;
   constructor(private productService : ProductService, private categoryService : CategoryService,
     private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.loadProducts();
+
   }
   loadProducts(){
     this.spinnerService.startLoadingSpinner();
@@ -27,13 +27,10 @@ export class ProductsComponent implements OnInit {
     });
   }
   setId(id){
-    this.productService.setId(id);
-  }
-  setIdModal(id){
-    this.productId = id; 
+    this.id = id; 
   }
   deleteProduct(){
-    this.productService.delete(this.productId).subscribe(data => {
+    this.productService.delete(this.id).subscribe(data => {
       this.loadProducts();
     });
   }
