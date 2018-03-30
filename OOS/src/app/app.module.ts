@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { NouisliderModule } from 'ng2-nouislider';
     AngularFontAwesomeModule,
     NouisliderModule,
     Ng4LoadingSpinnerModule,
-    Ng5BreadcrumbModule.forRoot()
+    Ng5BreadcrumbModule.forRoot(),
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
   providers: [
     AuthService, 
