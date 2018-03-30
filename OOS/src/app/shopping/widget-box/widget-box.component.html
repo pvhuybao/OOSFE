@@ -2,9 +2,12 @@
 <div class="col-md-3 col-sm-6 col-xs-6">
   <div class="product product-single">
     <div class="product-thumb">
-      <button class="main-btn quick-view">
+      <button class="main-btn quick-view" routerLink="/product/{{productDetail.id}}" routerLinkActive="active">
         <i class="fa fa-search-plus"></i> Quick view</button>
-      <img src="{{productDetail.image}}" alt="">
+      <div *ngIf="productDetail.image==null">
+          <img  style="width:270px;height:320px" src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="">
+      </div>
+      <img style="width:270px;height:320px" src="{{productDetail.image}}" alt="">
     </div>
     <div class="product-body">
       <h3 class="product-price">{{productDetail.price}} $</h3>
@@ -16,7 +19,7 @@
         <i class="fa fa-star-o empty"></i>
       </div>
       <h2 class="product-name">
-        <a href="#">{{productDetail.name}}</a>
+       <a href="#">{{productDetail.name}}</a>
       </h2>
       <div class="product-btns">
         <button class="main-btn icon-btn">
@@ -31,4 +34,5 @@
     </div>
   </div>
 </div>
+<toaster-container></toaster-container>
 <!-- /Product Single -->

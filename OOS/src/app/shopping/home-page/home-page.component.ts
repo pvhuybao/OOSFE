@@ -3,6 +3,7 @@ import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
 import { BannerModel } from '../models/banner';
 
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -72,4 +73,5 @@ export class HomePageComponent implements OnInit {
       this.newestProduct = newestProduct
     });
   }
+
 }
