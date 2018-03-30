@@ -17,7 +17,7 @@ export class WidgetBoxComponent implements OnInit {
   }
 
   addProductCart(product){
-    this.cartService.set(product);
+    this.cartService.set(product,1);
   }
 
 }
