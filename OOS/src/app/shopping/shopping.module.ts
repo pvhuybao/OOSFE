@@ -31,6 +31,7 @@ import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
+import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
 
 //self-services
@@ -76,7 +77,9 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     ProductService, 
     CartService,
     EmailService,
-    OrderService
+    OrderService,
+    ConfigurationService
+    
   ]
 })
 export class ShoppingModule { }
