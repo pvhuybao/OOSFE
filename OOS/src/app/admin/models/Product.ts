@@ -16,5 +16,9 @@ export class ProductModel{
     categoryName:string;
     productTails:ProductTail[];
     constructor () {}
+    minPrice:number;
+    maxPrice:number;
+    totalQuantity:number;
+    basicImage:string;
 }
 
