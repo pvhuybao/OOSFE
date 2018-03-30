@@ -14,7 +14,7 @@ export class OverviewCategoriesComponent implements OnInit {
 
   listCategories: CategoryModel[];
 
-  cateDel = new CategoryModel;
+  cateDel = new CategoryModel; // bien category can delete
   public status = CategoryStatus;  
 
   constructor(
