@@ -6,12 +6,12 @@ import { AdminModule } from './admin/admin.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService } from 'ng5-breadcrumb';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthHttpService } from './auth/auth-http.service'
-
+import { ClientStorageService } from './shared/services/client-storage.service'
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -29,15 +29,15 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpModule,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,    
+    AppRoutingModule,
     AngularFontAwesomeModule,
     NouisliderModule,
     Ng4LoadingSpinnerModule,
     Ng5BreadcrumbModule.forRoot()
   ],
   providers: [
-    AuthService, 
-    AuthGuardService, 
+    AuthService,
+    AuthGuardService,
     AuthHttpService,
     BreadcrumbService
   ],
