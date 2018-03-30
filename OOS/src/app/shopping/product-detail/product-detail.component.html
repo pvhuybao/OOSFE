@@ -30,25 +30,27 @@
 						<p><strong>Brand:</strong> E-SHOP</p>
 						<p>{{product.description}}</p>
 					
+							
+							<div class="custom-radios">
+								<div *ngFor="let color of listColor">
+								  <input type="radio" [id]="color" name="color" [value]="color" checked [(ngModel)]="colorSelected">
+								  <label for={{color}}>
+									<span [style.background]="color">
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									</span>
+								  </label>
+							</div>
+							</div>
 							<div class="product-options color" style="display:inline ; border-top: none;">
-								<span class="text-uppercase">Color:</span>
+								<!-- <span class="text-uppercase">Color:</span>
 								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="colorSelected" (change)="onChange()"style="width:auto" [style.background]="colorSelected">
 								<option *ngFor="let color of listColor" [value]="color" [style.background]="color" ></option>
-								</select></p>
+								</select></p> -->
 								<span class="text-uppercase">Size:</span>
 								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="sizeSelected" style="width:auto">
 								<option *ngFor="let tail of listSize" [value]="tail" >{{tail}}</option>
 								</select></p>
 								
-							</div>
-							<div class="custom-radios">
-								<div>
-								  <input type="radio" id="color-1" name="color" value="color-1" checked>
-								  <label for="color-1">
-									<span style="background-color:aqua">
-									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
-									</span>
-								  </label>
 							</div>
 								  
 

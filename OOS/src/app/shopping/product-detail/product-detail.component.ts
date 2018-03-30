@@ -112,4 +112,7 @@ AddToCart(){
   }
   this.cartService.set(product,this.quantity);
 }
+setColor(color){
+  this.colorSelected = color;
+}
 }
