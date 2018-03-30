@@ -1,9 +1,18 @@
+import { ProductTail } from "../../admin/models/ProductTail";
+
 export class ProductModel{
     id: string;
+    code: string;
     name: string;
-    price: number;
     description : string;
-    image : string;
+    details:string;
     idCategory: string;
-    constructor(){}
+    status: number;  
+    categoryName:string;
+    productTails:ProductTail[];
+    constructor () {}
+    minPrice:number;
+    maxPrice:number;
+    totalQuantity:number;
+    basicImage:string;
 }

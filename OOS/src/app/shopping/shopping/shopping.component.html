@@ -504,7 +504,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
 					<!-- <form> -->
 						<div class="form-group">
-							<input class="input" type="email" placeholder="Enter Email Address" id="emailSubscribe" [(ngModel)]="emailSubscribe">
+							<input class="input" type="email" placeholder="Enter Email Address" id="emailSubscribe" [(ngModel)]="emailSubscribe" required>
 						</div>
 						<button class="primary-btn" (click)="sentEmailSubscribe()">Join Newslatter</button>
 					<!-- </form> -->
@@ -531,3 +531,4 @@
 	<!-- /container -->
 </footer>
 <!-- /FOOTER -->
+<toaster-container></toaster-container>

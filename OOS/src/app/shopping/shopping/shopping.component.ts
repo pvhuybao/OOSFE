@@ -11,6 +11,7 @@ import { CategoryModel } from '../models/category';
 import { EmailService } from '../services/email.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { EmailSubscribeModel } from '../models/emailSubscribe';
+import { ToasterService, ToasterConfig, Toast, BodyOutputType  } from 'angular2-toaster';
 
 @Component({
   selector: 'app-shopping',
@@ -35,10 +36,18 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   test: string;
   path: string;
   dblock: string;
-  public emailSubscribe: string = '';
 
-  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router, private ele: ElementRef,
-    private emailService: EmailService, private spinnerService: SpinnerService) {
+  public emailSubscribe: string ;
+
+  constructor(
+    private categoryService: CategoryService, 
+    private productService: ProductService, 
+    private router: Router, 
+    private ele: ElementRef,
+    private emailService: EmailService, 
+    private spinnerService: SpinnerService, 
+    private toasterService: ToasterService
+  ) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
         if (this.router.url == "/") this.dblock = "block";
@@ -99,13 +108,15 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword } });
     }
   }
-
   sentEmailSubscribe(){
     let email = new EmailSubscribeModel();
     email.emailSubscribe = this.emailSubscribe;
     this.spinnerService.startLoadingSpinner();
     this.emailService.emailSubscribe(email).subscribe(data=>{
       this.spinnerService.turnOffSpinner();
+      setTimeout(()=>{
+        this.toasterService.pop('success','successfuly','Added!');
+      },500)  
     })
   }
 }

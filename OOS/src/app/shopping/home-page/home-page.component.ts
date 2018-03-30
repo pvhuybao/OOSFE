@@ -58,7 +58,8 @@ export class HomePageComponent implements OnInit {
 
   getListNewestProduct() {
     this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+      this.newestProduct = newestProduct;
+      console.log(newestProduct)
     });
   }
 

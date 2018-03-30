@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
   updateTotal() {
     var total = 0;
     this.cart.forEach(function (item) {
-      total = total + item.product.price * item.quantity;
+      total = total + item.product.minPrice * item.quantity;
     })
     this.total = total;
   }
