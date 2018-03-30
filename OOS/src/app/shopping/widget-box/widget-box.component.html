@@ -2,12 +2,15 @@
 <div class="col-md-3 col-sm-6 col-xs-6">
   <div class="product product-single">
     <div class="product-thumb">
-      <button class="main-btn quick-view">
+      <button class="main-btn quick-view" (click)="routeProduct()">
         <i class="fa fa-search-plus"></i> Quick view</button>
-      <img src="{{productDetail.image}}" alt="">
+      <div *ngIf="productDetail.basicImage==null">
+          <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.name}}" height="320" width="270">
+      </div>
+      <img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270">
     </div>
     <div class="product-body">
-      <h3 class="product-price">{{productDetail.price}} $</h3>
+      <h3 style="color:#F8694A" class="product-price">{{productDetail.minPrice}} $</h3>
       <div class="product-rating">
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
@@ -16,7 +19,7 @@
         <i class="fa fa-star-o empty"></i>
       </div>
       <h2 class="product-name">
-        <a href="#">{{productDetail.name}}</a>
+       <a (click)="routeProduct()">{{productDetail.name}}</a>
       </h2>
       <div class="product-btns">
         <button class="main-btn icon-btn">
