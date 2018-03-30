@@ -12,22 +12,28 @@ import { AddressModel } from '../../models/address';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private orderService: OrderService,
-              private router: Router) { }
-
   public order: OrdersModel;
+
+  constructor(private orderService: OrderService,
+              private router: Router) { 
+
+                this.order = this.orderService.getOrder();
+                if(!this.order) {
+                  this.router.navigate(['./cart/shipping-info']);
+                }
+
+              }
+  
   public listDetails: OrderDetailModel[];
   public address: AddressModel;
 
-  ngOnInit() {
-    this.order = this.orderService.getOrder();    
+  ngOnInit() {    
     this.listDetails = this.order.orderDetails;
-    this.address = this.order.address[0];
   }
 
-  Checkout() {    
-    this.order.address.push(this.address);  
-    this.router.navigateByUrl("/cart/thankyou");
+  Checkout() {        
+    this.orderService.put(this.order.id,this.order).subscribe(data =>
+      this.router.navigate(['./cart/thankyou']));    
   }
 
 }
