@@ -108,7 +108,9 @@ AddToCart(){
     description : this.product.description,
     image : this.image,
     name: this.product.name,
-    price: this.price
+    price: this.price,
+    color:this.colorSelected,
+    size:this.sizeSelected
   }
   this.cartService.set(product,this.quantity);
 }

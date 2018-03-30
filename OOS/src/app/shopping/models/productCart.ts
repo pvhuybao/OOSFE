@@ -1,8 +1,10 @@
-export class ProductCartModel{
+export class ProductCartModel {
     id: string;
     name: string;
     price: number;
-    description : string;
-    image : string;
-    constructor(){}
+    description: string;
+    image: string;
+    color: string;
+    size: string;
+    constructor() { }
 }
