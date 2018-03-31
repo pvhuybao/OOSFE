@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs';
 import { UserCartService } from './user-cart.service';
 import { UserCartModel } from '../models/UserCart';
+import { ProductCartModel } from '../models/productCart';
 
 @Injectable()
 export class CartService {
@@ -36,7 +37,7 @@ export class CartService {
           else {    // if have usercart in db
             this.usercartmodel.cartDetails.forEach(element => {
               for(var i=1;i<=element.quantity;i++){
-                this.set(element.product);
+                this.set(element.product, element.quantity);
               }           
             });
           }
@@ -48,13 +49,13 @@ export class CartService {
     this.value.next(JSON.parse(localStorage.getItem(this.key)));
   }
 
-  set(product: ProductModel) {
+  set(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     if (!data) data = [];
     if (!data.find(x => x.product.id == product.id)) {
       var item = new CartModel();
       item.product = product;
-      item.quantity = 1;
+      item.quantity = quantity;
       data.splice(0, 0, item);
       localStorage.setItem(this.key, JSON.stringify(data));
       this.value.next(data);
@@ -71,7 +72,7 @@ export class CartService {
     this.value.next(data);
   }
 
-  updateQuantity(product: ProductModel, quantity: number) {
+  updateQuantity(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     data.filter(x => x.product.id == product.id)[0].quantity = quantity;
     localStorage.setItem(this.key, JSON.stringify(data));

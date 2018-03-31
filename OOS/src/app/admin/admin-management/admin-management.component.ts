@@ -40,7 +40,11 @@ export class AdminManagementComponent implements OnInit {
 
     this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/categories', 'Categories');
     this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/categories/create', 'Create');
-    
+
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/config', 'Config');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/shipping-return', 'Shipping & Return');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/shipping-guide', 'Shipping Guide');
+    this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/faq', 'FAQ');
   }
 
   

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigurationService } from '../services/configuration.service';
 
 @Component({
   selector: 'app-shipping-return',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shipping-return.component.css']
 })
 export class ShippingReturnComponent implements OnInit {
-
-  constructor() { }
+content: string;
+  constructor(private configService: ConfigurationService) { }
 
   ngOnInit() {
+    this.configService.get().subscribe(data => {
+      this.content = data.shippingReturnHtml;
+    });
   }
 
 }

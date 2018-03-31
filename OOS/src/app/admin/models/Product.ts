@@ -15,6 +15,11 @@ export class ProductModel{
     status: number;  
     categoryName:string;
     productTails:ProductTail[];
+    minPrice:number;
+    maxPrice:number;
+    totalQuantity:number;
     constructor () {}
+    defaultImage:string;
+
 }
 
