@@ -12,7 +12,7 @@ declare let paypal: any;
 })
 export class PaypalComponent implements AfterViewChecked {
   @Input() order: OrdersModel;
-  constructor(private router: Router, private route: ActivatedRoute, private orderService:OrderService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService) { }
 
   addScript: boolean = false;
 
@@ -44,10 +44,10 @@ export class PaypalComponent implements AfterViewChecked {
     },
 
     onAuthorize: (data, actions) => {
-      actions.payment.execute().then((payment) => {
+      return actions.payment.execute().then((payment) => {
         console.log("Authorized)");
-        this.order.status
-        this.orderService.setOrder
+        //this.order.status
+        //this.orderService.setOrder
         //Do something when payment is successful.
         this.router.navigate(['../thankyou'], { relativeTo: this.route });
       });
