@@ -54,7 +54,7 @@ export class OrdersComponent implements OnInit {
       this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
       this.pageCount = data.pageCount;
-
+      console.log(data);
     });
   }
 
@@ -97,7 +97,6 @@ export class OrdersComponent implements OnInit {
 
   updateStatus(order: OrdersModel) {
     this.spinnerService.startLoadingSpinner();
-    // order.status = 
     this.ordersService.getById(order.id).subscribe(ord => {
       ord.status = order.status;
       this.ordersService.put(ord.id, ord).subscribe(data => {

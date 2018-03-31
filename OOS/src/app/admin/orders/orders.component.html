@@ -29,7 +29,7 @@
       <tr>
         <th>Order ID</th>
         <th>User Email</th>
-        <th>Create Date</th>
+        <!-- <th>Create Date</th> -->
         <th class="text-center">Status</th>
         <th class="text-center">Total</th>
         <th></th>
@@ -39,7 +39,7 @@
       <tr>
         <td>{{order.idBill}}</td>
         <td>{{order.email}}</td>
-        <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
+        <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td>
           <select class=" input custom-select" [(ngModel)]="order.status" (change)="updateStatus(order)">
             <option *ngFor="let status of listStatus" [value]="status.id" selected>{{status.name}}</option>
