@@ -1,7 +1,7 @@
-import { ProductModel } from "./product";
+import { ProductCartModel } from "./productCart";
 
 export class CartModel{
-    product: ProductModel;
+    product: ProductCartModel;
     quantity:number;
     constructor(){}
 }

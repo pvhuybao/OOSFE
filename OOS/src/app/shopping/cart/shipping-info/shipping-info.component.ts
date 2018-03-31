@@ -15,18 +15,15 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 export class ShippingInfoComponent implements OnInit {
 
   public order = new OrdersModel;
-  public address = new AddressModel;
-  public address2 = new AddressModel;
+  public address = new AddressModel; // address shipping
+  public address2 = new AddressModel; // address billing
   public email: string = "";
-  public name: string = "";
-  public phone: string = "";
-  public province: string = "";
-  public district: string = "";
-  public street: string = "";
-  cart1: CartModel[] = [];     
+  public addressInput = new AddressModel;
+  cart: CartModel[] = [];     
   listOrderDetails: OrderDetailModel[] = [];
   public i: number = 0;
   public detail: OrderDetailModel;
+  public orderAddress: any;
 
   constructor(private orderService: OrderService, private router: Router,
               private cartService: CartService) 
@@ -34,11 +31,12 @@ export class ShippingInfoComponent implements OnInit {
 
   ngOnInit() {    
     this.get();
+    
   }
 
   get() {    
     this.cartService.get().subscribe(x => { 
-      this.cart1 = x;
+      this.cart = x;
 
       for(this.i = 0;this.i < x.length; this.i++)
       {
@@ -57,26 +55,20 @@ export class ShippingInfoComponent implements OnInit {
   }
 
   create() {
-    this.address.name = this.name;
-    this.address.phone = this.phone;
-    this.address.province = this.province;
-    this.address.district = this.district;    
-    this.address.street = this.street;
+    this.address = this.addressInput;
     this.address.type = 0;
 
-    this.address2 = this.address;
-    
-    
-
+    this.address2 = this.address; 
+    this.address2.type = 1   
+        
     this.order.email = this.email;
     this.order.userId = null;
     this.order.address = [this.address,this.address2];
     this.order.orderDetails = this.listOrderDetails;
-    this.order.total = 0;   
-
-    this.orderService.setOrder(this.order);
+    this.order.total = 0;
     
-    this.orderService.add(this.order).subscribe(() => {
+    this.orderService.add(this.order).subscribe(() => {      
+      this.orderService.setOrder(this.order);
       this.router.navigateByUrl("/cart/payment");
     });
   }

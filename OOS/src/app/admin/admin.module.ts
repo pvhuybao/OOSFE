@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -37,6 +38,7 @@ import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { ConfigurationService } from './services/configuration.service';
     AdminRoutingModule,
     BrowserAnimationsModule,
     Ng5BreadcrumbModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
     
   declarations: [
@@ -71,6 +75,7 @@ import { ConfigurationService } from './services/configuration.service';
     AdminManagementComponent,
     CreateOrderComponent,
     ConfigurationComponent,
+    EditorComponent,
   ],
   entryComponents:[
     AdminLoginComponent
