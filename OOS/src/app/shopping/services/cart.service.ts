@@ -15,14 +15,14 @@ export class CartService {
   get() {
     return this.value.asObservable();
   }
-  init()  {
+  init() {
     this.value.next(JSON.parse(localStorage.getItem(this.key)));
   }
 
   set(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     if (!data) data = [];
-    if (!data.find(x => x.product.id == product.id)) {
+    if (!data.find(x => x.product.id == product.id && x.product.color == product.color && x.product.size == product.size)) {
       var item = new CartModel();
       item.product = product;
       item.quantity = quantity;
