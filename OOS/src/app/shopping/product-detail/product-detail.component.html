@@ -12,10 +12,10 @@
 					<div class="product-body">
 						<div class="product-label">
 							<span>New</span>
-							<span class="sale">-20%</span>
+							<span class="sale"></span>
 						</div>
 						<h2 class="product-name">{{product.name}}</h2>
-						<h3 class="product-price">{{price}}<del class="product-old-price">$45.00</del></h3>
+						<h3 class="product-price">{{price}} $<del class="product-old-price"></del></h3>
 						<div>
 							<div class="product-rating">
 								<i class="fa fa-star"></i>
@@ -30,10 +30,10 @@
 						<p><strong>Brand:</strong> E-SHOP</p>
 						<p>{{product.description}}</p>
 					
-							
-							<div class="custom-radios">
+							<span>COLOR: </span>
+							<div class="custom-radios" style="display:inline">
 								<div *ngFor="let color of listColor">
-								  <input type="radio" [id]="color" name="color" [value]="color" checked [(ngModel)]="colorSelected">
+								  <input type="radio" [id]="color" name="color" [value]="color" checked [(ngModel)]="colorSelected" (change)="onChange()">
 								  <label for={{color}}>
 									<span [style.background]="color">
 									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />

@@ -2,11 +2,29 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~font-awesome/css/font-awesome.css";
+@import '~angular2-toaster/toaster.min.css';
+
+
+.btn-save
+{
+  margin-top: 15px
+}
+
+#suggest-box
+{
+  position:absolute; 
+  left: 25%; 
+  z-index: 100; 
+  background: white; 
+  width: 420px;
+  margin-top: 1px
+}
 
 .search-result:hover
 {
   background-color: lightgray;
 }
+
 /* Slider */
 .slick-slider
 {
