@@ -30,6 +30,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { UserCartService } from './services/user-cart.service';
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -69,7 +70,8 @@ import { OrderService } from './services/order.service';
     ProductService, 
     CartService,
     EmailService,
-    OrderService
+    OrderService,
+    UserCartService,
   ]
 })
 export class ShoppingModule { }

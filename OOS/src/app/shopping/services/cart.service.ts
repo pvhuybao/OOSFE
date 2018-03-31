@@ -3,18 +3,48 @@ import { CartModel } from '../models/cart';
 import { ProductModel } from '../models/product'
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs';
+import { UserCartService } from './user-cart.service';
+import { UserCartModel } from '../models/UserCart';
 
 @Injectable()
 export class CartService {
+
+  usercartmodel = new UserCartModel;
+  isUserLoggedIn: boolean = false;
+  countinit: number = 1;
+
   key = 'cart';
   private value = new Subject<CartModel[]>();
-  constructor() {
+  constructor(private userCartService: UserCartService) {
   }
 
   get() {
     return this.value.asObservable();
   }
-  init()  {
+
+  init() {
+    // If user is not logging in
+    if(this.countinit == 1 ){
+      if (this.isUserLoggedIn) {     // if user logged in
+        console.log("User is logging");
+        this.userCartService.getUserCartByEmail("abc@gmail.com").subscribe(x => {
+          this.usercartmodel = x;
+  
+          console.log(this.usercartmodel.email);
+          if (!this.usercartmodel.email) { // if no cartuser in db
+          }
+          else {    // if have usercart in db
+            this.usercartmodel.cartDetails.forEach(element => {
+              for(var i=1;i<=element.quantity;i++){
+                this.set(element.product);
+              }           
+            });
+          }
+        });
+        this.countinit++;
+      }
+    }
+
     this.value.next(JSON.parse(localStorage.getItem(this.key)));
   }
 
@@ -50,5 +80,9 @@ export class CartService {
 
   count() {
     return JSON.parse(localStorage.getItem(this.key)).length();
+  }
+
+  clear(){
+    localStorage.removeItem(this.key);
   }
 }
