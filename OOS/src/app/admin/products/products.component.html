@@ -36,8 +36,8 @@
             </li>
           </ul>
         </td>
-        <td class="qty text-center">{{product.minPrice}}-{{product.maxPrice}}</td>
-        <td class="text-center">{{product.totalQuantity}}</td>
+        <td class="qty text-center">{{product.minPrice | number}}-{{product.maxPrice | number}}</td>
+        <td class="text-center">{{product.totalQuantity | number}}</td>
         <td class="text-center">{{statusDefine[product.status]}}</td>
         <td class="text-center">
           <button class="main-btn icon-btn"  routerLink="./edit/{{product.id}}" routerLinkActive="active">
