@@ -31,14 +31,14 @@
 									</ul>
 								</td>
 								<td class="price text-center">
-									<strong>{{item.product.price}}</strong>
+									<strong>{{item.product.price | number}}</strong>
 									<br>
 								</td>
 								<td class="qty text-center">
-									<input class="input" type="number" min="1" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
+									<input class="input" type="number" min="1" value="{{item.quantity | number}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
 								</td>
 								<td class="total text-center">
-									<strong class="primary-color">{{item.product.price*item.quantity}}</strong>
+									<strong class="primary-color">{{item.product.price*item.quantity | number}}</strong>
 								</td>
 								<td class="text-right">
 									<button class="main-btn icon-btn" (click)="remove(item.product)">
@@ -51,7 +51,7 @@
 							<tr>
 								<th class="empty" colspan="3"></th>
 								<th>TOTAL</th>
-								<th colspan="2" class="total">{{total}}</th>
+								<th colspan="2" class="total">{{total | number}}</th>
 							</tr>
 						</tfoot>
 					</table>
