@@ -28,6 +28,7 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
+import { ShowErrorsComponent } from '../shared/validation/show-errors/show-errors.component';
 
 //self-services
 import { SpinnerService } from '../shared/services/spinner.service';
@@ -35,6 +36,12 @@ import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+
+//self-directives
+import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
+import { PasswordDirective } from '../shared/validation/validators/password.directive';
+import { ConfirmPasswordDirective } from '../shared/validation/validators/confirm-password.directive';
+import { EmailValidatorDirective } from '../shared/validation/validators/email-validator.directive';
 
 @NgModule({
   imports: [
@@ -68,6 +75,11 @@ import { CategoryService } from './services/category.service';
     AdminLoginComponent,
     AdminManagementComponent,
     CreateOrderComponent,
+    ShowErrorsComponent,
+    EmailValidatorDirective,
+    UniqueNameValidatorDirective,
+    PasswordDirective,
+    ConfirmPasswordDirective
   ],
   entryComponents:[
     AdminLoginComponent

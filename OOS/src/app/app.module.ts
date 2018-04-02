@@ -20,7 +20,7 @@ import { NouisliderModule } from 'ng2-nouislider';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
