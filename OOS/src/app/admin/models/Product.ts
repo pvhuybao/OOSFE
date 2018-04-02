@@ -1,3 +1,5 @@
+import { ProductTail } from "./ProductTail";
+
  export enum ProductStatus {
      Publish = 1,
      Unpublish
@@ -13,12 +15,12 @@ export class ProductModel{
     idCategory: string;
     status: number;  
     categoryName:string;
-    // color : string;
-    // size : string;
-    constructor () {}
+    productTails:ProductTail[];
     minPrice:number;
     maxPrice:number;
     totalQuantity:number;
+    constructor () {}
     defaultImage:string;
+
 }
 
