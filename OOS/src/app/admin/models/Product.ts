@@ -20,6 +20,7 @@ export class ProductModel{
     totalQuantity:number;
     constructor () {}
     defaultImage:string;
+    discount : number;
 
 }
 

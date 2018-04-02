@@ -14,7 +14,7 @@ config = new ConfigurationModel();
 page: string;
 title: string;
 content: string;
-  constructor(private route: ActivatedRoute, private configService: ConfigurationService) {
+  constructor(private route: ActivatedRoute, private configService: ConfigurationService, private spinnerService: SpinnerService) {
   }
 
   ngOnInit() {
@@ -45,19 +45,19 @@ content: string;
   }
 
   save() {
+    this.spinnerService.startLoadingSpinner();
     if(this.page == "return") {
       this.config.shippingReturnHtml = this.content;
-      this.configService.edit(this.config).subscribe();
     }
     if(this.page == "guide") {
       this.config.shippingGuideHtml = this.content;
-      this.configService.edit(this.config).subscribe();
     }
     if(this.page == "faq") {
       this.config.faqHtml = this.content;
-      this.configService.edit(this.config).subscribe();
     }
-    
+    this.configService.edit(this.config).subscribe(r =>{
+      this.spinnerService.turnOffSpinner();
+    });
   }
 
 }
