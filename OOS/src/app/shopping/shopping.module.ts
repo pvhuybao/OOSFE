@@ -19,7 +19,6 @@ import { ProductService } from './services/product.service';
 import { CartComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
-import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
@@ -64,7 +63,6 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     CartComponent,
     PaymentComponent,
     ThankyouComponent,
-    ShippingInfoComponent,
     CategoryDetailsComponent,
     ContactComponent,
     PaypalComponent,

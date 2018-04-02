@@ -11,7 +11,6 @@ import { OrderComponent } from './order/order.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { PaymentComponent } from './cart/payment/payment.component';
-import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { CategoryDetailComponent } from '../admin/categories/category-detail/category-detail.component';
@@ -34,7 +33,6 @@ const shoppingRoutes: Routes = [
         path: 'cart',
         children: [
           { path: '', component: ShoppingCartComponent },
-          { path: 'shipping-info', component: ShippingInfoComponent },
           { path: 'payment', component: PaymentComponent },
           { path: 'thankyou', component: ThankyouComponent },
         ]

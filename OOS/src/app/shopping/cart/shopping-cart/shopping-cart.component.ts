@@ -23,6 +23,7 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.get().subscribe(x => { 
       this.cart = x; 
     });
+    this.cartService.init()
     if (this.cart)
       this.updateTotal();
   }

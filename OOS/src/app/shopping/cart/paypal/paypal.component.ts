@@ -10,11 +10,12 @@ declare let paypal: any;
   templateUrl: './paypal.component.html',
   styleUrls: ['./paypal.component.css']
 })
-export class PaypalComponent implements AfterViewChecked {
+export class PaypalComponent {
   @Input() order: OrdersModel;
   constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService) { }
 
   addScript: boolean = false;
+  total: number = 0;
 
   paypalConfig = {
     env: "sandbox",
@@ -23,13 +24,18 @@ export class PaypalComponent implements AfterViewChecked {
       production: 'AXh5J33BEHGN1r78tGpnrpWzo00J4zMBGQEYWyThRNu4ZOYhbBURFfNqAb5jDXNKQ0A8xhjD2mWFnFlU'
     },
     commit: true,
+    style: {
+      size: 'small', // small | medium | large | responsive
+      shape: 'rect',  // pill | rect
+      tagline: false
+    },
     payment: (data, actions) => {
       return actions.payment.create({
         payment: {
           transactions: [
             {
               amount: {
-                total: 10, currency: 'USD',
+                total: this.order.total, currency: 'USD',
               },
               description: "Orient Online Shop Payment Description",
             },
@@ -49,18 +55,11 @@ export class PaypalComponent implements AfterViewChecked {
         //this.order.status
         //this.orderService.setOrder
         //Do something when payment is successful.
+        console.log(this.order);
         this.router.navigate(['../thankyou'], { relativeTo: this.route });
       });
     }
   };
-
-  ngAfterViewChecked(): void {
-    if (!this.addScript) {
-      this.addPaypalScript().then(() => {
-        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
-      })
-    }
-  }
 
   addPaypalScript() {
     this.addScript = true;
@@ -70,5 +69,13 @@ export class PaypalComponent implements AfterViewChecked {
       scripttagElement.onload = resolve;
       document.body.appendChild(scripttagElement);
     })
+  }
+  renderButton() {
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, 'paypal-checkout-btn');
+      })
+    }
+    this.paypalConfig;
   }
 }
