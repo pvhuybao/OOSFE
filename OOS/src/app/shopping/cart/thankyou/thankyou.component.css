@@ -5,6 +5,10 @@
     color: white;    
 }
 
+.hightlight {
+    font-size: 20px;
+    color: blue;
+}
 
 ul.midpage {
     /* text-align: center; */

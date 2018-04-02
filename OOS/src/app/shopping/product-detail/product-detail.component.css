@@ -47,3 +47,6 @@ body {
     .custom-radios input[type="radio"]:checked + label span img {
             opacity: 1;
           }
+  .product-tab  .tab-content .tab-details{
+    text-align: center;
+  }
