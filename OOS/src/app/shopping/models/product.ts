@@ -14,6 +14,7 @@ export class ProductModel{
     maxPrice:number;
     totalQuantity:number;
     defaultImage:string;
+    discount : number;
     constructor () {}
 
 }
