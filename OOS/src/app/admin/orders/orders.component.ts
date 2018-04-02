@@ -19,8 +19,8 @@ export class OrdersComponent implements OnInit {
 
   email: string = "";
   phone: string = "";
-  page: number = 1;
-  pageSize: number = 10;
+  page: number;
+  pageSize: number;
   pageCount: number;
   hasPreviousPage: boolean;
   hasNextPage: boolean;
@@ -45,6 +45,10 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit() {
+    if(this.page == null)
+    {
+      this.page = 1;
+    }
     this.getOrderList();
   }
   
@@ -54,8 +58,26 @@ export class OrdersComponent implements OnInit {
       this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
       this.pageCount = data.pageCount;
+      this.hasNextPage = data.hasNextPage;
+      this.hasPreviousPage = data.hasPreviousPage;
       console.log(data);
     });
+  }
+
+  getPage(page: number)
+  {
+    this.page = page;
+    this.getOrderList();
+  }
+
+  getPageSize(pageSize: number)
+  {
+    if(this.pageSize!=pageSize)
+    {
+      this.pageSize = pageSize;
+      this.page = 1;
+    }
+    this.getOrderList();
   }
 
   choosePage(page: string) {

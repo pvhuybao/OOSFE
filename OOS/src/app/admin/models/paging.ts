@@ -1,5 +1,3 @@
-import { OrdersModel } from "../../shopping/models/order";
-
 export class PagingModel{
     items: Array<Object>;
     totalItemCount: number;

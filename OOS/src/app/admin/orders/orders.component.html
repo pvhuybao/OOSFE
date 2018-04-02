@@ -42,7 +42,7 @@
         <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td>
           <select class=" input custom-select" [(ngModel)]="order.status" (change)="updateStatus(order)">
-            <option *ngFor="let status of listStatus" [value]="status.id" selected>{{status.name}}</option>
+            <option *ngFor="let status of listStatus" [value]="status.id">{{status.name}}</option>
           </select>
         </td>
         <td class="text-center">{{order.total}}</td>
@@ -77,8 +77,14 @@
 
   </div>
 </div>
-
-<div class="pull-right">
+<app-paging
+[totalPage]="pageCount"
+[nextPage]="hasNextPage"
+[PrevPage]="hasPreviousPage"
+(page)="getPage($event)"
+(pageSize)="getPageSize($event)"
+></app-paging>
+<!-- <div class="pull-right">
     <div class="page-filter">
       <span class="text-uppercase">Show:</span>
       <select class="input">
@@ -95,4 +101,4 @@
       <li><a>3</a></li>
       <li (click)="choosePage(2)"><a><i class="fa fa-caret-right"></i></a></li>
     </ul>
-  </div>
+  </div> -->

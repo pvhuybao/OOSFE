@@ -39,6 +39,7 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
+import { PagingComponent } from './paging/paging/paging.component';
 
 @NgModule({
   imports: [
@@ -76,6 +77,7 @@ import { EditorComponent } from './editor/editor.component';
     CreateOrderComponent,
     ConfigurationComponent,
     EditorComponent,
+    PagingComponent,
   ],
   entryComponents:[
     AdminLoginComponent
