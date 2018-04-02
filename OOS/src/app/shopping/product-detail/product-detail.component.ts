@@ -27,13 +27,19 @@ export class ProductDetailComponent implements OnInit {
   flagCartButton : boolean = true;
   quantity : number = 1;
   productCart : ProductCartModel;
+  public link: any;
+
   productIsExist: boolean=true;
   oldPrice : number;
   DiscountExisted : boolean = true;
-  constructor(private productService : ProductService,private activatedRoute: ActivatedRoute, private cartService: CartService,private router: Router) { }
+  constructor(private productService : ProductService,
+              private activatedRoute: ActivatedRoute, 
+              private cartService: CartService,
+              private router: Router) { }
 
   ngOnInit() {
     let params: any = this.activatedRoute.snapshot.params;
+    this.link = this.activatedRoute.snapshot.params.id;
     this.idProduct = this.GetIdProduct(params.id);
     this.productService.get(this.idProduct).subscribe(data =>{
       if(data.id == null){
@@ -45,11 +51,26 @@ export class ProductDetailComponent implements OnInit {
       this.sizeSelected = this.product.productTails[0].size;
       this.getSizeByColor(this.colorSelected);
       this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
+
       this.listColor = this.getColorOption(); 
       if(this.product.discount === 0)
         this.DiscountExisted = false;
+
     });    
   }
+
+  ngAfterViewChecked(d, s, id)
+  {
+    d = document;
+    s = 'script';
+    id = 'facebook-jssdk';
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
+    fjs.parentNode.insertBefore(js, fjs);    
+  }
+
   GetIdProduct(id:string){
     return  id.slice(0,id.indexOf("_"));
  }

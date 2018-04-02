@@ -4,7 +4,8 @@ export class OrderDetailModel{
     quantity: number;
     price: number;
     totalPrice: number;
-    
+    size: string;
+    color: string;
 
    constructor(){}
 }
