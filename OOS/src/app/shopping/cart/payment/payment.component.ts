@@ -19,18 +19,13 @@ export class PaymentComponent implements OnInit {
   @ViewChild('paypal') paypal;
   paymentMethod: number = 1;
 
-
-
   constructor(private orderService: OrderService,
     private router: Router, private cartService: CartService, private spinner: SpinnerService, private route: ActivatedRoute) {
-    this.order = this.orderService.getOrder();
-    if (!this.order) {
-      this.router.navigate(['./cart/shipping-info']);
-    }
   }
   get() {
     var total = 0;
     this.cartService.get().subscribe(x => {
+      this.order.orderDetails = [];
       x.forEach(value => {
         var detail = new OrderDetailModel;
         detail.idProduct = value.product.id;
@@ -49,13 +44,15 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.startLoadingSpinner();
+    this.order.orderDetails = [];
+    this.get();
+    if (this.order.orderDetails.length == 0)
+      this.router.navigate(['/cart']);
     this.order.address = [];
     this.order.address.push(new AddressModel());
     this.order.address[0].type = 0;
     this.order.address.push(new AddressModel());
     this.order.address[1].type = 1;
-    this.order.orderDetails = [];
-    this.get();
     this.paypal.renderButton();
     this.spinner.turnOffSpinner();
   }
@@ -65,9 +62,10 @@ export class PaymentComponent implements OnInit {
   Checkout() {
     // this.orderService.add(this.order).subscribe(data =>
     //   );
-    
+
     localStorage.removeItem("paymentMethod");
-    localStorage.setItem("paymentMethod",this.paymentMethod.toString());
+    localStorage.setItem("paymentMethod", this.paymentMethod.toString());
+    this.cartService.clear();
     this.router.navigate(['../thankyou'], { relativeTo: this.route });
   }
   useShippingAddress() {

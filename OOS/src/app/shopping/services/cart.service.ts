@@ -31,25 +31,28 @@ export class CartService {
       this.value.next(data);
     }
     else {
-      this.updateQuantity(product, data.find(x => x.product.id == product.id).quantity + 1);
+      this.updateQuantity(product, data.find(x => x.product.id == product.id).quantity + quantity);
     }
   }
 
-  remove(product: ProductModel) {
+  remove(product: ProductCartModel) {
     var data = JSON.parse(localStorage.getItem(this.key));
-    data = data.filter(x => x.product.id != product.id);
+    data = data.filter(x => !(x.product.id == product.id && x.product.color == product.color && x.product.size == product.size));
     localStorage.setItem(this.key, JSON.stringify(data));
     this.value.next(data);
   }
 
   updateQuantity(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
-    data.filter(x => x.product.id == product.id)[0].quantity = quantity;
+    data.filter(x => x.product.id == product.id && x.product.color == product.color && x.product.size == product.size)[0].quantity = quantity;
     localStorage.setItem(this.key, JSON.stringify(data));
     this.value.next(data);
   }
 
   count() {
     return JSON.parse(localStorage.getItem(this.key)).length();
+  }
+  clear(){
+    localStorage.removeItem(this.key);
   }
 }

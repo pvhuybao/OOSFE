@@ -2,6 +2,7 @@ import { Component, AfterViewChecked, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { OrdersModel } from '../../models/order';
+import { CartService } from '../../services/cart.service';
 
 declare let paypal: any;
 
@@ -12,7 +13,7 @@ declare let paypal: any;
 })
 export class PaypalComponent {
   @Input() order: OrdersModel;
-  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService:CartService) { }
 
   addScript: boolean = false;
   total: number = 0;
@@ -55,6 +56,7 @@ export class PaypalComponent {
         console.log("Authorized)");
         localStorage.removeItem("paymentMethod");
         localStorage.setItem("paymentMethod","1");
+        this.cartService.clear();
         this.router.navigate(['../thankyou'], { relativeTo: this.route });
       });
     }
