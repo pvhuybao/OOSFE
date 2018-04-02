@@ -80,7 +80,8 @@
 <app-paging
 [totalPage]="pageCount"
 [nextPage]="hasNextPage"
-[PrevPage]="hasPreviousPage"
+[prevPage]="hasPreviousPage"
+[pages]="pages"
 (page)="getPage($event)"
 (pageSize)="getPageSize($event)"
 ></app-paging>

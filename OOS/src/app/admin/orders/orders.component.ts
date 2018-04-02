@@ -30,6 +30,7 @@ export class OrdersComponent implements OnInit {
   pLast: number;
   active = "active";
 
+  pages = new Array<number>();
   constructor(
     private ordersService: OrdersService,
     private router: Router,
@@ -45,14 +46,11 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit() {
-    if(this.page == null)
-    {
-      this.page = 1;
-    }
     this.getOrderList();
   }
   
   getOrderList() {
+    this.pages = new Array<number>();
     this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
@@ -60,6 +58,10 @@ export class OrdersComponent implements OnInit {
       this.pageCount = data.pageCount;
       this.hasNextPage = data.hasNextPage;
       this.hasPreviousPage = data.hasPreviousPage;
+      for(let i=0;i<data.pageCount;i++)
+      {
+        this.pages[i] = i+1;
+      }
       console.log(data);
     });
   }

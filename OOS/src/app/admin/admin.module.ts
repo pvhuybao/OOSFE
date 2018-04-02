@@ -39,7 +39,8 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
-import { PagingComponent } from './paging/paging/paging.component';
+import { PagingComponent } from '../shared/paging/paging.component';
+
 
 @NgModule({
   imports: [
