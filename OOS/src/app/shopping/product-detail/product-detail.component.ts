@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from '../services/product.service';
 import { ProductTail } from '../../admin/models/ProductTail';
@@ -7,6 +7,7 @@ import { takeLast } from 'rxjs/operators';
 import { BannerModel } from '../models/banner';
 import { CartService } from '../services/cart.service';
 import { ProductCartModel } from '../models/productCart';
+import { ProductModel } from '../models/product';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -14,7 +15,7 @@ import { ProductCartModel } from '../models/productCart';
 })
 export class ProductDetailComponent implements OnInit {
   idProduct: string;
-  product : any;
+  product = new ProductModel();
   colorSelected: string;
   sizeSelected: string;
   listSize = [];
@@ -26,19 +27,28 @@ export class ProductDetailComponent implements OnInit {
   flagCartButton : boolean = true;
   quantity : number = 1;
   productCart : ProductCartModel;
-  constructor(private productService : ProductService,private activatedRoute: ActivatedRoute, private cartService: CartService) { }
+  productIsExist: boolean=true;
+  oldPrice : number;
+  DiscountExisted : boolean = true;
+  constructor(private productService : ProductService,private activatedRoute: ActivatedRoute, private cartService: CartService,private router: Router) { }
 
   ngOnInit() {
     let params: any = this.activatedRoute.snapshot.params;
     this.idProduct = this.GetIdProduct(params.id);
     this.productService.get(this.idProduct).subscribe(data =>{
+      if(data.id == null){
+        this.productIsExist = false;
+        return;
+      }
       this.product = data;
       this.colorSelected = this.product.productTails[0].color;
       this.sizeSelected = this.product.productTails[0].size;
       this.getSizeByColor(this.colorSelected);
       this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
-      this.listColor = this.getColorOption();
-    });
+      this.listColor = this.getColorOption(); 
+      if(this.product.discount === 0)
+        this.DiscountExisted = false;
+    });    
   }
   GetIdProduct(id:string){
     return  id.slice(0,id.indexOf("_"));
@@ -71,14 +81,14 @@ export class ProductDetailComponent implements OnInit {
  tail = this.product.productTails;
  for(var i =0; i < tail.length; i++){
   if(tail[i].color === color && tail[i].size=== size){
-    this.price= tail[i].price;
+    this.oldPrice= tail[i].price;
+    this.price = this.oldPrice - this.oldPrice * this.product.discount * 0.01;
     this.image = tail[i].image;
     if(tail[i].quantity > 0)
     {
       this.available="In Stock";
       this.flagCartButton = false;
     }
-      
     else
     {
       this.available="Out of Stock";
