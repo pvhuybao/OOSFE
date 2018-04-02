@@ -13,7 +13,9 @@ declare let paypal: any;
 })
 export class PaypalComponent {
   @Input() order: OrdersModel;
-  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService:CartService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService: CartService) {
+    cartService.paypalLoad.subscribe(x => this.addScript = x);
+  }
 
   addScript: boolean = false;
   total: number = 0;
@@ -55,7 +57,7 @@ export class PaypalComponent {
         //Do something when payment is successful.
         console.log("Authorized)");
         localStorage.removeItem("paymentMethod");
-        localStorage.setItem("paymentMethod","1");
+        localStorage.setItem("paymentMethod", "1");
         this.cartService.clear();
         this.router.navigate(['../thankyou'], { relativeTo: this.route });
       });
@@ -63,7 +65,7 @@ export class PaypalComponent {
   };
 
   addPaypalScript() {
-    this.addScript = true;
+    this.cartService.paypalLoad.next(true);
     return new Promise((resolve, reject) => {
       let scripttagElement = document.createElement('script');
       scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
