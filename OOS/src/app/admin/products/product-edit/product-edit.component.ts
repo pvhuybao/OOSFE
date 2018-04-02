@@ -15,7 +15,7 @@ import { BreadcrumbService } from 'ng5-breadcrumb';
 export class ProductEditComponent implements OnInit {
   productIsExist: boolean=true;
   id: string;
-  product: any;
+  product = new ProductModel();
   public statusDefine = ProductStatus;
   public item: number;
   public keys: any;

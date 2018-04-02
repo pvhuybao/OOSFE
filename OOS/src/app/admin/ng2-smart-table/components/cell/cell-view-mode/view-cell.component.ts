@@ -9,7 +9,7 @@ import { Cell } from '../../../lib/data-set/cell';
     <div [ngSwitch]="cell.getColumn().type">
         <custom-view-component *ngSwitchCase="'custom'" [cell]="cell"></custom-view-component>
         <div *ngSwitchCase="'html'" [innerHTML]="cell.getValue()"></div>
-        <div *ngSwitchDefault>{{ cell.getValue() }}</div>
+        <div *ngSwitchDefault>{{ cell.getValue()}}</div>
     </div>
     `,
 })
