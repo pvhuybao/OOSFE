@@ -12,9 +12,21 @@
 
 .btn-save
 {
-  margin-top: 15px
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
+.order-list ul 
+{
+  padding-left: 40px;
+  list-style: disc;
+}
+
+.order-list ol
+{
+  padding-left: 40px;
+  list-style: decimal;
+}
 #suggest-box
 {
   position:absolute; 

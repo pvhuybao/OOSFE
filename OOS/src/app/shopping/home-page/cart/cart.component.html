@@ -2,11 +2,11 @@
   <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" auto-close="disabled">
     <div class="header-btns-icon">
       <i class="fa fa-shopping-cart"></i>
-      <span class="qty">{{cart.length}}</span>
+      <span class="qty">{{cart.length | number}}</span>
     </div>
     <strong class="text-uppercase">My Cart:</strong>
     <br>
-    <span>{{total}}</span>
+    <span>{{total | number}}</span>
   </a>
   <div class="custom-menu">
     <div id="shopping-cart">
@@ -16,8 +16,8 @@
             <img src="{{item.product.image}}" alt="">
           </div>
           <div class="product-body">
-            <h3 class="product-price">{{item.product.price}}
-              <span class="qty">x{{item.quantity}}</span>
+            <h3 class="product-price">{{item.product.price | number}}
+              <span class="qty">x{{item.quantity | number}}</span>
             </h3>
             <h2 class="product-name">
               <a href="#">{{item.product.name}}</a>
