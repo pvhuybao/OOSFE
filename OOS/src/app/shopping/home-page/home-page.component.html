@@ -72,7 +72,27 @@
 	<div class="container">
 		<!-- row -->
 		<div class="row">
-			<app-widget-products [productList]="newestProduct"></app-widget-products>			
+						<!-- section title -->
+						<div class="col-md-12">
+							<div class="section-title">
+								<h2 class="title">TOP NEW PRODUCT</h2>
+								<div class="pull-right">
+									<div class="product-slick-dots-2 custom-dots">
+									</div>
+								</div>
+							</div>
+						</div>
+			<app-widget-products [productList]="newestProduct"></app-widget-products>	
+			<div class="col-md-12">
+					<div class="section-title">
+						<h2 class="title">TOP DISCOUNT</h2>
+						<div class="pull-right">
+							<div class="product-slick-dots-2 custom-dots">
+							</div>
+						</div>
+					</div>
+				</div>
+	<app-widget-products [productList]="topDiscount"></app-widget-products>			
 		</div>
 	</div>
 </div>
