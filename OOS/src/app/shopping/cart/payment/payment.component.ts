@@ -65,6 +65,9 @@ export class PaymentComponent implements OnInit {
   Checkout() {
     // this.orderService.add(this.order).subscribe(data =>
     //   );
+    
+    localStorage.removeItem("paymentMethod");
+    localStorage.setItem("paymentMethod",this.paymentMethod.toString());
     this.router.navigate(['../thankyou'], { relativeTo: this.route });
   }
   useShippingAddress() {
