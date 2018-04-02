@@ -31,6 +31,7 @@ export class OrdersComponent implements OnInit {
   active = "active";
 
   pages = new Array<number>();
+  x: number;
   constructor(
     private ordersService: OrdersService,
     private router: Router,
@@ -47,9 +48,9 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.getOrderList();
-    
+
   }
-  
+
   getOrderList() {
     this.pages = new Array<number>();
     this.spinnerService.startLoadingSpinner();
@@ -59,85 +60,170 @@ export class OrdersComponent implements OnInit {
       this.pageCount = data.pageCount;
       this.hasNextPage = data.hasNextPage;
       this.hasPreviousPage = data.hasPreviousPage;
-      for(let i=0;i<data.pageCount;i++)
-      {
-        this.pages[i] = i+1;
-      }
-      // this.getPages();
+      // for(let i=0;i<data.pageCount;i++)
+      // {
+      //   this.pages[i] = i+1;
+      // }
+      this.getPages(data.page, data.pageCount, data.hasPreviousPage, data.hasNextPage);
       console.log(data);
     });
   }
 
-  search()
-  {
+  search() {
     this.getOrderList();
   }
-  getPages(){
-    if (this.pages!= null && this.pageCount > 3 && this.page < 3) {
+
+  checkOdd(num: number)
+  {
+    if(num+1%2==0)
+    {
+      return false;
+    }
+    else{ return true}
+  }
+
+  getPages(page: number, pageCount: number, hasPreviousPage: boolean, hasNextPage: boolean) {
+    this.x = 0;
+    if (this.pages != null && pageCount > 3 && page < 3) {
       this.pages = new Array<number>();
       for (let i = 0; i < 3; i++) {
         this.pages[i] = i + 1;
       }
     }
-    else{
-      if (this.pages!= null && this.pageCount > 3) {
+    else {
+      if (this.pages != null && pageCount > 3) {
         this.pages = new Array<number>();
         for (let i = 0; i < 3; i++) {
           this.pages[i] = i + 1;
         }
       }
     }
-    if (this.pageCount <= 3) {
+    if (pageCount <= 3) {
       this.pages = new Array<number>();
-      for (let i = 0; i < this.pageCount; i++) {
+      for (let i = 0; i < pageCount; i++) {
+        this.pages[i] = i + 1;
+      }
+    }
+
+    if(page>=3 && this.checkOdd(page)==true && pageCount >= page+2 )
+    {
+      this.pages = new Array<number>();
+      for (let i = page; i < page+2; i++) {
+        this.pages[this.x] = i;
+        this.x++;
+      }
+    }
+
+    if(hasPreviousPage == false && pageCount > 3)
+    {
+      this.pages = new Array<number>();
+      for (let i = page; i < 3; i++) {
         this.pages[i] = i + 1;
       }
     }
     
-    // if (this.page + 2 > this.pageCount && this.hasPreviousPage == true) {
+    if(hasPreviousPage == false && pageCount <= 3)
+    {
+      this.pages = new Array<number>();
+      for (let i = page; i < pageCount; i++) {
+        this.pages[i] = i + 1;
+      }
+    }
+
+    if(hasNextPage == false && pageCount > 3)
+    {
+      this.pages = new Array<number>();
+      for (let i = page-2; i < page; i++) {
+        this.pages[this.x] = i;
+        this.x++;
+      }
+    }
+
+    if(hasNextPage == false && pageCount <= 3)
+    {
+      this.pages = new Array<number>();
+      for (let i = 0; i < page; i++) {
+        this.pages[i] = i + 1;
+      }
+    }
+
+    if(page+2> pageCount && hasNextPage==true && hasPreviousPage == true)
+    {
+      this.pages = new Array<number>();
+      for (let i = page-1; i < pageCount; i++) {
+        this.pages[this.x] = i;
+        this.x++;
+      }
+    }
+    // if (hasNextPage == false && pageCount > 3) {
     //   this.pages = new Array<number>();
-    //   for (let i = this.page - 1; i <= this.pageCount; i++) {
-    //     this.pages[i] = i;
+    //   for (let i = page - 2; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
     //   }
     // }
 
-    // if (this.page + 2 > this.pageCount && this.hasPreviousPage == false) {
+    // if (hasNextPage == true && page+2==pageCount) {
+    //   this.pages = new Array<number>();
+    //   for (let i = page; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
+    //   }
+    // }
+
+    // if (hasNextPage == true && page+2>pageCount) {
+    //   this.pages = new Array<number>();
+    //   for (let i = page-1; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
+    //   }
+    // }
+
+
+    // if (page + 2 > pageCount && hasPreviousPage == true) {
+    //   this.pages = new Array<number>();
+    //   for (let i = page - 1; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
+    //   }
+    // }
+
+    // if (page + 2 > pageCount && hasPreviousPage == false) {
     //   this.pages = new Array<number>();
     //     for (let i = 0; i < 3; i++) {
-    //       this.pages[i] = i + 1;
+    //       this.pages[this.x] = i + 1;
+    //       this.x++;
     //     }
     // }
 
-    // if (this.page + 2 == this.pageCount && this.page != this.pages[1]) {
+    // if (page + 2 == pageCount && page != this.pages[1]) {
     //   this.pages = new Array<number>();
-    //   for (let i = this.page; i <= this.pageCount; i++) {
-    //     this.pages[i] = i;
+    //   for (let i = page; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
     //   }
     // }
 
-    // if (this.page + 2 == this.pageCount && this.page == this.pages[1]) {
+    // if (page + 2 == pageCount && page == this.pages[1]) {
     //   this.pages = new Array<number>();
-    //   for (let i = this.page - 1; i <= this.pageCount; i++) {
-    //     this.pages[i] = i;
+    //   for (let i = page - 1; i <= pageCount; i++) {
+    //     this.pages[this.x] = i;
+    //     this.x++;
     //   }
     // }
   }
 
-  changePage()
-  {
+  changePage() {
 
   }
 
-  getPage(page: number)
-  {
+  getPage(page: number) {
     this.page = page;
     this.getOrderList();
   }
 
-  getPageSize(pageSize: number)
-  {
-    if(this.pageSize!=pageSize)
-    {
+  getPageSize(pageSize: number) {
+    if (this.pageSize != pageSize) {
       this.pageSize = pageSize;
       this.page = 1;
     }
