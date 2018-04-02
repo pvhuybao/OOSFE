@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -36,6 +37,9 @@ import { ProductService } from './services/Product.service';
 import { OrdersService } from './services/orders.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationService } from './services/configuration.service';
+import { EditorComponent } from './editor/editor.component';
 
 //self-directives
 import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
@@ -50,7 +54,9 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     AdminRoutingModule,
     BrowserAnimationsModule,
     Ng5BreadcrumbModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
     
   declarations: [
@@ -79,7 +85,9 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     EmailValidatorDirective,
     UniqueNameValidatorDirective,
     PasswordDirective,
-    ConfirmPasswordDirective
+    ConfirmPasswordDirective,
+    ConfigurationComponent,
+    EditorComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -90,7 +98,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     UserService,
     OrdersService,
     SpinnerService,
-    BreadcrumbService
+    BreadcrumbService,
+    ConfigurationService
   ]
 })
 export class AdminModule { }

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
-
 import { ShoppingRoutingModule } from './shopping-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ShoppingCartComponent } from './cart/shopping-cart/shopping-cart.component';
@@ -30,6 +29,11 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToasterModule } from 'angular2-toaster';
+import { ConfigurationService } from './services/configuration.service';
+import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -39,7 +43,10 @@ import { OrderService } from './services/order.service';
     ShoppingRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot()
+
   ],
   declarations: [
     HomePageComponent, 
@@ -62,14 +69,17 @@ import { OrderService } from './services/order.service';
     CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
-    FaqComponent
+    FaqComponent,
+    CarouselProductComponent
   ],
   providers: [
     CategoryService, 
     ProductService, 
     CartService,
     EmailService,
-    OrderService
+    OrderService,
+    ConfigurationService
+    
   ]
 })
 export class ShoppingModule { }

@@ -23,10 +23,7 @@ export class CreateCategoryComponent implements OnInit {
   description: string = '';
   public keys: Array<string>;
   status = CategoryStatus;
-  status1: number = 1;
-  
-  @ViewChild('myForm')
-  private myForm: NgForm;
+  status1: number = 1; // gan status mac dinh
 
   ngOnInit() {    
     this.keys = Object.keys(this.status).filter(Number);
