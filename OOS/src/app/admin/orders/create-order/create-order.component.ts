@@ -76,7 +76,7 @@ export class CreateOrderComponent implements OnInit {
 
     this.searchResult = '';
     // check duplicate **
-    let indexMatch = this.indexDetailMatch(product.id);
+    let indexMatch = this.indexDetailMatch(product.code);
     if (indexMatch > -1) {
       this.listOrderDetails[indexMatch].quantity += 1
       let quantity = this.listOrderDetails[indexMatch].quantity
@@ -85,7 +85,7 @@ export class CreateOrderComponent implements OnInit {
     }
     else {
       let detail: OrderDetailModel = {
-        idProduct: product.id,
+        idProduct: product.code,
         nameProduct: product.name,
         quantity: 1,
         // price: product.price,

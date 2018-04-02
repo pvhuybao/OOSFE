@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryModel, CategoryStatus } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,8 @@ export class CreateCategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private router: Router,
     private spinnerService: SpinnerService
-  ) { }
+  ) { 
+  }
 
   listCategory: CategoryModel[];
   newCategory = new CategoryModel;
@@ -22,10 +23,7 @@ export class CreateCategoryComponent implements OnInit {
   description: string = '';
   public keys: Array<string>;
   status = CategoryStatus;
-  status1: number = 1;
-  categoryValidation = new Object;
-
-  isInvalid = false;
+  status1: number = 1; // gan status mac dinh
 
   ngOnInit() {    
     this.keys = Object.keys(this.status).filter(Number);
@@ -39,6 +37,7 @@ export class CreateCategoryComponent implements OnInit {
 
   addCategory() {
     this.spinnerService.startLoadingSpinner();
+    
     let newCategory = new CategoryModel();
     newCategory.name = this.name;
     newCategory.description = this.description;
@@ -48,13 +47,8 @@ export class CreateCategoryComponent implements OnInit {
       .subscribe(
         data => {
           this.spinnerService.turnOffSpinner();
-          this.router.navigate(['/admin/manager/categories']);
-        },
-        (error) => {
-          this.spinnerService.turnOffSpinner();
 
-          this.categoryValidation = JSON.parse(error._body);
-          this.isInvalid = true;
+          this.router.navigate(['/admin/manager/categories']);
         }
       )
 
