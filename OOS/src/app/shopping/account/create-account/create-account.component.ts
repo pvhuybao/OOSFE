@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/users';
+import { UserModel, GenderType } from '../../models/users';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
@@ -20,6 +20,9 @@ export class CreateAccountComponent implements OnInit {
   user = new UserModel;
   isInvalid = false;
   userValidation = new Object;
+  public gender = GenderType;
+  public item: number;
+  public keys: any;
 
   constructor(
     private accountService: AccountService, 
@@ -28,8 +31,12 @@ export class CreateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user.gender = true;
+    this.user.gender = 0;
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
+  }
+
+  getGender(){
+    this.keys = Object.keys(this.gender).filter(Number);
   }
 
   add() {
