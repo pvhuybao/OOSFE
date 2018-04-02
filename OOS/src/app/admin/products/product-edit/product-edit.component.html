@@ -5,12 +5,7 @@
     <div class="col-md-6">
       <div id="product-main-view">
         <div class="product-view">
-          <img src="" alt="">
-        </div>
-        <br>
-        <div>
-          <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" (click)="update()">Save</button>
-          <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+          <img src="product.defaultImage" alt="">
         </div>
       </div>
     </div>
@@ -47,11 +42,22 @@
           <strong>Description:</strong>
           <input [(ngModel)]="product.description" class="input search-input">
         </p>
+        <p>
+          <strong>Discount(%):</strong>
+          <input [(ngModel)]="product.discount" class="input search-input" type="number" min="0">
+        </p>
       </div>
     </div>
   </div>
+  <p><strong>Details:</strong></p>
+  <div [froalaEditor] [(froalaModel)]="product.details"></div>
   <hr />
   <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+  <br>
+  <div>
+    <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" (click)="update()">Save</button>
+    <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+  </div>
 </ng-template>
 <ng-template #other_content>
   <h2>Page note found(ID is invalid).</h2>

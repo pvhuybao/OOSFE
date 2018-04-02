@@ -20,7 +20,7 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType  } from 'angular2-
 })
 export class ShoppingComponent implements OnInit, PipeTransform {
   transform(value: string) {
-    let newvalue = value.replace(' ', '_');
+    let newvalue = value.replace(/\s/g, '_');
     return newvalue;
   }
   //Search product for order details

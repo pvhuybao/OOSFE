@@ -23,7 +23,7 @@ import { MyToastModule } from './shared/my-toast.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,

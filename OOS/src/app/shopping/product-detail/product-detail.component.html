@@ -1,3 +1,5 @@
+<div *ngIf="productIsExist; then content else other_content"></div>
+<ng-template #content>
 <div class="section">
 	<!-- container -->
 	<div class="container">
@@ -12,10 +14,10 @@
 					<div class="product-body">
 						<div class="product-label">
 							<span>New</span>
-							<span class="sale"></span>
+							<span class="sale" *ngIf="DiscountExisted">{{product.discount}}%</span>
 						</div>
 						<h2 class="product-name">{{product.name}}</h2>
-						<h3 class="product-price">{{price}} $<del class="product-old-price"></del></h3>
+						<h3 class="product-price">{{price}} $<del class="product-old-price" *ngIf="DiscountExisted"> {{oldPrice}}</del></h3>
 						<div>
 							<div class="product-rating">
 								<i class="fa fa-star"></i>
@@ -63,24 +65,32 @@
 								<input class="input" type="number" min="0" max ="5" [(ngModel)]="quantity">
 							</div>
 							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+							
 							<div class="pull-right">
 								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
 							</div>
 						</div>
+						<br>
+						<div id="fb-root"></div>
+						<a class="fb-share-button" data-href="http://eshop.pcworld.com.vn/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Feshop.pcworld.com.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></a>
+
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="product-tab">
 						<ul class="tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-							<li><a data-toggle="tab" href="#tab1">Details</a></li>
+							<li><a data-toggle="tab" href="#tab3">Details</a></li>
 							<li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
 						</ul>
 						<div class="tab-content">
 							<div id="tab1" class="tab-pane fade in active">
 								<p>{{product.description}}</p>
+							</div>
+							<div id="tab3" class="tab-pane fade in tab-details" [innerHTML]="product.details">
+								
 							</div>
 							<div id="tab2" class="tab-pane fade in">
 
@@ -100,7 +110,6 @@
 													</div>
 												</div>
 												<div class="review-body">
-													<p>{{product.details}}</p>
 												</div>
 											</div>
 
@@ -182,7 +191,9 @@
 
 							</div>
 						</div>
-					</div>
+					</div>						
+						<a class="fb-comments" data-href ="http://localhost:4200/product/{{link}}" data-numposts="3" data-order-by="reverse_time"></a>
+
 				</div>
 
 			</div>
@@ -192,3 +203,7 @@
 	</div>
 	<!-- /container -->
 </div>
+</ng-template>
+<ng-template #other_content>
+	<h2>Page note found(ID is invalid).</h2>
+  </ng-template>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 
-import { EventEmitter,Input, Output } from '@angular/core';
+import { EventEmitter, Output } from '@angular/core';
 
 import { CategoryModel } from '../models/category';
 
@@ -12,6 +12,7 @@ import { CategoryModel } from '../models/category';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+  
   listCategory: CategoryModel[];
 
   constructor(

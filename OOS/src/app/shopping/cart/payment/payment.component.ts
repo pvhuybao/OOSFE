@@ -19,10 +19,10 @@ export class PaymentComponent implements OnInit {
   constructor(private orderService: OrderService,
               private router: Router) { 
 
-                this.order = this.orderService.getOrder();
-                if(!this.order) {
-                  this.router.navigate(['./cart/shipping-info']);
-                }
+                // this.order = this.orderService.getOrder();
+                // if(!this.order) {
+                //   this.router.navigate(['./cart/shipping-info']);
+                // }
 
               }  
 
