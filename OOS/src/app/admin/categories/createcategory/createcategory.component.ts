@@ -4,7 +4,6 @@ import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { AnonymousSubject } from 'rxjs';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-createcategory',
@@ -15,7 +14,8 @@ export class CreateCategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private router: Router,
     private spinnerService: SpinnerService
-  ) { }
+  ) { 
+  }
 
   listCategory: CategoryModel[];
   newCategory = new CategoryModel;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UserModel } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -15,11 +15,8 @@ export class UserCreateComponent implements OnInit {
   
   user = new UserModel;
 
-  isInvalid = false;
-
-  userValidation = new Object;
-
-  listUsers: UserModel[]
+  //for validate
+  listUsers: UserModel[];
 
   constructor(
     private userservice: UserService,
@@ -48,6 +45,4 @@ export class UserCreateComponent implements OnInit {
         this.router.navigate(['../admin/manager/users']);
       })
   }
-
-
 }
