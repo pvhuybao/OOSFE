@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
 import { BannerModel } from '../models/banner';
+import { ConfigurationService } from '../../admin/services/configuration.service';
 
 
 @Component({
@@ -15,25 +16,12 @@ export class HomePageComponent implements OnInit {
   topSales: ProductModel[] = [];
   topDiscount: ProductModel[] = [];
 
-  listBanners: BannerModel[] = [
-    {
-      image: "/assets/img/banner01.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    },
-    {
-      image: "/assets/img/banner02.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    },
-    {
-      image: "/assets/img/banner03.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    }
-  ];
+  listBanners: BannerModel[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private configurationService: ConfigurationService
+  ) { }
 
 
   ngOnInit() {
@@ -55,6 +43,7 @@ export class HomePageComponent implements OnInit {
     // },]
     this.getListNewestProduct();
     this.getListTopDiscountProduct();
+    this.getCarouselBanners();
   }
 
   getListNewestProduct() {
@@ -74,6 +63,18 @@ export class HomePageComponent implements OnInit {
     this.productService.getProductsByParameter("topDiscount").subscribe(topDiscount => {
       this.topDiscount = topDiscount;
     });
+  }
+
+  getCarouselBanners(){
+    this.configurationService.get().subscribe(data => {
+      data.carousel.forEach(item => {
+        this.listBanners.push({
+          image: item,
+          title: "",
+          content: ""
+        } as BannerModel)
+      })
+    })
   }
 
 }
