@@ -26,6 +26,8 @@ export class AdminManagementComponent implements OnInit {
   ngOnInit() {
     this.breadcrumbService.hideRoute('/admin');
     this.breadcrumbService.hideRoute('/admin/manager');
+    this.breadcrumbService.hideRoute('/admin/manager/products/edit');
+    this.breadcrumbService.hideRoute('/admin/manager/orders/edit');
 
     this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/orders', 'Orders');
     this.breadcrumbService.addFriendlyNameForRoute('/admin/manager/orders/create', 'Create');

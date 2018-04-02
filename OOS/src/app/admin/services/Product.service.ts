@@ -43,4 +43,15 @@ export class ProductService {
     }
     return this.authHttpService.get(this.API_PATH + term +"/searchproduct").map(res => res.json() || []);
   }
+
+  pro:ProductModel; //
+  getPro(product:ProductModel)
+  {
+    return this.pro = product;
+  }
+
+  setPro()
+  {
+    return this.pro;
+  }
 }
