@@ -42,6 +42,8 @@ export class HomePageComponent implements OnInit {
     //   price: 3344, description: "", image: "", idCategory: ""
     // },]
     this.getListNewestProduct();
+    this.getListTopSalesProduct();
+    
 
     this.getCarouselBanners();
   }
