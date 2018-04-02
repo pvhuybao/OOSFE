@@ -2,7 +2,7 @@ export class UserModel{
     id: string;
     username: string;
     password:string;
-    passwordConfirm: string;
+    confirmPassword: string;
     firstName:string;
     lastName:string;
     gender:boolean;
