@@ -47,6 +47,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.getOrderList();
+    
   }
   
   getOrderList() {
@@ -62,8 +63,69 @@ export class OrdersComponent implements OnInit {
       {
         this.pages[i] = i+1;
       }
+      // this.getPages();
       console.log(data);
     });
+  }
+
+  search()
+  {
+    this.getOrderList();
+  }
+  getPages(){
+    if (this.pages!= null && this.pageCount > 3 && this.page < 3) {
+      this.pages = new Array<number>();
+      for (let i = 0; i < 3; i++) {
+        this.pages[i] = i + 1;
+      }
+    }
+    else{
+      if (this.pages!= null && this.pageCount > 3) {
+        this.pages = new Array<number>();
+        for (let i = 0; i < 3; i++) {
+          this.pages[i] = i + 1;
+        }
+      }
+    }
+    if (this.pageCount <= 3) {
+      this.pages = new Array<number>();
+      for (let i = 0; i < this.pageCount; i++) {
+        this.pages[i] = i + 1;
+      }
+    }
+    
+    // if (this.page + 2 > this.pageCount && this.hasPreviousPage == true) {
+    //   this.pages = new Array<number>();
+    //   for (let i = this.page - 1; i <= this.pageCount; i++) {
+    //     this.pages[i] = i;
+    //   }
+    // }
+
+    // if (this.page + 2 > this.pageCount && this.hasPreviousPage == false) {
+    //   this.pages = new Array<number>();
+    //     for (let i = 0; i < 3; i++) {
+    //       this.pages[i] = i + 1;
+    //     }
+    // }
+
+    // if (this.page + 2 == this.pageCount && this.page != this.pages[1]) {
+    //   this.pages = new Array<number>();
+    //   for (let i = this.page; i <= this.pageCount; i++) {
+    //     this.pages[i] = i;
+    //   }
+    // }
+
+    // if (this.page + 2 == this.pageCount && this.page == this.pages[1]) {
+    //   this.pages = new Array<number>();
+    //   for (let i = this.page - 1; i <= this.pageCount; i++) {
+    //     this.pages[i] = i;
+    //   }
+    // }
+  }
+
+  changePage()
+  {
+
   }
 
   getPage(page: number)

@@ -4,14 +4,16 @@
   </div>
   <div style="justify-content:space-between;display:flex">
     <div>
-      <label>Name</label>
-      <input type="text" id="inputName">
+      <label>Email</label>
+      <input type="text" id="inputEmailSearch" placeholder="Email" [(ngModel)]="email">
     </div>
     <div>
       <label>Phone</label>
-      <input type="text" id="inputName">
+      <input type="text" id="inputPhoneSearch" placeholder="Phone" [(ngModel)]="phone">
     </div>
-    <button class="primary-btn" style="margin-bottom:10px;">Search</button>
+    <div>
+    <button class="primary-btn" style="margin-bottom:10px;" (click)="search()">Search</button>
+  </div>
   </div>
 
   <div class="section-title">
