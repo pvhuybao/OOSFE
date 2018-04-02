@@ -9,12 +9,6 @@
       </div>
   </div>
   <div class="col-md-6">
-      <div class="product-body">
-          <div>
-              <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" (click)='create()'>Save</button>
-              <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
-            </div>
-      </div>
   </div>
 </div>
 <div class="row">
@@ -76,13 +70,22 @@
       <div class="product-body">
           <div>
               <p>
-                <strong>Details:</strong>
-                <input [(ngModel)]="details" class="input search-input">
+                <strong>Discount:</strong>
+                <input [(ngModel)]="discount" class="input search-input" type="number" min="0">
               </p>
             </div>
       </div>
   </div>     
 </div>                      
   </div>
+  <p><strong>Details:</strong></p>
+  <div [froalaEditor] [(froalaModel)]="content"></div>
   <hr />
   <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+  <div class="product-body" style="margin-top:15px">
+    <div>
+        <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" (click)='create()'>Save</button>
+        <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+      </div>
+</div>
+  
