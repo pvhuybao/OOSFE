@@ -71,3 +71,8 @@
     </div>
   </div>
 </div>
+<app-paging
+[itemCount]="itemCount"
+(page)="getPage($event)"
+(pageSize)="getPageSize($event)"
+></app-paging>

@@ -12,7 +12,7 @@ export class ThankyouComponent implements OnInit {
   Paypal: boolean = false;
   Bank: boolean = false;
   COD: boolean = false;
-  methodPayment: number = 3;
+  methodPayment: number = 2;
 
   ngOnInit() {
     this.hide();

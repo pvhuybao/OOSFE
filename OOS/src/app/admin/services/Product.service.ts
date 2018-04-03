@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operator/map';
+import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
@@ -22,8 +23,8 @@ export class ProductService {
   setId(id) {
     this.idProduct = id;
   }
-  gets(): Observable<ProductModel[]> {
-    return this.authHttpService.get(this.API_PATH)
+  gets(name: string, pageSize: number, page: number): Observable<PagingModel> {
+    return this.authHttpService.get(this.API_PATH+"?Name="+name+"&PageSize="+pageSize+"&Page="+page)
       //.map(res => res.json() || []);
       .map(res => res.json());
   }

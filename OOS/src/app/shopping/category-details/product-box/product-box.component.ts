@@ -1,20 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductModel } from '../models/product';
-import { CartService } from '../services/cart.service';
+import { ProductModel } from '../../models/product';
+import { CartService } from '../../services/cart.service';
 import { ToasterService } from 'angular2-toaster';
-import { SpinnerService } from '../../shared/services/spinner.service';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 import { normalizeSync } from 'normalize-diacritics';
 import { Router } from '@angular/router';
-
+import { ProductCartModel } from '../../models/productCart';
 @Component({
-  selector: 'app-widget-box',
-  templateUrl: './widget-box.component.html',
-  styleUrls: ['./widget-box.component.css',
-  '../../../../node_modules/angular2-toaster/toaster.css',
-  '../../../../node_modules/angular2-toaster/toaster.min.css'
-]
+  selector: 'app-product-box',
+  templateUrl: './product-box.component.html',
+  styleUrls: ['./product-box.component.css',
+  '../../../../../node_modules/angular2-toaster/toaster.css',
+  '../../../../../node_modules/angular2-toaster/toaster.min.css']
 })
-export class WidgetBoxComponent implements OnInit {
+export class ProductBoxComponent implements OnInit {
+
   private toasterService: ToasterService;
 
   id:string='';
@@ -31,11 +31,6 @@ export class WidgetBoxComponent implements OnInit {
   ngOnInit() {
     
   }
-  menuToggle(event:any) {
-    // this.renderer.setElementClass(event.target,"opened",true);
-    console.log("click");
-    
-}
   transform(value: string) {
     let newvalue = value.replace(' ', '_');
     return newvalue;
@@ -48,7 +43,14 @@ export class WidgetBoxComponent implements OnInit {
   
   addProductCart(product){
     this.spinnerService.startLoadingSpinner();
-    this.cartService.set(product,1);
+    var productCart ={
+      name : this.productDetail.name,
+      id : this.productDetail.id,
+      price: this.productDetail.productTails[0].price,
+      description: this.productDetail.description,
+      image : this.productDetail.productTails[0].image
+    }
+    this.cartService.set(productCart,1);
     this.spinnerService.turnOffSpinner();
     //pop up toaster
     this.toasterService.pop('success', product.name, 'Added to cart success!');
