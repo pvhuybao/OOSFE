@@ -35,15 +35,15 @@ export class OrdersComponent implements OnInit {
     this.listStatus.push(new StatusOrder(3, "Shipped"))
 
   }
-
-
-
+  
   ngOnInit() {
     this.getOrderList();
   }
 
   getOrderList() {
+    this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
       this.itemCount = data.totalItemCount;
       console.log(data);
