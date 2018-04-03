@@ -49,7 +49,7 @@
 								<option *ngFor="let color of listColor" [value]="color" [style.background]="color" ></option>
 								</select></p> -->
 								<span class="text-uppercase">Size:</span>
-								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="sizeSelected" style="width:auto">
+								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="sizeSelected" style="width:auto" (change)="onChangeColor()">
 								<option *ngFor="let tail of listSize" [value]="tail" >{{tail}}</option>
 								</select></p>
 								
@@ -62,7 +62,7 @@
 						<div class="product-btns" style="margin-top:10px">
 							<div class="qty-input">
 								<span class="text-uppercase">QTY: </span>
-								<input class="input" type="number" min="0" max ="5" [(ngModel)]="quantity">
+								<input class="input" type="number" min="0" [max] ="quantityAvailble" [(ngModel)]="quantity">
 							</div>
 							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 							
