@@ -1139,11 +1139,14 @@ body {
     -webkit-transition: 0.3s all;
     transition: 0.3s all;
   }
-  
-  .product.product-single:hover .product-thumb:after {
+  .product.product-single .product-thumb:hover {
+    cursor: pointer;
+  }
+  /* .product.product-single:hover .product-thumb:after {
     opacity: 0.7;
     visibility: visible;
-  }
+    cursor: pointer;
+  } */
   
   .product.product-single .quick-view {
     position: absolute;
@@ -1181,7 +1184,7 @@ body {
   }
   
   .product.product-single .product-body {
-    padding: 15px;
+    padding: 0 15px 15px 15px;
   }
   
   .product.product-single .product-price {
