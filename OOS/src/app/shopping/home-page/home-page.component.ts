@@ -42,7 +42,7 @@ export class HomePageComponent implements OnInit {
     //   price: 3344, description: "", image: "", idCategory: ""
     // },]
     this.getListNewestProduct();
-
+    this.getListTopDiscountProduct();
     this.getCarouselBanners();
   }
 
@@ -54,14 +54,14 @@ export class HomePageComponent implements OnInit {
   }
 
   getListTopSalesProduct() {
-    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+    this.productService.getProductsByParameter("topSales").subscribe(topSales => {
+      this.topSales = topSales;
     });
   }
 
   getListTopDiscountProduct() {
-    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+    this.productService.getProductsByParameter("topDiscount").subscribe(topDiscount => {
+      this.topDiscount = topDiscount;
     });
   }
 

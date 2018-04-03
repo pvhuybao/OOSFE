@@ -1,0 +1,70 @@
+<div class="container register">
+  <div class="row">
+      <div class="col-md-12 align-self-center">
+        <div class="section-title">
+          <h3>Register Account</h3>
+        </div>
+      
+        <div class="form-group">
+          Username:
+          <input [(ngModel)]="user.username" type="text" class="input" required>
+          <ul class="alert alert-danger" *ngFor="let name of userValidation.Username; let i = index">
+            <li>{{name}}</li>
+        </ul>
+        </div>
+      
+        <div class="form-group">
+          Password:
+          <input [(ngModel)]="user.password" type="password" class="input" required>
+          <ul class="alert alert-danger" *ngFor="let name of userValidation.Password; let i = index">
+            <li>{{name}}</li>
+        </ul>
+        </div>
+      
+        <div class="form-group">
+          Confirm Password:
+          <input [(ngModel)]="user.passwordConfirm" type="password" class="input" required>
+          <ul class="alert alert-danger" *ngFor="let name of userValidation.PasswordConfirm; let i = index">
+            <li>{{name}}</li>
+        </ul>
+        </div>
+      
+        <div class="form-group">
+          Email:
+          <input [(ngModel)]="user.email" type="text" class="input" required>
+          <ul class="alert alert-danger" *ngFor="let name of userValidation.Email; let i = index">
+            <li>{{name}}</li>
+        </ul>
+        </div>
+        
+        <div class="section-title">
+          <h4>Personal Information</h4>
+        </div>
+        
+        <div class="form-group">
+          First Name:
+          <input [(ngModel)]="user.firstName" type="text" class="input" required>
+        </div>
+      
+        <div class="form-group">
+          Last Name:
+          <input [(ngModel)]="user.lastName" type="text" class="input" required>
+        </div>
+      
+        <div class="form-group input-checkbox">
+          Gender:
+          <div class="form-inline">
+            <div class="radio-inline">
+              <input type="radio" name="gender" [value]="2" [(ngModel)]="user.gender">Nam
+            </div>
+            <div class="radio-inline">
+              <input type="radio" name="gender" [value]="1" [(ngModel)]="user.gender">Nữ
+            </div>
+          </div>
+        </div>
+      
+        <button class="primary-btn" [disabled]="isDisabled" (click)="add()">Register</button>
+        <button routerLink="" class="main-btn">Back</button>
+      </div>
+  </div>
+</div>
