@@ -12,6 +12,14 @@
             <li>{{name}}</li>
         </ul>
         </div>
+
+        <div class="form-group">
+          Email:
+          <input [(ngModel)]="user.email" type="text" class="input" required>
+          <ul class="alert alert-danger" *ngFor="let name of userValidation.Email; let i = index">
+            <li>{{name}}</li>
+          </ul>
+        </div>
       
         <div class="form-group">
           Password:
@@ -29,15 +37,7 @@
         </ul>
         </div>
       
-        <div class="form-group">
-          Email:
-          <input [(ngModel)]="user.email" type="text" class="input" required>
-          <ul class="alert alert-danger" *ngFor="let name of userValidation.Email; let i = index">
-            <li>{{name}}</li>
-        </ul>
-        </div>
-        
-        <div class="section-title">
+        <!-- <div class="section-title">
           <h4>Personal Information</h4>
         </div>
         
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-      
+       -->
         <button class="primary-btn" [disabled]="isDisabled" (click)="add()">Register</button>
         <button routerLink="" class="main-btn">Back</button>
       </div>

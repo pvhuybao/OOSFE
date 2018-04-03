@@ -20,6 +20,7 @@ export class CreateAccountComponent implements OnInit {
   user = new UserModel;
   isInvalid = false;
   userValidation = new Object;
+  public isDisabled:boolean;
   public gender = GenderType;
   public item: number;
   public keys: any;
@@ -31,16 +32,17 @@ export class CreateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user.gender = 0;
-    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
-  }
-
-  getGender(){
-    this.keys = Object.keys(this.gender).filter(Number);
+    this.isDisabled = false;
   }
 
   add() {
+    this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
+
+    this.user.gender = 0;
+    this.user.firstName = this.user.username;
+    this.user.lastName = this.user.username;
+    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
 
     this.accountService.add(this.user)
       .subscribe(res => {
