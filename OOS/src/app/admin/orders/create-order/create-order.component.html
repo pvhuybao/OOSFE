@@ -78,7 +78,7 @@
             value={{searchResult}} [(ngModel)]="searchResult">
         <ul class="list-group" style="position:absolute; z-index:100; width:100%;">
           <!-- <li class="list-group-item list-group-item-action" ngFor="let product of listProduct | async"> -->
-            <a style="cursor: pointer;" class="list-group-item list-group-item-action" ngFor="let product of listProduct | async" (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
+            <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)" disabled="disabled">{{product.name}}</a>
           <!-- </li> -->
         </ul>
       </div>
