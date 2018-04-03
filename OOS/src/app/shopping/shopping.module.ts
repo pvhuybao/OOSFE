@@ -29,6 +29,8 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
@@ -70,6 +72,7 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     ShippingReturnComponent,
     ShippingGuideComponent,
     FaqComponent,
+    CreateAccountComponent,
     CarouselProductComponent
   ],
   providers: [
@@ -78,6 +81,7 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     CartService,
     EmailService,
     OrderService,
+    AccountService,
     ConfigurationService
     
   ]

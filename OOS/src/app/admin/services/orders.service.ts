@@ -3,6 +3,7 @@ import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
 //import { Orders } from '../models/orders';
 import { OrdersModel } from '../models/order';
+import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class OrdersService {
@@ -25,8 +26,8 @@ export class OrdersService {
     return this.order;
   }
   
-  getList(): Observable<OrdersModel[]> {
-    return this.authHttpService.get(this.API_PATH)
+  getList(email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
+    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone+"&PageSize="+pageSize+"&Page="+page)
       .map(res => res.json() || [])
   }
 

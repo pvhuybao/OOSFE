@@ -4,12 +4,35 @@
 @import "~font-awesome/css/font-awesome.css";
 @import '~angular2-toaster/toaster.min.css';
 
+/* CUSTOM TOAST */
+#toast-container>div{
+  opacity:1;
+  /* 3px 3px 3px 3px; */
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  /* 0 0 12px #999999; */
+  -moz-box-shadow: 0 0 0px;
+  -webkit-box-shadow: 0 0 0px;
+  box-shadow: 0 0 0px;
+}
+#toast-container > :hover {
+  /* 0 0 12px #000000; */
+  -moz-box-shadow: 0 0 0px;
+  -webkit-box-shadow: 0 0 0px;
+  box-shadow: 0 0 0px;
+}
+.toast-success {
+  background-color: #54c256;
+}
+/*END CUSTOM TOAST*/
 .header-search input:focus, .header-search select:focus{
   outline: none;
   box-shadow:none !important;
   border:1px solid #ccc !important  
 }
 
+/* end custom toast */
 .btn-save
 {
   margin-top: 15px;
