@@ -10,21 +10,13 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
   styleUrls: ['./create-account.component.css']
 })
 
-// @Component({
-//   selector: 'register-success',
-//   template: '<h2>Congratulation!</h2>'+
-//             '<p>You have successfully register your account</p>'
-// })
 export class CreateAccountComponent implements OnInit {
 
   user = new UserModel;
   isInvalid = false;
-  userValidation = new Object;
   public isDisabled:boolean;
-  public gender = GenderType;
-  public item: number;
-  public keys: any;
-
+  isExist:any;
+  isExistEmail:any;
   constructor(
     private accountService: AccountService, 
     private spinnerService:SpinnerService,
@@ -38,23 +30,35 @@ export class CreateAccountComponent implements OnInit {
   add() {
     this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
-
-    this.user.gender = 0;
     this.user.firstName = this.user.username;
-    this.user.lastName = this.user.username;
+    this.user.lastName =this.user.username
+    this.user.gender = 0;
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
 
     this.accountService.add(this.user)
       .subscribe(res => {
+        this.spinnerService.turnOffSpinner();
         this.router.navigate(['']);
-      },
-        (error) => {
-          this.spinnerService.turnOffSpinner();
+      }
+    )
+  }
 
-          this.userValidation = JSON.parse(error._body);
-          this.isInvalid = true;
-        }
-      )
+  checkUsername()
+  {
+    this.accountService.getByUsername(this.user.username).
+      subscribe(username => {
+        this.isExist = username;
+        console.log(this.isExist);
+      });
+  }
+
+  checkEmail()
+  {
+    this.accountService.getByEmail(this.user.email).
+      subscribe(email => {
+        this.isExistEmail = email;
+        console.log(this.isExistEmail);
+      });
   }
 
 }
