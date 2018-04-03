@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
 
 
 const shoppingRoutes: Routes = [
@@ -59,8 +60,8 @@ const shoppingRoutes: Routes = [
       { path: 'search', component: SearchComponent },
       { path: 'shipping-return', component: ShippingReturnComponent },
       { path: 'shipping-guide', component: ShippingGuideComponent },
-      { path: 'faq', component: FaqComponent }
-
+      { path: 'faq', component: FaqComponent },
+      { path: 'register', component: CreateAccountComponent}
     ]
   },
 ];

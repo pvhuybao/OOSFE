@@ -40,6 +40,8 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
+import { PagingComponent } from '../shared/paging/paging.component';
+
 
 //self-directives
 import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
@@ -88,6 +90,7 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     ConfirmPasswordDirective,
     ConfigurationComponent,
     EditorComponent,
+    PagingComponent,
   ],
   entryComponents:[
     AdminLoginComponent

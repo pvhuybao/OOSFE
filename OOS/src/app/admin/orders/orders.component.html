@@ -1,6 +1,23 @@
 <div class="col-md-12">
   <div class="section-title">
-    <h3 class="title">List Orders</h3>
+    <h3 class="title">Search Orders</h3>
+  </div>
+  <div style="justify-content:space-between;display:flex">
+    <div>
+      <label>Email</label>
+      <input type="text" id="inputEmailSearch" placeholder="Email" [(ngModel)]="email">
+    </div>
+    <div>
+      <label>Phone</label>
+      <input type="text" id="inputPhoneSearch" placeholder="Phone" [(ngModel)]="phone">
+    </div>
+    <div>
+    <button class="primary-btn" style="margin-bottom:10px;" (click)="search()">Search</button>
+  </div>
+  </div>
+
+  <div class="section-title">
+    <h3 class="title">Orders overview</h3>
   </div>
 
   <div class="pull-right">
@@ -14,7 +31,7 @@
       <tr>
         <th>Order ID</th>
         <th>User Email</th>
-        <th>Create Date</th>
+        <!-- <th>Create Date</th> -->
         <th class="text-center">Status</th>
         <th class="text-center">Total</th>
         <th></th>
@@ -24,10 +41,10 @@
       <tr>
         <td>{{order.idBill}}</td>
         <td>{{order.email}}</td>
-        <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td>
+        <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td>
-          <select class=" input custom-select" [(ngModel)]="order.status" (change) = "updateStatus(order)">
-            <option *ngFor="let status of listStatus" [value]="status.id" selected>{{status.name}}</option>
+          <select class=" input custom-select" [(ngModel)]="order.status" (change)="updateStatus(order)">
+            <option *ngFor="let status of listStatus" [value]="status.id">{{status.name}}</option>
           </select>
         </td>
         <td class="text-center">{{order.total}}</td>
@@ -62,3 +79,29 @@
 
   </div>
 </div>
+<app-paging
+[totalPage]="pageCount"
+[nextPage]="hasNextPage"
+[prevPage]="hasPreviousPage"
+[pages]="pages"
+(page)="getPage($event)"
+(pageSize)="getPageSize($event)"
+></app-paging>
+<!-- <div class="pull-right">
+    <div class="page-filter">
+      <span class="text-uppercase">Show:</span>
+      <select class="input">
+          <option value="0" ng-reflect-value="0">10</option>
+          <option value="1" ng-reflect-value="1">20</option>
+          <option value="2" ng-reflect-value="2">30</option>
+        </select>
+    </div>
+    <ul class="store-pages">
+      <li><span class="text-uppercase">Page:</span></li>
+      <li><a><i class="fa fa-caret-left"></i></a></li>
+      <li><a>1</a></li>
+      <li><a>2</a></li>
+      <li><a>3</a></li>
+      <li (click)="choosePage(2)"><a><i class="fa fa-caret-right"></i></a></li>
+    </ul>
+  </div> -->
