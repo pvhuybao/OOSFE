@@ -43,6 +43,8 @@ export class HomePageComponent implements OnInit {
     // },]
     this.getListNewestProduct();
     this.getListTopDiscountProduct();
+    this.getListTopSalesProduct();
+    
     this.getCarouselBanners();
   }
 
