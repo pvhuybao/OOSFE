@@ -21,6 +21,7 @@ import { PaypalComponent } from './cart/paypal/paypal.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
+import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
 
 const shoppingRoutes: Routes = [
   {
@@ -31,10 +32,12 @@ const shoppingRoutes: Routes = [
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       {
         path: 'cart',
+        component: CartOverviewComponent,
+        data: { step: 5 },
         children: [
-          { path: '', component: ShoppingCartComponent },
-          { path: 'payment', component: PaymentComponent },
-          { path: 'thankyou', component: ThankyouComponent },
+          { path: '', component: ShoppingCartComponent, data: { step: 1 } },
+          { path: 'payment', component: PaymentComponent, data: { step: 2 } },
+          { path: 'thankyou', component: ThankyouComponent, data: { step: 3 } },
         ]
       },
       {

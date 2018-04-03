@@ -1,0 +1,20 @@
+.nav-pills > li > a {
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .navbar.wizard .nav > li > a{
+    color: #30323A;
+    background-color: #ebebeb;
+    text-transform: uppercase;
+    border-radius:0;
+  }
+  
+  .navbar.wizard .nav > li.active > a {
+    color: #FFF;
+    background-color: #F8694A;
+    text-transform: uppercase;
+    border-radius:0;
+  }

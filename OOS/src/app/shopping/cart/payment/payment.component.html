@@ -1,141 +1,139 @@
-<div class="section">
-  <!-- container -->
-  <div class="container">
-    <!-- row -->
-    <div class="row">
-      <div class="col-md-6">
-        <!-- Shipping Address -->
-        <div class="Shipping-address">
-          <div class="section-title">
-            <h3 class="title">Shipping Address</h3>
-          </div>
-          <div class="form-group">
-            <label>Email: </label>
-            <input class="input" type="text" [(ngModel)]="order.email" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <label>Name: </label>
-            <input class="input" type="text" [(ngModel)]="order.address[0].name" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <label>Phone: </label>
-            <input class="input" type="text" [(ngModel)]="order.address[0].phone" placeholder="Phone">
-          </div>
-          <div class="form-group">
-            <label>Province: </label>
-            <input class="input" type="text" [(ngModel)]="order.address[0].province" placeholder="Province">
-          </div>
-          <div class="form-group">
-            <label>Disctrict: </label>
-            <input class="input" type="text" [(ngModel)]="order.address[0].district" placeholder="District">
-          </div>
-          <div class="form-group">
-            <label>Street: </label>
-            <input class="input" type="text" [(ngModel)]="order.address[0].street" placeholder="Street">
-          </div>
+<div class="container">
+  <!-- row -->
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Shipping Address -->
+      <div class="Shipping-address">
+        <div class="section-title">
+          <h3 class="title">Shipping Address</h3>
         </div>
-        <!-- Shipping Address -->
-      </div>
-
-      <div class="col-md-6">
-        <!-- Payments Methods -->
-        <div class="payments-methods">
-          <div class="section-title">
-            <h3 class="title">Payments Methods</h3>
-          </div>
-          <div class="input-checkbox">
-            <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="1" checked>
-            <label for="payments-1">Paypal</label>
-          </div>
-          <div class="input-checkbox">
-            <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="2">
-            <label for="payments-2">Bank</label>
-          </div>
-          <div class="input-checkbox">
-            <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="3">
-            <label for="payments-3">COD</label>
-            <div class="caption">
-              <div class="section-title">
-                <h3 class="title">Billing Address</h3>
-              </div>
-              <div class="form-group">
-                <input class="input" type="text" [(ngModel)]="order.address[1].name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <input class="input" type="text" [(ngModel)]="order.address[1].phone" placeholder="Phone">
-              </div>
-              <div class="form-group">
-                <input class="input" type="email" [(ngModel)]="order.address[1].street" placeholder="Street">
-              </div>
-              <div class="form-group">
-                <input class="input" type="text" [(ngModel)]="order.address[1].district" placeholder="District">
-              </div>
-              <div class="form-group">
-                <input class="input" type="text" [(ngModel)]="order.address[1].province" placeholder="Province">
-              </div>
-              <div class="pull-right">
-                <button class="primary-btn" (click)="useShippingAddress()">Use Shipping Address</button>
-              </div>
-            </div>
-          </div>
+        <div class="form-group">
+          <label>Email: </label>
+          <input class="input" type="text" [(ngModel)]="order.email" placeholder="Name">
         </div>
-        <!-- Payments Methods -->
-      </div>
-      <div class="col-md-12">
-        <!-- Order Review -->
-        <div class="order-summary clearfix">
-          <div class="section-title">
-            <h3 class="title">Order Review</h3>
-          </div>
-          <table class="shopping-cart-table table">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th class="text-center">Price</th>
-                <th></th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Total</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let detail of order.orderDetails">
-              <tr>
-                <td class="detail">
-                  <strong>{{detail.nameProduct}}</strong>
-                </td>
-                <td class="price text-center">
-                  <strong>{{detail.price}}</strong>
-                </td>
-                <td></td>
-                <td class="price text-center">
-                  <strong>{{detail.quantity}}</strong>
-                </td>
-                <td class="total text-center">
-                  <strong>{{detail.totalPrice}}</strong>
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th class="empty" colspan="3"></th>
-                <th>TOTAL</th>
-                <th colspan="2" class="total">{{order.total}}</th>
-              </tr>
-            </tfoot>
-          </table>
-          <div class="pull-right">
-            <div *ngIf="paymentMethod !== 1">
-              <button class="primary-btn" (click)="Checkout()">Place Order</button>
-            </div>
-            <!-- Paypal -->
-            <div class="form-group" [hidden]="paymentMethod!==1">
-              <app-paypal [order]="order" #paypal [order]="order"></app-paypal>
-            </div>
-            <!-- Paypal -->
-          </div>
-          <!-- Order Review -->
+        <div class="form-group">
+          <label>Name: </label>
+          <input class="input" type="text" [(ngModel)]="order.address[0].name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label>Phone: </label>
+          <input class="input" type="text" [(ngModel)]="order.address[0].phone" placeholder="Phone">
+        </div>
+        <div class="form-group">
+          <label>Province: </label>
+          <input class="input" type="text" [(ngModel)]="order.address[0].province" placeholder="Province">
+        </div>
+        <div class="form-group">
+          <label>Disctrict: </label>
+          <input class="input" type="text" [(ngModel)]="order.address[0].district" placeholder="District">
+        </div>
+        <div class="form-group">
+          <label>Street: </label>
+          <input class="input" type="text" [(ngModel)]="order.address[0].street" placeholder="Street">
         </div>
       </div>
-      <!-- /row -->
+      <!-- Shipping Address -->
     </div>
-    <!-- /container -->
+
+    <div class="col-md-6">
+      <!-- Payments Methods -->
+      <div class="payments-methods">
+        <div class="section-title">
+          <h3 class="title">Payments Methods</h3>
+        </div>
+        <div class="input-checkbox">
+          <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="1" checked>
+          <label for="payments-1">Paypal</label>
+        </div>
+        <div class="input-checkbox">
+          <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="2">
+          <label for="payments-2">Bank</label>
+        </div>
+        <div class="input-checkbox">
+          <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="3">
+          <label for="payments-3">COD</label>
+          <div class="caption">
+            <div class="section-title">
+              <h3 class="title">Billing Address</h3>
+            </div>
+            <div class="form-group">
+              <input class="input" type="text" [(ngModel)]="order.address[1].name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input class="input" type="text" [(ngModel)]="order.address[1].phone" placeholder="Phone">
+            </div>
+            <div class="form-group">
+              <input class="input" type="email" [(ngModel)]="order.address[1].street" placeholder="Street">
+            </div>
+            <div class="form-group">
+              <input class="input" type="text" [(ngModel)]="order.address[1].district" placeholder="District">
+            </div>
+            <div class="form-group">
+              <input class="input" type="text" [(ngModel)]="order.address[1].province" placeholder="Province">
+            </div>
+            <div class="pull-right">
+              <button class="primary-btn" (click)="useShippingAddress()">Use Shipping Address</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Payments Methods -->
+    </div>
+    <div class="col-md-12">
+      <!-- Order Review -->
+      <div class="order-summary clearfix">
+        <div class="section-title">
+          <h3 class="title">Order Review</h3>
+        </div>
+        <table class="shopping-cart-table table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th class="text-center">Price</th>
+              <th></th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let detail of order.orderDetails">
+            <tr>
+              <td class="detail">
+                <strong>{{detail.nameProduct}}</strong>
+              </td>
+              <td class="price text-center">
+                <strong>{{detail.price}}</strong>
+              </td>
+              <td></td>
+              <td class="price text-center">
+                <strong>{{detail.quantity}}</strong>
+              </td>
+              <td class="total text-center">
+                <strong>{{detail.totalPrice}}</strong>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="empty" colspan="3"></th>
+              <th>TOTAL</th>
+              <th colspan="2" class="total">{{order.total}}</th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pull-right">
+          <div *ngIf="paymentMethod !== 1">
+            <button class="primary-btn" (click)="Checkout()">Place Order</button>
+          </div>
+          <!-- Paypal -->
+          <div class="form-group" [hidden]="paymentMethod!==1">
+            <app-paypal [order]="order" #paypal [order]="order"></app-paypal>
+          </div>
+          <!-- Paypal -->
+        </div>
+        <!-- Order Review -->
+      </div>
+    </div>
+    <!-- /row -->
   </div>
+  <!-- /container -->
+</div>

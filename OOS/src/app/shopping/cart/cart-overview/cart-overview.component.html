@@ -1,0 +1,22 @@
+<div class="section">
+  <div class="container">
+    <div class="navbar wizard">
+      <div class="col-md-6 col-md-offset-4">
+        <div class="navbar-inner">
+          <ul class="nav nav-pills wizard">
+            <li [ngClass]="step == 1 ? 'active' : ''">
+              <a>Cart Review</a>
+            </li>
+            <li [ngClass]="step == 2 ? 'active' : ''">
+              <a>Payment</a>
+            </li>
+            <li [ngClass]="step == 3 ? 'active' : ''">
+              <a>Thank You</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
