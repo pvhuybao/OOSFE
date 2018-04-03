@@ -1,64 +1,60 @@
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="order-summary clearfix">
-					<div class="section-title">
-						<h3 class="title">Order Review</h3>
-					</div>
-					<table class="shopping-cart-table table">
-						<thead>
-							<tr>
-								<th>Product</th>
-								<th></th>
-								<th class="text-center">Price</th>
-								<th class="text-center">Quantity</th>
-								<th class="text-center">Total</th>
-								<th class="text-right"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of cart">
-								<td class="thumb">
-									<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
-								</td>
-								<td class="details">
-									<a href="#">{{item.product.name}}</a>
-									<ul>
-										<li>
-											<span>Description: {{item.product.description}}</span>
-										</li>
-									</ul>
-								</td>
-								<td class="price text-center">
-									<strong>{{item.product.price | number}}</strong>
-									<br>
-								</td>
-								<td class="qty text-center">
-									<input class="input" type="number" min="1" value="{{item.quantity | number}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
-								</td>
-								<td class="total text-center">
-									<strong class="primary-color">{{item.product.price*item.quantity | number}}</strong>
-								</td>
-								<td class="text-right">
-									<button class="main-btn icon-btn" (click)="remove(item.product)">
-										<i class="fa fa-close"></i>
-									</button>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th class="empty" colspan="3"></th>
-								<th>TOTAL</th>
-								<th colspan="2" class="total">{{total | number}}</th>
-							</tr>
-						</tfoot>
-					</table>
-					<div class="pull-right">
-						<button class="primary-btn" routerLink="shipping-info">Place Order</button>
-					</div>
-				</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="order-summary clearfix">
+			<div class="section-title">
+				<h3 class="title">Order Review</h3>
+			</div>
+			<table class="shopping-cart-table table">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th></th>
+						<th class="text-center">Price</th>
+						<th class="text-center">Quantity</th>
+						<th class="text-center">Total</th>
+						<th class="text-right"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of cart">
+						<td class="thumb">
+							<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
+						</td>
+						<td class="details">
+							<a href="#">{{item.product.name}}</a>
+							<ul>
+								<li>
+									<span>Description: {{item.product.description}}</span>
+								</li>
+							</ul>
+						</td>
+						<td class="price text-center">
+							<strong>{{item.product.price | number}}</strong>
+							<br>
+						</td>
+						<td class="qty text-center">
+							<input class="input" type="number" min="1" value="{{item.quantity | number}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
+						</td>
+						<td class="total text-center">
+							<strong class="primary-color">{{item.product.price*item.quantity | number}}</strong>
+						</td>
+						<td class="text-right">
+							<button class="main-btn icon-btn" (click)="remove(item.product)">
+								<i class="fa fa-close"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th class="empty" colspan="3"></th>
+						<th>TOTAL</th>
+						<th colspan="2" class="total">{{total | number}}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="pull-right">
+				<button class="primary-btn" routerLink="shipping-info">Place Order</button>
 			</div>
 		</div>
 	</div>

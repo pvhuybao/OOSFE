@@ -16,7 +16,7 @@ import { WidgetBoxComponent } from './widget-box/widget-box.component';
 import { CartService } from './services/cart.service';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductService } from './services/product.service';
-import { CartComponent } from './home-page/cart/cart.component';
+import { CartButtonComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
 import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
@@ -33,9 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+import { PaymentProgressBarComponent } from './cart/payment-progress-bar/payment-progress-bar.component';
 
-//self-services
-//import { SpinnerService } from '../shared/services/spinner.service';
+import { CartComponent } from './cart/cart.component';
+
 
 @NgModule({
   imports: [
@@ -60,7 +61,7 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     WidgetProductsComponent,
     WidgetBoxComponent,
     SearchComponent,
-    CartComponent,
+    CartButtonComponent,
     PaymentComponent,
     ThankyouComponent,
     ShippingInfoComponent,
@@ -70,7 +71,9 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     ShippingReturnComponent,
     ShippingGuideComponent,
     FaqComponent,
-    CarouselProductComponent
+    CarouselProductComponent,
+    PaymentProgressBarComponent,
+    CartComponent
   ],
   providers: [
     CategoryService, 

@@ -1,0 +1,17 @@
+<div class="row smpl-step">
+
+  <div class="col-xs-3 smpl-step-step" *ngFor="let title of listTitles; let i = index" [ngClass]="{
+    'complete': activeProcessNumber > i,
+    'active': title === active,
+    'disabled': activeProcessNumber < i
+  }">
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+    <a class="smpl-step-icon">
+      <i class="glyphicon" [ngClass]="title === active ? 'glyphicon-repeat repeat-icon' : 'glyphicon-ok ok-icon'"></i>
+    </a>
+    <div class="smpl-step-info text-center">{{title}}</div>
+  </div>
+
+</div>

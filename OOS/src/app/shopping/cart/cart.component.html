@@ -1,0 +1,7 @@
+<div class="section">
+  <div class="container">
+      <app-payment-progress-bar [listTitles]="listTitles" [active]="active" [activeProcessNumber] = "activeProcessNumber"></app-payment-progress-bar>
+      <router-outlet (change)="changeActiveProcessNumber($event)"></router-outlet>
+  </div>
+</div>
+    

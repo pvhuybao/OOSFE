@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartModel } from '../../models/cart';
 import { ProductModel } from '../../models/product';
@@ -13,6 +13,13 @@ export class ShoppingCartComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
+
+  //for payment process bar
+  @Input() 
+  activeProcessNumber: number;
+  @Output()
+  emitActiveProcessNumber: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private cartService: CartService, private spinner:SpinnerService) {
   }
 
@@ -44,4 +51,9 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
   }
+
+  changeActiveProcessNumber(){
+    this.emitActiveProcessNumber.emit(this.activeProcessNumber);
+  }
+
 }

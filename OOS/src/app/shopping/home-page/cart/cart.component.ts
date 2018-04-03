@@ -3,11 +3,11 @@ import { CartService } from '../../services/cart.service';
 import { CartModel } from '../../models/cart';
 
 @Component({
-  selector: 'app-cart',
+  selector: 'app-cart-button',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartButtonComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
