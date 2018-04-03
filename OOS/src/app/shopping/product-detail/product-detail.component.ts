@@ -7,6 +7,7 @@ import { takeLast } from 'rxjs/operators';
 import { BannerModel } from '../models/banner';
 import { CartService } from '../services/cart.service';
 import { ProductCartModel } from '../models/productCart';
+import { ToasterService } from 'angular2-toaster';
 import { ProductModel } from '../models/product';
 @Component({
   selector: 'app-product-detail',
@@ -14,6 +15,7 @@ import { ProductModel } from '../models/product';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  // private toasterService: ToasterService;
   idProduct: string;
   product = new ProductModel();
   colorSelected: string;
@@ -27,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   flagCartButton : boolean = true;
   quantity : number = 1;
   productCart : ProductCartModel;
+
   public link: any;
 
   productIsExist: boolean=true;
@@ -35,7 +38,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productService : ProductService,
               private activatedRoute: ActivatedRoute, 
               private cartService: CartService,
-              private router: Router) { }
+              private router: Router,
+              private toasterService: ToasterService) { }
 
   ngOnInit() {
     let params: any = this.activatedRoute.snapshot.params;
@@ -142,6 +146,8 @@ AddToCart(){
     price: this.price
   }
   this.cartService.set(product,this.quantity);
+    //pop up toaster
+  this.toasterService.pop('success', product.name, 'Added to cart success!');
 }
 setColor(color){
   this.colorSelected = color;
