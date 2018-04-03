@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
@@ -18,6 +18,8 @@ import { NotFoundPageComponent } from './not-found.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { MyToastModule } from './shared/my-toast.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AngularFontAwesomeModule,
     NouisliderModule,
     Ng4LoadingSpinnerModule,
+    MyToastModule,
     Ng5BreadcrumbModule.forRoot(),
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
@@ -46,6 +49,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AuthHttpService,
     BreadcrumbService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
