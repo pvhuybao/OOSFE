@@ -31,6 +31,11 @@ export class WidgetBoxComponent implements OnInit {
   ngOnInit() {
     
   }
+  menuToggle(event:any) {
+    // this.renderer.setElementClass(event.target,"opened",true);
+    console.log("click");
+    
+}
   transform(value: string) {
     let newvalue = value.replace(' ', '_');
     return newvalue;
