@@ -17,21 +17,13 @@ export class OrdersComponent implements OnInit {
   listStatus = new Array<StatusOrder>()
   orderToDelete: OrdersModel;
 
-  email: string = "";
+  email: string ="";
   phone: string = "";
-  page: number;
   pageSize: number;
-  pageCount: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
+  page: number;
 
-  pFirst: number;
-  pCenter: number;
-  pLast: number;
-  active = "active";
-
-  pages = new Array<number>();
-  x: number;
+  itemCount: number;
+  pNow: number = 1;
   constructor(
     private ordersService: OrdersService,
     private router: Router,
@@ -48,23 +40,12 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.getOrderList();
-
   }
 
   getOrderList() {
-    this.pages = new Array<number>();
-    this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
-      this.spinnerService.turnOffSpinner();
       this.listOrders = data.items;
-      this.pageCount = data.pageCount;
-      this.hasNextPage = data.hasNextPage;
-      this.hasPreviousPage = data.hasPreviousPage;
-      // for(let i=0;i<data.pageCount;i++)
-      // {
-      //   this.pages[i] = i+1;
-      // }
-      this.getPages(data.page, data.pageCount, data.hasPreviousPage, data.hasNextPage);
+      this.itemCount = data.totalItemCount;
       console.log(data);
     });
   }
@@ -82,170 +63,22 @@ export class OrdersComponent implements OnInit {
     else{ return true}
   }
 
-  getPages(page: number, pageCount: number, hasPreviousPage: boolean, hasNextPage: boolean) {
-    this.x = 0;
-    if (this.pages != null && pageCount > 3 && page < 3) {
-      this.pages = new Array<number>();
-      for (let i = 0; i < 3; i++) {
-        this.pages[i] = i + 1;
-      }
-    }
-    else {
-      if (this.pages != null && pageCount > 3) {
-        this.pages = new Array<number>();
-        for (let i = 0; i < 3; i++) {
-          this.pages[i] = i + 1;
-        }
-      }
-    }
-    if (pageCount <= 3) {
-      this.pages = new Array<number>();
-      for (let i = 0; i < pageCount; i++) {
-        this.pages[i] = i + 1;
-      }
-    }
-
-    if(page>=3 && this.checkOdd(page)==true && pageCount >= page+2 )
+  getPage(page: number)
+  {
+    if(this.page!= page)
     {
-      this.pages = new Array<number>();
-      for (let i = page; i < page+2; i++) {
-        this.pages[this.x] = i;
-        this.x++;
-      }
+      this.page = page;
+      this.getOrderList();
     }
-
-    if(hasPreviousPage == false && pageCount > 3)
-    {
-      this.pages = new Array<number>();
-      for (let i = page; i < 3; i++) {
-        this.pages[i] = i + 1;
-      }
-    }
-    
-    if(hasPreviousPage == false && pageCount <= 3)
-    {
-      this.pages = new Array<number>();
-      for (let i = page; i < pageCount; i++) {
-        this.pages[i] = i + 1;
-      }
-    }
-
-    if(hasNextPage == false && pageCount > 3)
-    {
-      this.pages = new Array<number>();
-      for (let i = page-2; i < page; i++) {
-        this.pages[this.x] = i;
-        this.x++;
-      }
-    }
-
-    if(hasNextPage == false && pageCount <= 3)
-    {
-      this.pages = new Array<number>();
-      for (let i = 0; i < page; i++) {
-        this.pages[i] = i + 1;
-      }
-    }
-
-    if(page+2> pageCount && hasNextPage==true && hasPreviousPage == true)
-    {
-      this.pages = new Array<number>();
-      for (let i = page-1; i < pageCount; i++) {
-        this.pages[this.x] = i;
-        this.x++;
-      }
-    }
-    // if (hasNextPage == false && pageCount > 3) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page - 2; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
-
-    // if (hasNextPage == true && page+2==pageCount) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
-
-    // if (hasNextPage == true && page+2>pageCount) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page-1; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
-
-
-    // if (page + 2 > pageCount && hasPreviousPage == true) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page - 1; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
-
-    // if (page + 2 > pageCount && hasPreviousPage == false) {
-    //   this.pages = new Array<number>();
-    //     for (let i = 0; i < 3; i++) {
-    //       this.pages[this.x] = i + 1;
-    //       this.x++;
-    //     }
-    // }
-
-    // if (page + 2 == pageCount && page != this.pages[1]) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
-
-    // if (page + 2 == pageCount && page == this.pages[1]) {
-    //   this.pages = new Array<number>();
-    //   for (let i = page - 1; i <= pageCount; i++) {
-    //     this.pages[this.x] = i;
-    //     this.x++;
-    //   }
-    // }
   }
 
-  changePage() {
-
-  }
-
-  getPage(page: number) {
-    this.page = page;
-    this.getOrderList();
-  }
-
-  getPageSize(pageSize: number) {
-    if (this.pageSize != pageSize) {
+  getPageSize(pageSize: number)
+  {
+    if(this.pageSize!= pageSize)
+    {
       this.pageSize = pageSize;
-      this.page = 1;
+      this.getOrderList();
     }
-    this.getOrderList();
-  }
-
-  choosePage(page: string) {
-
-    // for (let i = 1; i <= page.totalPages; i++) {
-    //   if (i === first || i === last || activePage === i
-    //     || last < 5
-    //     || activePage - 1 === i || (activePage < 3 && i < 4)
-    //     || activePage + 1 === i || (activePage > last - 2 && i > last - 3)
-    //   ) {
-    //     pageNumbers = [...pageNumbers, i];
-    //   }
-    // }
-    // if(page!=="next" && page!=="Previous")
-    // {
-    //     this.page = parseInt(page);
-    //     console.log(this.page);
-    // }
   }
 
   get(orderId) {
