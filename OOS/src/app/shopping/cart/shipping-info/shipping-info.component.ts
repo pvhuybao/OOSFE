@@ -25,19 +25,12 @@ export class ShippingInfoComponent implements OnInit {
   public detail: OrderDetailModel;
   public orderAddress: any;
 
-  //for payment process bar
-  @Input() 
-  activeProcessNumber: number = 1;
-  @Output()
-  emitActiveProcessNumber: EventEmitter<number> = new EventEmitter<number>();
-
   constructor(private orderService: OrderService, private router: Router,
               private cartService: CartService) 
               { }
 
   ngOnInit() {    
     this.get();
-    this.changeActiveProcessNumber;
   }
 
   get() {    
@@ -77,10 +70,6 @@ export class ShippingInfoComponent implements OnInit {
       this.orderService.setOrder(this.order);
       this.router.navigateByUrl("/cart/payment");
     });
-  }
-  
-  changeActiveProcessNumber(){
-    this.emitActiveProcessNumber.emit(this.activeProcessNumber);
   }
 
 }

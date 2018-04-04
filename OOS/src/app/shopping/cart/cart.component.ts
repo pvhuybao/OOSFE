@@ -8,22 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
   //for payment process bar
-  listTitles : string[] = [
-    "Cart","Shipping Information","Payment","Thank You",
+  listTitles: string[] = [
+    "Cart", "Shipping Information", "Payment", "Thank You",
   ];
 
   active: string = "Cart";
 
   activeProcessNumber: number = 0;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
-  changeActiveProcessNumber(event){
-    this.activeProcessNumber = event;
-    console.log("changeActiveProcessNumber work!")
+  ngOnInit() {
   }
 
 }

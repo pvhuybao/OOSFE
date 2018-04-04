@@ -14,13 +14,10 @@ export class ShoppingCartComponent implements OnInit {
   cart: CartModel[] = [];
   total: number = 0;
 
-  //for payment process bar
-  @Input() 
-  activeProcessNumber: number;
-  @Output()
-  emitActiveProcessNumber: EventEmitter<number> = new EventEmitter<number>();
-
-  constructor(private cartService: CartService, private spinner:SpinnerService) {
+  constructor(
+    private cartService: CartService, 
+    private spinner:SpinnerService) {
+    
   }
 
   ngOnInit() {
@@ -51,9 +48,4 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
   }
-
-  changeActiveProcessNumber(){
-    this.emitActiveProcessNumber.emit(this.activeProcessNumber);
-  }
-
 }

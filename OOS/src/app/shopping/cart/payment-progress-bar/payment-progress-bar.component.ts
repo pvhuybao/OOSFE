@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-payment-progress-bar',
@@ -13,7 +14,17 @@ export class PaymentProgressBarComponent implements OnInit {
 
   @Input() activeProcessNumber: number;
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        route.firstChild.data.subscribe(d => {
+          this.activeProcessNumber = d['activeProcessNumber'];
+          this.active = d['active'];
+        })
+      }
+    })
+  }
 
   ngOnInit() {
     this.getActiveProcessNumber(this.listTitles);

@@ -33,10 +33,10 @@ const shoppingRoutes: Routes = [
       {
         path: 'cart', component: CartComponent,
         children: [
-          { path: '', component: ShoppingCartComponent , pathMatch: 'full'},
-          { path: 'shipping-info', component: ShippingInfoComponent },
-          { path: 'payment', component: PaymentComponent },
-          { path: 'thankyou', component: ThankyouComponent },
+          { path: '', component: ShoppingCartComponent , pathMatch: 'full', data : {activeProcessNumber: '0', active: 'Cart'} },
+          { path: 'shipping-info', component: ShippingInfoComponent, data : {activeProcessNumber: '1', active: 'Shipping Information'} },
+          { path: 'payment', component: PaymentComponent, data : {activeProcessNumber: '2', active: 'Payment'} },
+          { path: 'thankyou', component: ThankyouComponent, data : {activeProcessNumber: '3', active: 'Thank you'} },
         ]
       },
       {
