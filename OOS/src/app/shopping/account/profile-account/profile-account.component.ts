@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { GenderType } from '../../models/user/create-user/create-user';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import {IMyDpOptions} from 'mydatepicker';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'app-profile-account',
@@ -16,9 +18,13 @@ export class ProfileAccountComponent implements OnInit {
   listGender : any
   listCountry = new Array<string>();
 
+  public myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd/mm/yyyy',
+};
 
 
-  constructor(private ss: AccountService, private spinnerService: SpinnerService) {
+
+  constructor(private ss: AccountService, private spinnerService: SpinnerService,private toasterService: ToasterService) {
 
 
     this.listCountry.push("VietNam")
@@ -49,6 +55,7 @@ export class ProfileAccountComponent implements OnInit {
     updateUser.gender -=1;
     this.ss.put(updateUser).subscribe(data => {
       this.spinnerService.turnOffSpinner()
+      this.toasterService.pop("success","success","You have successfully updated your profile");
 
     })
   }

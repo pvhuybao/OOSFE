@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailModel } from '../models/email';
 import { EmailService } from '../services/email.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { ToasterService } from 'angular2-toaster/src/toaster.service';
 
 @Component({
   selector: 'app-contact',
@@ -28,6 +29,7 @@ export class ContactComponent implements OnInit {
     this.spinnerService.startLoadingSpinner();
     this.emailService.sentEmail(email).subscribe(data=>{
       this.spinnerService.turnOffSpinner();
+     
     })
   }
 

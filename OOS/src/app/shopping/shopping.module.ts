@@ -38,6 +38,7 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
+import { MyDatePickerModule } from 'mydatepicker';
 
 
 //self-services
@@ -51,7 +52,10 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    MyDatePickerModule
+  
+  
 
   ],
   declarations: [
