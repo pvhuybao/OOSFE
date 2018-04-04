@@ -23,6 +23,7 @@ import { ShippingGuideComponent } from './shipping-guide/shipping-guide.componen
 import { FaqComponent } from './faq/faq.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 
 const shoppingRoutes: Routes = [
   {
@@ -63,7 +64,14 @@ const shoppingRoutes: Routes = [
       { path: 'shipping-return', component: ShippingReturnComponent },
       { path: 'shipping-guide', component: ShippingGuideComponent },
       { path: 'faq', component: FaqComponent },
-      { path: 'register', component: CreateAccountComponent}
+      { path: 'register', component: CreateAccountComponent},
+      {
+        path: 'account',
+        children :[
+          {path: 'profile', component: ProfileAccountComponent}
+        ]
+      }
+
     ]
   },
 ];
