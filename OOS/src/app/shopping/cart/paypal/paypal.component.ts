@@ -54,12 +54,15 @@ export class PaypalComponent {
 
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then((payment) => {
+        this.order.status = 1;
+        this.orderService.add(this.order).subscribe(()=>{
+          console.log("Authorized)");
+          localStorage.removeItem("paymentMethod");
+          localStorage.setItem("paymentMethod", "1");
+          this.cartService.clear();
+          this.router.navigate(['../thankyou'], { relativeTo: this.route });
+        });
         //Do something when payment is successful.
-        console.log("Authorized)");
-        localStorage.removeItem("paymentMethod");
-        localStorage.setItem("paymentMethod", "1");
-        this.cartService.clear();
-        this.router.navigate(['../thankyou'], { relativeTo: this.route });
       });
     }
   };

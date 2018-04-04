@@ -60,14 +60,15 @@ export class PaymentComponent implements OnInit {
   }
 
   Checkout() {
-    // this.orderService.add(this.order).subscribe(data =>
-    //   );
-
-    localStorage.removeItem("paymentMethod");
-    localStorage.setItem("paymentMethod", this.paymentMethod.toString());
-    this.cartService.clear();
-    this.router.navigate(['../thankyou'], { relativeTo: this.route });
+    this.order.status = 0;
+    this.orderService.add(this.order).subscribe(() => {
+      localStorage.removeItem("paymentMethod");
+      localStorage.setItem("paymentMethod", this.paymentMethod.toString());
+      this.cartService.clear();
+      this.router.navigate(['../thankyou'], { relativeTo: this.route });
+    });
   }
+
   useShippingAddress() {
     this.order.address[1] = this.order.address[0];
   }

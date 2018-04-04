@@ -29,11 +29,14 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
+import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -72,7 +75,9 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
     ShippingGuideComponent,
     FaqComponent,
     CarouselProductComponent,
-    CartOverviewComponent
+    CartOverviewComponent,
+    CreateAccountComponent,
+    ProductBoxComponent
   ],
   providers: [
     CategoryService, 
@@ -80,6 +85,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
     CartService,
     EmailService,
     OrderService,
+    AccountService,
     ConfigurationService
     
   ]

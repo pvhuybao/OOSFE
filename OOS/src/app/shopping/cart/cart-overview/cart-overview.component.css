@@ -4,6 +4,9 @@
     font-size: 16px;
     font-weight: bold;
   }
+  .navbar.wizard{
+    margin-bottom:0;
+  }
   
   .navbar.wizard .nav > li > a{
     color: #30323A;
@@ -18,3 +21,4 @@
     text-transform: uppercase;
     border-radius:0;
   }
+  
