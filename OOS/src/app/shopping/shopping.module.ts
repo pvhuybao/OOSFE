@@ -35,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -73,7 +74,8 @@ import { CarouselProductComponent } from './product-detail/carousel-product/caro
     ShippingGuideComponent,
     FaqComponent,
     CreateAccountComponent,
-    CarouselProductComponent
+    CarouselProductComponent,
+    ProfileAccountComponent
   ],
   providers: [
     CategoryService, 

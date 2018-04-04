@@ -6,8 +6,8 @@ import { UserModel } from '../models/users';
 @Injectable()
 export class AccountService {
 
-  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
-  private API_PATH = 'http://localhost:54766/api/User/';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+
 
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -15,4 +15,17 @@ export class AccountService {
     return this.authHttpService.post(this.API_PATH + "Register", task);
   }
 
+  getById(id: string): Observable<UserModel> {
+    return this.authHttpService.get(this.API_PATH + id)
+      .map(res => {
+        return res.json() || []
+      }
+      )
+  }
+
+
+
+  put(user: any): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
+  }
 }
