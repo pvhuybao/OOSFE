@@ -13,67 +13,102 @@ import { StatusOrder } from '../models/statusOrder';
 })
 export class OrdersComponent implements OnInit {
 
-  listOrders: Array<OrdersModel>
+  listOrders: Array<Object>
   listStatus = new Array<StatusOrder>()
   orderToDelete: OrdersModel;
+
+  email: string ="";
+  phone: string = "";
+  pageSize: number;
+  page: number;
+
+  itemCount: number;
+  pNow: number = 1;
   constructor(
-    private ordersService: OrdersService, 
-    private router: Router, 
+    private ordersService: OrdersService,
+    private router: Router,
 
-    private spinnerService: SpinnerService) 
-    { 
-      this.listStatus.push(new StatusOrder(0,"Confirming"))
-      this.listStatus.push(new StatusOrder(1,"Confirmed"))
-      this.listStatus.push(new StatusOrder(2,"Shipping"))
-      this.listStatus.push(new StatusOrder(3,"Shipped"))
-      
-    }
+    private spinnerService: SpinnerService) {
+    this.listStatus.push(new StatusOrder(0, "Confirming"))
+    this.listStatus.push(new StatusOrder(1, "Confirmed"))
+    this.listStatus.push(new StatusOrder(2, "Shipping"))
+    this.listStatus.push(new StatusOrder(3, "Shipped"))
 
-   
-
+  }
+  
   ngOnInit() {
     this.getOrderList();
   }
 
-  getOrderList() 
-  {
-    this.spinnerService.startLoadingSpinner()
-    this.ordersService.getList().subscribe(data => {
-      this.listOrders = data;
-      this.spinnerService.turnOffSpinner()
+  getOrderList() {
+    this.spinnerService.startLoadingSpinner();
+    this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
+      this.listOrders = data.items;
+      this.itemCount = data.totalItemCount;
+      console.log(data);
     });
   }
 
-  get(orderId)
-  {
-    this.ordersService.getById(orderId).subscribe(data => {this.orderToDelete = data});
+  search() {
+    this.getOrderList();
   }
 
-  delete()
+  checkOdd(num: number)
   {
+    if(num+1%2==0)
+    {
+      return false;
+    }
+    else{ return true}
+  }
+
+  getPage(page: number)
+  {
+    if(this.page!= page)
+    {
+      this.page = page;
+      this.getOrderList();
+    }
+  }
+
+  getPageSize(pageSize: number)
+  {
+    if(this.pageSize!= pageSize)
+    {
+      this.pageSize = pageSize;
+      this.getOrderList();
+    }
+  }
+
+  get(orderId) {
+    this.ordersService.getById(orderId).subscribe(data => { this.orderToDelete = data });
+  }
+
+  delete() {
     this.spinnerService.startLoadingSpinner();
-    this.ordersService.delete(this.orderToDelete.id).subscribe(()=> {
+    this.ordersService.delete(this.orderToDelete.id).subscribe(() => {
       this.spinnerService.turnOffSpinner();
       this.getOrderList();
       console.log(this.orderToDelete.id);
     });
   }
 
-  edit (order)
-  {
+  edit(order) {
     this.ordersService.sendData(order);
     this.router.navigateByUrl("/admin/manager/orders/edit/" + order.id);
 
   }
 
-  updateStatus(order)
-  {
-    this.spinnerService.startLoadingSpinner()
-    console.log("Overview Order status = ",order.id)
-    this.ordersService.put(order.id,order).subscribe(data => {
-      this.spinnerService.turnOffSpinner()
+  updateStatus(order: OrdersModel) {
+    this.spinnerService.startLoadingSpinner();
+    this.ordersService.getById(order.id).subscribe(ord => {
+      ord.status = order.status;
+      this.ordersService.put(ord.id, ord).subscribe(data => {
+        this.spinnerService.turnOffSpinner();
+        console.log(order.status);
+      });
+    });
 
-
-    })
   }
 }

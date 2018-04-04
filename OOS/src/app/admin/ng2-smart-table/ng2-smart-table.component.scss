@@ -23,13 +23,22 @@
       display: table;
       width: 100%;
       max-width: 100%;
-      overflow: auto;
-      word-break: normal;
-      word-break: keep-all;
+      overflow: hidden;
+      // word-break: normal;
+      word-break: break-all;
 
       tr {
+        // th {
+        //   font-weight: bold;
+        //   width:15%;
+        // }
+        th.image {
+          font-weight: bold;
+          width:30%;
+        }
         th {
           font-weight: bold;
+          width:15%;
         }
         section {
           font-size: .75em;

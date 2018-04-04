@@ -29,13 +29,15 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
 import { PaymentProgressBarComponent } from './cart/payment-progress-bar/payment-progress-bar.component';
-
 import { CartComponent } from './cart/cart.component';
+import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { CartComponent } from './cart/cart.component';
     FaqComponent,
     CarouselProductComponent,
     PaymentProgressBarComponent,
-    CartComponent
+    CartComponent,
+    CreateAccountComponent,
+    ProductBoxComponent
   ],
   providers: [
     CategoryService, 
@@ -81,6 +85,7 @@ import { CartComponent } from './cart/cart.component';
     CartService,
     EmailService,
     OrderService,
+    AccountService,
     ConfigurationService
     
   ]
