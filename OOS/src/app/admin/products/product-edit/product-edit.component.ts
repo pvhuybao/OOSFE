@@ -85,6 +85,9 @@ export class ProductEditComponent implements OnInit {
       image: {
         title: 'Image',
         filter: false,
+        editor: {
+          type: 'textarea',
+        },
       },
       color: {
         title: 'Color',

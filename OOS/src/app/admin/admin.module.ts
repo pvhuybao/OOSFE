@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -40,12 +41,15 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
+import { PagingComponent } from '../shared/paging/paging.component';
+
 
 //self-directives
 import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
 import { PasswordDirective } from '../shared/validation/validators/password.directive';
 import { ConfirmPasswordDirective } from '../shared/validation/validators/confirm-password.directive';
 import { EmailValidatorDirective } from '../shared/validation/validators/email-validator.directive';
+
 
 @NgModule({
   imports: [
@@ -56,7 +60,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     Ng5BreadcrumbModule,
     Ng2SmartTableModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgbModule
   ],
     
   declarations: [
@@ -88,6 +93,7 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     ConfirmPasswordDirective,
     ConfigurationComponent,
     EditorComponent,
+    PagingComponent,
   ],
   entryComponents:[
     AdminLoginComponent
