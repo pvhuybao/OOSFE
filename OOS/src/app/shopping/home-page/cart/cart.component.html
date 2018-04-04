@@ -13,9 +13,9 @@
       <div class="shopping-cart-list">
         <div *ngFor="let item of cart" class="product product-widget">
           <div class="product-thumb">
-            <img src="{{item.product.image}}" alt="">
+            <img src="{{item.product.image}}" style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">
           </div>
-          <div class="product-body">
+          <div class="product-body" style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">
             <h3 class="product-price">{{item.product.price | number}}
               <span class="qty">x{{item.quantity | number}}</span>
             </h3>
@@ -30,7 +30,7 @@
       </div>
       <div class="shopping-cart-btns">
         <button class="main-btn" routerLink="/cart">View Cart</button>
-        <button class="primary-btn" routerLink="/cart/shipping-info">Checkout
+        <button class="primary-btn" routerLink="/cart/payment">Checkout
           <i class="fa fa-arrow-circle-right"></i>
         </button>
       </div>

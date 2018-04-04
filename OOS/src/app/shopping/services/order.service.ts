@@ -5,10 +5,11 @@ import { AuthHttpService } from '../../auth/auth-http.service';
 
 @Injectable()
 export class OrderService {
+  
+  public order=new OrdersModel;  
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  public order: OrdersModel;  
 
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/';  
 
