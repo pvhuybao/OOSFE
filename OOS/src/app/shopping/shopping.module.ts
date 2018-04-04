@@ -19,11 +19,11 @@ import { ProductService } from './services/product.service';
 import { CartComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
-import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
+import { PaypalComponent } from './cart/paypal/paypal.component';
 import { CarouselComponent } from './home-page/carousel/carousel.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
@@ -35,7 +35,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+import { LoginAccountComponent } from './account/login-account/login-account.component';
+import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
+import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
+import { MetaDataService } from './services/meta-data.service';
+
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -66,16 +71,21 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
     CartComponent,
     PaymentComponent,
     ThankyouComponent,
-    ShippingInfoComponent,
     CategoryDetailsComponent,
     ContactComponent,
+    PaypalComponent,
     CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
     FaqComponent,
+    CarouselProductComponent,
+    CartOverviewComponent,
     CreateAccountComponent,
     CarouselProductComponent,
+    LoginAccountComponent,
+    ProfileAccountComponent,
     ProductBoxComponent
+
   ],
   providers: [
     CategoryService, 
@@ -84,7 +94,8 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
     EmailService,
     OrderService,
     AccountService,
-    ConfigurationService
+    ConfigurationService,
+    MetaDataService
     
   ]
 })

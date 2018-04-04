@@ -11,7 +11,9 @@ import { CategoryModel } from '../models/category';
 import { EmailService } from '../services/email.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { EmailSubscribeModel } from '../models/emailSubscribe';
-import { ToasterService, ToasterConfig, Toast, BodyOutputType  } from 'angular2-toaster';
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+import { CreateUserModel } from '../models/user/create-user/create-user';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-shopping',
@@ -37,15 +39,18 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   path: string;
   dblock: string;
 
-  public emailSubscribe: string ;
+  public emailSubscribe: string;
+
+  public user = new CreateUserModel;
 
   constructor(
-    private categoryService: CategoryService, 
-    private productService: ProductService, 
-    private router: Router, 
+    private accountService: AccountService,
+    private categoryService: CategoryService,
+    private productService: ProductService,
+    private router: Router,
     private ele: ElementRef,
-    private emailService: EmailService, 
-    private spinnerService: SpinnerService, 
+    private emailService: EmailService,
+    private spinnerService: SpinnerService,
     private toasterService: ToasterService
   ) {
     router.events.subscribe(event => {
@@ -72,6 +77,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.productService.searchProductByIdCategory(this.idCategory, term)),
     );
+
+    this.accountService.getUserSession().subscribe(data => this.user = data);
+    this.accountService.setUserSession();
   }
 
   search(term: string): void {
@@ -91,13 +99,13 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   routeProduct(productid: string) {
-    this.router.navigateByUrl("/product/"+productid);
+    this.router.navigateByUrl("/product/" + productid);
   }
 
-  categoryName(catid: string):string {
+  categoryName(catid: string): string {
     var name;
-    for(var i=0; i < this.categories.length; i++) {
-      if(catid == this.categories[i].id) name = this.categories[i].name;
+    for (var i = 0; i < this.categories.length; i++) {
+      if (catid == this.categories[i].id) name = this.categories[i].name;
     }
     return name;
   }
@@ -108,16 +116,20 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword } });
     }
   }
-  sentEmailSubscribe(){
+  sentEmailSubscribe() {
     let email = new EmailSubscribeModel();
     email.emailSubscribe = this.emailSubscribe;
     this.spinnerService.startLoadingSpinner();
-    this.emailService.emailSubscribe(email).subscribe(data=>{
+    this.emailService.emailSubscribe(email).subscribe(data => {
       this.spinnerService.turnOffSpinner();
-      setTimeout(()=>{
-        this.toasterService.pop('success','successfuly','Added!');
-      },500)  
+      setTimeout(() => {
+        this.toasterService.pop('success', 'successfuly', 'Added!');
+      }, 500)
     })
+  }
+  logout(){
+    sessionStorage.removeItem('user');
+    this.ngOnInit();
   }
 }
 

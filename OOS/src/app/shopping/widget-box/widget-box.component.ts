@@ -48,7 +48,16 @@ export class WidgetBoxComponent implements OnInit {
   
   addProductCart(product){
     this.spinnerService.startLoadingSpinner();
-    this.cartService.set(product,1);
+    var productCart ={
+      name : this.productDetail.name,
+      id : this.productDetail.id,
+      price: this.productDetail.productTails[0].price,
+      description: this.productDetail.description,
+      image : this.productDetail.productTails[0].image,
+      size: this.productDetail.productTails[0].size,
+      color:this.productDetail.productTails[0].color
+    }
+    this.cartService.set(productCart,1);
     this.spinnerService.turnOffSpinner();
     //pop up toaster
     this.toasterService.pop('success', product.name, 'Added to cart success!');

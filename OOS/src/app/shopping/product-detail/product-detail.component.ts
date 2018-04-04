@@ -9,6 +9,9 @@ import { CartService } from '../services/cart.service';
 import { ProductCartModel } from '../models/productCart';
 import { ToasterService } from 'angular2-toaster';
 import { ProductModel } from '../models/product';
+import { ConfigurationService } from '../services/configuration.service';
+import { Currency } from '../models/configuration';
+import { MetaDataService } from '../services/meta-data.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -30,17 +33,22 @@ export class ProductDetailComponent implements OnInit {
   quantity : number = 1;
   quantityAvailble : number = 0;
   productCart : ProductCartModel;
+  currency : number;
+  public currencyDefine = Currency;
 
   public link: any;
 
   productIsExist: boolean=true;
   oldPrice : number;
   DiscountExisted : boolean = true;
+  SizeExisted : boolean = true;
   constructor(private productService : ProductService,
               private activatedRoute: ActivatedRoute, 
               private cartService: CartService,
               private router: Router,
-              private toasterService: ToasterService) { }
+              private toasterService: ToasterService,
+              private metadataService: MetaDataService
+              ) { }
 
   ngOnInit() {    
     let params: any = this.activatedRoute.snapshot.params;
@@ -59,11 +67,14 @@ export class ProductDetailComponent implements OnInit {
 
       this.listColor = this.getColorOption(); 
       if(this.product.discount === 0)
-        this.DiscountExisted = false;      
-    });        
+        this.DiscountExisted = false; 
+        this.metadataService.setCurrency();    
+        this.currency = this.metadataService.getCurrency(); 
+    }); 
+    
+    
     this.addFacebookComment();
   }
-
   addFacebookComment(){  
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -98,6 +109,7 @@ export class ProductDetailComponent implements OnInit {
  tail = this.product.productTails;
  for(var i =0; i < tail.length; i++){
   if(tail[i].color === color){
+    if(tail[i].size != "")
     this.listSize.push(tail[i].size);
     this.listImages.push({
       image: tail[i].image,
@@ -106,6 +118,8 @@ export class ProductDetailComponent implements OnInit {
     });
   } 
  }
+ if(this.listSize.length == 0)
+  this.SizeExisted = false;
  }
  setPriceImageQuantity(color : string, size : string){
    var price = 0;
@@ -151,7 +165,9 @@ AddToCart(){
     description : this.product.description,
     image : this.image,
     name: this.product.name,
-    price: this.price
+    price: this.price,
+    color:this.colorSelected,
+    size:this.sizeSelected
   }
   this.cartService.set(product,this.quantity);
     //pop up toaster
