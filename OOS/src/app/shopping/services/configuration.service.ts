@@ -20,4 +20,7 @@ export class ConfigurationService {
   edit(task: ConfigurationModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "/1", task);
   }
+  getCurrency(){
+    return this.authHttpService.get(this.API_PATH+ "/metaData").map(res => res.json());
+  }
 }
