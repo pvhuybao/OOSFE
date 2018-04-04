@@ -40,7 +40,7 @@ export class CreateAccountComponent implements OnInit {
     this.accountService.add(this.user)
       .subscribe(res => {
         this.spinnerService.turnOffSpinner();
-        this.router.navigate(['']);
+        this.router.navigate(['/account/login']);
       },
       (error) => {
         this.spinnerService.turnOffSpinner();

@@ -66,11 +66,11 @@ const shoppingRoutes: Routes = [
       { path: 'shipping-return', component: ShippingReturnComponent },
       { path: 'shipping-guide', component: ShippingGuideComponent },
       { path: 'faq', component: FaqComponent },
-      { path: 'register', component: CreateAccountComponent},
       {
         path: 'account',
         children :[
           {path: 'profile', component: ProfileAccountComponent},
+          { path: 'register', component: CreateAccountComponent},
           {path: 'login', component: LoginAccountComponent}
         ]
       }
