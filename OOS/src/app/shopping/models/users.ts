@@ -14,5 +14,6 @@ export class UserModel{
     gender:number;
     image:string;
     email:string;
+    token:string;
     constructor(){}
 }

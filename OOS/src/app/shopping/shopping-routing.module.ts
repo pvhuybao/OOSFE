@@ -22,6 +22,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { LoginAccountComponent } from './account/login-account/login-account.component';
 
 
 const shoppingRoutes: Routes = [
@@ -61,7 +62,8 @@ const shoppingRoutes: Routes = [
       { path: 'shipping-return', component: ShippingReturnComponent },
       { path: 'shipping-guide', component: ShippingGuideComponent },
       { path: 'faq', component: FaqComponent },
-      { path: 'register', component: CreateAccountComponent}
+      { path: 'register', component: CreateAccountComponent},
+      { path: 'login', component: LoginAccountComponent}
     ]
   },
 ];
