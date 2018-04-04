@@ -1,19 +1,12 @@
-<div class="pull-right">
-    <div class="page-filter">
+<div class="pull-right" >
+  <div class="page-filter" style="display:inline-block">
       <span class="text-uppercase">Show:</span>
-      <!-- <select class="input">
-          <option value="10" ng-reflect-value="0" (click)="getPageSize(value)" >10</option>
-          <option value="20" ng-reflect-value="1" (click)="getPageSize(value)" >20</option>
-          <option value="30" ng-reflect-value="2" (click)="getPageSize(value)" >30</option>
-        </select> -->
-        <select class="input" [(ngModel)]="pSize" (change)="changePageSize()">
+        <select class="input" [(ngModel)]="pSize" (change)="getPageSize(pSize)">
           <option *ngFor="let op of options" [value]="op.value">{{op.name}}</option>
         </select>
     </div>
-    <ul class="store-pages">
-      <li><span class="text-uppercase">Page:</span></li>
-      <li><a (click)="goPrev()"><i class="fa fa-caret-left"></i></a></li>
-      <li *ngFor="let p of pages"><a (click)="getPage(p)">{{p}}</a></li>
-      <li><a (click)="goNext()"><i class="fa fa-caret-right"></i></a></li>
-    </ul>
+  <div style="display:inline-block">
+    <ngb-pagination [collectionSize]="itemCount" [(page)]="pNow" [pageSize]="pSize" [maxSize]="3" [rotate]="true" [ellipses]="false"
+    [boundaryLinks]="true" (pageChange)="changePage()"></ngb-pagination>
   </div>
+</div>

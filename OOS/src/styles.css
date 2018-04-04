@@ -1461,6 +1461,8 @@ body {
   
   .page-filter {
     display: inline-block;
+    margin-top: 17px;
+    vertical-align: top;
   }
   
   .store-pages {
@@ -2150,5 +2152,20 @@ ul.breadcrumb li+li:before {
   content: ">";
 }
   
+/* paging */
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+{
+  background-color: #F8694A;
+  border-color:#30323A;
+}
+
+.pagination>li>a, .pagination>li>span
+{
+  color:black;
+}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover
+{
+  color: slategrey
+}
 
 

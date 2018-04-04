@@ -11,6 +11,16 @@ export class AccountService {
 
   constructor(private authHttpService: AuthHttpService) { }
 
+  getByUsername(name): Observable<UserModel> {
+    return this.authHttpService.get(this.API_PATH + "CheckUser/" + name)
+      .map(res => res.json());
+  }
+
+  getByEmail(email): Observable<UserModel> {
+    return this.authHttpService.get(this.API_PATH + "CheckUserEmail/" + email)
+      .map(res => res.json());
+  }
+
   add(task: UserModel): Observable<any> {
     return this.authHttpService.post(this.API_PATH + "Register", task);
   }
