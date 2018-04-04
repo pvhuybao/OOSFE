@@ -5,28 +5,11 @@
           <div class="section-title">
             <h3>Register Account</h3>
           </div>
-        
-          <div class="form-group">
-            Username:
-            <input id="username" name="username" #username="ngModel" [(ngModel)]="user.username" 
-              type="text" class="input" required minlength="12" maxlength="20" (keyup)="checkUsername()">
-            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-              <div *ngIf="username.errors.required">
-                Username is required.
-              </div>
-              <div *ngIf="username.errors.minlength">
-                Minimum length is 12 characters.
-              </div>
-            </div>
-            <div *ngIf="isExist!=null && (username.dirty || username.touched)" class="alert alert-danger">
-              Username {{user.username}} is already taken.
-            </div>
-          </div>
-  
+
           <div class="form-group">
             Email:
             <input id="email" name="email" #email="ngModel" [(ngModel)]="user.email" 
-              type="email" class="input" required (keyup)="checkEmail()">
+              type="email" class="input" required (focusout)="checkEmail()">
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
               <div *ngIf="email.errors.required">
                 Email is required.
@@ -42,8 +25,10 @@
         
           <div class="form-group">
             Password:
-            <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  type="password" class="input" required>
+            <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  
+              type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W]{8,20}">
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              Password must have at least 1 number, 1 letter and contain from 8 - 20 character.
               <div *ngIf="password.errors.required">
                 Password is required.
               </div>
@@ -52,12 +37,12 @@
         
           <div class="form-group">
             Confirm Password:
-            <input id="passwordConfirm" name="passwordConfirm" #passwordConfirm="ngModel" [(ngModel)]="user.passwordConfirm" type="password"  class="input" required>
-            <div *ngIf="password.value != passwordConfirm.value && (passwordConfirm.dirty || passwordConfirm.touched)" class="alert alert-danger">
+            <input id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" type="password"  class="input" required>
+            <div *ngIf="password.value != confirmPassword.value && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
               Password doesn't match.
             </div>
-            <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)" class="alert alert-danger">
-              <div *ngIf="passwordConfirm.errors.required">
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+              <div *ngIf="confirmPassword.errors.required">
                 Please confirm your password.
               </div>
             </div>

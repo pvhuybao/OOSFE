@@ -32,14 +32,15 @@ export class CreateAccountComponent implements OnInit {
   add() {
     this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
-    this.user.firstName = this.user.username;
-    this.user.lastName =this.user.username
+    this.user.firstName = this.user.email;
+    this.user.lastName =this.user.email
     this.user.gender = 0;
+    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
     
     this.accountService.add(this.user)
       .subscribe(res => {
         this.spinnerService.turnOffSpinner();
-        this.router.navigate(['']);
+        this.router.navigate(['/account/login']);
       },
       (error) => {
         this.spinnerService.turnOffSpinner();
@@ -50,18 +51,9 @@ export class CreateAccountComponent implements OnInit {
     )
   }
 
-  checkUsername()
-  {
-    this.accountService.getByUsername(this.user.username).
-      subscribe(username => {
-        this.isExist = username;
-        console.log(this.isExist);
-      });
-  }
-
   checkEmail()
   {
-    this.accountService.getByEmail(this.user.email).
+    this.accountService.checkUserExist(this.user.email).
       subscribe(email => {
         this.isExistEmail = email;
         console.log(this.isExistEmail);
