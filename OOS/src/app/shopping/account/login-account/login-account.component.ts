@@ -37,9 +37,10 @@ export class LoginAccountComponent implements OnInit {
 
     this.accountService.loginAccount(login).subscribe((data: any) => {
       this.spinnerService.turnOffSpinner();
-      data.userName != null ? this.router.navigateByUrl('/')
-      : alert('Username or password Error')
+      data.username != null ? this.router.navigateByUrl('/')
+      : alert('Your username or password is incorrect')
       sessionStorage.setItem('user',JSON.stringify(data));
+      this.accountService.setUserSession();
     });
   }
 }

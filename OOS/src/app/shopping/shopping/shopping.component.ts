@@ -41,7 +41,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public emailSubscribe: string;
 
-  user = new UserModel;
+  public user = new UserModel;
 
   constructor(
     private accountService: AccountService,
@@ -78,11 +78,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       switchMap((term: string) => this.productService.searchProductByIdCategory(this.idCategory, term)),
     );
 
-    //console.log(JSON.parse(sessionStorage.getItem('user')));
-    this.accountService.getUser().subscribe(data => this.user = data);
-    this.accountService.setUser();
-    //console.log(this.user)
-    ;
+    this.accountService.getUserSession().subscribe(data => this.user = data);
+    this.accountService.setUserSession();
   }
 
   search(term: string): void {

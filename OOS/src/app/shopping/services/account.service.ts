@@ -36,11 +36,11 @@ export class AccountService {
     return this.authHttpService.post(this.API_PATH + "Login", login).map(res => res.json() || []);
   }
 
-  setUser(){
+  setUserSession(){
     this.currentUser.next(JSON.parse(sessionStorage.getItem('user')));
   }
 
-  getUser(){
+  getUserSession(){
     return this.currentUser.asObservable();
   }
 
