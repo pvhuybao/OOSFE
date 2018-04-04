@@ -59,8 +59,8 @@ export class PaypalComponent {
           console.log("Authorized)");
           localStorage.removeItem("paymentMethod");
           localStorage.setItem("paymentMethod", "1");
-          this.cartService.clear();
           this.router.navigate(['../thankyou'], { relativeTo: this.route });
+          this.cartService.clear();
         });
         //Do something when payment is successful.
       });

@@ -13,7 +13,7 @@
       <div class="shopping-cart-list">
         <div *ngFor="let item of cart" class="product product-widget">
           <div class="product-thumb">
-            <img src="{{item.product.image}}" alt="">
+            <img src="{{item.product.image}}" style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">
           </div>
           <div class="product-body">
             <h3 class="product-price">{{item.product.price | number}}

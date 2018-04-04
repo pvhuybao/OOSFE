@@ -9,6 +9,7 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class CartOverviewComponent implements OnInit {
   step: number = 1;
+  listtitle: string[] = ["Cart Review", "Payment", "Thank You"];
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
@@ -21,4 +22,5 @@ export class CartOverviewComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

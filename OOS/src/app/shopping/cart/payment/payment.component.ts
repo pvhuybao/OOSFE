@@ -26,17 +26,19 @@ export class PaymentComponent implements OnInit {
     var total = 0;
     this.cartService.get().subscribe(x => {
       this.order.orderDetails = [];
-      x.forEach(value => {
-        var detail = new OrderDetailModel;
-        detail.idProduct = value.product.id;
-        detail.nameProduct = value.product.name;
-        detail.price = value.product.price;
-        detail.quantity = value.quantity;
-        total += detail.totalPrice = detail.price * detail.quantity;
-        detail.color = value.product.color;
-        detail.size = value.product.size;
-        this.order.orderDetails.push(detail);
-      })
+      if (x) {
+        x.forEach(value => {
+          var detail = new OrderDetailModel;
+          detail.idProduct = value.product.id;
+          detail.nameProduct = value.product.name;
+          detail.price = value.product.price;
+          detail.quantity = value.quantity;
+          total += detail.totalPrice = detail.price * detail.quantity;
+          detail.color = value.product.color;
+          detail.size = value.product.size;
+          this.order.orderDetails.push(detail);
+        })
+      }
     });
     this.cartService.init()
     this.order.total = total;
@@ -64,8 +66,8 @@ export class PaymentComponent implements OnInit {
     this.orderService.add(this.order).subscribe(() => {
       localStorage.removeItem("paymentMethod");
       localStorage.setItem("paymentMethod", this.paymentMethod.toString());
-      this.cartService.clear();
       this.router.navigate(['../thankyou'], { relativeTo: this.route });
+      this.cartService.clear();
     });
   }
 

@@ -22,7 +22,7 @@
 								<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
 							</td>
 							<td class="details">
-								<a (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
+								<a  style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
 								<ul>
 									<li>
 										<span>Color: <span [style.background]="item.product.color">&nbsp;&nbsp;&nbsp;</span></span>

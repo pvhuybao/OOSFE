@@ -46,7 +46,7 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
   }
-  routerProduct(name, id) {
+  routeProduct(name, id) {
     var nameProduct = normalizeSync(name);
     var path = "/product/" + id + "_" + this.transform(nameProduct);
     this.router.navigateByUrl(path);
