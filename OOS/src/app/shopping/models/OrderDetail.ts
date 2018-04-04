@@ -6,6 +6,5 @@ export class OrderDetailModel{
     totalPrice: number;
     size: string;
     color: string;
-
    constructor(){}
 }
