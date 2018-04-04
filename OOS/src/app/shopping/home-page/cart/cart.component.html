@@ -15,7 +15,7 @@
           <div class="product-thumb">
             <img src="{{item.product.image}}" style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">
           </div>
-          <div class="product-body">
+          <div class="product-body" style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">
             <h3 class="product-price">{{item.product.price | number}}
               <span class="qty">x{{item.quantity | number}}</span>
             </h3>

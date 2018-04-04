@@ -14,7 +14,7 @@ declare let paypal: any;
 export class PaypalComponent {
   @Input() order: OrdersModel;
   constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService: CartService) {
-    cartService.paypalLoad.subscribe(x => this.addScript = x);
+    cartService.paypalLoad.asObservable().subscribe(x => this.addScript = x);
   }
 
   addScript: boolean = false;

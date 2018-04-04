@@ -33,7 +33,7 @@ export class CartService {
       this.value.next(data);
     }
     else {
-      this.updateQuantity(product, data.find(x => x.product.id == product.id).quantity + quantity);
+      this.updateQuantity(product, data.find(x => x.product.id == product.id && x.product.color == product.color && x.product.size == product.size).quantity + quantity);
     }
   }
 

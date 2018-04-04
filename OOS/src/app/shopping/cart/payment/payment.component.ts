@@ -58,8 +58,6 @@ export class PaymentComponent implements OnInit {
     this.paypal.renderButton();
     this.spinner.turnOffSpinner();
   }
-  ngAfterViewChecked(): void {
-  }
 
   Checkout() {
     this.order.status = 0;
