@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel, GenderType } from '../../models/users';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { CreateUserModel } from '../../models/user/create-user/create-user';
 
 @Component({
   selector: 'app-create-account',
@@ -10,20 +10,15 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
   styleUrls: ['./create-account.component.css']
 })
 
-// @Component({
-//   selector: 'register-success',
-//   template: '<h2>Congratulation!</h2>'+
-//             '<p>You have successfully register your account</p>'
-// })
 export class CreateAccountComponent implements OnInit {
 
-  user = new UserModel;
+  user = new CreateUserModel;
   isInvalid = false;
+  public isDisabled:boolean;
+  isExist:any;
+  isExistEmail:any;
   userValidation = new Object;
-  public gender = GenderType;
-  public item: number;
-  public keys: any;
-
+  
   constructor(
     private accountService: AccountService, 
     private spinnerService:SpinnerService,
@@ -31,28 +26,46 @@ export class CreateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user.gender = 0;
-    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
-  }
-
-  getGender(){
-    this.keys = Object.keys(this.gender).filter(Number);
+    this.isDisabled = false;
   }
 
   add() {
+    this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
-
+    this.user.firstName = this.user.username;
+    this.user.lastName =this.user.username
+    this.user.gender = 0;
+    
     this.accountService.add(this.user)
       .subscribe(res => {
+        this.spinnerService.turnOffSpinner();
         this.router.navigate(['']);
       },
-        (error) => {
-          this.spinnerService.turnOffSpinner();
+      (error) => {
+        this.spinnerService.turnOffSpinner();
 
-          this.userValidation = JSON.parse(error._body);
-          this.isInvalid = true;
-        }
-      )
+        this.userValidation = JSON.parse(error._body);
+        this.isInvalid = true;
+      }
+    )
+  }
+
+  checkUsername()
+  {
+    this.accountService.getByUsername(this.user.username).
+      subscribe(username => {
+        this.isExist = username;
+        console.log(this.isExist);
+      });
+  }
+
+  checkEmail()
+  {
+    this.accountService.getByEmail(this.user.email).
+      subscribe(email => {
+        this.isExistEmail = email;
+        console.log(this.isExistEmail);
+      });
   }
 
 }

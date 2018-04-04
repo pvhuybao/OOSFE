@@ -4,7 +4,7 @@ export enum GenderType {
     Male = 3
 }
 
-export class UserModel{
+export class CreateUserModel{
     id: string;
     username: string;
     password:string;
@@ -13,7 +13,6 @@ export class UserModel{
     middleName:String;
     lastName:string;
     gender:number;
-    image:string;
     email:string;
     constructor(){}
 }

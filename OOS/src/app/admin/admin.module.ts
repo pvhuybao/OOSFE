@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'long-ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -49,6 +50,7 @@ import { PasswordDirective } from '../shared/validation/validators/password.dire
 import { ConfirmPasswordDirective } from '../shared/validation/validators/confirm-password.directive';
 import { EmailValidatorDirective } from '../shared/validation/validators/email-validator.directive';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     Ng5BreadcrumbModule,
     Ng2SmartTableModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgbModule
   ],
     
   declarations: [

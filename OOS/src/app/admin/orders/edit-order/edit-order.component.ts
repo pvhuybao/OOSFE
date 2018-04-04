@@ -13,7 +13,7 @@ import { OrderDetailModel } from '../../models/OrderDetail';
 import { OrdersModel } from '../../models/order';
 import { ProductModel } from '../../models/product';
 import { ProductService } from '../../services/Product.service';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({

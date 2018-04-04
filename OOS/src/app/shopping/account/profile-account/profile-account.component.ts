@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { UserModel, GenderType } from '../../models/users';
+import { GenderType } from '../../models/user/create-user/create-user';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
