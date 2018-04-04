@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbService } from "ng5-breadcrumb";
+import { BreadcrumbService } from "long-ng5-breadcrumb";
 import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { OrdersService } from '../services/orders.service';
 import { OrdersModel } from '../models/order';

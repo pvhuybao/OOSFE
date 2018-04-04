@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CategoryModel, CategoryStatus } from '../../models/category';
 import { StringDecoder } from 'string_decoder';
 import { SpinnerService } from '../../../shared/services/spinner.service';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 
 @Component({
   selector: 'app-editcategory',

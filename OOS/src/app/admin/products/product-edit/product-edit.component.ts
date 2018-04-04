@@ -5,7 +5,7 @@ import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { ProductStatus } from '../../models/product';
 import { CategoryService } from '../../services/category.service';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 
 @Component({
   selector: 'app-product-edit',
