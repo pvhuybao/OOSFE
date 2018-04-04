@@ -7,6 +7,7 @@ import { ShoppingModule } from './shopping/shopping.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
@@ -39,7 +40,8 @@ import { MyToastModule } from './shared/my-toast.component';
     MyToastModule,
     Ng5BreadcrumbModule.forRoot(),
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [
     AuthService, 

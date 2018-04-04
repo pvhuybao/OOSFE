@@ -36,6 +36,7 @@ import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
 import { LoginAccountComponent } from './account/login-account/login-account.component';
+import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -75,7 +76,9 @@ import { LoginAccountComponent } from './account/login-account/login-account.com
     FaqComponent,
     CreateAccountComponent,
     CarouselProductComponent,
-    LoginAccountComponent
+    LoginAccountComponent,
+    ProductBoxComponent
+
   ],
   providers: [
     CategoryService, 

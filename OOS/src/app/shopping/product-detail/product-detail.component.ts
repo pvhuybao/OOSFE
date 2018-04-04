@@ -28,6 +28,7 @@ export class ProductDetailComponent implements OnInit {
   available : string;
   flagCartButton : boolean = true;
   quantity : number = 1;
+  quantityAvailble : number = 0;
   productCart : ProductCartModel;
 
   public link: any;
@@ -41,7 +42,7 @@ export class ProductDetailComponent implements OnInit {
               private router: Router,
               private toasterService: ToasterService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     let params: any = this.activatedRoute.snapshot.params;
     this.link = this.activatedRoute.snapshot.params.id;
     this.idProduct = this.GetIdProduct(params.id);
@@ -58,21 +59,25 @@ export class ProductDetailComponent implements OnInit {
 
       this.listColor = this.getColorOption(); 
       if(this.product.discount === 0)
-        this.DiscountExisted = false;
-
-    });    
+        this.DiscountExisted = false;      
+    });        
+    this.addFacebookComment();
   }
 
-  ngAfterViewChecked(d, s, id)
-  {
-    d = document;
-    s = 'script';
-    id = 'facebook-jssdk';
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
-    fjs.parentNode.insertBefore(js, fjs);    
+  addFacebookComment(){  
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12";
+  
+      if (d.getElementById(id)){
+        //if <script id="facebook-jssdk"> exists
+        delete (<any>window).FB;
+        fjs.parentNode.replaceChild(js, fjs);
+      } else {
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'facebook-jssdk'));
   }
 
   GetIdProduct(id:string){
@@ -84,7 +89,9 @@ export class ProductDetailComponent implements OnInit {
   this.getSizeByColor(this.colorSelected);
   this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
  }
-  
+ onChangeColor(){
+  this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
+ }
  
  getSizeByColor(color: string){
  var tail : ProductTail[];
@@ -107,9 +114,10 @@ export class ProductDetailComponent implements OnInit {
  for(var i =0; i < tail.length; i++){
   if(tail[i].color === color && tail[i].size=== size){
     this.oldPrice= tail[i].price;
-    this.price = this.oldPrice - this.oldPrice * this.product.discount * 0.01;
+    this.price =parseFloat((this.oldPrice - this.oldPrice * this.product.discount * 0.01).toFixed(1));
     this.image = tail[i].image;
-    if(tail[i].quantity > 0)
+    this.quantityAvailble = tail[i].quantity;
+    if( this.quantityAvailble > 0)
     {
       this.available="In Stock";
       this.flagCartButton = false;
