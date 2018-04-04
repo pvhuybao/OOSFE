@@ -35,8 +35,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
 import { ConfigurationService } from './services/configuration.service';
 import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+import { LoginAccountComponent } from './account/login-account/login-account.component';
+import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
+import { MetaDataService } from './services/meta-data.service';
+
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -77,7 +81,11 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
     CarouselProductComponent,
     CartOverviewComponent,
     CreateAccountComponent,
+    CarouselProductComponent,
+    LoginAccountComponent,
+    ProfileAccountComponent,
     ProductBoxComponent
+
   ],
   providers: [
     CategoryService, 
@@ -86,7 +94,8 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
     EmailService,
     OrderService,
     AccountService,
-    ConfigurationService
+    ConfigurationService,
+    MetaDataService
     
   ]
 })
