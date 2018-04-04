@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CategoryModel, CategoryStatus } from '../../models/category';
 import { StringDecoder } from 'string_decoder';
 import { SpinnerService } from '../../../shared/services/spinner.service';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 
 @Component({
   selector: 'app-editcategory',
@@ -17,9 +17,7 @@ export class EditCategoryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
     private breadcrumbService:BreadcrumbService
-  ) {
-  }
-
+  ) {}
 
   public cate = new CategoryModel;
   public status = CategoryStatus;
@@ -33,7 +31,7 @@ export class EditCategoryComponent implements OnInit {
     this.id = params.id;
     this.getById(this.id);
     this.getStatus();
-    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
+    //this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
   }
 
   displayNameForCategory():string{
@@ -48,8 +46,9 @@ export class EditCategoryComponent implements OnInit {
 
   getById(id) {
     this.spinnerService.startLoadingSpinner();
-
     this.categoryService.getById(id).subscribe(category => {
+      this.categoryService.getCate(category);
+      this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/categories/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForCategory());
       this.spinnerService.turnOffSpinner();
 
       this.cate = category;
@@ -70,6 +69,4 @@ export class EditCategoryComponent implements OnInit {
       this.router.navigate(['/admin/manager/categories']);
     });
   }
-
-
 }

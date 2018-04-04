@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartModel } from '../../models/cart';
+import { normalizeSync } from 'normalize-diacritics';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,7 @@ export class CartComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router) {
 
   }
 
@@ -22,10 +24,10 @@ export class CartComponent implements OnInit {
   get() {
     this.cartService.get().subscribe(x => {
       this.cart = x;
-      if (this.cart) {
-        this.updateTotal();
+      if (!this.cart) {
+        this.cart = [];
       }
-      else this.cart = [];
+      this.updateTotal();
     });
     this.cartService.init()
   }
@@ -40,5 +42,14 @@ export class CartComponent implements OnInit {
     this.cartService.remove(product);
     this.updateTotal();
     event.stopPropagation();
+  }
+  routeProduct(name, id) {
+    var nameProduct = normalizeSync(name);
+    var path = "/product/" + id + "_" + this.transform(nameProduct);
+    this.router.navigateByUrl(path);
+  }
+  transform(value: string) {
+    let newvalue = value.replace(' ', '_');
+    return newvalue;
   }
 }

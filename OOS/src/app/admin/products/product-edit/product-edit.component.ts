@@ -5,7 +5,7 @@ import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { ProductStatus } from '../../models/product';
 import { CategoryService } from '../../services/category.service';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 
 @Component({
   selector: 'app-product-edit',
@@ -37,6 +37,8 @@ export class ProductEditComponent implements OnInit {
       }
       else
       {
+        this.productService.getPro(data);
+        this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/products/edit/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForProduct());
         this.product = data;
         this.data = this.product.productTails;
       }
@@ -49,8 +51,7 @@ export class ProductEditComponent implements OnInit {
     let params: any = this.activatedRoute.snapshot.params;
     this.id = params.id;
     this.getById(this.id);
-    this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/products/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForProduct());
-
+    // this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/products/edit/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForProduct());
 
     this.categoryService.get().subscribe(
       data => {
@@ -61,12 +62,16 @@ export class ProductEditComponent implements OnInit {
     this.getStatus();
 
   }
+
   displayNameForProduct(){
-    return "Edit Product: ";
+    var cate = this.productService.setPro();
+    return cate.name;
   }
+  
   getStatus() {
     this.keys = Object.keys(this.statusDefine).filter(Number);
   }
+
   update() {
     this.spinnerService.startLoadingSpinner();
     this.productService.putProduct(this.product).subscribe(data => {
