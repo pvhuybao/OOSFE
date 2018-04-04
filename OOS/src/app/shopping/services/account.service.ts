@@ -6,8 +6,8 @@ import { UserModel } from '../models/users';
 @Injectable()
 export class AccountService {
 
-  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
-  private API_PATH = 'http://localhost:54766/api/User/';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+  //private API_PATH = 'http://localhost:54766/api/User/';
 
   constructor(private authHttpService: AuthHttpService) { }
 
