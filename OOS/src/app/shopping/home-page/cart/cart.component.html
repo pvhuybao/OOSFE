@@ -8,8 +8,8 @@
     <br>
     <span>{{total | number}}</span>
   </a>
-  <div class="custom-menu" *ngIf="cart.length">
-    <div id="shopping-cart">
+  <div class="custom-menu">
+    <div id="shopping-cart" *ngIf="cart.length; else empty">
       <div class="shopping-cart-list">
         <div *ngFor="let item of cart" class="product product-widget">
           <div class="product-thumb">
@@ -20,7 +20,7 @@
               <span class="qty">x{{item.quantity | number}}</span>
             </h3>
             <h2 class="product-name">
-              <a href="#">{{item.product.name}}</a>
+              <a style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
             </h2>
           </div>
           <button class="cancel-btn" (click)="remove(item.product)">
@@ -30,10 +30,15 @@
       </div>
       <div class="shopping-cart-btns">
         <button class="main-btn" routerLink="/cart">View Cart</button>
-        <button *ngIf="cart.length" class="primary-btn" routerLink="/cart/payment">Checkout
+        <button class="primary-btn" routerLink="/cart/payment">Checkout
           <i class="fa fa-arrow-circle-right"></i>
         </button>
       </div>
     </div>
+    <ng-template #empty>
+      <div align="center">
+        <h4>Your cart is empty.</h4>
+      </div>
+    </ng-template>
   </div>
 </li>
