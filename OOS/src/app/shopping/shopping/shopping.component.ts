@@ -12,7 +12,7 @@ import { EmailService } from '../services/email.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { EmailSubscribeModel } from '../models/emailSubscribe';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
-import { UserModel } from '../models/users';
+import { CreateUserModel } from '../models/user/create-user/create-user';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -41,7 +41,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public emailSubscribe: string;
 
-  public user = new UserModel;
+  public user = new CreateUserModel;
 
   constructor(
     private accountService: AccountService,

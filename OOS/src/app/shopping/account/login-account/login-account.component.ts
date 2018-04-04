@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginAccountModel } from '../../models/loginAccount';
 import { AccountService } from '../../services/account.service';
 import { SpinnerService } from '../../../shared/services/spinner.service';
-import { UserModel } from '../../models/users';
+import { CreateUserModel } from '../../models/user/create-user/create-user';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-login-account',
@@ -16,7 +16,7 @@ export class LoginAccountComponent implements OnInit {
   password: string = '';
   remember: boolean = false;
 
-  user: UserModel;
+  user: CreateUserModel;
 
   constructor(
     private router: Router,
