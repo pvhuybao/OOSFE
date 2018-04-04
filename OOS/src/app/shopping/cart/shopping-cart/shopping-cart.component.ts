@@ -3,6 +3,8 @@ import { CartService } from '../../services/cart.service';
 import { CartModel } from '../../models/cart';
 import { ProductModel } from '../../models/product';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { normalizeSync } from 'normalize-diacritics';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,15 +15,15 @@ export class ShoppingCartComponent implements OnInit {
 
   cart: CartModel[] = [];
   total: number = 0;
-  constructor(private cartService: CartService, private spinner:SpinnerService) {
+  constructor(private cartService: CartService, private spinner: SpinnerService, private router: Router) {
   }
 
   ngOnInit() {
     this.get();
   }
   get() {
-    this.cartService.get().subscribe(x => { 
-      this.cart = x; 
+    this.cartService.get().subscribe(x => {
+      this.cart = x;
     });
     this.cartService.init()
     if (this.cart)
@@ -39,9 +41,18 @@ export class ShoppingCartComponent implements OnInit {
     this.total = total;
   }
   updateQuantity(product, quantity) {
-    if(quantity<1)
-      quantity=1;
+    if (quantity < 1)
+      quantity = 1;
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
+  }
+  routerProduct(name, id) {
+    var nameProduct = normalizeSync(name);
+    var path = "/product/" + id + "_" + this.transform(nameProduct);
+    this.router.navigateByUrl(path);
+  }
+  transform(value: string) {
+    let newvalue = value.replace(' ', '_');
+    return newvalue;
   }
 }

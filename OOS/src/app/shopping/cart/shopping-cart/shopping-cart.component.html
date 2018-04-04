@@ -22,10 +22,10 @@
 								<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
 							</td>
 							<td class="details">
-								<a href="#">{{item.product.name}}</a>
+								<a (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
 								<ul>
 									<li>
-										<span>Color: {{item.product.color}}</span>
+										<span>Color: <span [style.background]="item.product.color">&nbsp;&nbsp;&nbsp;</span></span>
 									</li>
 									<li>
 										<span>Size: {{item.product.size}}</span>
