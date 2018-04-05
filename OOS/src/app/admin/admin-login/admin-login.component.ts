@@ -3,6 +3,8 @@ import { SpinnerService } from '../../shared/services/spinner.service';
 import { LoginAccountModel } from '../models/loginAccount';
 import { AccountService } from '../services/account.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Subject } from 'rxjs';
+import { UserModel } from '../models/user';
 
 @Component({
   selector: 'app-admin-login',
@@ -14,6 +16,7 @@ export class AdminLoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   remember: boolean = false;
+  currentUser=new Subject<UserModel>();
 
   constructor(
     private router: Router,
@@ -37,7 +40,7 @@ export class AdminLoginComponent implements OnInit {
       data.username != null ? this.router.navigateByUrl('/admin/manager')
       : alert('Your username or password is incorrect')
       sessionStorage.setItem('user',JSON.stringify(data));
-      //this.accountService.setUserSession();
+      this.accountService.setUserSession();
     });
   }
 }
