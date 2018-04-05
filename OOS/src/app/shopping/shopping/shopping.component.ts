@@ -22,7 +22,11 @@ import { AccountService } from '../services/account.service';
 })
 export class ShoppingComponent implements OnInit, PipeTransform {
   transform(value: string) {
-    let newvalue = value.replace(/\s/g, '_');
+    let newvalue = value
+      .replace(/Đ/g, 'D')
+      .replace(/đ/g, 'd')
+      .replace(/&/g, '')
+      .replace(/\s/g, '_');
     return newvalue;
   }
   //Search product for order details
@@ -75,7 +79,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory(this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar",this.idCategory, term)),
     );
 
     this.accountService.getUserSession().subscribe(data => this.user = data);
@@ -93,13 +97,13 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   routeCategory(idCategory: string, categoryName: any) {
-    categoryName = normalizeSync(categoryName);
-    var path = "/category/" + idCategory + "_" + this.transform(categoryName);
+    var path = "/category/" + idCategory + "_" + this.transform(normalizeSync(categoryName));
     this.router.navigateByUrl(path);
   }
 
-  routeProduct(productid: string) {
-    this.router.navigateByUrl("/product/" + productid);
+  routeProduct(product: any) {
+    var path = "/product/" + product.id + "_" + this.transform(normalizeSync(product.name));
+    this.router.navigateByUrl(path);
   }
 
   categoryName(catid: string): string {

@@ -31,6 +31,7 @@ export class ContactComponent implements OnInit {
       this.spinnerService.turnOffSpinner();
      
     })
+    
   }
 
 }
