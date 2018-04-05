@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
         this.spinner.startLoadingSpinner();
         this.idCategory = params.cat;
         this.keyword = params.op;
-        this.productService.searchProductByIdCategory(this.idCategory, this.keyword).subscribe(data => {
+        this.productService.searchProductByIdCategory("searchpage", this.idCategory, this.keyword).subscribe(data => {
           this.spinner.turnOffSpinner();
           this.products = data;
           if (this.products.length == 0) this.check = true;
