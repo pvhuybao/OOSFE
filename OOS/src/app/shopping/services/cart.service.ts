@@ -54,6 +54,7 @@ export class CartService {
   count() {
     return JSON.parse(localStorage.getItem(this.key)).length();
   }
+
   clear() {
     localStorage.removeItem(this.key);
     this.init();

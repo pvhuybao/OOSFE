@@ -17,18 +17,13 @@ export class AccountService {
   login:LoginAccountModel;
   constructor(private http: Http, private authHttpService: AuthHttpService) { }
 
-  getByUsername(name): Observable<CreateUserModel> {
-    return this.authHttpService.get(this.API_PATH + "CheckUser/" + name)
-      .map(res => res.json());
-  }
-
-  getByEmail(email): Observable<CreateUserModel> {
-    return this.authHttpService.get(this.API_PATH + "CheckUserEmail/" + email)
+  checkUserExist(terms): Observable<CreateUserModel> {
+    return this.authHttpService.get(this.API_PATH + "CheckUserExist/" + terms)
       .map(res => res.json());
   }
 
   add(task: CreateUserModel): Observable<any> {
-    return this.authHttpService.post(this.API_PATH + "Register", task);
+    return this.authHttpService.post(this.API_PATH, task);
   }
 
   loginAccount(login){

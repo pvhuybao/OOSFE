@@ -1064,7 +1064,7 @@ body {
   
   .product .product-old-price {
     color: #F8694A;
-    font-size: 70%;
+    font-size: 100%;
   }
   
   .product .product-rating {
@@ -2194,7 +2194,10 @@ ul.breadcrumb li+li:before {
   color: slategrey
 }
 
-
+ul>li>span>span.product-color
+{
+  border: 1px solid black;
+}
 
 
 input:disabled {
