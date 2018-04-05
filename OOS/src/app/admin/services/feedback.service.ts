@@ -9,7 +9,7 @@ import { FeedbackModel } from '../models/Feedback';
 
 @Injectable()
 export class FeedbackService {
-  private API_PATH = 'http://localhost:60499/api/contact/Getfeedback';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Getfeedback';
 
   constructor(private authHttpService: AuthHttpService) { }
   
@@ -45,7 +45,7 @@ export class FeedbackService {
   }
 
   putProduct(feed: any): Observable<any> {
-    return this.authHttpService.put(this.API_PATH+ "/" + feed.id, feed)
+    return this.authHttpService.put(this.API_PATH + "/" + feed.id, feed)
     .map(res => res.json() || []);;
   }
 }
