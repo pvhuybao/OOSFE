@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Http, Response, RequestOptions } from '@angular/http';
 import { Subject } from 'rxjs';
 import { CreateUserModel } from '../models/user/create-user/create-user';
+import { UserModel } from '../models/user/user';
 
 @Injectable()
 export class AccountService {
@@ -38,7 +39,7 @@ export class AccountService {
     return this.currentUser.asObservable();
   }
 
-  getById(id: string): Observable<any> {
+  getById(id: string): Observable<UserModel> {
     return this.authHttpService.get(this.API_PATH + id)
       .map(res => {
         return res.json() || []
@@ -46,9 +47,7 @@ export class AccountService {
       )
   }
 
-
-
-  put(user: any): Observable<any> {
+  put(user: UserModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
   }
 }

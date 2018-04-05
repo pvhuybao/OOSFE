@@ -98,15 +98,17 @@
           <tbody *ngFor="let detail of order.orderDetails">
             <tr>
               <td class="detail">
-                <strong>{{detail.nameProduct}}</strong>
+                <h4>{{detail.nameProduct}}</h4>
                 <ul>
-									<li>
-										<span>Color: <span [style.background]="detail.color">&nbsp;&nbsp;&nbsp;</span></span>
-									</li>
-									<li>
-										<span>Size: {{detail.size}}</span>
-									</li>
-								</ul>
+                  <li *ngIf="detail.color">
+                    <span>Color:
+                      <span class="product-color" [style.background]="detail.color">&nbsp;&nbsp;&nbsp;</span>
+                    </span>
+                  </li>
+                  <li *ngIf="detail.size">
+                    <span>Size: {{detail.size}}</span>
+                  </li>
+                </ul>
               </td>
               <td class="price text-center">
                 <strong>{{detail.price}}</strong>

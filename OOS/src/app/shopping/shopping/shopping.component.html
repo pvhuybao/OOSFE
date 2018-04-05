@@ -21,7 +21,7 @@
 						 aria-describedby="basic-addon2" value="{{searchResult}}">
 						<div class="input-group" id="suggest-box">
 							<ul [hidden]="hidden">
-								<li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product.id)" style="padding:15px; cursor:pointer">
+								<li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product)" style="padding:15px; cursor:pointer">
 									<span>
 										<p style="display:inline; font-weight:bold">{{product.name}}</p> in
 										<p style="display:inline; color: #F8694A">{{categoryName(product.idCategory)}}</p>
@@ -87,7 +87,7 @@
 						<span class="text-uppercase">Account</span>
 						<ul class="custom-menu">
 							<li>
-								<a>
+								<a routerLink="/account/profile">
 									<i class="fa fa-user-o"></i> My Account</a>
 							</li>
 							<li>

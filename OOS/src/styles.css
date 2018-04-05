@@ -2194,7 +2194,10 @@ ul.breadcrumb li+li:before {
   color: slategrey
 }
 
-
+ul>li>span>span.product-color
+{
+  border: 1px solid black;
+}
 
 
 input:disabled {
