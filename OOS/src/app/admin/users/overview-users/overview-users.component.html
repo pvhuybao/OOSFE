@@ -10,8 +10,11 @@
     <div class="col-md-4">
       <input class="input" type="text" id="inputPhoneSearch" placeholder="Phone" [(ngModel)]="phone">
     </div>
-    <div class="col-md-4">
-      <button class="primary-btn pull-right" (click)="searchUser()">Search</button>
+    <div class="col-md-4 pull-right">
+      <div class="pull-right"> 
+          <button class="primary-btn" (click)="searchUser()">Search</button>
+          <button class="primary-btn" (click)="refresh()">Refresh</button>
+      </div>
     </div>
   </div>
 

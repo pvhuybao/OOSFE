@@ -13,14 +13,14 @@ export class OverviewUsersComponent implements OnInit {
   listUsers: Array<Object>;
 
   userDel = new UserModel;
-  
+
   //for paging
   itemCount: number;
   pageSize: number = 10;
   page: number = 1;
 
   //for searching
-  email: string ="";
+  email: string = "";
   phone: string = "";
 
   constructor(
@@ -41,20 +41,29 @@ export class OverviewUsersComponent implements OnInit {
   getUsersList() {
     this.spinnerService.startLoadingSpinner();
 
-    this.userService.get("" ,this.email,this.phone,this.pageSize ,this.page).subscribe(data => {
+    this.userService.get("", this.email, this.phone, this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
 
       this.listUsers = data.items;
       this.itemCount = data.totalItemCount;
 
       // reverse sort
-      this.listUsers.sort((a,b)=>{
+      this.listUsers.sort((a, b) => {
         return 1; //reverse the array
       })
     })
   }
-  
+
   searchUser() {
+    this.getUsersList();
+  }
+
+  refresh() {
+    this.pageSize = 10;
+    this.page = 1;
+
+    this.email = "";
+    this.phone = "";
     this.getUsersList();
   }
 
@@ -67,24 +76,19 @@ export class OverviewUsersComponent implements OnInit {
     });
   }
 
-  getUser(user:UserModel)
-  {
+  getUser(user: UserModel) {
     this.userService.getUser(user);
   }
 
-  getPage(page: number)
-  {
-    if(this.page!= page)
-    {
+  getPage(page: number) {
+    if (this.page != page) {
       this.page = page;
       this.getUsersList();
     }
   }
 
-  getPageSize(pageSize: number)
-  {
-    if(this.pageSize!= pageSize)
-    {
+  getPageSize(pageSize: number) {
+    if (this.pageSize != pageSize) {
       this.pageSize = pageSize;
       this.getUsersList();
     }
