@@ -2179,23 +2179,130 @@ ul.breadcrumb li+li:before {
   display:flex;
 }
 
+  /*----------------------------*\
+      Paging Tables
+  \*----------------------------*/
+
+
+.dropdown-eshop{
+  height: 40px;
+  padding: 0px 15px;
+  border: none;
+  background-color: transparent;
+
+  -webkit-box-shadow: 0px 0px 0px 0.5px #DADADA inset, 0px 0px 0px 6px transparent;
+  box-shadow: 0px 0px 0px 0.5px #DADADA inset, 0px 0px 0px 6px transparent;
+  
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.dropdown-eshop:hover ,.dropdown-eshop:focus {
+  height: 40px;
+  padding: 0px 15px;
+  border: none;
+  background-color: transparent;
+
+  -webkit-box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+  box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: DodgerBlue;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
 {
   background-color: #F8694A;
-  border-color:#30323A;
+  border-color: #F8694A;
 }
+
 
 .pagination>li>a, .pagination>li>span
 {
   color:black;
+  background-color: #FFF;
+  border: none;
+
+  -webkit-box-shadow: 0px 0px 0px 0.5px #DADADA inset, 0px 0px 0px 6px transparent;
+  box-shadow: 0px 0px 0px 0.5px #DADADA inset, 0px 0px 0px 6px transparent;
+  
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
 }
+
+.pagination>li>a:hover, .pagination>li>span:focus
+{
+  color: #F8694A;
+  background-color: #FFF;
+
+  -webkit-box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+  box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+}
+
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover
 {
-  color: slategrey
+  color: slategrey;
 }
 
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+  border-radius: 0;
+}
 
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+  border-radius: 0;
+}
 
+  /*----------------------------*\
+      Paging Tables
+  \*----------------------------*/
 
 input:disabled {
   background-color: silver;
