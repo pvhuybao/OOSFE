@@ -16,7 +16,7 @@ export class UserCreateComponent implements OnInit {
   user = new UserModel;
 
   //for validate
-  listUsers: UserModel[];
+  listUsers: Array<Object>;
 
   constructor(
     private userservice: UserService,
@@ -31,10 +31,11 @@ export class UserCreateComponent implements OnInit {
 
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
 
-    this.userservice.get().subscribe(data => {
-      this.listUsers = data
+    this.userservice.get("","","",10,1).subscribe(data => {
+      this.listUsers = data.items
     })
   }
+  
   add() {
     this.spinnerService.startLoadingSpinner();
 

@@ -10,9 +10,18 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 })
 export class OverviewUsersComponent implements OnInit {
 
-  listUsers: UserModel[];
+  listUsers: Array<Object>;
 
   userDel = new UserModel;
+
+  //for paging
+  itemCount: number;
+  pageSize: number = 10;
+  page: number = 1;
+
+  //for searching
+  email: string = "";
+  phone: string = "";
 
   constructor(
     private userService: UserService,
@@ -20,7 +29,7 @@ export class OverviewUsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getListUsers();
+    this.getUsersList();
   }
 
   get(id) {
@@ -29,18 +38,33 @@ export class OverviewUsersComponent implements OnInit {
     })
   }
 
-  getListUsers() {
+  getUsersList() {
     this.spinnerService.startLoadingSpinner();
 
-    this.userService.get().subscribe(data => {
+    this.userService.get("", this.email, this.phone, this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
 
-      this.listUsers = data;
+      this.listUsers = data.items;
+      this.itemCount = data.totalItemCount;
+
       // reverse sort
-      this.listUsers.sort((a,b)=>{
+      this.listUsers.sort((a, b) => {
         return 1; //reverse the array
       })
     })
+  }
+
+  searchUser() {
+    this.getUsersList();
+  }
+
+  refresh() {
+    this.pageSize = 10;
+    this.page = 1;
+
+    this.email = "";
+    this.phone = "";
+    this.getUsersList();
   }
 
   delete() {
@@ -48,12 +72,25 @@ export class OverviewUsersComponent implements OnInit {
 
     this.userService.delete(this.userDel).subscribe(data => {
       this.spinnerService.turnOffSpinner();
-      this.getListUsers();
+      this.getUsersList();
     });
   }
 
-  getUser(user:UserModel)
-  {
+  getUser(user: UserModel) {
     this.userService.getUser(user);
+  }
+
+  getPage(page: number) {
+    if (this.page != page) {
+      this.page = page;
+      this.getUsersList();
+    }
+  }
+
+  getPageSize(pageSize: number) {
+    if (this.pageSize != pageSize) {
+      this.pageSize = pageSize;
+      this.getUsersList();
+    }
   }
 }
