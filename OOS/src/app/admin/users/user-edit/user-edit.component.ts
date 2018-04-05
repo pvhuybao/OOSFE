@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BreadcrumbService } from 'ng5-breadcrumb';
+import { BreadcrumbService } from 'long-ng5-breadcrumb';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 
 

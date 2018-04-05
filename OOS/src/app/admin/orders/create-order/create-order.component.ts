@@ -56,6 +56,7 @@ export class CreateOrderComponent implements OnInit {
   shows: string = "hidden";
   orderDetail = new OrderDetailModel;
   listOrderDetails = new Array<OrderDetailModel>();
+  product = new ProductModel;
 
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router,private spinnerService: SpinnerService) { }

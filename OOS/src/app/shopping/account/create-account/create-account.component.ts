@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel, GenderType } from '../../models/users';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { CreateUserModel } from '../../models/user/create-user/create-user';
 
 @Component({
   selector: 'app-create-account',
@@ -12,11 +12,13 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 
 export class CreateAccountComponent implements OnInit {
 
-  user = new UserModel;
+  user = new CreateUserModel;
   isInvalid = false;
   public isDisabled:boolean;
   isExist:any;
   isExistEmail:any;
+  userValidation = new Object;
+  
   constructor(
     private accountService: AccountService, 
     private spinnerService:SpinnerService,
@@ -30,31 +32,28 @@ export class CreateAccountComponent implements OnInit {
   add() {
     this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
-    this.user.firstName = this.user.username;
-    this.user.lastName =this.user.username
+    this.user.firstName = this.user.email;
+    this.user.lastName =this.user.email
     this.user.gender = 0;
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
-
+    
     this.accountService.add(this.user)
       .subscribe(res => {
         this.spinnerService.turnOffSpinner();
-        this.router.navigate(['']);
+        this.router.navigate(['/account/login']);
+      },
+      (error) => {
+        this.spinnerService.turnOffSpinner();
+
+        this.userValidation = JSON.parse(error._body);
+        this.isInvalid = true;
       }
     )
   }
 
-  checkUsername()
-  {
-    this.accountService.getByUsername(this.user.username).
-      subscribe(username => {
-        this.isExist = username;
-        console.log(this.isExist);
-      });
-  }
-
   checkEmail()
   {
-    this.accountService.getByEmail(this.user.email).
+    this.accountService.checkUserExist(this.user.email).
       subscribe(email => {
         this.isExistEmail = email;
         console.log(this.isExistEmail);

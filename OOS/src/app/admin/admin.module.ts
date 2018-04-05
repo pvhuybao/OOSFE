@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'long-ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

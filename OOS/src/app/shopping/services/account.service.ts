@@ -1,28 +1,54 @@
 import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
-import { UserModel } from '../models/users';
+import { LoginAccountModel } from '../models/loginAccount';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { Http, Response, RequestOptions } from '@angular/http';
+import { Subject } from 'rxjs';
+import { CreateUserModel } from '../models/user/create-user/create-user';
 
 @Injectable()
 export class AccountService {
 
-  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
-  private API_PATH = 'http://localhost:54766/api/User/';
+  currentUser=new Subject<CreateUserModel>();
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
 
-  constructor(private authHttpService: AuthHttpService) { }
+  login:LoginAccountModel;
+  constructor(private http: Http, private authHttpService: AuthHttpService) { }
 
-  getByUsername(name): Observable<UserModel> {
-    return this.authHttpService.get(this.API_PATH + "CheckUser/" + name)
+  checkUserExist(terms): Observable<CreateUserModel> {
+    return this.authHttpService.get(this.API_PATH + "CheckUserExist/" + terms)
       .map(res => res.json());
   }
 
-  getByEmail(email): Observable<UserModel> {
-    return this.authHttpService.get(this.API_PATH + "CheckUserEmail/" + email)
-      .map(res => res.json());
+  add(task: CreateUserModel): Observable<any> {
+    return this.authHttpService.post(this.API_PATH, task);
   }
 
-  add(task: UserModel): Observable<any> {
-    return this.authHttpService.post(this.API_PATH + "Register", task);
+  loginAccount(login){
+    return this.authHttpService.post(this.API_PATH + "Login", login).map(res => res.json() || []);
   }
 
+  setUserSession(){
+    this.currentUser.next(JSON.parse(sessionStorage.getItem('user')));
+  }
+
+  getUserSession(){
+    return this.currentUser.asObservable();
+  }
+
+  getById(id: string): Observable<any> {
+    return this.authHttpService.get(this.API_PATH + id)
+      .map(res => {
+        return res.json() || []
+      }
+      )
+  }
+
+
+
+  put(user: any): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
+  }
 }

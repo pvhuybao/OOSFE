@@ -1,8 +1,8 @@
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="order-summary clearfix">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="order-summary clearfix">
+				<div *ngIf="cart.length; else shopping">
 					<div class="section-title">
 						<h3 class="title">Order Review</h3>
 					</div>
@@ -23,10 +23,15 @@
 									<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
 								</td>
 								<td class="details">
-									<a href="#">{{item.product.name}}</a>
+									<a style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
 									<ul>
-										<li>
-											<span>Description: {{item.product.description}}</span>
+										<li *ngIf="item.product.color">
+											<span >Color:
+												<span class="product-color" [style.background]="item.product.color">&nbsp;&nbsp;&nbsp;</span>
+											</span>
+										</li>
+										<li *ngIf="item.product.size">
+											<span>Size: {{item.product.size}}</span>
 										</li>
 									</ul>
 								</td>
@@ -56,9 +61,17 @@
 						</tfoot>
 					</table>
 					<div class="pull-right">
-						<button class="primary-btn" routerLink="shipping-info">Place Order</button>
+						<button class="primary-btn" routerLink="payment">Place Order</button>
 					</div>
 				</div>
+				<ng-template #shopping>
+					<div align="center">
+						<div>
+							<h4>Your cart is empty.</h4>
+						</div>
+						<button class="primary-btn" routerLink="/">Continue Shopping</button>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>
