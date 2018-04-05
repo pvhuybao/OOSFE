@@ -29,6 +29,7 @@ export class ContactComponent implements OnInit {
     this.emailService.sentEmail(email).subscribe(data=>{
       this.spinnerService.turnOffSpinner();
     })
+    
   }
 
 }

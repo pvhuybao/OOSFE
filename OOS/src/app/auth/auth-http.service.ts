@@ -26,7 +26,7 @@ export class AuthHttpService {
     }
 
     public put(url: string, data: any, options?: RequestOptionsArgs): Observable<Response> {
-        const body = JSON.stringify(data);
+        var body = JSON.stringify(data);
 
         if (options) {
             options = this.authService.setRequestOptions(options);
