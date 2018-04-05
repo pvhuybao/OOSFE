@@ -37,10 +37,14 @@ export class LoginAccountComponent implements OnInit {
 
     this.accountService.loginAccount(login).subscribe((data: any) => {
       this.spinnerService.turnOffSpinner();
-      data.username != null ? this.router.navigateByUrl('/')
-      : alert('Your username or password is incorrect')
-      sessionStorage.setItem('user',JSON.stringify(data));
-      this.accountService.setUserSession();
+      if(data.username){
+        sessionStorage.setItem('user',JSON.stringify(data));
+        this.accountService.setUserSession();
+        this.router.navigateByUrl('/')
+      } 
+      else{
+        alert('Your username or password is incorrect')
+      } 
     });
   }
 }

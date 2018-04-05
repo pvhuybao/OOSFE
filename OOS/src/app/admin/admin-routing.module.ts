@@ -33,15 +33,14 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
 const adminRoutes: Routes = [
   {
     path: 'admin',
-    component: AdminPageComponent,
-    canActivate: [AuthGuardService],
-    canActivateChild: [AuthGuardService],
+    component: AdminPageComponent,    
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: AdminLoginComponent },
+      { path: 'login', component: AdminLoginComponent,
+        canActivate: [AuthGuardService], 
+      },
       {
-        path: 'manager', component: AdminManagementComponent,
-        canActivate: [AuthGuardService],
+        path: 'manager', component: AdminManagementComponent,        
         canActivateChild: [AuthGuardService],
         children: [
           { path: '', redirectTo: 'products', pathMatch: 'full' },

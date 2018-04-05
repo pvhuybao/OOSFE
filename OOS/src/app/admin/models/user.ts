@@ -1,12 +1,18 @@
+export enum GenderType {
+    Male = 1,
+    Female = 2
+}
+
 export class UserModel{
-    id: string;
+    id:string
     username: string;
     password:string;
-    confirmPassword: string;
+    passwordConfirm: string;
     firstName:string;
     lastName:string;
-    gender:boolean;
     image:string;
+    gender:number;
     email:string;
+    token:string;
     constructor(){}
 }

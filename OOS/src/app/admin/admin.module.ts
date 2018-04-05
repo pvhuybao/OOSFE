@@ -42,6 +42,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
 import { PagingComponent } from '../shared/paging/paging.component';
+import { AccountService } from './services/account.service';
 import {FeedbackService} from './services/feedback.service';
 
 //self-directives
@@ -110,6 +111,7 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
     SpinnerService,
     BreadcrumbService,
     ConfigurationService,
+    AccountService,
     FeedbackService
   ]
 })
