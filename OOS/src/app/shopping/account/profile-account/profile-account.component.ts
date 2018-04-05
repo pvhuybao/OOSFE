@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
+import { ToasterService } from 'angular2-toaster';
+
 import { AccountService } from '../../services/account.service';
-import { GenderType } from '../../models/user/create-user/create-user';
+import { GenderType, CreateUserModel } from '../../models/user/create-user/create-user';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { UserModel } from '../../models/user/user';
+
 
 @Component({
   selector: 'app-profile-account',
@@ -9,32 +14,55 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
   styleUrls: ['./profile-account.component.css']
 })
 export class ProfileAccountComponent implements OnInit {
-
-  idDefault = "1b5db606a757474189743c7bd4221d2d"
-  user: any
+  idUser: string
+  user: UserModel
   public genderEnum = GenderType
-  listGender : any
+  listGender: any
   listCountry = new Array<string>();
+  private selDate: IMyDate = { year: 0, month: 0, day: 0 };
 
 
-
-  constructor(private ss: AccountService, private spinnerService: SpinnerService) {
-
-
+  constructor(private ss: AccountService, private spinnerService: SpinnerService, private toasterService: ToasterService) {
     this.listCountry.push("VietNam")
+  }
+
+  public myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd/mm/yyyy',
+  };
+
+  onDateChanged(event: IMyDateModel) {
+    // event properties are: event.date, event.jsdate, event.formatted and event.epoc
+    // this.selDate = event.date;
+    this.user.dateOfBirth = event.date.month + "/" + event.date.day + "/" + event.date.year
+
   }
 
   ngOnInit() {
     this.getProfile();
     this.getStatus();
-
   }
 
   getProfile() {
-    this.ss.getById(this.idDefault).subscribe(data => {
+    this.ss.getUserSession().subscribe(data => {
+      console.log("Profile user id = ", data.id);
+      this.idUser = data.id
+    })
+    this.ss.setUserSession()
+    this.ss.getById(this.idUser).subscribe(data => {
       this.user = data
       this.user.gender += 1;
-      console.log("Gender =" + data.gender)
+      if (data.dateOfBirth != null) {
+        var date = new Date(data.dateOfBirth)
+        this.selDate = {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        };
+      }
+      else {
+        this.selDate = null;
+      }
+
     }
     )
   }
@@ -43,13 +71,13 @@ export class ProfileAccountComponent implements OnInit {
     this.listGender = Object.keys(this.genderEnum).filter(Number);
   }
 
-  update(){
+  update() {
     this.spinnerService.startLoadingSpinner()
-    var updateUser = Object.assign({},this.user);
-    updateUser.gender -=1;
+    var updateUser = Object.assign({}, this.user);
+    updateUser.gender -= 1;
     this.ss.put(updateUser).subscribe(data => {
       this.spinnerService.turnOffSpinner()
-
+      this.toasterService.pop("success", "success", "You have successfully updated your profile");
     })
   }
 

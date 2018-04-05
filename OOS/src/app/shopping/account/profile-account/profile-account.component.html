@@ -69,7 +69,9 @@
         </div>
         <div class="form-group">
           Date of birth:
-          <input class="input" placeholder="Date of birth">
+          <form #myForm="ngForm" >
+            <my-date-picker [selDate]="selDate" name="mydate" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+          </form>
         </div>
         <div class="form-group">
           Country:
@@ -87,12 +89,13 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="pull-left">
-    <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
+    <a routerLink="" routerLinkActive="active" class="primary-btn">Back</a>
   </div>
   <div class="pull-right">
-    <button data-toggle="modal" data-target="#myModal2" class="primary-btn" (click)="update()">Save</button>
+    <button  class="primary-btn" (click)="update()" >Save</button>
   </div>
 </div>
+<br>
+
