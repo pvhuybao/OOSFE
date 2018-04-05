@@ -171,6 +171,7 @@
                 </div>
               </div>
             </div>
+
             <div class="modal fade" id="myModal2" role="dialog" >
               <div class="modal-dialog">
                 <!-- Modal content-->
@@ -200,9 +201,11 @@
       <div class="pull-left">
         <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
       </div>
+
       <div class="pull-right">
         <button *ngIf="saved" data-toggle="modal" data-target="#myModal2" class="primary-btn" (click)="edit()">Save</button>
       </div>
+      
     </div>
 
     <br>

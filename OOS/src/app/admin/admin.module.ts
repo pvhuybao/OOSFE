@@ -43,13 +43,15 @@ import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
 import { PagingComponent } from '../shared/paging/paging.component';
 import { AccountService } from './services/account.service';
-
+import {FeedbackService} from './services/feedback.service';
 
 //self-directives
 import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
 import { PasswordDirective } from '../shared/validation/validators/password.directive';
 import { ConfirmPasswordDirective } from '../shared/validation/validators/confirm-password.directive';
 import { EmailValidatorDirective } from '../shared/validation/validators/email-validator.directive';
+import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
+import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
 
 
 @NgModule({
@@ -95,6 +97,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     ConfigurationComponent,
     EditorComponent,
     PagingComponent,
+    CustomerFeedbackComponent,
+    FeedbackDetailComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -107,7 +111,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     SpinnerService,
     BreadcrumbService,
     ConfigurationService,
-    AccountService
+    AccountService,
+    FeedbackService
   ]
 })
 export class AdminModule { }

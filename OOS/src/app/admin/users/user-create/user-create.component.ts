@@ -26,14 +26,15 @@ export class UserCreateComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.user.gender = true;
+  ngOnInit() {    
 
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
 
     this.userservice.get().subscribe(data => {
       this.listUsers = data
     })
+
+    
   }
   add() {
     this.spinnerService.startLoadingSpinner();

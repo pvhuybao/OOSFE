@@ -27,6 +27,8 @@ import { AdminManagementComponent } from './admin-management/admin-management.co
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component'
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { EditorComponent } from './editor/editor.component';
+import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
+import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
 
 const adminRoutes: Routes = [
   {
@@ -63,6 +65,14 @@ const adminRoutes: Routes = [
               { path: ':id', component: EditCategoryComponent },
             ]
           },
+          {
+          path: 'customerfeedback',
+            children: [
+              { path: '', component: CustomerFeedbackComponent },
+              { path: ':id', component: FeedbackDetailComponent },
+            ]
+          },
+
           { path: 'orders', component: OrdersComponent },
           { path: 'users', component: UsersComponent },
           { path: 'orders/create', component: CreateOrderComponent },
@@ -73,7 +83,6 @@ const adminRoutes: Routes = [
           { path: 'shipping-return', component: EditorComponent, data: { page: "return"}},
           { path: 'shipping-guide', component: EditorComponent, data: { page: "guide"}},
           { path: 'faq', component: EditorComponent, data: { page: "faq"}}
-
         ]
       },
 

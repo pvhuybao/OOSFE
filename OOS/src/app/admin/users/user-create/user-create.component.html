@@ -5,76 +5,62 @@
     <div class="section-title">
       <h3>Create User</h3>
     </div>
-  
+
     <div class="form-group">
-  
-      Username:
-  
-      <input name="username" [(ngModel)]="user.username" type="text" class="input" 
-       #username_validation="ngModel" ngModel required minlength="10" maxlength="20" UniqueNameValidator [listUsers]="listUsers">
-      <show-errors [control]="username_validation"></show-errors>
-  
-    </div>
-  
-    <div class="form-group">
-  
-      Password:
-  
-      <input name="password" [(ngModel)]="user.password" type="password" class="input" 
-      #password_validation="ngModel" ngModel required minlength="8" maxlength="20" Password>
-     <show-errors [control]="password_validation"></show-errors>
-  
-    </div>
-  
-    <div class="form-group">
-  
-      Confirm Password:
-  
-      <input name="confirmPassword" [(ngModel)]="user.confirmPassword" type="password" class="input"
-      #confirmPassword_validation="ngModel" ngModel required ConfirmPassword [password]="user.password">
-     <show-errors [control]="confirmPassword_validation"></show-errors>
-  
-    </div>
-  
-    <div class="form-group" >
-  
+
       Email:
-  
-      <input name="email" [(ngModel)]="user.email" type="text" class="input" 
-        #email_validation="ngModel" ngModel required EmailValidator>
+
+      <input name="email" [(ngModel)]="user.email" type="text" class="input" #email_validation="ngModel" ngModel required EmailValidator>
       <show-errors [control]="email_validation"></show-errors>
-  
+
     </div>
-  
+
     <div class="form-group">
-  
+
+      Password:
+
+      <input name="password" [(ngModel)]="user.password" type="password" class="input" #password_validation="ngModel" ngModel required
+        minlength="8" maxlength="20" Password>
+      <show-errors [control]="password_validation"></show-errors>
+
+    </div>
+
+    <div class="form-group">
+
+      Confirm Password:
+
+      <input name="confirmPassword" [(ngModel)]="user.confirmPassword" type="password" class="input" #confirmPassword_validation="ngModel"
+        ngModel required ConfirmPassword [password]="user.password">
+      <show-errors [control]="confirmPassword_validation"></show-errors>
+
+    </div>
+
+    <div class="form-group">
+
       First Name:
-  
+
       <input name="firstName" [(ngModel)]="user.firstName" type="text" class="input">
-  
+
     </div>
-  
+
     <div class="form-group">
-  
+
       Last Name:
-  
+
       <input name="lastName" [(ngModel)]="user.lastName" type="text" class="input">
-  
+
     </div>
-  
+
     <div class="form-group input-checkbox">
-  
+
       Gender:
-  
+
       <div class="form-inline">
-        <div class="radio-inline">
-          <input type="radio" name="gender" [value]="true" [(ngModel)]="user.gender">Nam
-        </div>
-        <div class="radio-inline">
-          <input type="radio" name="gender" [value]="false" [(ngModel)]="user.gender">Nữ
-        </div>
+        <select name="status1" class="input custom-select">
+          <option></option>
+      </select>
       </div>
-  
+
     </div>
 
     <button class="primary-btn" [disabled]="!createUserForm.valid" (click)="add()">Save</button>
