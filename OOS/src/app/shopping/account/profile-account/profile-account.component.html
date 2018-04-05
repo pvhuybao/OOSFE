@@ -70,7 +70,7 @@
         <div class="form-group">
           Date of birth:
           <form #myForm="ngForm" >
-            <my-date-picker name="mydate" [options]="myDatePickerOptions" ></my-date-picker>
+            <my-date-picker [selDate]="selDate" name="mydate" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
           </form>
         </div>
         <div class="form-group">
@@ -91,7 +91,7 @@
     </div>
   </div>
   <div class="pull-left">
-    <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
+    <a routerLink="" routerLinkActive="active" class="primary-btn">Back</a>
   </div>
   <div class="pull-right">
     <button  class="primary-btn" (click)="update()" >Save</button>

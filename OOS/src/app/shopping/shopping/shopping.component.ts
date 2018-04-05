@@ -129,7 +129,10 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
   logout(){
     sessionStorage.removeItem('user');
+    this.router.navigateByUrl("");
     this.ngOnInit();
+    
+    
   }
 }
 
