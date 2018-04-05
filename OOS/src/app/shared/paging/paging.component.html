@@ -1,12 +1,15 @@
-<div class="pull-right" >
+<div class="pull-right">
+
   <div class="page-filter" style="display:inline-block">
-      <span class="text-uppercase">Show:</span>
-        <select class="input" [(ngModel)]="pSize" (change)="getPageSize(pSize)">
-          <option *ngFor="let op of options" [value]="op.value">{{op.name}}</option>
-        </select>
-    </div>
-  <div style="display:inline-block">
-    <ngb-pagination [collectionSize]="itemCount" [(page)]="pNow" [pageSize]="pSize" [maxSize]="3" [rotate]="true" [ellipses]="false"
-    [boundaryLinks]="true" (pageChange)="changePage()"></ngb-pagination>
+    <span class="text-uppercase">Show:</span>
+    <select class="dropdown-eshop" [(ngModel)]="pSize" (change)="getPageSize(pSize)">
+      <option *ngFor="let op of options" [value]="op.value">{{op.name}}</option>
+    </select>
   </div>
+
+  <div style="display:inline-block;">
+    <ngb-pagination [collectionSize]="itemCount" [(page)]="pNow" [pageSize]="pSize" [maxSize]="3" [rotate]="true" [ellipses]="false"
+      [boundaryLinks]="true" (pageChange)="changePage()"></ngb-pagination>
+  </div>
+
 </div>

@@ -92,6 +92,7 @@ export class ProductEditComponent implements OnInit {
       color: {
         title: 'Color',
         filter: false,
+        validation: 'color',
       },
       size: {
         title: 'Size',
