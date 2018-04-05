@@ -43,6 +43,7 @@ export class ProductCreateComponent implements OnInit {
       color: {
         title: 'Color',
         filter: false,
+        validation: 'color',
       },
       size: {
         title: 'Size',
