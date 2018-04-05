@@ -42,6 +42,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
 import { PagingComponent } from '../shared/paging/paging.component';
+import { AccountService } from './services/account.service';
 
 
 //self-directives
@@ -105,7 +106,8 @@ import { EmailValidatorDirective } from '../shared/validation/validators/email-v
     OrdersService,
     SpinnerService,
     BreadcrumbService,
-    ConfigurationService
+    ConfigurationService,
+    AccountService
   ]
 })
 export class AdminModule { }
