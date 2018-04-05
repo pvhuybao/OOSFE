@@ -5,6 +5,7 @@ import { ToasterService } from 'angular2-toaster';
 import { AccountService } from '../../services/account.service';
 import { GenderType, CreateUserModel } from '../../models/user/create-user/create-user';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { UserModel } from '../../models/user/user';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 })
 export class ProfileAccountComponent implements OnInit {
   idUser: string
-  user: any
+  user: UserModel
   public genderEnum = GenderType
   listGender: any
   listCountry = new Array<string>();
@@ -37,26 +38,19 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getProfile();
+    this.getStatus();
+  }
 
+  getProfile() {
     this.ss.getUserSession().subscribe(data => {
       console.log("Profile user id = ", data.id);
       this.idUser = data.id
     })
     this.ss.setUserSession()
-
-    this.getProfile();
-    this.getStatus();
-    var date = new Date("2013-12-28T08:30:17.795Z")
-    console.log(date.getDate());
-    console.log(date.getFullYear());
-    console.log(date.getMonth() + 1);
-  }
-
-  getProfile() {
     this.ss.getById(this.idUser).subscribe(data => {
       this.user = data
       this.user.gender += 1;
-      console.log(data.dateOfBirth)
       if (data.dateOfBirth != null) {
         var date = new Date(data.dateOfBirth)
         this.selDate = {
