@@ -32,8 +32,6 @@ export class CreateAccountComponent implements OnInit {
   add() {
     this.isDisabled = true;
     this.spinnerService.startLoadingSpinner();
-    this.user.firstName = this.user.email;
-    this.user.lastName =this.user.email
     this.user.gender = 0;
     this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";
     
