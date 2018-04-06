@@ -29,7 +29,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
@@ -41,7 +41,9 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+
 
 
 
@@ -91,8 +93,9 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     CarouselProductComponent,
     LoginAccountComponent,
     ProfileAccountComponent,
-    ProductBoxComponent
-
+    ProductBoxComponent,
+    WishlistAccountComponent,
+    InformCreateSucces
   ],
   providers: [
     CategoryService, 

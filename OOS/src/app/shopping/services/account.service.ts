@@ -14,6 +14,7 @@ export class AccountService {
 
   currentUser=new Subject<CreateUserModel>();
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+  //private API_PATH = 'http://localhost:54766/api/User/';
 
   login:LoginAccountModel;
   constructor(private http: Http, private authHttpService: AuthHttpService) { }

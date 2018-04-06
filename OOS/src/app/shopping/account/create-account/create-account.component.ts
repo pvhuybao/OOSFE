@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, style } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
@@ -13,11 +13,10 @@ import { CreateUserModel } from '../../models/user/create-user/create-user';
 export class CreateAccountComponent implements OnInit {
 
   user = new CreateUserModel;
-  isInvalid = false;
   public isDisabled:boolean;
-  isExist:any;
   isExistEmail:any;
-  userValidation = new Object;
+  isPasswordConfirm:boolean = true;
+  userValidation:Object[];
   
   constructor(
     private accountService: AccountService, 
@@ -26,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isDisabled = false;
+    
   }
 
   add() {
@@ -38,13 +37,13 @@ export class CreateAccountComponent implements OnInit {
     this.accountService.add(this.user)
       .subscribe(res => {
         this.spinnerService.turnOffSpinner();
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/account/inform-create']);
       },
       (error) => {
         this.spinnerService.turnOffSpinner();
 
         this.userValidation = JSON.parse(error._body);
-        this.isInvalid = true;
+        //this.isInvalid = true;
       }
     )
   }
@@ -58,4 +57,28 @@ export class CreateAccountComponent implements OnInit {
       });
   }
 
+  checkPassword()
+  {
+    if(this.user.confirmPassword != this.user.password)
+    {
+      this.isDisabled = true;
+      this.isPasswordConfirm = false;
+    }else
+    {
+      this.isDisabled = false;
+      this.isPasswordConfirm = true;
+    }
+  }
+
+}
+
+@Component({
+  selector: 'app-create-success',
+  template: '<div class="container align-self-center"><h3>You have successfully registered. Please wait for 5 seconds or click <a routerLink="/account/login" style="text-decoration: underline; color: #F8694A">Here</a> to proceed to Login page.</h3></div>'
+})
+export class InformCreateSucces implements OnInit {
+  constructor( private router:Router ) { }
+  ngOnInit() {
+    setTimeout(()=>{ this.router.navigate(['/account/login'])}, 5000);
+  }
 }
