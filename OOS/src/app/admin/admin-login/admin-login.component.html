@@ -10,7 +10,7 @@
                 alt="">
                 <form #loginForm="ngForm">
                 <div class="form-signin">
-                        <input name="email" [(ngModel)]="email" type="email" class="input" #email_validation="ngModel" ngModel required EmailValidator>
+                        <input name="email" placeholder="Email" [(ngModel)]="email" type="email" class="input" #email_validation="ngModel" ngModel required EmailValidator>
                         <show-errors [control]="email_validation"></show-errors>
                         <br/>
                         <br/>
