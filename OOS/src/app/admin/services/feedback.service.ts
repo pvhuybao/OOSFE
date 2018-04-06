@@ -9,7 +9,7 @@ import { FeedbackModel } from '../models/Feedback';
 
 @Injectable()
 export class FeedbackService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Getfeedback';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Contact/Getfeedback';
 
   constructor(private authHttpService: AuthHttpService) { }
   
