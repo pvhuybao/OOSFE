@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -64,7 +65,8 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
     Ng2SmartTableModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
-    NgbModule
+    NgbModule,
+    MyDatePickerModule
   ],
     
   declarations: [
