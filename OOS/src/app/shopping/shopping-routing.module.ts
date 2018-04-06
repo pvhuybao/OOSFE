@@ -25,6 +25,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { CreateAccountComponent } from './account/create-account/create-account.component';
 import { LoginAccountComponent } from './account/login-account/login-account.component';
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
 
 
 const shoppingRoutes: Routes = [
@@ -71,7 +72,8 @@ const shoppingRoutes: Routes = [
         children :[
           {path: 'profile', component: ProfileAccountComponent},
           { path: 'register', component: CreateAccountComponent},
-          {path: 'login', component: LoginAccountComponent}
+          {path: 'login', component: LoginAccountComponent},
+          {path: 'order-history', component: OrderHistoryComponent},
         ]
       }
     ]

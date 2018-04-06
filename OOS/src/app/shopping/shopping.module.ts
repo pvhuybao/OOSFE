@@ -41,6 +41,9 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { PagingComponent } from '../shared/paging/paging.component';
 
 
 
@@ -89,8 +92,9 @@ import { MetaDataService } from './services/meta-data.service';
     CarouselProductComponent,
     LoginAccountComponent,
     ProfileAccountComponent,
-    ProductBoxComponent
-
+    ProductBoxComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailComponent,
   ],
   providers: [
     CategoryService, 
@@ -100,7 +104,7 @@ import { MetaDataService } from './services/meta-data.service';
     OrderService,
     AccountService,
     ConfigurationService,
-    MetaDataService
+    MetaDataService,
     
   ]
 })
