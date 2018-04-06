@@ -55,6 +55,7 @@ export class ProductBoxComponent implements OnInit {
       image: this.productDetail.productTails[0].image,
       color: this.productDetail.productTails[0].color,
       size: this.productDetail.productTails[0].size,
+      quantity: this.productDetail.productTails[0].quantity,
     }
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();
