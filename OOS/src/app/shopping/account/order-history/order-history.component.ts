@@ -19,8 +19,8 @@ export class OrderHistoryComponent implements OnInit {
 
   email: string = "";
   phone: string = "";
-  pageSize: number = 6;
-  page: number = 1;
+  pageSize: number;
+  page: number;
 
   itemCount: number;
   pNow: number = 1;
