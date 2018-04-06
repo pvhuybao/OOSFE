@@ -12,7 +12,6 @@ export class ConfigurationComponent implements OnInit {
   configuration = new ConfigurationModel();
   Currency = Currency;
   currency: string[];
-
   constructor(private configService: ConfigurationService, private spinnerService: SpinnerService) {
   }
 
@@ -46,4 +45,28 @@ export class ConfigurationComponent implements OnInit {
       this.spinnerService.turnOffSpinner();
     });
   }
+
+  addPageSize() {
+    if (this.configuration.pageSize[0] !== 0)
+      this.configuration.pageSize.splice(0,0,1);
+  }
+
+  deletePageSize(i) {
+    this.configuration.pageSize.splice(i, 1);
+  }
+
+  savePageSize() {
+    this.spinnerService.startLoadingSpinner();
+    if (this.configuration.pageSize[0] === 0)
+      this.configuration.pageSize.splice(0,1);
+      this.configuration.pageSize.sort((a, b) => {return a-b});
+    this.configService.edit(this.configuration).subscribe(res => {
+      this.spinnerService.turnOffSpinner();
+    });
+  }
+
+  trackById(id) {
+    return id;
+  }
+  
 }

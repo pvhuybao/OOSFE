@@ -72,7 +72,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
     this.listProduct = this.searchTerms.pipe(
 
-      // wait 300ms after each keystroke before considering the term
+      // wait 50ms after each keystroke before considering the term
       debounceTime(50),
 
       // ignore new term if same as previous term

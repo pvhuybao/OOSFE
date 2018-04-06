@@ -4,6 +4,15 @@
 @import "~font-awesome/css/font-awesome.css";
 @import '~angular2-toaster/toaster.min.css';
 
+#page-config{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.close.page-size{
+  float: none;
+  opacity: 0.7;
+}
+
 /* CUSTOM TOAST */
 #toast-container>div{
   opacity:1;
