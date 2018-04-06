@@ -41,6 +41,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
 
 
 
@@ -56,7 +57,8 @@ import { MetaDataService } from './services/meta-data.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
-    MyDatePickerModule
+    MyDatePickerModule,
+    ValidationModule
   
   
 

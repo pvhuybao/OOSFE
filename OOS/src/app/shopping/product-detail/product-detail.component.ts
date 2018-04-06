@@ -167,7 +167,8 @@ AddToCart(){
     name: this.product.name,
     price: this.price,
     color:this.colorSelected,
-    size:this.sizeSelected
+    size:this.sizeSelected,
+    quantity:this.quantityAvailble
   }
   this.cartService.set(product,this.quantity);
     //pop up toaster
