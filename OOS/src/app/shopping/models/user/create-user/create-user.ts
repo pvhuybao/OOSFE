@@ -7,7 +7,7 @@ export enum GenderType {
 export class CreateUserModel{
     id:string
     password:string;
-    passwordConfirm: string;
+    confirmPassword: string;
     firstName:string;
     middleName:String;
     lastName:string;

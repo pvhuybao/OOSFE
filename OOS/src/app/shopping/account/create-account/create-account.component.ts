@@ -13,11 +13,10 @@ import { CreateUserModel } from '../../models/user/create-user/create-user';
 export class CreateAccountComponent implements OnInit {
 
   user = new CreateUserModel;
-  isInvalid = false;
   public isDisabled:boolean;
-  isExist:any;
   isExistEmail:any;
-  userValidation = new Object;
+  isPasswordConfirm:boolean = true;
+  userValidation:Object[];
   
   constructor(
     private accountService: AccountService, 
@@ -26,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isDisabled = false;
+    
   }
 
   add() {
@@ -44,7 +43,7 @@ export class CreateAccountComponent implements OnInit {
         this.spinnerService.turnOffSpinner();
 
         this.userValidation = JSON.parse(error._body);
-        this.isInvalid = true;
+        //this.isInvalid = true;
       }
     )
   }
@@ -56,6 +55,19 @@ export class CreateAccountComponent implements OnInit {
         this.isExistEmail = email;
         console.log(this.isExistEmail);
       });
+  }
+
+  checkPassword()
+  {
+    if(this.user.confirmPassword != this.user.password)
+    {
+      this.isDisabled = true;
+      this.isPasswordConfirm = false;
+    }else
+    {
+      this.isDisabled = false;
+      this.isPasswordConfirm = true;
+    }
   }
 
 }
