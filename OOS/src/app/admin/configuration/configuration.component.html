@@ -31,26 +31,28 @@
     <h4 class="title">Page Size</h4>
   </div>
   <div class="form-group">
-    <button type="submit" class="primary-btn" [disabled]="isDisabled" (click)="savePageSize()">Save</button>
+    <button type="submit" class="primary-btn" (click)="savePageSize()">Save</button>
     <button routerLink='../' class="main-btn">Back</button>
     <a class="pull-right">
       <button type="submit" class="primary-btn" (click)="addPageSize()" align="right">+</button>
     </a>
+    <div id="page-size-alert" class="alert alert-danger" *ngIf="checkUnique">Page sizes must not be the same.</div>
     <form>
-        <div id="page-config" *ngFor="let item of configuration.pageSize; let i = index; trackBy: trackById">
-          <input id="page" name="page" type="number" [(ngModel)]="configuration.pageSize[i]" [ngModelOptions]="{standalone: true}" required #page="ngModel" />
-          <button class="close page-size" (click)="deletePageSize(i)">
-            <h4>X</h4>
-          </button>
-          <div *ngIf="page.invalid && (page.dirty || page.touched)" class="alert alert-danger">
-              <div *ngIf="page.errors.required">
-                Page size is required.
-              </div>
-            </div>
+      <div id="page-config" *ngFor="let item of configuration.pageSize; let i = index; trackBy: trackById">
+        <input id="page" name="page" type="number"  [(ngModel)]="configuration.pageSize[i]" (change)="minLimit(i)"
+          [ngModelOptions]="{standalone: true}" required min="1" #page="ngModel" />
+        <button class="close page-size" (click)="deletePageSize(i)">
+          <h4>X</h4>
+        </button>
+        <div *ngIf="page.invalid && (page.dirty || page.touched)" class="alert alert-danger page-alert">
+          <div *ngIf="page.errors.required">
+            Page size is required.
+          </div>
         </div>
-      </form>
+      </div>
+    </form>
   </div>
-  
+
 
   <div class="section-title">
     <h4 class="title">Carousel</h4>
