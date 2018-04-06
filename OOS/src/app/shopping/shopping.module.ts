@@ -42,6 +42,8 @@ import { ProductBoxComponent } from './category-details/product-box/product-box.
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
+import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+
 
 
 
@@ -57,7 +59,8 @@ import { WishlistAccountComponent } from './account/wishlist-account/wishlist-ac
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
-    MyDatePickerModule
+    MyDatePickerModule,
+    ValidationModule
   
   
 
