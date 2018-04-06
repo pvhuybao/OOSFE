@@ -29,7 +29,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
@@ -91,8 +91,8 @@ import { WishlistAccountComponent } from './account/wishlist-account/wishlist-ac
     LoginAccountComponent,
     ProfileAccountComponent,
     ProductBoxComponent,
-    WishlistAccountComponent
-
+    WishlistAccountComponent,
+    InformCreateSucces
   ],
   providers: [
     CategoryService, 

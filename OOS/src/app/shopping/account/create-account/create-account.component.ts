@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, style } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
@@ -37,7 +37,7 @@ export class CreateAccountComponent implements OnInit {
     this.accountService.add(this.user)
       .subscribe(res => {
         this.spinnerService.turnOffSpinner();
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/account/inform-create']);
       },
       (error) => {
         this.spinnerService.turnOffSpinner();
@@ -70,4 +70,15 @@ export class CreateAccountComponent implements OnInit {
     }
   }
 
+}
+
+@Component({
+  selector: 'app-create-success',
+  template: '<div class="container align-self-center"><h3>You have successfully registered. Please wait for 5 seconds or click <a routerLink="/account/login" style="text-decoration: underline; color: #F8694A">Here</a> to proceed to Login page.</h3></div>'
+})
+export class InformCreateSucces implements OnInit {
+  constructor( private router:Router ) { }
+  ngOnInit() {
+    setTimeout(()=>{ this.router.navigate(['/account/login'])}, 5000);
+  }
 }
