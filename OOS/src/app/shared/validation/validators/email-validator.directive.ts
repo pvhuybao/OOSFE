@@ -12,6 +12,7 @@ export class EmailValidatorDirective implements Validator {
   validate(c: FormControl): ValidationErrors {
     const email = String(c.value);
     const isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(email);
+    
     const message = {
       'email': {
         'message': 'This is an invalid email.'
