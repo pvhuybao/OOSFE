@@ -6,5 +6,6 @@ export class ProductCartModel {
     image: string;
     color: string;
     size: string;
+    quantity:number;
     constructor() { }
 }
