@@ -41,6 +41,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 
 
 
@@ -89,7 +90,8 @@ import { MetaDataService } from './services/meta-data.service';
     CarouselProductComponent,
     LoginAccountComponent,
     ProfileAccountComponent,
-    ProductBoxComponent
+    ProductBoxComponent,
+    WishlistAccountComponent
 
   ],
   providers: [

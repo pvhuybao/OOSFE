@@ -26,9 +26,9 @@
           <div class="form-group">
             Password:
             <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  
-              type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W]{8,20}">
+              type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W]{8,}">
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-              Password must have at least 1 number, 1 letter and contain from 8 - 20 character.
+              Password must have at least 1 number, 1 letter and contain at least 8 characters.
               <div *ngIf="password.errors.required">
                 Password is required.
               </div>

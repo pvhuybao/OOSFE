@@ -70,7 +70,7 @@ const shoppingRoutes: Routes = [
         path: 'account',
         children :[
           {path: 'profile', component: ProfileAccountComponent},
-          { path: 'register', component: CreateAccountComponent},
+          {path: 'register', component: CreateAccountComponent},
           {path: 'login', component: LoginAccountComponent}
         ]
       }
