@@ -22,7 +22,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { LoginAccountComponent } from './account/login-account/login-account.component';
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
@@ -76,6 +76,7 @@ const shoppingRoutes: Routes = [
           { path: 'login', component: LoginAccountComponent },
           { path: 'order-history', component: OrderHistoryComponent },
           { path: 'order-history/:id', component: OrderHistoryDetailComponent },
+          { path: 'inform-create', component: InformCreateSucces }
         ]
       }
     ]

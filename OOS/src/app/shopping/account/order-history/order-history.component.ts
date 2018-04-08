@@ -15,12 +15,12 @@ export class OrderHistoryComponent implements OnInit {
 
   listOrders: Array<Object>
   orderToDelete: OrdersModel;
-  status = OrderStatus;  
+  status = OrderStatus;
 
   email: string = "";
   phone: string = "";
-  pageSize: number;
-  page: number;
+  pageSize: number = 10;
+  page: number = 1;
 
   itemCount: number;
   pNow: number = 1;
@@ -28,7 +28,7 @@ export class OrderHistoryComponent implements OnInit {
     private ss: AccountService,
     private ordersService: OrderService,
     private router: Router,
-    private spinnerService: SpinnerService) {}
+    private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.getOrderList();
@@ -45,7 +45,6 @@ export class OrderHistoryComponent implements OnInit {
         this.spinnerService.turnOffSpinner();
         this.listOrders = data.items;
         this.itemCount = data.totalItemCount;
-        console.log(data);
       });
     });
   }

@@ -12,7 +12,7 @@ export class ConfigurationComponent implements OnInit {
   configuration = new ConfigurationModel();
   Currency = Currency;
   currency: string[];
-
+  checkUnique: boolean = false;
   constructor(private configService: ConfigurationService, private spinnerService: SpinnerService) {
   }
 
@@ -35,15 +35,61 @@ export class ConfigurationComponent implements OnInit {
 
   add() {
     if (this.configuration.carousel[0] !== "")
-      this.configuration.carousel.splice(0,0,"");
+      this.configuration.carousel.splice(0, 0, "");
   }
 
   save() {
     this.spinnerService.startLoadingSpinner();
     if (this.configuration.carousel[0] === "")
-      this.configuration.carousel.splice(0,1);
+      this.configuration.carousel.splice(0, 1);
     this.configService.edit(this.configuration).subscribe(res => {
       this.spinnerService.turnOffSpinner();
     });
+  }
+
+  addPageSize() {
+    if (this.configuration.pageSize[0] !== 0)
+      this.configuration.pageSize.splice(0, 0, 1);
+  }
+
+  deletePageSize(i) {
+    this.configuration.pageSize.splice(i, 1);
+  }
+
+  minLimit(i: number) {
+    if (this.configuration.pageSize[i] < 1) {
+      this.configuration.pageSize[i] = 1;
+    }
+  }
+
+  savePageSize() {
+    console.log(this.checkUniquePageSize());
+    console.log(this.configuration.pageSize);
+    if (this.checkUniquePageSize()) this.checkUnique = this.checkUniquePageSize();
+    else {
+      this.spinnerService.startLoadingSpinner();
+      if (this.configuration.pageSize[0] === 0) this.configuration.pageSize.splice(0, 1);
+      this.configuration.pageSize.sort((a, b) => { return a - b });
+      this.configService.edit(this.configuration).subscribe(res => {
+        this.spinnerService.turnOffSpinner();
+      });
+    }
+  }
+
+  trackById(id) {
+    return id;
+  }
+
+  checkUniquePageSize(): boolean {
+    var counts = [];
+    for (var i = 0; i <= this.configuration.pageSize.length; i++) {
+      if (counts[this.configuration.pageSize[i]] === undefined) {
+        counts[this.configuration.pageSize[i]] = 1;
+      } else {
+        this.checkUnique = true;
+        return true;
+      }
+    }
+    return false;
   }
 }
