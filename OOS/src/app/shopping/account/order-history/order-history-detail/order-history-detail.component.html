@@ -1,3 +1,103 @@
-<p>
-  order-history-detail works!
-</p>
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="section-title">
+        <h3 class="title">Billing Address</h3>
+      </div>
+      <div class="form-group">
+        <label>Name: </label>
+        <strong>{{ order.address && order.address[1].name}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Phone: </label>
+        <strong>{{order.address && order.address[1].phone}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Address: </label>
+        <strong>{{order.address && order.address[1].street}} street, {{order.address && order.address[1].district}} district, {{order.address && order.address[1].province}} province</strong>
+      </div>
+
+    </div>
+    <!-- Billing Address -->
+    <div class="col-md-6">
+      <!-- Shipping Address -->
+      <div class="section-title">
+        <h3 class="title">Shipping Address</h3>
+      </div>
+      <div class="form-group">
+        <label>Name: </label>
+        <strong>{{order.address && order.address[0].name}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Phone: </label>
+        <strong>{{order.address && order.address[0].phone}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Address: </label>
+        <strong>{{order.address && order.address[0].street}} street, {{order.address && order.address[0].district}} district, {{order.address && order.address[0].province}} province</strong>
+      </div>
+      <!-- Shipping Address -->
+
+    </div>
+    <!-- Order Review -->
+    <div class="col-md-12">
+      <div class="order-summary clearfix">
+        <div class="section-title">
+          <h3 class="title">Order Details</h3>
+        </div>
+        <table class="shopping-cart-table table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th class="text-center">Price</th>
+              <th></th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let orderDetail of order.orderDetails">
+            <tr>
+              <td class="detail">
+                <h4>{{orderDetail.nameProduct}}</h4>
+                <ul>
+                  <li *ngIf="orderDetail.color">
+                    <span>Color:
+                      <span class="product-color" [style.background]="orderDetail.color">&nbsp;&nbsp;&nbsp;</span>
+                    </span>
+                  </li>
+                  <li *ngIf="orderDetail.size">
+                    <span>Size: {{orderDetail.size}}</span>
+                  </li>
+                </ul>
+              </td>
+              <td class="price text-center">
+                <strong>{{orderDetail.price | number}}</strong>
+              </td>
+              <td></td>
+              <td class="price text-center">
+                <strong>{{orderDetail.quantity | number}}</strong>
+              </td>
+              <td class="total text-center">
+                <strong>{{orderDetail.totalPrice | number}}</strong>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="empty" colspan="3"></th>
+              <th>TOTAL</th>
+              <th colspan="2" class="total">{{order.total | number}}</th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pull-left">
+          <a routerLink="/account/order-history" routerLinkActive="active" class="primary-btn">Back</a>
+        </div>
+      </div>
+      <!-- Order Review -->
+    </div>
+  </div>
+  <br>
+
+</div>

@@ -26,6 +26,7 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { LoginAccountComponent } from './account/login-account/login-account.component';
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
 
 
 const shoppingRoutes: Routes = [
@@ -69,11 +70,12 @@ const shoppingRoutes: Routes = [
       { path: 'faq', component: FaqComponent },
       {
         path: 'account',
-        children :[
-          {path: 'profile', component: ProfileAccountComponent},
-          { path: 'register', component: CreateAccountComponent},
-          {path: 'login', component: LoginAccountComponent},
-          {path: 'order-history', component: OrderHistoryComponent},
+        children: [
+          { path: 'profile', component: ProfileAccountComponent },
+          { path: 'register', component: CreateAccountComponent },
+          { path: 'login', component: LoginAccountComponent },
+          { path: 'order-history', component: OrderHistoryComponent },
+          { path: 'order-history/:id', component: OrderHistoryDetailComponent },
         ]
       }
     ]

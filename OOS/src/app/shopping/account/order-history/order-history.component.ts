@@ -28,7 +28,6 @@ export class OrderHistoryComponent implements OnInit {
     private ss: AccountService,
     private ordersService: OrderService,
     private router: Router,
-
     private spinnerService: SpinnerService) {}
 
   ngOnInit() {
@@ -36,14 +35,14 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   getOrderList() {
-    // this.spinnerService.startLoadingSpinner();
+    this.spinnerService.startLoadingSpinner();
     var userId;
     this.ss.getUserSession().subscribe(data => userId = data.id);
     this.ss.setUserSession();
     this.ss.getById(userId).subscribe(data => {
       this.email = data.email;
       this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
-        // this.spinnerService.turnOffSpinner();
+        this.spinnerService.turnOffSpinner();
         this.listOrders = data.items;
         this.itemCount = data.totalItemCount;
         console.log(data);
