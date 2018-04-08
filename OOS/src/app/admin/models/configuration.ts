@@ -10,5 +10,6 @@ export class ConfigurationModel{
     shippingReturnHtml: string;
     shippingGuideHtml: string;
     faqHtml: string;
+    pageSize: number[];
     constructor(){}
 }
