@@ -9,5 +9,6 @@ export class UserModel{
     phoneNumber:string;
     country:string;
     dateOfBirth:string
+    wishList:Array<string>;
     constructor(){}
 }
