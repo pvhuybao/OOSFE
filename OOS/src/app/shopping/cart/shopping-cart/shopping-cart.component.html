@@ -41,8 +41,7 @@
 								</td>
 								<td class="qty text-center">
 									<button class="number-btn" (click)="decrease(item.product,quantity.value)">&minus;</button>
-									<input class="input" id="number" type="number" min="1" value="{{item.quantity}}" #quantity
-									 (change)="updateQuantity(item.product,quantity.value)">
+									<input class="input-number" id="number" maxlength="2" type="number" min="1" value="{{item.quantity}}" #quantity (change)="updateQuantity(item.product,quantity.value)">
 									<button class="number-btn" (click)="increase(item.product,quantity.value)">+</button>
 								</td>
 								<td class="total text-center">
