@@ -53,29 +53,13 @@ export class OrderHistoryComponent implements OnInit {
     this.getOrderList();
   }
 
-  checkOdd(num: number) {
-    if (num + 1 % 2 == 0) {
-      return false;
-    }
-    else { return true }
-  }
-
   getPage(page: number) {
-    if (this.page != page) {
       this.page = page;
       this.getOrderList();
-    }
   }
 
   getPageSize(pageSize: number) {
-    if (this.pageSize != pageSize) {
       this.pageSize = pageSize;
       this.getOrderList();
-    }
   }
-
-  // get(orderId) {
-  //   this.ordersService.getById(orderId).subscribe(data => { this.orderToDelete = data });
-  // }
-
 }
