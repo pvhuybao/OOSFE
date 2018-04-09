@@ -13,8 +13,8 @@ import { UserModel } from '../models/user/user';
 export class AccountService {
 
   currentUser=new Subject<CreateUserModel>();
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
-  //private API_PATH = 'http://localhost:54766/api/User/';
+  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+  private API_PATH = 'http://localhost:54766/api/User/';
 
   login:LoginAccountModel;
   constructor(private http: Http, private authHttpService: AuthHttpService) { }
@@ -53,10 +53,10 @@ export class AccountService {
   }
 
   getWishList(userId:string):Observable<any[]>{
-    return this.authHttpService.get(this.API_PATH + "GetWishList/"+ userId).map(res => res.json());
+    return this.authHttpService.get(this.API_PATH + "GetWishList/"+ userId).map(res => res.json() || []);
   }
 
-  //removeFromWishList(userID:string, productID:string): Observable<any>{
-    //return this.authHttpService.post(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
-  //}
+  removeFromWishList(userID:string, productID:string): Observable<any>{
+    return this.authHttpService.delete(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
+  }
 }
