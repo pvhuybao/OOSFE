@@ -63,6 +63,6 @@ export class AccountService {
     var FBViewModel = {
       AccessToken : token,
     }
-    return this.authHttpService.post("https://localhost:44387/api/User/LoginFacebook",FBViewModel).map(res => res.json() || []);
+    return this.authHttpService.post(this.API_PATH+"LoginFacebook",FBViewModel).map(res => res.json() || []);
   }
 }
