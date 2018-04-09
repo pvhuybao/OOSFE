@@ -37,7 +37,7 @@ export class AdminLoginComponent implements OnInit {
 
     this.accountService.loginAccount(login).subscribe((data: any) => {
       this.spinnerService.turnOffSpinner();
-      if(data.username){
+      if(data.userName){
         sessionStorage.setItem('user',JSON.stringify(data));
         this.accountService.setUserSession();
         this.router.navigate(['./admin/manager'])

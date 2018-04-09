@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Title }  from '@angular/platform-browser';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -104,7 +105,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     BreadcrumbService,
     ConfigurationService,
     AccountService,
-    FeedbackService
+    FeedbackService,
+    Title
   ]
 })
 export class AdminModule { }

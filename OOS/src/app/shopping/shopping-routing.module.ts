@@ -47,32 +47,32 @@ const shoppingRoutes: Routes = [
       {
         path: 'category',
         children: [
-          { path: ':id', component: CategoryDetailsComponent }
+          { path: ':id', component: CategoryDetailsComponent,data: {title: 'Category Detail'} },
         ]
       },
       {
         path: 'product',
         children: [
-          { path: ':id', component: ProductDetailComponent },
+          { path: ':id', component: ProductDetailComponent, data: {title: 'Product Detail'} },
         ]
       },
       {
         path: 'contact',
         children: [
-          { path: '', component: ContactComponent },
+          { path: '', component: ContactComponent,data: {title: 'Contact'} },
         ]
       },
-      { path: 'search', component: SearchComponent },
-      { path: 'shipping-return', component: ShippingReturnComponent },
-      { path: 'shipping-guide', component: ShippingGuideComponent },
-      { path: 'faq', component: FaqComponent },
+      { path: 'search', component: SearchComponent,data: {title: 'Search'} },
+      { path: 'shipping-return', component: ShippingReturnComponent,data: {title: 'shipping-return'} },
+      { path: 'shipping-guide', component: ShippingGuideComponent,data: {title: 'shipping-guide'} },
+      { path: 'faq', component: FaqComponent ,data: {title: 'FAQ'}},
       {
         path: 'account',
         children :[
-          {path: 'profile', component: ProfileAccountComponent},
-          {path: 'register', component: CreateAccountComponent},
-          {path: 'login', component: LoginAccountComponent},
-          {path: 'inform-create', component: InformCreateSucces}
+          {path: 'profile', component: ProfileAccountComponent,data: {title: 'profile'}},
+          {path: 'register', component: CreateAccountComponent,data: {title: 'register'}},
+          {path: 'login', component: LoginAccountComponent,data: {title: 'login'}},
+          {path: 'inform-create', component: InformCreateSucces,data: {title: 'inform-create'}}
         ]
       }
     ]

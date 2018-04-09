@@ -14,6 +14,7 @@ import { EmailSubscribeModel } from '../models/emailSubscribe';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { CreateUserModel } from '../models/user/create-user/create-user';
 import { AccountService } from '../services/account.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shopping',
@@ -55,7 +56,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     private ele: ElementRef,
     private emailService: EmailService,
     private spinnerService: SpinnerService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private titleService: Title
   ) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
@@ -63,6 +65,25 @@ export class ShoppingComponent implements OnInit, PipeTransform {
         else this.dblock = "";
       }
     });
+    router.events.subscribe(event => {
+      if(event instanceof NavigationEnd) {
+        var title = this.getTitle(router.routerState, router.routerState.root).join('-');
+        console.log('title', title);
+        titleService.setTitle(title);
+      }
+    });
+  }
+
+  getTitle(state, parent) {
+    var data = [];
+    if(parent && parent.snapshot.data && parent.snapshot.data.title) {
+      data.push(parent.snapshot.data.title);
+    }
+
+    if(state && parent) {
+      data.push(... this.getTitle(state, state.firstChild(parent)));
+    }
+    return data;
   }
 
   ngOnInit() {

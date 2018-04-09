@@ -5,6 +5,7 @@ import { OrdersService } from '../services/orders.service';
 import { OrdersModel } from '../models/order';
 import { CategoryService } from '../services/category.service';
 import { CategoryModel } from '../../shopping/models/category';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-management',
@@ -14,14 +15,39 @@ import { CategoryModel } from '../../shopping/models/category';
 export class AdminManagementComponent implements OnInit {
 
   orderToGet: CategoryModel;
+  title: string;
+
   private str:string = "test test test";
   constructor(
     private breadcrumbService:BreadcrumbService,
     private activatedRoute: ActivatedRoute,
     private router:Router,
     private ordersService:OrdersService,
-    private categoryService:CategoryService
-  ) {  }
+    private categoryService:CategoryService,
+    private titleService: Title
+
+  ) { 
+    router.events.subscribe(event => {
+      if(event instanceof NavigationEnd) {
+        var title = this.getTitle(router.routerState, router.routerState.root).join('-');
+        console.log('title', title);
+        titleService.setTitle(title);
+      }
+    });
+   }
+
+   getTitle(state, parent) {
+    var data = [];
+    if(parent && parent.snapshot.data && parent.snapshot.data.title) {
+      data.push(parent.snapshot.data.title);
+    }
+
+    if(state && parent) {
+      data.push(... this.getTitle(state, state.firstChild(parent)));
+    }
+    return data;
+  }
+  
 
   ngOnInit() {
     this.breadcrumbService.hideRoute('/admin');
