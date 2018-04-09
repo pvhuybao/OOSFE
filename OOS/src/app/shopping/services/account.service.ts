@@ -11,7 +11,6 @@ import { UserModel } from '../models/user/user';
 
 @Injectable()
 export class AccountService {
-
   currentUser=new Subject<CreateUserModel>();
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
   //private API_PATH = 'http://localhost:54766/api/User/';
@@ -50,5 +49,12 @@ export class AccountService {
 
   put(user: UserModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
+  }
+
+  loginFB(token : string){
+    var FBViewModel = {
+      AccessToken : token,
+    }
+    return this.authHttpService.post("https://localhost:44387/api/User/LoginFacebook",FBViewModel).map(res => res.json() || []);
   }
 }
