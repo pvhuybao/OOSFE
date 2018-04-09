@@ -47,6 +47,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public user = new CreateUserModel;
 
+  componentRef: any;
+
   constructor(
     private accountService: AccountService,
     private categoryService: CategoryService,
@@ -79,11 +81,12 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar",this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
     );
 
-    this.accountService.getUserSession().subscribe(data => this.user = data);
-    this.accountService.setUserSession();
+    this.accountService.getUserSession().subscribe(data => {
+      this.user = data
+    })
   }
 
   search(term: string): void {
@@ -131,12 +134,10 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
-  logout(){
-    sessionStorage.removeItem('user');
-    this.router.navigateByUrl("");
-    this.ngOnInit();
-    
-    
+  logout() {
+    sessionStorage.removeItem('user')
+    this.accountService.setUserSession()
+    this.router.navigateByUrl("")
   }
 }
 

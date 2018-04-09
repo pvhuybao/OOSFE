@@ -25,7 +25,10 @@
     </div>
     <div class="product-body">
       <div class="product-btns">
-        <button class="main-btn icon-btn">
+        <button class="main-btn icon-btn" (click)="wish()" *ngIf="!productDetail.isLove">
+          <i class="fa fa-heart"></i>
+        </button>
+        <button class="main-btn-wish icon-btn" (click)="removeWish()" *ngIf="productDetail.isLove">
           <i class="fa fa-heart"></i>
         </button>
         <button class="main-btn icon-btn">

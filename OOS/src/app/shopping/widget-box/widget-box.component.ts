@@ -5,6 +5,9 @@ import { ToasterService } from 'angular2-toaster';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { normalizeSync } from 'normalize-diacritics';
 import { Router } from '@angular/router';
+import { AccountService } from '../services/account.service';
+
+
 
 @Component({
   selector: 'app-widget-box',
@@ -16,20 +19,32 @@ import { Router } from '@angular/router';
 })
 export class WidgetBoxComponent implements OnInit {
   private toasterService: ToasterService;
+  id: string = ''
+  idUser: string
 
-  id: string = '';
   @Input() productDetail: ProductModel;
 
   constructor(
     toasterService: ToasterService,
     private cartService: CartService,
+    private accountService: AccountService,
     private router: Router,
     private spinnerService: SpinnerService) {
     this.toasterService = toasterService;
   }
 
   ngOnInit() {
-
+    // this.accountService.getUserSession().subscribe(data => {
+    //   console.log("Widget wish getUsersession")
+    //   if (data != null) {
+    //     this.idUser = data.id
+    //   }
+    //   else {
+    //     this.idUser = null
+    //   }
+    // })
+    // console.log("Widget wish setUsersession")
+    // this.accountService.setUserSession()
   }
   menuToggle(event: any) {
     // this.renderer.setElementClass(event.target,"opened",true);
@@ -60,11 +75,26 @@ export class WidgetBoxComponent implements OnInit {
       image: this.productDetail.productTails[0].image,
       size: this.productDetail.productTails[0].size,
       color: this.productDetail.productTails[0].color,
-      quantity:this.productDetail.productTails[0].quantity
+      quantity: this.productDetail.productTails[0].quantity
     }
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();
     //pop up toaster
     this.toasterService.pop('success', product.name, 'Added to cart success!');
+  }
+
+  wish() {
+    let user = this.accountService.currentUser.getValue()
+    if (user != null) {
+      let idUser = user.id
+      this.accountService.addWishProduct(idUser, this.productDetail.id).subscribe(data => {
+        this.toasterService.pop("success","success","You have successfully added item to wishlist")
+        this.productDetail.isLove = true;
+      })
+    }
+    else
+    {
+      this.toasterService.pop("error","error","You have to login first to use this feature")
+    }
   }
 }
