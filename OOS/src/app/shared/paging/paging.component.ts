@@ -68,11 +68,4 @@ export class PagingComponent implements OnInit {
   }
 }
 
-@NgModule({
-  imports: [NgbPaginationModule, FormsModule, ReactiveFormsModule, CommonModule],
-  exports: [PagingComponent],
-  declarations: [PagingComponent],
-  bootstrap: [PagingComponent],
-  providers: [ConfigurationService]
-})
 export class PagingModule { }
