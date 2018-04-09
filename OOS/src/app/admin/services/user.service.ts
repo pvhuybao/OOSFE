@@ -6,7 +6,7 @@ import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class UserService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User';
+  private API_PATH = 'http://localhost:57138/api/User';
 
   constructor(private authHttpService: AuthHttpService) { }
 
