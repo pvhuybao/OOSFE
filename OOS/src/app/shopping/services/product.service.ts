@@ -13,6 +13,7 @@ import { timeout } from 'q';
 @Injectable()
 export class ProductService {
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -68,12 +69,12 @@ export class ProductService {
     return this.authHttpService.get(this.API_PATH + id +"/category").map(res => res.json() || []);
   }
 
-  searchProductByIdCategory(idCategory: string, keyword: string): Observable<ProductModel[]>  {
+  searchProductByIdCategory(check: string, idCategory: string, keyword: string): Observable<ProductModel[]>  {
     if (!keyword.trim()) {
       // if not search term, return empty array.
       return of([]);
     }
-    var path = this.API_PATH + idCategory + "&" + keyword + "/search";
+    var path = this.API_PATH + check + "&" + idCategory + "&" + keyword + "/search";
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
 }

@@ -26,7 +26,7 @@
           <img src="{{product.basicImage}}" alt="">
         </td>
         <td class="details">
-          <a routerLink="/admin/manager/product-details" routerLinkActive="active" class="primary-color" (click)="setId(product.id)">{{product.name}}</a>
+          <a routerLink="./edit/{{product.id}}" routerLinkActive="active" class="primary-color" (click)="setId(product.id)">{{product.name}}</a>
           <ul>
             <li>
               <span><strong>Code:</strong>{{product.code}}</span>
@@ -36,8 +36,8 @@
             </li>
           </ul>
         </td>
-        <td class="qty text-center">{{product.minPrice}}-{{product.maxPrice}}</td>
-        <td class="text-center">{{product.totalQuantity}}</td>
+        <td class="qty text-center">{{product.minPrice | number}}-{{product.maxPrice | number}}</td>
+        <td class="text-center">{{product.totalQuantity | number}}</td>
         <td class="text-center">{{statusDefine[product.status]}}</td>
         <td class="text-center">
           <button class="main-btn icon-btn"  routerLink="./edit/{{product.id}}" routerLinkActive="active">
@@ -71,3 +71,8 @@
     </div>
   </div>
 </div>
+<app-paging
+[itemCount]="itemCount"
+(page)="getPage($event)"
+(pageSize)="getPageSize($event)"
+></app-paging>

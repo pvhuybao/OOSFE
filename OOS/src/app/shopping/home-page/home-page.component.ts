@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
 import { BannerModel } from '../models/banner';
+import { ConfigurationService } from '../../admin/services/configuration.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -14,25 +16,12 @@ export class HomePageComponent implements OnInit {
   topSales: ProductModel[] = [];
   topDiscount: ProductModel[] = [];
 
-  listBanners: BannerModel[] = [
-    {
-      image: "/assets/img/banner01.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    },
-    {
-      image: "/assets/img/banner02.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    },
-    {
-      image: "/assets/img/banner03.jpg",
-      title: "BAGS SALE",
-      content: "Up to 50% Discount"
-    }
-  ];
+  listBanners: BannerModel[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private configurationService: ConfigurationService
+  ) { }
 
 
   ngOnInit() {
@@ -53,23 +42,41 @@ export class HomePageComponent implements OnInit {
     //   price: 3344, description: "", image: "", idCategory: ""
     // },]
     this.getListNewestProduct();
+    this.getListTopDiscountProduct();
+    this.getListTopSalesProduct();
+    
+    this.getCarouselBanners();
   }
 
   getListNewestProduct() {
     this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+      this.newestProduct = newestProduct;
+      console.log(newestProduct)
     });
   }
 
   getListTopSalesProduct() {
-    this.productService.getProductsByParameter("topSales").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+    this.productService.getProductsByParameter("topSales").subscribe(topSales => {
+      this.topSales = topSales;
     });
   }
 
   getListTopDiscountProduct() {
-    this.productService.getProductsByParameter("topDiscount").subscribe(newestProduct => {
-      this.newestProduct = newestProduct
+    this.productService.getProductsByParameter("topDiscount").subscribe(topDiscount => {
+      this.topDiscount = topDiscount;
     });
   }
+
+  getCarouselBanners(){
+    this.configurationService.get().subscribe(data => {
+      data.carousel.forEach(item => {
+        this.listBanners.push({
+          image: item,
+          title: "",
+          content: ""
+        } as BannerModel)
+      })
+    })
+  }
+
 }

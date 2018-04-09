@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/user';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { UserModel, GenderType } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -11,12 +12,15 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
-
+  
   user = new UserModel;
+  private genderEnum = GenderType;
+  listGender: any;
+  phone: string;
 
-  isInvalid = false;
 
-  userValidation = new Object;
+  //for validate
+  listUsers: Array<Object>;
 
   constructor(
     private userservice: UserService,
@@ -26,25 +30,27 @@ export class UserCreateComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.user.gender = true;
-    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg"
-  }
-  add() {
-    this.spinnerService.startLoadingSpinner();
+  ngOnInit() {    
+    
+    this.listGender = Object.keys(this.genderEnum).filter(Number);
+    this.user.gender = 1;
+    this.user.image = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";    
+    this.user.photo = "http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg";    
 
+    this.userservice.get("","","",10,1).subscribe(data => {
+      this.listUsers = data.items
+    })
+
+    
+  }
+  
+  add() {
+    this.spinnerService.startLoadingSpinner();    
+    this.user.userName = this.user.email;    
     this.userservice.add(this.user)
       .subscribe(res => {
+        this.spinnerService.turnOffSpinner();
         this.router.navigate(['../admin/manager/users']);
-      },
-        (error) => {
-          this.spinnerService.turnOffSpinner();
-
-          this.userValidation = JSON.parse(error._body);
-          this.isInvalid = true;
-        }
-      )
+      })
   }
-
-
 }

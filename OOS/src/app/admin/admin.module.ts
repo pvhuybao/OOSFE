@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Ng5BreadcrumbModule, BreadcrumbService} from 'ng5-breadcrumb';
+import { Ng5BreadcrumbModule, BreadcrumbService} from 'long-ng5-breadcrumb';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -37,6 +40,18 @@ import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
+import { EditorComponent } from './editor/editor.component';
+import { AccountService } from './services/account.service';
+import {FeedbackService} from './services/feedback.service';
+
+//self-directives
+import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
+import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+//import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+import { SocialNetworkService } from './services/socialnetwork.service';
+import { SharedModule } from '../shared/modules/shared.module';
+
 
 @NgModule({
   imports: [
@@ -45,7 +60,12 @@ import { ConfigurationService } from './services/configuration.service';
     AdminRoutingModule,
     BrowserAnimationsModule,
     Ng5BreadcrumbModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
+    NgbModule,
+    MyDatePickerModule,
+    SharedModule
   ],
     
   declarations: [
@@ -71,6 +91,10 @@ import { ConfigurationService } from './services/configuration.service';
     AdminManagementComponent,
     CreateOrderComponent,
     ConfigurationComponent,
+    EditorComponent,
+    CustomerFeedbackComponent,
+    FeedbackDetailComponent,
+    SocialNetworkComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -82,7 +106,10 @@ import { ConfigurationService } from './services/configuration.service';
     OrdersService,
     SpinnerService,
     BreadcrumbService,
-    ConfigurationService
+    ConfigurationService,
+    AccountService,
+    FeedbackService,
+    SocialNetworkService
   ]
 })
 export class AdminModule { }

@@ -56,6 +56,7 @@ export class CreateOrderComponent implements OnInit {
   shows: string = "hidden";
   orderDetail = new OrderDetailModel;
   listOrderDetails = new Array<OrderDetailModel>();
+  product = new ProductModel;
 
 
   constructor(private orderService: OrdersService, private productService: ProductService, private router: Router,private spinnerService: SpinnerService) { }
@@ -76,7 +77,7 @@ export class CreateOrderComponent implements OnInit {
 
     this.searchResult = '';
     // check duplicate **
-    let indexMatch = this.indexDetailMatch(product.id);
+    let indexMatch = this.indexDetailMatch(product.code);
     if (indexMatch > -1) {
       this.listOrderDetails[indexMatch].quantity += 1
       let quantity = this.listOrderDetails[indexMatch].quantity
@@ -85,7 +86,7 @@ export class CreateOrderComponent implements OnInit {
     }
     else {
       let detail: OrderDetailModel = {
-        idProduct: product.id,
+        idProduct: product.code,
         nameProduct: product.name,
         quantity: 1,
         // price: product.price,

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
-
 import { ShoppingRoutingModule } from './shopping-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ShoppingCartComponent } from './cart/shopping-cart/shopping-cart.component';
@@ -20,16 +19,37 @@ import { ProductService } from './services/product.service';
 import { CartComponent } from './home-page/cart/cart.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { ThankyouComponent } from './cart/thankyou/thankyou.component';
-import { ShippingInfoComponent } from './cart/shipping-info/shipping-info.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
+import { PaypalComponent } from './cart/paypal/paypal.component';
 import { CarouselComponent } from './home-page/carousel/carousel.component';
 import { ShippingReturnComponent } from './shipping-return/shipping-return.component';
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
+import { AccountService } from './services/account.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToasterModule } from 'angular2-toaster';
+import { ConfigurationService } from './services/configuration.service';
+import { CarouselProductComponent } from './product-detail/carousel-product/carousel-product.component';
+import { LoginAccountComponent } from './account/login-account/login-account.component';
+import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
+import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
+import { ProductBoxComponent } from './category-details/product-box/product-box.component';
+import { MyDatePickerModule } from 'mydatepicker';
+import { MetaDataService } from './services/meta-data.service';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { SharedModule } from '../shared/modules/shared.module';
+import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
+
+
+
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
@@ -39,7 +59,12 @@ import { OrderService } from './services/order.service';
     ShoppingRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot(),
+    MyDatePickerModule,
+    SharedModule
+  
   ],
   declarations: [
     HomePageComponent, 
@@ -56,20 +81,35 @@ import { OrderService } from './services/order.service';
     CartComponent,
     PaymentComponent,
     ThankyouComponent,
-    ShippingInfoComponent,
     CategoryDetailsComponent,
     ContactComponent,
+    PaypalComponent,
     CarouselComponent,
     ShippingReturnComponent,
     ShippingGuideComponent,
-    FaqComponent
+    FaqComponent,
+    CarouselProductComponent,
+    CartOverviewComponent,
+    CreateAccountComponent,
+    CarouselProductComponent,
+    LoginAccountComponent,
+    ProfileAccountComponent,
+    ProductBoxComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailComponent,
+    WishlistAccountComponent,
+    InformCreateSucces,
+    OrderDetailsComponent
   ],
   providers: [
     CategoryService, 
     ProductService, 
     CartService,
     EmailService,
-    OrderService
+    OrderService,
+    AccountService,
+    ConfigurationService,
+    MetaDataService,  
   ]
 })
 export class ShoppingModule { }

@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
 import { UserModel } from '../models/user';
+import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class UserService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User';
+  private API_PATH = 'http://localhost:57138/api/User';
 
   constructor(private authHttpService: AuthHttpService) { }
 
-  get(): Observable<UserModel[]> {
-    return this.authHttpService.get(this.API_PATH)
+  get(username: string, email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
+    return this.authHttpService.get(
+      this.API_PATH + "?Username="+username+"&Email="+email+"&Phone="+phone+"&PageSize="+pageSize+"&Page="+page)
       .map(res => res.json() || []);
   }
   getById(id): Observable<UserModel> {

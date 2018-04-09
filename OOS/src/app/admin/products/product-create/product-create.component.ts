@@ -24,6 +24,8 @@ export class ProductCreateComponent implements OnInit {
   code: string;
   idCategory: string = '';
   status: number;
+  discount : number;
+  content: string ='';
   public status1 = ProductStatus;
   public item: number;
   public keys: any;
@@ -34,10 +36,14 @@ export class ProductCreateComponent implements OnInit {
       image: {
         title: 'Image',
         filter: false,
+        editor: {
+          type: 'textarea',
+        },
       },
       color: {
         title: 'Color',
         filter: false,
+        validation: 'color',
       },
       size: {
         title: 'Size',
@@ -87,10 +93,11 @@ export class ProductCreateComponent implements OnInit {
     var product = {
       name: this.name,
       description: this.description,
-      details:this.details,
+      details:this.content,
       idCategory: this.idCategory,
       code: this.code,
       status: this.status,
+      discount : this.discount,
       productTails:this.data
     }
     this.productService.postProduct(product).subscribe(data => {

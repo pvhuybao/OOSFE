@@ -17,19 +17,19 @@
 				<div class="header-search" style="width:70%; max-width:600px">
 					<form>
 						<input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)"
-						 (click)="search(searchBox.value)" type="text" autocomplete="off" class="input search-input" placeholder="Enter your keyword" aria-describedby="basic-addon2"
-						 value="{{searchResult}}">
-						<div class="input-group" style="position:absolute; left:25%; z-index:100; background:white; width:75%">
-							<ul [hidden]="hidden" >
-								<li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product.id)" style="padding:15px; cursor:pointer">
+						 (click)="search(searchBox.value)" type="text" autocomplete="off" class="input search-input" placeholder="Enter your keyword"
+						 aria-describedby="basic-addon2" value="{{searchResult}}">
+						<div class="input-group" id="suggest-box">
+							<ul [hidden]="hidden">
+								<li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product)" style="padding:15px; cursor:pointer">
 									<span>
-											<p style="display:inline; font-weight:bold">{{product.name}}</p> in 
-											<p style="display:inline; color:blueviolet">{{categoryName(product.idCategory)}}</p>
+										<p style="display:inline; font-weight:bold">{{product.name}}</p> in
+										<p style="display:inline; color: #F8694A">{{categoryName(product.idCategory)}}</p>
 									</span>
 								</li>
 							</ul>
 						</div>
-						<select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="width:25%">
+						<select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="width:140px">
 							<option value="all">All Categories</option>
 							<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
 						</select>
@@ -41,26 +41,62 @@
 				<!-- /Search -->
 			</div>
 			<div class="pull-right">
-				<ul class="header-btns">
+				<ul *ngIf="!user" class="header-btns">
 					<!-- Account -->
 					<li class="header-account dropdown default-dropdown">
+
 						<div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
 							<div class="header-btns-icon">
 								<i class="fa fa-user-o"></i>
 							</div>
-							<strong class="text-uppercase">My Account
+							<strong class="text-uppercase"> My Account
 								<i class="fa fa-caret-down"></i>
 							</strong>
 						</div>
-						<a class="text-uppercase">Login</a> /
-						<a class="text-uppercase">Join</a>
+						<a routerLink="/account/login" class="text-uppercase">Login</a> /
+						<a class="text-uppercase" routerLink="/account/register">Join</a>
+					</li>
+					<!-- /Account -->
+
+					<!-- Cart -->
+					<li>
+						<app-cart></app-cart>
+					</li>
+					<!-- /Cart -->
+
+					<!-- Mobile nav toggle-->
+					<li class="nav-toggle">
+						<button class="nav-toggle-btn main-btn icon-btn">
+							<i class="fa fa-bars"></i>
+						</button>
+					</li>
+					<!-- / Mobile nav toggle -->
+				</ul>
+				<ul *ngIf="user" class="header-btns">
+					<!-- Account -->
+					<li class="header-account dropdown default-dropdown">
+
+						<div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+							<div class="header-btns-icon">
+								<i class="fa fa-user-o"></i>
+							</div>
+							<strong class="text-uppercase, shortName">{{user.userName}}
+								<i class="fa fa-caret-down"></i>
+							</strong>
+						</div>
+						<span class="text-uppercase">Account</span>
 						<ul class="custom-menu">
 							<li>
-								<a>
+								<a routerLink="/account/profile">
 									<i class="fa fa-user-o"></i> My Account</a>
 							</li>
 							<li>
-								<a>
+								<a routerLink="/account/order-history">
+									<i class="fa fa-book"></i> Order History</a>
+							</li>
+							<li>
+							
+								<a routerLink="/account/wishlist">
 									<i class="fa fa-heart-o"></i> My Wishlist</a>
 							</li>
 							<li>
@@ -72,12 +108,13 @@
 									<i class="fa fa-check"></i> Checkout</a>
 							</li>
 							<li>
-								<a>
-									<i class="fa fa-unlock-alt"></i> Login</a>
+								<a routerLink="/account/register">
+									<i class="fa fa-user-plus"></i> Create An Account
+								</a>
 							</li>
 							<li>
-								<a>
-									<i class="fa fa-user-plus"></i> Create An Account</a>
+								<a (click)="logout()">
+									<i class="fa fa-check"></i> Logout</a>
 							</li>
 						</ul>
 					</li>
@@ -413,32 +450,48 @@
 					</div>
 					<!-- /footer logo -->
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+					<ul class="">
+						<li>
+							<a>
+								<i class="">Ðịa chỉ :{{socialnetworks.address}}</i>
+							</a>
+						</li>
+						<li>
+							<a>
+								<i class="">Hotline :{{socialnetworks.hostline}}</i>
+							</a>
+						</li>
+						<li>
+							<a>
+								<i class="">Email: {{socialnetworks.email}}</i>
+							</a>
+						</li>
+					</ul>
 
 					<!-- footer social -->
 					<ul class="footer-social">
 						<li>
-							<a>
+							<a href="{{socialnetworks.linkFB}}">
 								<i class="fa fa-facebook"></i>
 							</a>
 						</li>
 						<li>
-							<a>
+							<a href="{{socialnetworks.linkTwitter}}">
 								<i class="fa fa-twitter"></i>
 							</a>
 						</li>
 						<li>
-							<a>
+							<a href="{{socialnetworks.linkInstagram}}">
 								<i class="fa fa-instagram"></i>
 							</a>
 						</li>
 						<li>
-							<a>
+							<a href="{{socialnetworks.linkGooglePlus}}">
 								<i class="fa fa-google-plus"></i>
 							</a>
 						</li>
 						<li>
-							<a>
+							<a href="{{socialnetworks.linkPinterest}}">
 								<i class="fa fa-pinterest"></i>
 							</a>
 						</li>
@@ -451,22 +504,19 @@
 			<!-- footer widget -->
 			<div class="col-md-3 col-sm-6 col-xs-6">
 				<div class="footer">
-					<h3 class="footer-header">My Account</h3>
+					<h3 class="footer-header">Thông tin tài khoản</h3>
 					<ul class="list-links">
 						<li>
-							<a>My Account</a>
+							<a>Tài khoản của tôi</a>
 						</li>
 						<li>
-							<a>My Wishlist</a>
+							<a>Danh sách </a>
 						</li>
 						<li>
-							<a>Compare</a>
+							<a>Kiểm Tra</a>
 						</li>
 						<li>
-							<a>Checkout</a>
-						</li>
-						<li>
-							<a>Login</a>
+							<a>Ðăng nhập</a>
 						</li>
 					</ul>
 				</div>
@@ -478,16 +528,16 @@
 			<!-- footer widget -->
 			<div class="col-md-3 col-sm-6 col-xs-6">
 				<div class="footer">
-					<h3 class="footer-header">Customer Service</h3>
+					<h3 class="footer-header">Chăm sóc Khách Hàng</h3>
 					<ul class="list-links">
 						<li>
-							<a routerLink="/contact">Contact Us</a>
+							<a routerLink="/contact">Liên Hệ</a>
 						</li>
 						<li>
-							<a routerLink="/shipping-return">Shipping & Return</a>
+							<a routerLink="/shipping-return">Chính sách giao và trả hàng</a>
 						</li>
 						<li>
-							<a routerLink="/shipping-guide">Shipping Guide</a>
+							<a routerLink="/shipping-guide">Huớng dẫn mua hàng</a>
 						</li>
 						<li>
 							<a routerLink="/faq">FAQ</a>
@@ -500,14 +550,14 @@
 			<!-- footer subscribe -->
 			<div class="col-md-3 col-sm-6 col-xs-6">
 				<div class="footer">
-					<h3 class="footer-header">Stay Connected</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-					<form>
-						<div class="form-group">
-							<input class="input" placeholder="Enter Email Address">
-						</div>
-						<button class="primary-btn">Join Newslatter</button>
-					</form>
+					<h3 class="footer-header">Ðang ký nhận tin E-Shop</h3>
+					<p style="font-size: 12px">Ðừng bỏ lỡ hàng ngàn sản phẩm và chuong trình siêu hấp dẫn.</p>
+					<!-- <form> -->
+					<div class="form-group">
+						<input class="input" type="email" placeholder="Ðịa chỉ Email của bạn" id="emailSubscribe" [(ngModel)]="emailSubscribe" required>
+					</div>
+					<button class="primary-btn" (click)="sentEmailSubscribe()">Ðăng ký</button>
+					<!-- </form> -->
 				</div>
 			</div>
 			<!-- /footer subscribe -->
@@ -531,3 +581,5 @@
 	<!-- /container -->
 </footer>
 <!-- /FOOTER -->
+<toaster-container></toaster-container>
+<!-- <my-toast></my-toast> -->

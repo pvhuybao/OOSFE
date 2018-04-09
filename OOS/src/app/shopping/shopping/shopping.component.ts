@@ -8,6 +8,14 @@ import { debounceTime, distinctUntilChanged, switchMap, delay } from 'rxjs/opera
 import { Router, NavigationStart, NavigationEnd, ChildActivationEnd } from '@angular/router';
 import normalize, { normalizeSync } from 'normalize-diacritics';
 import { CategoryModel } from '../models/category';
+import { EmailService } from '../services/email.service';
+import { SpinnerService } from '../../shared/services/spinner.service';
+import { EmailSubscribeModel } from '../models/emailSubscribe';
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+import { CreateUserModel } from '../models/user/create-user/create-user';
+import { AccountService } from '../services/account.service';
+import { SocialNetworkModel } from '../../admin/models/SocialNetworkModel';
+import { SocialNetworkService } from '../../admin/services/socialnetwork.service';
 
 @Component({
   selector: 'app-shopping',
@@ -16,7 +24,11 @@ import { CategoryModel } from '../models/category';
 })
 export class ShoppingComponent implements OnInit, PipeTransform {
   transform(value: string) {
-    let newvalue = value.replace(' ', '_');
+    let newvalue = value
+      .replace(/Đ/g, 'D')
+      .replace(/đ/g, 'd')
+      .replace(/&/g, '')
+      .replace(/\s/g, '_');
     return newvalue;
   }
   //Search product for order details
@@ -32,8 +44,23 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   test: string;
   path: string;
   dblock: string;
+  socialnetworks = new SocialNetworkModel();
 
-  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router, private ele: ElementRef) {
+  public emailSubscribe: string;
+
+  public user = new CreateUserModel;
+
+  constructor(
+    private accountService: AccountService,
+    private categoryService: CategoryService,
+    private productService: ProductService,
+    private router: Router,
+    private ele: ElementRef,
+    private emailService: EmailService,
+    private spinnerService: SpinnerService,
+    private toasterService: ToasterService,
+    private socialNetworkService: SocialNetworkService
+  ) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
         if (this.router.url == "/") this.dblock = "block";
@@ -49,15 +76,18 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
     this.listProduct = this.searchTerms.pipe(
 
-      // wait 300ms after each keystroke before considering the term
+      // wait 50ms after each keystroke before considering the term
       debounceTime(50),
 
       // ignore new term if same as previous term
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory(this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
     );
+    this.getfoter();
+    this.accountService.getUserSession().subscribe(data => this.user = data);
+    this.accountService.setUserSession();
   }
 
   search(term: string): void {
@@ -71,19 +101,19 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   routeCategory(idCategory: string, categoryName: any) {
-    categoryName = normalizeSync(categoryName);
-    var path = "/category/" + idCategory + "_" + this.transform(categoryName);
+    var path = "/category/" + idCategory + "_" + this.transform(normalizeSync(categoryName));
     this.router.navigateByUrl(path);
   }
 
-  routeProduct(productid: string) {
-    this.router.navigateByUrl("/product/"+productid);
+  routeProduct(product: any) {
+    var path = "/product/" + product.id + "_" + this.transform(normalizeSync(product.name));
+    this.router.navigateByUrl(path);
   }
 
-  categoryName(catid: string):string {
+  categoryName(catid: string): string {
     var name;
-    for(var i=0; i < this.categories.length; i++) {
-      if(catid == this.categories[i].id) name = this.categories[i].name;
+    for (var i = 0; i < this.categories.length; i++) {
+      if (catid == this.categories[i].id) name = this.categories[i].name;
     }
     return name;
   }
@@ -93,5 +123,29 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     else {
       this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword } });
     }
+  }
+  sentEmailSubscribe() {
+    let email = new EmailSubscribeModel();
+    email.emailSubscribe = this.emailSubscribe;
+    this.spinnerService.startLoadingSpinner();
+    this.emailService.emailSubscribe(email).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
+      setTimeout(() => {
+        this.toasterService.pop('success', 'successfuly', 'Added!');
+      }, 500)
+    })
+  }
+  logout() {
+    sessionStorage.removeItem('user');
+    this.router.navigateByUrl("");
+    this.ngOnInit();
+
+
+  }
+  getfoter() {
+    this.socialNetworkService.getfoter().subscribe(data => {
+      this.socialnetworks = data;
+      console.log(this.socialnetworks);
+    });
   }
 }
