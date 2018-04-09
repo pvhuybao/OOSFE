@@ -43,6 +43,7 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 
@@ -95,7 +96,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     ProfileAccountComponent,
     ProductBoxComponent,
     WishlistAccountComponent,
-    InformCreateSucces
+    InformCreateSucces,
+    OrderDetailsComponent
   ],
   providers: [
     CategoryService, 

@@ -25,6 +25,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { LoginAccountComponent } from './account/login-account/login-account.component';
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 const shoppingRoutes: Routes = [
@@ -74,7 +75,8 @@ const shoppingRoutes: Routes = [
           {path: 'login', component: LoginAccountComponent},
           {path: 'inform-create', component: InformCreateSucces}
         ]
-      }
+      },
+      {path: 'order-details/:id', component: OrderDetailsComponent},
     ]
   },
 ];
