@@ -46,6 +46,9 @@ import {FeedbackService} from './services/feedback.service';
 //self-directives
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+//import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+import { SocialNetworkService } from './services/socialnetwork.service';
 import { SharedModule } from '../shared/modules/shared.module';
 
 
@@ -89,6 +92,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     EditorComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
+    SocialNetworkComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -102,7 +106,8 @@ import { SharedModule } from '../shared/modules/shared.module';
     BreadcrumbService,
     ConfigurationService,
     AccountService,
-    FeedbackService
+    FeedbackService,
+    SocialNetworkService
   ]
 })
 export class AdminModule { }
