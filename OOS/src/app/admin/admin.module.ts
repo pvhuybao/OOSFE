@@ -48,6 +48,8 @@ import {FeedbackService} from './services/feedback.service';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
 import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+import { SocialNetworkService } from './services/socialnetwork.service';
 
 
 @NgModule({
@@ -91,6 +93,7 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     PagingComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
+    SocialNetworkComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -104,7 +107,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     BreadcrumbService,
     ConfigurationService,
     AccountService,
-    FeedbackService
+    FeedbackService,
+    SocialNetworkService
   ]
 })
 export class AdminModule { }
