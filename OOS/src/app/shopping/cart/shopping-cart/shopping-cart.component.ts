@@ -21,6 +21,7 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.get();
   }
+
   get() {
     this.cartService.get().subscribe(x => {
       this.cart = x;
@@ -29,10 +30,12 @@ export class ShoppingCartComponent implements OnInit {
     if (this.cart)
       this.updateTotal();
   }
+
   remove(product) {
     this.cartService.remove(product);
     this.updateTotal();
   }
+
   updateTotal() {
     var total = 0;
     this.cart.forEach(function (item) {
@@ -40,17 +43,32 @@ export class ShoppingCartComponent implements OnInit {
     })
     this.total = total;
   }
+
+  increase(product, quantity) {
+    let qty = quantity*1 + 1;
+    this.updateQuantity(product, qty);
+  }
+
+  decrease(product, quantity) {
+    let qty = quantity*1 - 1;
+    this.updateQuantity(product, qty);
+  }
+
   updateQuantity(product, quantity) {
     if (quantity < 1)
       quantity = 1;
+    if (quantity >= product.quantity)
+      quantity = product.quantity;
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
   }
+
   routeProduct(name, id) {
     var nameProduct = normalizeSync(name);
     var path = "/product/" + id + "_" + this.transform(nameProduct);
     this.router.navigateByUrl(path);
   }
+
   transform(value: string) {
     let newvalue = value
       .replace(/Đ/g, 'D')
