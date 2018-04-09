@@ -12,6 +12,8 @@ import { ProductModel } from '../models/product';
 import { ConfigurationService } from '../services/configuration.service';
 import { Currency } from '../models/configuration';
 import { MetaDataService } from '../services/meta-data.service';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -47,10 +49,12 @@ export class ProductDetailComponent implements OnInit {
               private cartService: CartService,
               private router: Router,
               private toasterService: ToasterService,
-              private metadataService: MetaDataService
+              private metadataService: MetaDataService,
+              private title : Title
               ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
+   
     let params: any = this.activatedRoute.snapshot.params;
     this.link = this.activatedRoute.snapshot.params.id;
     this.idProduct = this.GetIdProduct(params.id);
@@ -64,6 +68,7 @@ export class ProductDetailComponent implements OnInit {
       this.sizeSelected = this.product.productTails[0].size;
       this.getSizeByColor(this.colorSelected);
       this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
+      this.title.setTitle( this.product.name +  ' - ' + ' OOS ');   
 
       this.listColor = this.getColorOption(); 
       if(this.product.discount === 0)

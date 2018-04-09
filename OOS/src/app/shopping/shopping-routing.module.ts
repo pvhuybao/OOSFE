@@ -37,47 +37,47 @@ const shoppingRoutes: Routes = [
     component: ShoppingComponent,
     children: [
       { path: 'paypal', component: PaypalComponent },
-      { path: '', component: HomePageComponent, pathMatch: 'full' },
+      { path: '', component: HomePageComponent, pathMatch: 'full',data: { title : 'Home page'} },
       {
         path: 'cart',
         component: CartOverviewComponent,
         data: { step: 5 },
         children: [
-          { path: '', component: ShoppingCartComponent, data: { step: 1 } },
-          { path: 'payment', component: PaymentComponent, data: { step: 2 } },
-          { path: 'thankyou', component: ThankyouComponent, data: { step: 3 } },
+          { path: '', component: ShoppingCartComponent, data: { step: 1, title : " Cart"} },
+          { path: 'payment', component: PaymentComponent, data: { step: 2 , title : "Payment"} },
+          { path: 'thankyou', component: ThankyouComponent, data: { step: 3,title : "Thank You" } },
         ]
       },
       {
         path: 'category',
         children: [
-          { path: ':id', component: CategoryDetailsComponent,data: {title: 'Category Detail'} },
+          { path: ':id', component: CategoryDetailsComponent },
         ]
       },
       {
         path: 'product',
         children: [
-          { path: ':id', component: ProductDetailComponent, data: {title: 'Product Detail'} },
+          { path: ':id', component: ProductDetailComponent },
         ]
       },
       {
         path: 'contact',
         children: [
-          { path: '', component: ContactComponent,data: {title: 'Contact'} },
+          { path: '', component: ContactComponent,data: { title : 'Contact' } },
         ]
       },
-      { path: 'search', component: SearchComponent,data: {title: 'Search'} },
-      { path: 'shipping-return', component: ShippingReturnComponent,data: {title: 'shipping-return'} },
-      { path: 'shipping-guide', component: ShippingGuideComponent,data: {title: 'shipping-guide'} },
-      { path: 'faq', component: FaqComponent ,data: {title: 'FAQ'}},
+      { path: 'search', component: SearchComponent },
+      { path: 'shipping-return', component: ShippingReturnComponent,data: { title : 'Shipping-return' } },
+      { path: 'shipping-guide', component: ShippingGuideComponent,data: { title : 'Shipping-guide' } },
+      { path: 'faq', component: FaqComponent,data: { title : 'FAQ' }},
       {
         path: 'account',
         
         children :[
-          {path: 'profile', component: ProfileAccountComponent,data: {title: 'profile'}},
-          {path: 'register', component: CreateAccountComponent,data: {title: 'register'}},
-          {path: 'login', component: LoginAccountComponent,data: {title: 'login'}},
-          {path: 'inform-create', component: InformCreateSucces,data: {title: 'inform-create'}}
+          {path: 'profile', component: ProfileAccountComponent},
+          {path: 'register', component: CreateAccountComponent},
+          {path: 'login', component: LoginAccountComponent},
+          {path: 'inform-create', component: InformCreateSucces}
         ]
       },
       {path: 'order-details/:id', component: OrderDetailsComponent},
