@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddressModel } from '../../models/address';
 import { CartService } from '../../services/cart.service';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { Observable } from 'rxjs/Observable';
+declare var google: any;
 
 @Component({
   selector: 'app-payment',
@@ -71,5 +73,57 @@ export class PaymentComponent implements OnInit {
 
   useShippingAddress() {
     this.order.address[1] = this.order.address[0];
+  }
+
+
+  shippingFee: number = 0; 
+  addDistance() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+
+    var onChangeHandler = function () {
+      this.calculateAndDisplayRoute(directionsService, directionsDisplay);
+    };
+    document.getElementById('reloadMap').addEventListener('click', onChangeHandler);
+
+    this.calculateAndDisplayRoute(directionsService, directionsDisplay);       
+  }
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    directionsService.route({     
+      origin: '364 Cong Hoa',
+      destination: 'quan ' + this.order.address[0].district,
+      travelMode: google.maps.TravelMode.DRIVING
+    }, function (response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+        //get direction info
+        var htmlReturn = '';
+        var route = response.routes[0];
+        var money = 0.5 * route.legs[0].distance.value;
+        this.shippingFee = money;
+        htmlReturn += "Distance: <strong>" + route.legs[0].distance.text + "</strong>";
+        htmlReturn += ", Tiền ship của bạn là: <strong>" + money + "</strong> VNĐ";
+        document.getElementById('infoDirections').innerHTML = htmlReturn;
+
+        var htmlReturn2 = '';
+        htmlReturn2 = this.shippingFee;
+        document.getElementById('shipfee').innerHTML = htmlReturn2;        
+      } else {
+        var htmlReturn = '';
+        var route = response.routes[0];
+        htmlReturn = "Dia chi nay khong ton tai";
+        this.shippingFee = 0;
+        document.getElementById('infoDirections').innerHTML = htmlReturn;
+
+        var htmlReturn2 = '';
+        htmlReturn2 = this.shippingFee;
+        document.getElementById('shipfee').innerHTML = htmlReturn2;        
+      }      
+    });
+  }
+
+  onBlurMethod() {
+    this.addDistance();    
   }
 }

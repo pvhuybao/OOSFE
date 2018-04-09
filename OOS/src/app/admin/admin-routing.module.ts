@@ -29,6 +29,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { EditorComponent } from './editor/editor.component';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+import { SocialNetworkComponent } from './social-network/social-network.component';
 
 const adminRoutes: Routes = [
   {
@@ -78,6 +79,7 @@ const adminRoutes: Routes = [
           { path: 'orders/create', component: CreateOrderComponent },
           //{ path: 'orders/edit/:id', component: EditOrdersComponent },
           { path: 'login', component: AdminLoginComponent },
+          { path: 'social', component: SocialNetworkComponent },
           { path: 'orders/edit/:id', component: EditOrderComponent },
           { path: 'config', component: ConfigurationComponent },
           { path: 'shipping-return', component: EditorComponent, data: { page: "return"}},

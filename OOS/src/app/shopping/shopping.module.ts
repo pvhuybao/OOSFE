@@ -41,9 +41,11 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { SharedModule } from '../shared/modules/shared.module';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
-import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
-import { PagingModule } from '../shared/paging/paging.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -58,9 +60,7 @@ import { PagingModule } from '../shared/paging/paging.component';
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
     MyDatePickerModule,
-    ValidationModule,
-    PagingModule
-
+    SharedModule
   ],
   declarations: [
     HomePageComponent, 
@@ -91,8 +91,11 @@ import { PagingModule } from '../shared/paging/paging.component';
     LoginAccountComponent,
     ProfileAccountComponent,
     ProductBoxComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailComponent,
     WishlistAccountComponent,
-    InformCreateSucces
+    InformCreateSucces,
+    OrderDetailsComponent
   ],
   providers: [
     CategoryService, 
@@ -102,8 +105,7 @@ import { PagingModule } from '../shared/paging/paging.component';
     OrderService,
     AccountService,
     ConfigurationService,
-    MetaDataService
-    
+    MetaDataService,  
   ]
 })
 export class ShoppingModule { }

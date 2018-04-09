@@ -48,7 +48,7 @@ export class AccountService {
       )
   }
 
-  put(user: UserModel): Observable<any> {
-    return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
+  put(id: string,user: UserModel): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "/" + id, user)
   }
 }

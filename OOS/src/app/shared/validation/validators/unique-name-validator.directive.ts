@@ -21,7 +21,7 @@ export class UniqueNameValidatorDirective implements Validator{
 
     return new Promise(resolve => {
       setTimeout(() => {
-        resolve( this.listUsers.find(x => x.username === c.value) ? message : null );
+        resolve( this.listUsers.find(x => x.userName === c.value) ? message : null );
       }, 300);
     });
   }
