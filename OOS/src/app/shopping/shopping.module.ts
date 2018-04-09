@@ -43,9 +43,7 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
-
-
-
+import { PagingModule } from '../shared/paging/paging.component';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -60,9 +58,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
     MyDatePickerModule,
-    ValidationModule
-  
-  
+    ValidationModule,
+    PagingModule
 
   ],
   declarations: [

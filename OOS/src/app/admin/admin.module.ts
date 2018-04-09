@@ -40,7 +40,6 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
-import { PagingComponent } from '../shared/paging/paging.component';
 import { AccountService } from './services/account.service';
 import {FeedbackService} from './services/feedback.service';
 
@@ -48,7 +47,7 @@ import {FeedbackService} from './services/feedback.service';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
 import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
-
+import { PagingModule } from '../shared/paging/paging.component';
 
 @NgModule({
   imports: [
@@ -61,7 +60,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
     NgbModule,
-    ValidationModule
+    ValidationModule,
+    PagingModule
   ],
     
   declarations: [
@@ -88,9 +88,8 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     CreateOrderComponent,
     ConfigurationComponent,
     EditorComponent,
-    PagingComponent,
     CustomerFeedbackComponent,
-    FeedbackDetailComponent,
+    FeedbackDetailComponent
   ],
   entryComponents:[
     AdminLoginComponent

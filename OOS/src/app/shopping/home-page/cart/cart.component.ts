@@ -49,7 +49,12 @@ export class CartComponent implements OnInit {
     this.router.navigateByUrl(path);
   }
   transform(value: string) {
-    let newvalue = value.replace(' ', '_');
+    let newvalue = value
+      .replace(/Đ/g, 'D')
+      .replace(/đ/g, 'd')
+      .replace(/&/g, '')
+      .replace(/\s/g, '_');
+
     return newvalue;
   }
 }

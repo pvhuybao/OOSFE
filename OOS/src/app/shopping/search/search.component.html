@@ -210,10 +210,9 @@
             </div>
             <div class="sort-filter">
               <span class="text-uppercase">Sort By:</span>
-              <select class="input">
-                <option value="0">Position</option>
-                <option value="0">Price</option>
-                <option value="0">Rating</option>
+              <select class="input" (change)="changeSort()" [(ngModel)]="sort" name="sort">
+                <option value="name">Name</option>
+                <option value="price">Price</option>
               </select>
               <a class="main-btn icon-btn">
                 <i class="fa fa-arrow-down"></i>
@@ -221,31 +220,7 @@
             </div>
           </div>
           <div class="pull-right">
-            <div class="page-filter">
-              <span class="text-uppercase">Show:</span>
-              <select class="input">
-                <option value="0">10</option>
-                <option value="1">20</option>
-                <option value="2">30</option>
-              </select>
-            </div>
-            <ul class="store-pages">
-              <li>
-                <span class="text-uppercase">Page:</span>
-              </li>
-              <li class="active">1</li>
-              <li>
-                <a>2</a>
-              </li>
-              <li>
-                <a>3</a>
-              </li>
-              <li>
-                <a>
-                  <i class="fa fa-caret-right"></i>
-                </a>
-              </li>
-            </ul>
+            <app-paging [itemCount]="itemCount" (page)="getPage($event)" (pageSize)="getPageSize($event)"></app-paging>
           </div>
         </div>
         <!-- /store top filter -->
@@ -257,7 +232,6 @@
         <!-- /Product Single -->
         <div class="row">
           <app-product-box *ngFor="let product of products; let i = index" [productDetail]="product"></app-product-box>
-
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import {ProductService} from '../services/Product.service'
 import { CategoryService } from '../services/category.service';
 import { ProductStatus } from '../models/product';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { PagingComponent } from '../../shared/paging/paging.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

@@ -19,12 +19,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { MyToastModule } from './shared/my-toast.component';
+import { PagingModule } from './shared/paging/paging.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { MyToastModule } from './shared/my-toast.component';
     NouisliderModule,
     Ng4LoadingSpinnerModule,
     MyToastModule,
+    PagingModule,
     Ng5BreadcrumbModule.forRoot(),
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),

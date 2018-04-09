@@ -79,7 +79,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar",this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
     );
 
     this.accountService.getUserSession().subscribe(data => this.user = data);
@@ -90,6 +90,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     if (term === "") this.hidden = true;
     else this.hidden = false;
     this.searchTerms.next(term);
+    console.log(this.listProduct);
   }
 
   hide() {
@@ -120,6 +121,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword } });
     }
   }
+
   sentEmailSubscribe() {
     let email = new EmailSubscribeModel();
     email.emailSubscribe = this.emailSubscribe;
@@ -131,12 +133,13 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
-  logout(){
+  
+  logout() {
     sessionStorage.removeItem('user');
     this.router.navigateByUrl("");
     this.ngOnInit();
-    
-    
+
+
   }
 }
 
