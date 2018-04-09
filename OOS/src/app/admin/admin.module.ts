@@ -40,16 +40,16 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
-import { PagingComponent } from '../shared/paging/paging.component';
 import { AccountService } from './services/account.service';
 import {FeedbackService} from './services/feedback.service';
 
 //self-directives
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
-import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+//import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
 import { SocialNetworkComponent } from './social-network/social-network.component';
 import { SocialNetworkService } from './services/socialnetwork.service';
+import { SharedModule } from '../shared/modules/shared.module';
 
 
 @NgModule({
@@ -63,7 +63,7 @@ import { SocialNetworkService } from './services/socialnetwork.service';
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
     NgbModule,
-    ValidationModule
+    SharedModule
   ],
     
   declarations: [
@@ -90,7 +90,6 @@ import { SocialNetworkService } from './services/socialnetwork.service';
     CreateOrderComponent,
     ConfigurationComponent,
     EditorComponent,
-    PagingComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
     SocialNetworkComponent,

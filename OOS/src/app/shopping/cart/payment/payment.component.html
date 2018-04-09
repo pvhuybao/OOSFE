@@ -110,14 +110,14 @@
                 </ul>
               </td>
               <td class="price text-center">
-                <strong>{{detail.price}}</strong>
+                <strong>{{detail.price | number}}</strong>
               </td>
               <td></td>
               <td class="price text-center">
-                <strong>{{detail.quantity}}</strong>
+                <strong>{{detail.quantity | number}}</strong>
               </td>
               <td class="total text-center">
-                <strong>{{detail.totalPrice}}</strong>
+                <strong>{{detail.totalPrice | number}}</strong>
               </td>
             </tr>
           </tbody>
@@ -125,7 +125,7 @@
             <tr>
               <th class="empty" colspan="3"></th>
               <th>TOTAL</th>
-              <th colspan="2" class="total">{{order.total}}</th>
+              <th colspan="2" class="total">{{order.total | number}}</th>
             </tr>
           </tfoot>
         </table>

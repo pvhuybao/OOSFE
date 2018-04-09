@@ -41,8 +41,10 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { SharedModule } from '../shared/modules/shared.module';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
-import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
@@ -61,10 +63,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
     MyDatePickerModule,
-    ValidationModule
+    SharedModule
   
-  
-
   ],
   declarations: [
     HomePageComponent, 
@@ -95,6 +95,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     LoginAccountComponent,
     ProfileAccountComponent,
     ProductBoxComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailComponent,
     WishlistAccountComponent,
     InformCreateSucces,
     OrderDetailsComponent
@@ -107,8 +109,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     OrderService,
     AccountService,
     ConfigurationService,
-    MetaDataService
-    
+    MetaDataService,  
   ]
 })
 export class ShoppingModule { }
