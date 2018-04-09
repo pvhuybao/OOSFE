@@ -51,4 +51,12 @@ export class AccountService {
   put(id: string,user: UserModel): Observable<any> {
     return this.authHttpService.put(this.API_PATH + "/" + id, user)
   }
+
+  getWishList(userId:string):Observable<any[]>{
+    return this.authHttpService.get(this.API_PATH + "GetWishList/"+ userId).map(res => res.json() || []);
+  }
+
+  removeFromWishList(userID:string, productID:string): Observable<any>{
+    return this.authHttpService.delete(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
+  }
 }
