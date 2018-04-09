@@ -75,7 +75,7 @@ export class ProfileAccountComponent implements OnInit {
     this.spinnerService.startLoadingSpinner()
     var updateUser = Object.assign({}, this.user);
     updateUser.gender -= 1;
-    this.ss.put(updateUser).subscribe(data => {
+    this.ss.put(this.idUser,updateUser).subscribe(data => {
       this.spinnerService.turnOffSpinner()
       this.toasterService.pop("success", "success", "You have successfully updated your profile");
     })

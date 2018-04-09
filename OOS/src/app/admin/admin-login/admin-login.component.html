@@ -8,22 +8,25 @@
             </div>
             <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                 alt="">
+                <form #loginForm="ngForm">
                 <div class="form-signin">
-                    <input type="text" class="input" placeholder="Email" required autofocus [(ngModel)]="email">
-                    <br/>
-                    <br/>
-                    <input type="password" class="input" placeholder="Password" required [(ngModel)]="password">
-                        <button class="primary-btn btn-block" (click)="login()">
+                        <input name="email" placeholder="Email" [(ngModel)]="email" type="email" class="input" #email_validation="ngModel" ngModel required EmailValidator>
+                        <show-errors [control]="email_validation"></show-errors>
+                        <br/>
+                        <br/>
+                        <input name="password" type="password" class="input" placeholder="Password" required [(ngModel)]="password">
+                        <button class="primary-btn btn-block" [disabled]="!loginForm.valid" (click)="login()">
                             Sign in
                         </button>
-      
-                    <label class="checkbox pull-left shiftleft">
-                        <input type="checkbox" value="remember-me" [(ngModel)]="remember"> Remember me
-                    </label>
-      
-                    <a href="" class="pull-right need-help">Need help? </a>
-                    <span class="clearfix"></span>
-                  </div>
+    
+                        <label class="checkbox pull-left shiftleft">
+                            <input name="remember" type="checkbox" value="remember-me" [(ngModel)]="remember"> Remember me
+                        </label>
+    
+                        <a href="" class="pull-right need-help">Need help? </a>
+                        <span class="clearfix"></span>
+                    </div>
+                </form>
             <!-- <a href="#" class="text-center new-account">Create an account </a> -->
         </div>
     </div>

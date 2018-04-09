@@ -30,7 +30,7 @@
 
   <table class="shopping-cart-table table table">
     <thead class="thead-dark">
-      <tr>
+      <tr>          
         <th scope="col">Username</th>
         <th scope="col">FirstName</th>
         <th scope="col">LastName</th>
@@ -42,12 +42,12 @@
       <tr>
         <td>
           <a routerLink="../{{user.id}}" routerLinkActive="active">{{user.userName}}</a>
-        </td>
+        </td>        
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>
         <td class="text-right">
-          <button class="main-btn icon-btn" routerLink="../{{user.id}}" (click)="getUser(user)">
+          <button class="main-btn icon-btn" routerLink="{{user.id}}" (click)="getUser(user)" >
             <i class="fa fa-edit"></i>
           </button>
           <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(user.id)">
