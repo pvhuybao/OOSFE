@@ -76,8 +76,7 @@ export class PaymentComponent implements OnInit {
   }
 
 
-  shippingFee: number = 0;
-  public location: string;
+  shippingFee: number = 0; 
   addDistance() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -93,7 +92,7 @@ export class PaymentComponent implements OnInit {
   calculateAndDisplayRoute(directionsService, directionsDisplay) {
     directionsService.route({     
       origin: '364 Cong Hoa',
-      destination: this.location,
+      destination: 'quan ' + this.order.address[0].district,
       travelMode: google.maps.TravelMode.DRIVING
     }, function (response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
