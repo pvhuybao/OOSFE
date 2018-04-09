@@ -45,6 +45,10 @@ import { OrderHistoryComponent } from './account/order-history/order-history.com
 import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
 import { SharedModule } from '../shared/modules/shared.module';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
+
+
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -94,7 +98,8 @@ import { WishlistAccountComponent } from './account/wishlist-account/wishlist-ac
     OrderHistoryComponent,
     OrderHistoryDetailComponent,
     WishlistAccountComponent,
-    InformCreateSucces
+    InformCreateSucces,
+    OrderDetailsComponent
   ],
   providers: [
     CategoryService, 
@@ -104,8 +109,7 @@ import { WishlistAccountComponent } from './account/wishlist-account/wishlist-ac
     OrderService,
     AccountService,
     ConfigurationService,
-    MetaDataService,
-    
+    MetaDataService,  
   ]
 })
 export class ShoppingModule { }

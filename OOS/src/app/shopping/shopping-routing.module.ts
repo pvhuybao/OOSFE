@@ -27,6 +27,8 @@ import { LoginAccountComponent } from './account/login-account/login-account.com
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
 import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
 
 
 const shoppingRoutes: Routes = [
@@ -78,7 +80,8 @@ const shoppingRoutes: Routes = [
           { path: 'order-history/:id', component: OrderHistoryDetailComponent },
           { path: 'inform-create', component: InformCreateSucces }
         ]
-      }
+      },
+      {path: 'order-details/:id', component: OrderDetailsComponent},
     ]
   },
 ];
