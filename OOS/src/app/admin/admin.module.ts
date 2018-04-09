@@ -41,14 +41,13 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
-import { PagingComponent } from '../shared/paging/paging.component';
 import { AccountService } from './services/account.service';
 import {FeedbackService} from './services/feedback.service';
 
 //self-directives
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
-import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SharedModule } from '../shared/modules/shared.module';
 
 
 @NgModule({
@@ -62,7 +61,7 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
     NgbModule,
-    ValidationModule
+    SharedModule
   ],
     
   declarations: [
@@ -89,7 +88,6 @@ import { ValidationModule } from '../shared/shared-modules/validation/validation
     CreateOrderComponent,
     ConfigurationComponent,
     EditorComponent,
-    PagingComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
   ],
