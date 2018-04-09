@@ -9,13 +9,13 @@ import { ConfigurationService } from '../../admin/services/configuration.service
 })
 export class PagingComponent implements OnInit {
 
-  options = [
+  /*options = [
     { name: "10", value: 10 },
     { name: "20", value: 20 },
     { name: "30", value: 30 }
-  ]
+  ]*/
 
- 
+  options: any[] = [];
 
   @Input() itemCount: number;
 

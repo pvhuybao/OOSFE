@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersModel } from '../../../models/order';
+import { OrdersModel, OrderStatus } from '../../../models/order';
 import { OrderService } from '../../../services/order.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddressModel } from '../../../models/address';
 import { SpinnerService } from '../../../../shared/services/spinner.service';
 
@@ -14,8 +14,9 @@ export class OrderHistoryDetailComponent implements OnInit {
 
   order = new OrdersModel();
   id: number;
+  status = OrderStatus;
 
-  constructor(private spinnerService: SpinnerService, private orderService: OrderService, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router,private spinnerService: SpinnerService, private orderService: OrderService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.spinnerService.startLoadingSpinner();
@@ -26,4 +27,14 @@ export class OrderHistoryDetailComponent implements OnInit {
       this.order = data;
     });
   }
+
+  delete() {
+    this.spinnerService.startLoadingSpinner();
+    this.orderService.delete(this.order.id).subscribe(() => {
+      this.spinnerService.turnOffSpinner();
+      this.router.navigateByUrl("/account/order-history");
+      console.log(this.order.id);
+    });
+  }
+
 }

@@ -20,7 +20,7 @@
         <td>{{order.idBill}}</td>
         <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td >{{order.createdDate | date:'MMM d, y, h:mm a'}}</td>
-        <td class="text-center">{{order.total | number}}</td>
+        <td class="text-center">{{order.total | number}} VND</td>
         <td class="text-center">{{status[order.status]}}</td>
         <td class="text-right">
           <button class="main-btn icon-btn" routerLink="/account/order-history/{{order.id}}" routerLinkActive="active">

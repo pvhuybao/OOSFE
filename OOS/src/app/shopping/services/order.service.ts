@@ -45,4 +45,9 @@ export class OrderService {
       .map(res => res.json() || [])
   }
 
+  delete(id: string)
+  {
+    return this.authHttpService.delete(this.API_PATH+id);
+  }
+
 }
