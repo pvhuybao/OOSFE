@@ -23,8 +23,10 @@ export class ProductService {
   setId(id) {
     this.idProduct = id;
   }
-  gets(name: string, pageSize: number, page: number): Observable<PagingModel> {
-    return this.authHttpService.get(this.API_PATH+"?Name="+name+"&PageSize="+pageSize+"&Page="+page)
+  gets(idCategory: string, keyword: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number): Observable<PagingModel> {
+    var path = this.API_PATH + "/search?" + "IdCategory=" + idCategory + "&Keyword=" + keyword + 
+    "&Sort=" + sort + "&MinInPrice=" + minPrice + "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
+    return this.authHttpService.get(path)
       //.map(res => res.json() || []);
       .map(res => res.json());
   }

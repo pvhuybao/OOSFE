@@ -13,9 +13,8 @@ import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
-  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
-  private API_PATH = 'http://localhost:59602/api/Product/';
-  
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -56,11 +55,11 @@ export class ProductService {
     //   ])
     // }, 500);
     //return listProduct;
-    return this.authHttpService.get(this.API_PATH +widgetName+"/widget").map(res => res.json() || []);
+    return this.authHttpService.get(this.API_PATH + widgetName + "/widget").map(res => res.json() || []);
   }
 
-  getByCategory(id:string) {
-    return this.authHttpService.get(this.API_PATH + id +"/category").map(res => res.json() || []);
+  getByCategory(id: string) {
+    return this.authHttpService.get(this.API_PATH + id + "/category").map(res => res.json() || []);
   }
 
 
@@ -73,12 +72,13 @@ export class ProductService {
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
 
-  searchProductByIdCategory(idCategory: string, keyword: string, sort: string, name: string, pageSize: number, page: number): Observable<PagingModel>  {
+  searchProductByIdCategory(idCategory: string, keyword: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number): Observable<PagingModel> {
     if (!keyword.trim()) {
       // if not search term, return empty array.
       return of();
     }
-    var path = this.API_PATH + idCategory + "&" + keyword + "&" + sort + "/search" + "?Name="+name+"&PageSize="+pageSize+"&Page="+page;
+    var path = this.API_PATH + "/search?" + "IdCategory=" + idCategory + "&Keyword=" + keyword + 
+    "&Sort=" + sort + "&MinInPrice=" + minPrice + "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
 }

@@ -13,11 +13,12 @@ import { SpinnerService } from '../../shared/services/spinner.service';
 export class SearchComponent implements OnInit {
   idCategory: string;
   keyword: string;
+  sort : string = "name";
+  range: number[] = [0, 3000];
+  newrange: number[] = [0, 3000];
   products: any[] = [];
   check: boolean;
-  sort : string = "name";
-  name: string ="";
-
+  
   pageSize: number;
   page: number;
   itemCount: number;
@@ -36,7 +37,7 @@ export class SearchComponent implements OnInit {
         this.spinner.startLoadingSpinner();
         this.idCategory = params.cat;
         this.keyword = params.op;
-        this.productService.searchProductByIdCategory( this.idCategory, this.keyword, this.sort, this.name, this.pageSize, this.page).subscribe(data => {
+        this.productService.searchProductByIdCategory( this.idCategory, this.keyword, this.sort, this.range[0], this.range[1], this.pageSize, this.page).subscribe(data => {
           this.spinner.turnOffSpinner();
           this.products = data.items;
           this.itemCount = data.totalItemCount;
@@ -65,8 +66,16 @@ export class SearchComponent implements OnInit {
   }
 
   changeSort() {
-    console.log(this.sort);
     this.page = 1;
     this.loadProducts();
   }
+
+  changePrice() {
+    if(this.range[0] != this.newrange[0] || this.range[1] != this.newrange[1]) {
+      this.page = 1;
+      this.loadProducts();
+      this.newrange = this.range;
+    }
+  }
+  
 }
