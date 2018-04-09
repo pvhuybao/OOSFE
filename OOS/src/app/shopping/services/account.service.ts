@@ -14,6 +14,7 @@ export class AccountService {
 
   currentUser=new BehaviorSubject<CreateUserModel>(JSON.parse(sessionStorage.getItem('user')));
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+  //private API_PATH = 'http://localhost:54766/api/User/';
 
   login:LoginAccountModel;
   constructor(private http: Http, private authHttpService: AuthHttpService) { }
@@ -47,8 +48,16 @@ export class AccountService {
       )
   }
 
-  put(user: UserModel): Observable<any> {
-    return this.authHttpService.put(this.API_PATH + "UpdateProfile", user)
+  put(id: string,user: UserModel): Observable<any> {
+    return this.authHttpService.put(this.API_PATH + "/" + id, user)
+  }
+
+  getWishList(userId:string):Observable<any[]>{
+    return this.authHttpService.get(this.API_PATH + "GetWishList/"+ userId).map(res => res.json() || []);
+  }
+
+  removeFromWishList(userID:string, productID:string): Observable<any>{
+    return this.authHttpService.delete(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
   }
 
   addWishProduct(id:string, idProduct:string) :Observable<any> {

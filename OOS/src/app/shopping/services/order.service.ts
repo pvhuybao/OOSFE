@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { OrdersModel } from '../models/order';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttpService } from '../../auth/auth-http.service';
+import { PagingModel } from '../models/paging';
+
 
 @Injectable()
 export class OrderService {
@@ -36,6 +38,16 @@ export class OrderService {
 
   getOrder() {
     return this.order;
+  }
+
+  getList(email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
+    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone+"&PageSize="+pageSize+"&Page="+page)
+      .map(res => res.json() || [])
+  }
+
+  delete(id: string)
+  {
+    return this.authHttpService.delete(this.API_PATH+id);
   }
 
 }

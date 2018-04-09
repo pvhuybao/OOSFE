@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -30,7 +31,6 @@ import { OverviewUsersComponent } from './users/overview-users/overview-users.co
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
-import { ShowErrorsComponent } from '../shared/validation/show-errors/show-errors.component';
 
 //self-services
 import { SpinnerService } from '../shared/services/spinner.service';
@@ -41,17 +41,16 @@ import { CategoryService } from './services/category.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from './services/configuration.service';
 import { EditorComponent } from './editor/editor.component';
-import { PagingComponent } from '../shared/paging/paging.component';
 import { AccountService } from './services/account.service';
 import {FeedbackService} from './services/feedback.service';
 
 //self-directives
-import { UniqueNameValidatorDirective } from '../shared/validation/validators/unique-name-validator.directive';
-import { PasswordDirective } from '../shared/validation/validators/password.directive';
-import { ConfirmPasswordDirective } from '../shared/validation/validators/confirm-password.directive';
-import { EmailValidatorDirective } from '../shared/validation/validators/email-validator.directive';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+//import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+import { SocialNetworkService } from './services/socialnetwork.service';
+import { SharedModule } from '../shared/modules/shared.module';
 
 
 @NgModule({
@@ -64,7 +63,9 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
     Ng2SmartTableModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
-    NgbModule
+    NgbModule,
+    MyDatePickerModule,
+    SharedModule
   ],
     
   declarations: [
@@ -89,16 +90,11 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
     AdminLoginComponent,
     AdminManagementComponent,
     CreateOrderComponent,
-    ShowErrorsComponent,
-    EmailValidatorDirective,
-    UniqueNameValidatorDirective,
-    PasswordDirective,
-    ConfirmPasswordDirective,
     ConfigurationComponent,
     EditorComponent,
-    PagingComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
+    SocialNetworkComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -112,7 +108,8 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
     BreadcrumbService,
     ConfigurationService,
     AccountService,
-    FeedbackService
+    FeedbackService,
+    SocialNetworkService
   ]
 })
 export class AdminModule { }

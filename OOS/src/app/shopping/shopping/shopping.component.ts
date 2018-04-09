@@ -14,6 +14,8 @@ import { EmailSubscribeModel } from '../models/emailSubscribe';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { CreateUserModel } from '../models/user/create-user/create-user';
 import { AccountService } from '../services/account.service';
+import { SocialNetworkModel } from '../../admin/models/SocialNetworkModel';
+import { SocialNetworkService } from '../../admin/services/socialnetwork.service';
 
 @Component({
   selector: 'app-shopping',
@@ -42,6 +44,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   test: string;
   path: string;
   dblock: string;
+  socialnetworks = new SocialNetworkModel();
 
   public emailSubscribe: string;
 
@@ -57,7 +60,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     private ele: ElementRef,
     private emailService: EmailService,
     private spinnerService: SpinnerService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private socialNetworkService: SocialNetworkService
   ) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
@@ -74,7 +78,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
     this.listProduct = this.searchTerms.pipe(
 
-      // wait 300ms after each keystroke before considering the term
+      // wait 50ms after each keystroke before considering the term
       debounceTime(50),
 
       // ignore new term if same as previous term
@@ -83,10 +87,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
     );
-
-    this.accountService.getUserSession().subscribe(data => {
-      this.user = data
-    })
+    this.getfoter();
+    this.accountService.getUserSession().subscribe(data => this.user = data);
+    this.accountService.setUserSession();
   }
 
   search(term: string): void {
@@ -134,10 +137,17 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
+  
   logout() {
     sessionStorage.removeItem('user')
     this.accountService.setUserSession()
     this.router.navigateByUrl("")
   }
-}
 
+  getfoter() {
+    this.socialNetworkService.getfoter().subscribe(data => {
+      this.socialnetworks = data;
+      console.log(this.socialnetworks);
+    });
+  }
+}

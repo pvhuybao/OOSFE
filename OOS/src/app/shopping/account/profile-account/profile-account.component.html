@@ -24,6 +24,9 @@
           <li>
             <a data-toggle="tab" href="#payment">Payment Information</a>
           </li>
+          <li>
+            <a data-toggle="tab" href="#wishlist">My Wishlist</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -87,6 +90,12 @@
         <div class="section-title">
           <h3 class="title">Payment Information</h3>
         </div>
+      </div>
+      <div id="wishlist" class="tab-pane fade">
+        <div class="section-title">
+          <h3 class="title">My Wishlist</h3>
+        </div>
+        <app-wishlist-account [userId]="idUser"></app-wishlist-account>
       </div>
     </div>
   </div>

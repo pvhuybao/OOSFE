@@ -22,9 +22,13 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { CartOverviewComponent } from './cart/cart-overview/cart-overview.component';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { LoginAccountComponent } from './account/login-account/login-account.component';
 import { ProfileAccountComponent } from './account/profile-account/profile-account.component';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
 
 
 const shoppingRoutes: Routes = [
@@ -68,12 +72,16 @@ const shoppingRoutes: Routes = [
       { path: 'faq', component: FaqComponent },
       {
         path: 'account',
-        children :[
-          {path: 'profile', component: ProfileAccountComponent},
-          { path: 'register', component: CreateAccountComponent},
-          {path: 'login', component: LoginAccountComponent}
+        children: [
+          { path: 'profile', component: ProfileAccountComponent },
+          { path: 'register', component: CreateAccountComponent },
+          { path: 'login', component: LoginAccountComponent },
+          { path: 'order-history', component: OrderHistoryComponent },
+          { path: 'order-history/:id', component: OrderHistoryDetailComponent },
+          { path: 'inform-create', component: InformCreateSucces }
         ]
-      }
+      },
+      {path: 'order-details/:id', component: OrderDetailsComponent},
     ]
   },
 ];

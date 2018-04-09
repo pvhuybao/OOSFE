@@ -29,7 +29,7 @@ import { ShippingReturnComponent } from './shipping-return/shipping-return.compo
 import { ShippingGuideComponent } from './shipping-guide/shipping-guide.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderService } from './services/order.service';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { CreateAccountComponent, InformCreateSucces } from './account/create-account/create-account.component';
 import { AccountService } from './services/account.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster';
@@ -41,6 +41,12 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
+import { SharedModule } from '../shared/modules/shared.module';
+import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
 
 
 
@@ -56,10 +62,9 @@ import { MetaDataService } from './services/meta-data.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
-    MyDatePickerModule
+    MyDatePickerModule,
+    SharedModule
   
-  
-
   ],
   declarations: [
     HomePageComponent, 
@@ -89,8 +94,12 @@ import { MetaDataService } from './services/meta-data.service';
     CarouselProductComponent,
     LoginAccountComponent,
     ProfileAccountComponent,
-    ProductBoxComponent
-
+    ProductBoxComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailComponent,
+    WishlistAccountComponent,
+    InformCreateSucces,
+    OrderDetailsComponent
   ],
   providers: [
     CategoryService, 
@@ -100,8 +109,7 @@ import { MetaDataService } from './services/meta-data.service';
     OrderService,
     AccountService,
     ConfigurationService,
-    MetaDataService
-    
+    MetaDataService,  
   ]
 })
 export class ShoppingModule { }
