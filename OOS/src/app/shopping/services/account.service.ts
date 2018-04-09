@@ -12,10 +12,10 @@ import { UserModel } from '../models/user/user';
 @Injectable()
 export class AccountService {
 
-  currentUser=new Subject<CreateUserModel>();
+  currentUser = new Subject<CreateUserModel>();
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
 
-  login:LoginAccountModel;
+  login: LoginAccountModel;
   constructor(private http: Http, private authHttpService: AuthHttpService) { }
 
   checkUserExist(terms): Observable<CreateUserModel> {
@@ -27,15 +27,15 @@ export class AccountService {
     return this.authHttpService.post(this.API_PATH, task);
   }
 
-  loginAccount(login){
+  loginAccount(login) {
     return this.authHttpService.post(this.API_PATH + "Login", login).map(res => res.json() || []);
   }
 
-  setUserSession(){
+  setUserSession() {
     this.currentUser.next(JSON.parse(sessionStorage.getItem('user')));
   }
 
-  getUserSession(){
+  getUserSession() {
     return this.currentUser.asObservable();
   }
 
