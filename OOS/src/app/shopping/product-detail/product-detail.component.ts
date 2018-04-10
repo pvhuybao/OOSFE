@@ -203,5 +203,13 @@ export class ProductDetailComponent implements OnInit {
       this.toasterService.pop("error", "error", "You have to login first to use this feature")
     }
   }
+
+  removeWish() {
+    let idUser = this.user.id
+    this.accountService.removeFromWishList(idUser, this.product.id).subscribe(data => {
+      this.toasterService.pop("success", "success", "You have successfully removed item from wishlist")
+      this.product.isLove = false;
+    })
+  }
 }
 

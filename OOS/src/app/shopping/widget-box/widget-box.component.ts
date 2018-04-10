@@ -34,17 +34,6 @@ export class WidgetBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.accountService.getUserSession().subscribe(data => {
-    //   console.log("Widget wish getUsersession")
-    //   if (data != null) {
-    //     this.idUser = data.id
-    //   }
-    //   else {
-    //     this.idUser = null
-    //   }
-    // })
-    // console.log("Widget wish setUsersession")
-    // this.accountService.setUserSession()
   }
   menuToggle(event: any) {
     // this.renderer.setElementClass(event.target,"opened",true);
@@ -88,13 +77,22 @@ export class WidgetBoxComponent implements OnInit {
     if (user != null) {
       let idUser = user.id
       this.accountService.addWishProduct(idUser, this.productDetail.id).subscribe(data => {
-        this.toasterService.pop("success","success","You have successfully added item to wishlist")
+        this.toasterService.pop("success", "success", "You have successfully added item to wishlist")
         this.productDetail.isLove = true;
       })
     }
-    else
-    {
-      this.toasterService.pop("error","error","You have to login first to use this feature")
+    else {
+      this.toasterService.pop("error", "error", "You have to login first to use this feature")
     }
+  }
+
+  removeWish() {
+    let user = this.accountService.currentUser.getValue()
+    let idUser = user.id
+    this.accountService.removeFromWishList(idUser, this.productDetail.id).subscribe(data => {
+      this.toasterService.pop("success", "success", "You have successfully removed item from wishlist")
+      this.productDetail.isLove = false;
+    })
+
   }
 }

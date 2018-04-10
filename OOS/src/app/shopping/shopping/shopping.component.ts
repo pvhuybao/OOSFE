@@ -88,8 +88,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
     );
     this.getfoter();
-    this.accountService.getUserSession().subscribe(data => this.user = data);
-    this.accountService.setUserSession();
+    this.accountService.getUserSession().subscribe(data => {
+      this.user = data
+    });
   }
 
   search(term: string): void {
@@ -137,7 +138,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
-  
+
   logout() {
     sessionStorage.removeItem('user')
     this.accountService.setUserSession()

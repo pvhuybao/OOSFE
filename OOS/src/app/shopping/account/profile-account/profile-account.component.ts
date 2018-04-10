@@ -43,11 +43,7 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   getProfile() {
-    this.ss.getUserSession().subscribe(data => {
-      console.log("Profile user id = ", data.id);
-      this.idUser = data.id
-    })
-    this.ss.setUserSession()
+    this.idUser = this.ss.currentUser.getValue().id
     this.ss.getById(this.idUser).subscribe(data => {
       this.user = data
       this.user.gender += 1;
