@@ -50,6 +50,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public user = new CreateUserModel;
 
+  componentRef: any;
+
   constructor(
     private accountService: AccountService,
     private categoryService: CategoryService,
@@ -86,8 +88,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
     );
     this.getfoter();
-    this.accountService.getUserSession().subscribe(data => this.user = data);
-    this.accountService.setUserSession();
+    this.accountService.getUserSession().subscribe(data => {
+      this.user = data
+    });
   }
 
   search(term: string): void {
@@ -125,7 +128,6 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       this.router.navigate(['/search'], { queryParams: { cat: this.idCategory, op: this.keyword } });
     }
   }
-
   sentEmailSubscribe() {
     let email = new EmailSubscribeModel();
     email.emailSubscribe = this.emailSubscribe;
@@ -139,9 +141,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   logout() {
-    sessionStorage.removeItem('user');
-    this.router.navigateByUrl("");
-    this.ngOnInit();
+    sessionStorage.removeItem('user')
+    this.accountService.setUserSession()
+    this.router.navigateByUrl("")
   }
 
   getfoter() {

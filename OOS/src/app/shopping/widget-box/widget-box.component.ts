@@ -5,8 +5,10 @@ import { ToasterService } from 'angular2-toaster';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { normalizeSync } from 'normalize-diacritics';
 import { Router } from '@angular/router';
+import { AccountService } from '../services/account.service';
 import { Currency } from '../models/configuration';
 import { MetaDataService } from '../services/meta-data.service';
+
 
 @Component({
   selector: 'app-widget-box',
@@ -18,14 +20,16 @@ import { MetaDataService } from '../services/meta-data.service';
 })
 export class WidgetBoxComponent implements OnInit {
   private toasterService: ToasterService;
+  id: string = ''
+  idUser: string
 
-  id: string = '';
   @Input() productDetail: ProductModel;
   public currencyDefine = Currency;
   currency : number;
   constructor(
     toasterService: ToasterService,
     private cartService: CartService,
+    private accountService: AccountService,
     private router: Router,
     private spinnerService: SpinnerService,
     private metadataService: MetaDataService) {
@@ -65,11 +69,35 @@ export class WidgetBoxComponent implements OnInit {
       image: this.productDetail.productTails[0].image,
       size: this.productDetail.productTails[0].size,
       color: this.productDetail.productTails[0].color,
-      quantity:this.productDetail.productTails[0].quantity
+      quantity: this.productDetail.productTails[0].quantity
     }
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();
     //pop up toaster
     this.toasterService.pop('success', product.name, 'Added to cart success!');
+  }
+
+  wish() {
+    let user = this.accountService.currentUser.getValue()
+    if (user != null) {
+      let idUser = user.id
+      this.accountService.addWishProduct(idUser, this.productDetail.id).subscribe(data => {
+        this.toasterService.pop("success", "success", "You have successfully added item to wishlist")
+        this.productDetail.isLove = true;
+      })
+    }
+    else {
+      this.toasterService.pop("error", "error", "You have to login first to use this feature")
+    }
+  }
+
+  removeWish() {
+    let user = this.accountService.currentUser.getValue()
+    let idUser = user.id
+    this.accountService.removeFromWishList(idUser, this.productDetail.id).subscribe(data => {
+      this.toasterService.pop("success", "success", "You have successfully removed item from wishlist")
+      this.productDetail.isLove = false;
+    })
+
   }
 }
