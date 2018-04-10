@@ -23,9 +23,8 @@ export class ProductService {
   setId(id) {
     this.idProduct = id;
   }
-  gets(idCategory: string, keyword: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number): Observable<PagingModel> {
-    var path = this.API_PATH + "/search?" + "IdCategory=" + idCategory + "&Keyword=" + keyword + 
-    "&Sort=" + sort + "&MinInPrice=" + minPrice + "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
+  gets(pageSize: number, page: number): Observable<PagingModel> {
+    var path = this.API_PATH + "?MinInPrice=0&MaxInPrice=10000" + "&PageSize=" + pageSize + "&Page=" + page;
     return this.authHttpService.get(path)
       //.map(res => res.json() || []);
       .map(res => res.json());

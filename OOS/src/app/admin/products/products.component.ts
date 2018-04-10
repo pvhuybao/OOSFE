@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
   loadProducts(){
     this.spinnerService.startLoadingSpinner();
-    this.productService.gets("", "", "", 0, 3000, this.pageSize, this.page).subscribe(data => {
+    this.productService.gets(this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.products = data.items;
       this.itemCount = data.totalItemCount;

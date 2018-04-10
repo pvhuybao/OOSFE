@@ -13,7 +13,8 @@ import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  private API_PATH = 'http://localhost:59602/api/Product/';
 
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
@@ -58,8 +59,10 @@ export class ProductService {
     return this.authHttpService.get(this.API_PATH + widgetName + "/widget").map(res => res.json() || []);
   }
 
-  getByCategory(id: string) {
-    return this.authHttpService.get(this.API_PATH + id + "/category").map(res => res.json() || []);
+  getByCategory(idCategory: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number) {
+    var path = this.API_PATH + idCategory + "/category?" + "&Sort=" + sort + "&MinInPrice=" + minPrice + 
+    "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
+    return this.authHttpService.get(path).map(res => res.json() || []);
   }
 
 

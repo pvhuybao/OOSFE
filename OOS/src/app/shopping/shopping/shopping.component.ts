@@ -33,7 +33,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
   //Search product for order details
   private searchTerms = new Subject<string>();
-  categories: any;
+  categories: any[] = [];
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
