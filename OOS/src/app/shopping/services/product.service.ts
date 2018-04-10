@@ -13,8 +13,7 @@ import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
-  //private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
-  private API_PATH = 'http://localhost:59602/api/Product/';
+  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
 
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
