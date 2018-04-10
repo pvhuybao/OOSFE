@@ -3,6 +3,7 @@ import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
 import { BannerModel } from '../models/banner';
 import { ConfigurationService } from '../../admin/services/configuration.service';
+import { AccountService } from '../services/account.service';
 
 
 @Component({
@@ -15,13 +16,16 @@ export class HomePageComponent implements OnInit {
   newestProduct: ProductModel[] = [];
   topSales: ProductModel[] = [];
   topDiscount: ProductModel[] = [];
-
   listBanners: BannerModel[] = [];
+  idUser: string
 
   constructor(
     private productService: ProductService,
-    private configurationService: ConfigurationService
-  ) { }
+    private configurationService: ConfigurationService,
+    private accountService: AccountService
+  ) {
+
+  }
 
 
   ngOnInit() {
@@ -41,33 +45,54 @@ export class HomePageComponent implements OnInit {
     //   id: "1", code: "", name: "product 4",
     //   price: 3344, description: "", image: "", idCategory: ""
     // },]
-    this.getListNewestProduct();
-    this.getListTopDiscountProduct();
-    this.getListTopSalesProduct();
-    
+    this.accountService.getUserSession().subscribe(data => {
+      if (data != null) {
+        this.idUser = data.id
+      }
+      else {
+        this.idUser = null
+      }
+      this.getListNewestProduct();
+      this.getListTopDiscountProduct();
+      this.getListTopSalesProduct();
+    })
     this.getCarouselBanners();
+  }
+
+  checkWishList(list: ProductModel[]) {
+    list.forEach(product => {
+      this.accountService.checkWishProduct(this.idUser, product.id).subscribe(data => {
+        if (data.isWishProduct)
+          product.isLove = true
+      })
+    })
   }
 
   getListNewestProduct() {
     this.productService.getProductsByParameter("newestProduct").subscribe(newestProduct => {
+      if (this.idUser != null)
+        this.checkWishList(newestProduct)
       this.newestProduct = newestProduct;
-      console.log(newestProduct)
     });
   }
 
   getListTopSalesProduct() {
     this.productService.getProductsByParameter("topSales").subscribe(topSales => {
+      if (this.idUser != null)
+        this.checkWishList(topSales)
       this.topSales = topSales;
     });
   }
 
   getListTopDiscountProduct() {
     this.productService.getProductsByParameter("topDiscount").subscribe(topDiscount => {
+      if (this.idUser != null)
+        this.checkWishList(topDiscount)
       this.topDiscount = topDiscount;
     });
   }
 
-  getCarouselBanners(){
+  getCarouselBanners() {
     this.configurationService.get().subscribe(data => {
       data.carousel.forEach(item => {
         this.listBanners.push({

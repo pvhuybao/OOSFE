@@ -18,12 +18,13 @@
                     <button class="primary-btn btn-block" [disabled]="!loginForm.valid" (click)="login()">
                         Sign in
                     </button>
-
+                    
                     <label class="checkbox pull-left shiftleft">
                         <input name="remember" type="checkbox" value="remember-me" [(ngModel)]="remember"> Remember me
                     </label>
 
                     <a href="" class="pull-right need-help">Need help? </a>
+                    <div class="fb-login-button" data-width="auto" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
                     <span class="clearfix"></span>
                 </div>
                 <!-- <a href="#" class="text-center new-account">Create an account </a> -->

@@ -16,7 +16,8 @@ declare var google: any;
 })
 export class PaymentComponent implements OnInit {
 
-
+  public total: number = 0;
+  public shippingFee: number = 0;
   public order = new OrdersModel();
   @ViewChild('paypal') paypal;
   paymentMethod: number = 1;
@@ -44,6 +45,7 @@ export class PaymentComponent implements OnInit {
     });
     this.cartService.init()
     this.order.total = total;
+    this.total = total;
   }
 
   ngOnInit() {
@@ -76,7 +78,7 @@ export class PaymentComponent implements OnInit {
   }
 
 
-  shippingFee: number = 0; 
+
   addDistance() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -86,44 +88,39 @@ export class PaymentComponent implements OnInit {
     };
     document.getElementById('reloadMap').addEventListener('click', onChangeHandler);
 
-    this.calculateAndDisplayRoute(directionsService, directionsDisplay);       
+    this.calculateAndDisplayRoute(directionsService, directionsDisplay);
   }
 
   calculateAndDisplayRoute(directionsService, directionsDisplay) {
-    directionsService.route({     
+    directionsService.route({
       origin: '364 Cong Hoa',
       destination: 'quan ' + this.order.address[0].district,
       travelMode: google.maps.TravelMode.DRIVING
-    }, function (response, status) {
+    }, (response, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
         //get direction info
         var htmlReturn = '';
         var route = response.routes[0];
-        var money = 0.5 * route.legs[0].distance.value;
+        var money = 0.5 * route.legs[0].distance.value;    
         this.shippingFee = money;
+        this.order.total = this.total + money;
         htmlReturn += "Distance: <strong>" + route.legs[0].distance.text + "</strong>";
         htmlReturn += ", Tiền ship của bạn là: <strong>" + money + "</strong> VNĐ";
         document.getElementById('infoDirections').innerHTML = htmlReturn;
 
-        var htmlReturn2 = '';
-        htmlReturn2 = this.shippingFee;
-        document.getElementById('shipfee').innerHTML = htmlReturn2;        
       } else {
         var htmlReturn = '';
         var route = response.routes[0];
         htmlReturn = "Dia chi nay khong ton tai";
         this.shippingFee = 0;
+        this.order.total = this.total + money;
         document.getElementById('infoDirections').innerHTML = htmlReturn;
-
-        var htmlReturn2 = '';
-        htmlReturn2 = this.shippingFee;
-        document.getElementById('shipfee').innerHTML = htmlReturn2;        
-      }      
+      }
     });
   }
 
   onBlurMethod() {
-    this.addDistance();    
+    this.addDistance();
   }
 }

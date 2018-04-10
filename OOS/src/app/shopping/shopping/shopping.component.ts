@@ -50,6 +50,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public user = new CreateUserModel;
 
+  componentRef: any;
+
   constructor(
     private accountService: AccountService,
     private categoryService: CategoryService,
@@ -86,8 +88,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
     );
     this.getfoter();
-    this.accountService.getUserSession().subscribe(data => this.user = data);
-    this.accountService.setUserSession();
+    this.accountService.getUserSession().subscribe(data => {
+      this.user = data
+    });
   }
 
   search(term: string): void {
@@ -135,13 +138,13 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
+
   logout() {
-    sessionStorage.removeItem('user');
-    this.router.navigateByUrl("");
-    this.ngOnInit();
-
-
+    sessionStorage.removeItem('user')
+    this.accountService.setUserSession()
+    this.router.navigateByUrl("")
   }
+
   getfoter() {
     this.socialNetworkService.getfoter().subscribe(data => {
       this.socialnetworks = data;

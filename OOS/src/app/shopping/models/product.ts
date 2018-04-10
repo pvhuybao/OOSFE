@@ -15,6 +15,7 @@ export class ProductModel{
     totalQuantity:number;
     defaultImage:string;
     discount : number;
+    isLove = false;
     constructor () {}
 
 }
