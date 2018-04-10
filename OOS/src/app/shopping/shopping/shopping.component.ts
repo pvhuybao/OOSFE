@@ -33,7 +33,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
   //Search product for order details
   private searchTerms = new Subject<string>();
-  categories: any;
+  categories: any[] = [];
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
@@ -85,7 +85,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
     );
     this.getfoter();
     this.accountService.getUserSession().subscribe(data => {
@@ -97,6 +97,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     if (term === "") this.hidden = true;
     else this.hidden = false;
     this.searchTerms.next(term);
+    console.log(this.listProduct);
   }
 
   hide() {
