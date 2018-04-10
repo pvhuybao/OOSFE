@@ -6,7 +6,8 @@ import { SpinnerService } from '../../shared/services/spinner.service';
 import { normalizeSync } from 'normalize-diacritics';
 import { Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
-
+import { Currency } from '../models/configuration';
+import { MetaDataService } from '../services/meta-data.service';
 
 
 @Component({
@@ -23,17 +24,21 @@ export class WidgetBoxComponent implements OnInit {
   idUser: string
 
   @Input() productDetail: ProductModel;
-
+  public currencyDefine = Currency;
+  currency : number;
   constructor(
     toasterService: ToasterService,
     private cartService: CartService,
     private accountService: AccountService,
     private router: Router,
-    private spinnerService: SpinnerService) {
+    private spinnerService: SpinnerService,
+    private metadataService: MetaDataService) {
     this.toasterService = toasterService;
   }
 
   ngOnInit() {
+    this.metadataService.setCurrency();    
+    this.currency = this.metadataService.getCurrency(); 
   }
   menuToggle(event: any) {
     // this.renderer.setElementClass(event.target,"opened",true);
