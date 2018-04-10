@@ -41,7 +41,7 @@ import { CartOverviewComponent } from './cart/cart-overview/cart-overview.compon
 import { ProductBoxComponent } from './category-details/product-box/product-box.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MetaDataService } from './services/meta-data.service';
-import { GoogleSigninComponent } from './google-signin/google-signin.component';
+import { GoogleSigninComponent } from './account/google-signin/google-signin.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
 import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
 import { SharedModule } from '../shared/modules/shared.module';

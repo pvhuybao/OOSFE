@@ -72,7 +72,7 @@ export class PaymentComponent implements OnInit {
   }
 
   useShippingAddress() {
-    this.order.address[1] = this.order.address[0];
+    this.order.address[0] = this.order.address[1];
   }
 
 

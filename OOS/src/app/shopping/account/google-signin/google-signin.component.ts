@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../services/account.service';
-import { SpinnerService } from '../../shared/services/spinner.service';
+import { AccountService } from '../../services/account.service';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CreateUserModel } from '../models/user/create-user/create-user';
+import { CreateUserModel } from '../../models/user/create-user/create-user';
 
 declare let gapi: any;
 
