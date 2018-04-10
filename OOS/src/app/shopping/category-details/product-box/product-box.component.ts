@@ -6,6 +6,8 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 import { normalizeSync } from 'normalize-diacritics';
 import { Router } from '@angular/router';
 import { ProductCartModel } from '../../models/productCart';
+import { Currency } from '../../models/configuration';
+import { MetaDataService } from '../../services/meta-data.service';
 @Component({
   selector: 'app-product-box',
   templateUrl: './product-box.component.html',
@@ -19,17 +21,20 @@ export class ProductBoxComponent implements OnInit {
 
   id: string = '';
   @Input() productDetail: ProductModel;
+  currency : number;
+  public currencyDefine = Currency;
 
   constructor(
     toasterService: ToasterService,
     private cartService: CartService,
     private router: Router,
-    private spinnerService: SpinnerService) {
+    private spinnerService: SpinnerService,private metadataService: MetaDataService) {
     this.toasterService = toasterService;
   }
 
   ngOnInit() {
-
+    this.metadataService.setCurrency();    
+    this.currency = this.metadataService.getCurrency(); 
   }
   transform(value: string) {
     let newvalue = value

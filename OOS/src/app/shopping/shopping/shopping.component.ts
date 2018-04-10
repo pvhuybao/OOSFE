@@ -33,7 +33,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
   //Search product for order details
   private searchTerms = new Subject<string>();
-  categories: any;
+  categories: any[] = [];
   listProduct: Observable<ProductModel[]>;
   searchResult: string = '';
   choosedProduct: ProductModel;
@@ -49,6 +49,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   public emailSubscribe: string;
 
   public user = new CreateUserModel;
+
+  componentRef: any;
 
   constructor(
     private accountService: AccountService,
@@ -83,17 +85,19 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       //distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProductByIdCategory("searchbar", this.idCategory, term)),
+      switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
     );
     this.getfoter();
-    this.accountService.getUserSession().subscribe(data => this.user = data);
-    this.accountService.setUserSession();
+    this.accountService.getUserSession().subscribe(data => {
+      this.user = data
+    });
   }
 
   search(term: string): void {
     if (term === "") this.hidden = true;
     else this.hidden = false;
     this.searchTerms.next(term);
+    console.log(this.listProduct);
   }
 
   hide() {
@@ -135,13 +139,13 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       }, 500)
     })
   }
+
   logout() {
-    sessionStorage.removeItem('user');
-    this.router.navigateByUrl("");
-    this.ngOnInit();
-
-
+    sessionStorage.removeItem('user')
+    this.accountService.setUserSession()
+    this.router.navigateByUrl("")
   }
+
   getfoter() {
     this.socialNetworkService.getfoter().subscribe(data => {
       this.socialnetworks = data;

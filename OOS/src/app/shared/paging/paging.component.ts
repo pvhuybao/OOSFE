@@ -1,6 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, NgModule, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ConfigurationService } from '../../admin/services/configuration.service';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-paging',
@@ -44,8 +47,6 @@ export class PagingComponent implements OnInit {
         this.page.emit(this.pNow);
         this.pageSize.emit(this.pSize);
       }
-      console.log(data.pageSize);
-      console.log(this.size);
     });
 
 
@@ -66,3 +67,5 @@ export class PagingComponent implements OnInit {
     this.page.emit(this.pNow);
   }
 }
+
+export class PagingModule { }
