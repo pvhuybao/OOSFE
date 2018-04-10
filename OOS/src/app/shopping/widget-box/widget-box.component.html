@@ -8,9 +8,11 @@
         <div *ngIf="productDetail.basicImage==null">
           <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.name}}" height="320" width="270">
         </div>
-        <img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270">
-
-        <h3 style="color:#F8694A" class="product-price">{{productDetail.minPrice | number}} {{currencyDefine[currency]}}</h3>
+        <div class="product-image"><img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270" pad></div>
+        <div>
+        <div class="product-price">
+        <h3 style="color:#F8694A">{{productDetail.minPrice | number}} {{currencyDefine[currency]}}</h3>
+        </div>
         <div class="product-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -18,6 +20,7 @@
           <i class="fa fa-star"></i>
           <i class="fa fa-star-o empty"></i>
         </div>
+      </div>
         <h2 class="product-name">
           <p>{{productDetail.name}}</p>
         </h2>
