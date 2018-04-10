@@ -48,11 +48,17 @@
           <input class="input" type="email" [(ngModel)]="order.address[0].street" placeholder="Street">
         </div>
         <div class="form-group">
-          <input class="input" type="text" [(ngModel)]="order.address[0].district" placeholder="District">
+          <input class="input" id="end" type="text" [(ngModel)]="order.address[0].district" placeholder="District" (blur)="onBlurMethod($event.target.value)">
         </div>
         <div class="form-group">
           <input class="input" type="text" [(ngModel)]="order.address[0].province" placeholder="Province">
         </div>
+
+        <div class="form-group">          
+          <input style="display: none;" type="button" value="Submit" id="reloadMap" (click)="addDistance()" />
+          <span id="infoDirections"></span>
+        </div>
+
         <div class="pull-right">
           <button class="primary-btn" (click)="useShippingAddress()">Use Shipping Address</button>
         </div>
@@ -110,22 +116,28 @@
                 </ul>
               </td>
               <td class="price text-center">
-                <strong>{{detail.price}}</strong>
+                <strong>{{detail.price | number}}</strong>
               </td>
               <td></td>
               <td class="price text-center">
-                <strong>{{detail.quantity}}</strong>
+                <strong>{{detail.quantity | number}}</strong>
               </td>
               <td class="total text-center">
-                <strong>{{detail.totalPrice}}</strong>
+                <strong>{{detail.totalPrice | number}}</strong>
               </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <th class="empty" colspan="3"></th>
+              <th>SHIPPING</th>
+              <td colspan="2" id="shipfee">Free</td>                            
+            </tr>
+
+            <tr>
+              <th class="empty" colspan="3"></th>
               <th>TOTAL</th>
-              <th colspan="2" class="total">{{order.total}}</th>
+              <th colspan="2" class="total">{{order.total | number}}</th>
             </tr>
           </tfoot>
         </table>

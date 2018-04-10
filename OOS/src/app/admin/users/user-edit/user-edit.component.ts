@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/user';
+import { UserModel, GenderType } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { AccountService } from '../../services/account.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'long-ng5-breadcrumb';
 import { SpinnerService } from '../../../shared/services/spinner.service';
@@ -12,30 +13,35 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
+  
   user = new UserModel();
+  genderEnum = GenderType;
+  listGender: any;
+
   constructor(
     private userservice: UserService,
     private router: Router,
     private activatedroute: ActivatedRoute,
     private spinnerService: SpinnerService,
-    private breadcrumbService:BreadcrumbService
+    private breadcrumbService:BreadcrumbService,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
     this.user.id = this.activatedroute.snapshot.params.id;
     this.getId();
+    this.listGender = Object.keys(this.genderEnum).filter(Number);
     this.breadcrumbService.addFriendlyNameForRouteRegex('/admin/manager/users/[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', this.displayNameForUser());
   }
 
   displayNameForUser()
   {
     var user = this.userservice.setUser();
-    return "User: " + user.username;
+    return "User: " + user.userName;
   }
 
   getId() {
     this.spinnerService.startLoadingSpinner();
-
     this.userservice.getById(this.user.id).subscribe(value => {
       this.spinnerService.turnOffSpinner();
 
@@ -46,7 +52,7 @@ export class UserEditComponent implements OnInit {
   edit() {
     this.spinnerService.startLoadingSpinner();
 
-    this.userservice.edit(this.user).
+    this.accountService.put(this.user.id,this.user).
       subscribe(res => {
         this.spinnerService.turnOffSpinner();
 

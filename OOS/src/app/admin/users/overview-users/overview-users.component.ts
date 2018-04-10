@@ -81,16 +81,12 @@ export class OverviewUsersComponent implements OnInit {
   }
 
   getPage(page: number) {
-    if (this.page != page) {
       this.page = page;
       this.getUsersList();
-    }
   }
 
   getPageSize(pageSize: number) {
-    if (this.pageSize != pageSize) {
       this.pageSize = pageSize;
       this.getUsersList();
-    }
   }
 }
