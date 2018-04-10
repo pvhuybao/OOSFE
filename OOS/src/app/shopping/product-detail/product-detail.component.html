@@ -67,7 +67,8 @@
 							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 							
 							<div class="pull-right">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+								<button class="main-btn icon-btn" *ngIf = "!product.isLove" (click) = "wish()"><i class="fa fa-heart" ></i></button>
+								<button class="main-btn-wish icon-btn" *ngIf = "product.isLove"  (click) = "removeWish()"><i class="fa fa-heart"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
 							</div>
