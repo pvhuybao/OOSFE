@@ -11,7 +11,6 @@ import { UserModel } from '../models/user/user';
 
 @Injectable()
 export class AccountService {
-
   currentUser=new Subject<CreateUserModel>();
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
   //private API_PATH = 'http://localhost:54766/api/User/';
@@ -58,5 +57,12 @@ export class AccountService {
 
   removeFromWishList(userID:string, productID:string): Observable<any>{
     return this.authHttpService.delete(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
+  }
+
+  loginFB(token : string){
+    var FBViewModel = {
+      AccessToken : token,
+    }
+    return this.authHttpService.post(this.API_PATH+"LoginFacebook",FBViewModel).map(res => res.json() || []);
   }
 }
