@@ -9,6 +9,7 @@ import { Ng2SmartTableModule } from './ng2-smart-table';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Title }  from '@angular/platform-browser';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -47,6 +48,9 @@ import {FeedbackService} from './services/feedback.service';
 //self-directives
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+//import { ValidationModule } from '../shared/shared-modules/validation/validation.module';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+import { SocialNetworkService } from './services/socialnetwork.service';
 import { SharedModule } from '../shared/modules/shared.module';
 
 
@@ -61,6 +65,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
     NgbModule,
+    MyDatePickerModule,
     SharedModule
   ],
     
@@ -90,6 +95,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     EditorComponent,
     CustomerFeedbackComponent,
     FeedbackDetailComponent,
+    SocialNetworkComponent,
   ],
   entryComponents:[
     AdminLoginComponent
@@ -104,6 +110,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     ConfigurationService,
     AccountService,
     FeedbackService,
+    SocialNetworkService,
     Title
   ]
 })

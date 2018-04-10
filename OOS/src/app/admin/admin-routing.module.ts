@@ -29,6 +29,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { EditorComponent } from './editor/editor.component';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/feedback-detail.component';
+import { SocialNetworkComponent } from './social-network/social-network.component';
 
 const adminRoutes: Routes = [
   {
