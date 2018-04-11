@@ -637,10 +637,11 @@ body {
     display: inline-block;
     vertical-align: top;
     padding: 15px 0px;
+    padding-right: 15px;
   }
-  
-  .header-btns>li+li {
-    margin-left: 15px;
+
+  .header-btns>li:last-child {
+    padding-right: 0px;
   }
   
   .header-btns>li .header-btns-icon {
@@ -2306,3 +2307,10 @@ ul>li>span>span.product-color
   {
     border: 1px solid black;
   }
+
+@media only screen and (max-width: 480px)
+{
+  [class*='progress-step'] {
+    width: 33.33333333%;
+  }
+}
