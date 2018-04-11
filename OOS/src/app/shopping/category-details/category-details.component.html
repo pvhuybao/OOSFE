@@ -197,10 +197,11 @@
         </div>
         <!-- /aside widget -->
       </div>
-      <div id="main" class="col-md-9">
+      <div id="main" class="col-xs-12 col-sm-9 col-md-9">
         <!-- store top filter -->
         <div class="store-filter clearfix">
-          <div class="pull-left">
+          <div class = "row">
+          <div class="col-xs-7 pull-left">
             <div class="row-filter">
               <a>
                 <i class="fa fa-th-large"></i>
@@ -220,9 +221,10 @@
               </a>
             </div>
           </div>
-          <div class="pull-right">
+          <div class="col-xs-5 pull-right">
             <app-paging [itemCount]="itemCount" (page)="getPage($event)" (pageSize)="getPageSize($event)"></app-paging>
           </div>
+        </div>
         </div>
         <!-- /store top filter -->
 
