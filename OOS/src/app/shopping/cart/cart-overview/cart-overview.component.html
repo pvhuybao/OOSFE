@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Process Bar -->
     <div class="row smpl-step">
-      <div class="col-xs-4 smpl-step-step" *ngFor="let title of listtitle; let i = index" [ngClass]="{
+      <div class="progress-step col-xs-4 col-sm-4 col-md-4 smpl-step-step" *ngFor="let title of listtitle; let i = index" [ngClass]="{
                   'complete': step > i+1,
                   'active': step === i+1,
                   'disabled': step < i+1
