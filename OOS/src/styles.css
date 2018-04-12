@@ -639,10 +639,12 @@ body {
     padding: 15px 0px;
   }
   
+  @media (min-width: 376px) {
   .header-btns>li+li {
     margin-left: 15px;
   }
-  
+  } 
+
   .header-btns>li .header-btns-icon {
     position: relative;
     float: left;
