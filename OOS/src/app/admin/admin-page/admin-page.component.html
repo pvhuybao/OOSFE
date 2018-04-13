@@ -48,30 +48,12 @@
               <strong class="text-uppercase"> {{user.userName}}
                 <i class="fa fa-caret-down"></i>
               </strong>
+              <strong class="text-uppercase, shortName">{{user.email}}
+                  <i class="fa fa-caret-down"></i>
+                </strong>
             </div>
             <span class="text-uppercase">Account</span>
-            <ul class="custom-menu">
-              <li>
-                <a>
-                  <i class="fa fa-user-o"></i> My Account</a>
-              </li>
-              <li>
-                <a>
-                  <i class="fa fa-heart-o"></i> My Wishlist</a>
-              </li>
-              <li>
-                <a>
-                  <i class="fa fa-exchange"></i> Compare</a>
-              </li>
-              <li>
-                <a>
-                  <i class="fa fa-check"></i> Checkout</a>
-              </li>
-              <li>
-                <a routerLink="/account/register">
-                  <i class="fa fa-user-plus"></i> Create An Account
-                </a>
-              </li>
+            <ul class="custom-menu">              
               <li>
                 <a (click)="logout()">
                   <i class="fa fa-check"></i> Logout</a>

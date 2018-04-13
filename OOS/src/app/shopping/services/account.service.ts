@@ -5,13 +5,14 @@ import { LoginAccountModel } from '../models/loginAccount';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Http, Response, RequestOptions } from '@angular/http';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CreateUserModel } from '../models/user/create-user/create-user';
 import { UserModel } from '../models/user/user';
 
 @Injectable()
 export class AccountService {
-  currentUser=new Subject<CreateUserModel>();
+  currentUser=new BehaviorSubject<CreateUserModel>(JSON.parse(sessionStorage.getItem('user')));
+
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
   //private API_PATH = 'http://localhost:54766/api/User/';
 
@@ -59,10 +60,22 @@ export class AccountService {
     return this.authHttpService.delete(this.API_PATH + userID + "/product/" + productID + "/removeWishProduct");
   }
 
+  addWishProduct(id:string, idProduct:string) :Observable<any> {
+    return this.authHttpService.post(this.API_PATH + id + "/product/" + idProduct + "/addWishProduct",null);
+  }
+
+  checkWishProduct(id:string, idProduct:string): Observable<any> {
+    return this.authHttpService.post(this.API_PATH + id + "/product/" + idProduct + "/checkWishProduct",null)
+    .map(res => {
+      return res.json() || []
+    })
+  }
+
   loginFB(token : string){
     var FBViewModel = {
       AccessToken : token,
     }
     return this.authHttpService.post(this.API_PATH+"LoginFacebook",FBViewModel).map(res => res.json() || []);
   }
+
 }

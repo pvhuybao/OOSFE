@@ -3,6 +3,7 @@ import {ProductService} from '../services/Product.service';
 import { CategoryService } from '../services/category.service';
 import { ProductStatus } from '../models/product';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { PagingComponent } from '../../shared/paging/paging.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,7 +14,6 @@ export class ProductsComponent implements OnInit {
   products : any;
   id: string;
 
-  name: string ="";
   pageSize: number;
   page: number;
 
@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
   loadProducts(){
     this.spinnerService.startLoadingSpinner();
-    this.productService.gets(this.name, this.pageSize, this.page).subscribe(data => {
+    this.productService.gets(this.pageSize, this.page).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.products = data.items;
       this.itemCount = data.totalItemCount;

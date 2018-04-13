@@ -6,14 +6,17 @@ import { ConfirmPasswordDirective } from '../validation/validators/confirm-passw
 import { EmailValidatorDirective } from '../validation/validators/email-validator.directive';
 import { UniqueNameValidatorDirective } from '../validation/validators/unique-name-validator.directive';
 import { ShowErrorsComponent } from '../validation/show-errors/show-errors.component';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgbPaginationModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
 
   exports: [

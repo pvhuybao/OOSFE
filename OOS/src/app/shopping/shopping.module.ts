@@ -46,9 +46,7 @@ import { OrderHistoryDetailComponent } from './account/order-history/order-histo
 import { SharedModule } from '../shared/modules/shared.module';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-
-
-
+import { NouisliderModule } from 'ng2-nouislider';
 
 
 //self-services
@@ -64,8 +62,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
     MyDatePickerModule,
-    SharedModule
-  
+    SharedModule,
+    NouisliderModule
   ],
   declarations: [
     HomePageComponent, 

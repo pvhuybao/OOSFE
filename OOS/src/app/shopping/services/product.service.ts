@@ -9,11 +9,12 @@ import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operator/map';
 import { Subject } from 'rxjs';
 import { timeout } from 'q';
+import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
   private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
-  
+
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }
 
@@ -43,14 +44,6 @@ export class ProductService {
     return this.authHttpService.put(this.API_PATH + "/" + task.id, task);
   }
 
-  searchProduct(term: string): Observable<ProductModel[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.authHttpService.get(this.API_PATH + term +"/searchproduct").map(res => res.json() || []);
-  }
-
   getProductsByParameter(widgetName: string): Observable<ProductModel[]> {
     // let listProduct = new Subject<ProductModel[]>();
     // setTimeout(() => {
@@ -62,19 +55,32 @@ export class ProductService {
     //   ])
     // }, 500);
     //return listProduct;
-    return this.authHttpService.get(this.API_PATH +widgetName+"/widget").map(res => res.json() || []);
+    return this.authHttpService.get(this.API_PATH + widgetName + "/widget").map(res => res.json() || []);
   }
 
-  getByCategory(id:string) {
-    return this.authHttpService.get(this.API_PATH + id +"/category").map(res => res.json() || []);
+  getByCategory(idCategory: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number) {
+    var path = this.API_PATH + idCategory + "/category?" + "&Sort=" + sort + "&MinInPrice=" + minPrice + 
+    "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
+    return this.authHttpService.get(path).map(res => res.json() || []);
   }
 
-  searchProductByIdCategory(check: string, idCategory: string, keyword: string): Observable<ProductModel[]>  {
+
+  searchProduct(idCategory: string, keyword: string): Observable<ProductModel[]> {
     if (!keyword.trim()) {
-      // if not search term, return empty array.
+      // if not search term, return empty hero array.
       return of([]);
     }
-    var path = this.API_PATH + check + "&" + idCategory + "&" + keyword + "/search";
+    var path = this.API_PATH + idCategory + "&" + keyword + "/searchproduct";
+    return this.authHttpService.get(path).map(res => res.json() || []);
+  }
+
+  searchProductByIdCategory(idCategory: string, keyword: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number): Observable<PagingModel> {
+    if (!keyword.trim()) {
+      // if not search term, return empty array.
+      return of();
+    }
+    var path = this.API_PATH + "/search?" + "IdCategory=" + idCategory + "&Keyword=" + keyword + 
+    "&Sort=" + sort + "&MinInPrice=" + minPrice + "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
 }
