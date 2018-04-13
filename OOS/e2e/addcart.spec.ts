@@ -17,9 +17,10 @@ describe('Add to Cart TEST', () => {
         browser.sleep(1000);
         element(by.className('primary-btn add-to-cart')).click();
         browser.sleep(5000);
-        element.all(by.tagName('app-cart')).element.all(by.repeater('item of cart')).then(function (item) {
-            quantity = item[0].element(by.className('qty'))
-        })
+        // element.all(by.tagName('app-cart')).element.all(by.repeater('item of cart')).then(function (item) {
+        //     quantity = item[0].element(by.className('qty'))
+        // })
+        quantity = element(by.css('.qty-input>.input')).getText();
         expect(quantity.getText()).toEqual('12');
     })
 })
