@@ -56,13 +56,34 @@
           <input [(ngModel)]="product.description" class="input search-input">
         </p>
       </div>
-        
+      <div class="col-md-6">
+        <div class="product-body">
+            <div>
+                <p>
+                  <strong>SEODescription:</strong>
+                  <input [(ngModel)]="product.sEOdescription" class="input search-input">
+                </p>
+              </div>
+        </div>
+    </div>
      <div class="col-md-6">
       <p>
         <strong>Discount(%):</strong>
         <input [(ngModel)]="product.discount" class="input search-input" type="number" min="0">
       </p>
      </div>   
+     <div class="row">
+      <div class="col-md-6">
+          <div class="product-body">
+              <div>
+                  <p>
+                    <strong> SEOKeyWords :</strong>
+                    <input [(ngModel)]="product.sEOKeyWords" class="input search-input">
+                  </p>
+                </div>
+          </div>
+      </div>
+  </div>                      
     </div>
   </div>
   <p><strong>Details:</strong></p>

@@ -21,6 +21,7 @@ export class ProductModel{
     constructor () {}
     defaultImage:string;
     discount : number;
-
+    SEOKeyWords : string;
+    SEOdescription : string;
 }
 

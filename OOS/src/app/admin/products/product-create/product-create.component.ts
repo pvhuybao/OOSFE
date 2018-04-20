@@ -29,6 +29,8 @@ export class ProductCreateComponent implements OnInit {
   public status1 = ProductStatus;
   public item: number;
   public keys: any;
+  SEOKeyWords : string ;
+  SEOdescription : string ;
 
 
   settings = {
@@ -98,7 +100,9 @@ export class ProductCreateComponent implements OnInit {
       code: this.code,
       status: this.status,
       discount : this.discount,
-      productTails:this.data
+      productTails:this.data,
+      SEOKeyWords : this.SEOKeyWords,
+      SEOdescription : this.SEOdescription,
     }
     this.productService.postProduct(product).subscribe(data => {
       this.spinnerService.turnOffSpinner();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../services/feedback.service';
 import { FeedbackModel} from '../models/Feedback';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { SpinnerService } from '../../shared/services/spinner.service';
 
 @Component({
@@ -18,7 +18,6 @@ export class CustomerFeedbackComponent implements OnInit {
   constructor( private feedbackService: FeedbackService,
     private router: Router,
     private spinnerService: SpinnerService) { }
-    
   ngOnInit() {
     this.getlistFeedback();
   }

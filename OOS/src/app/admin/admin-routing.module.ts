@@ -34,11 +34,11 @@ import { SocialNetworkComponent } from './social-network/social-network.componen
 const adminRoutes: Routes = [
   {
     path: 'admin',
-    component: AdminPageComponent,    
+    component: AdminPageComponent ,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: AdminLoginComponent,
-        canActivate: [AuthGuardService], 
+        canActivate: [AuthGuardService]
       },
       {
         path: 'manager', component: AdminManagementComponent,        
@@ -48,43 +48,42 @@ const adminRoutes: Routes = [
           {
             path: 'users',
             children: [
-              { path: '', component: OverviewUsersComponent },
-              { path: 'create', component: UserCreateComponent },
-              { path: ':id', component: UserEditComponent },
+              { path: '', component: OverviewUsersComponent,data: {title: 'User'} },
+              { path: 'create', component: UserCreateComponent,data: {title: 'Create User'} },
+              { path: ':id', component: UserEditComponent, data: {title: 'Edit User'} },
             ]
           },
 
-          { path: 'products', component: ProductsComponent },
-          { path: 'products/create', component: ProductCreateComponent },
-          { path: 'products/edit/:id', component: ProductEditComponent },
-          { path: 'product-details', component: ProductDetailComponent },
+          { path: 'products', component: ProductsComponent,data: {title: 'Product'} },
+          { path: 'products/create', component: ProductCreateComponent,data: {title: 'Create Product'} },
+          { path: 'products/edit/:id', component: ProductEditComponent,data: {title: 'Edit Product'} },
+          { path: 'product-details', component: ProductDetailComponent,data: {title: 'Product Detail'} },
           {
             path: 'categories',
             children: [
-              { path: '', component: OverviewCategoriesComponent },
-              { path: 'create', component: CreateCategoryComponent },
-              { path: ':id', component: EditCategoryComponent },
+              { path: '', component: OverviewCategoriesComponent, data: {title: 'Category'} },
+              { path: 'create', component: CreateCategoryComponent, data: {title: 'Create Caterogy'} },
+              { path: ':id', component: EditCategoryComponent, data: {title: 'Edit Category'} },
             ]
           },
           {
           path: 'customerfeedback',
             children: [
-              { path: '', component: CustomerFeedbackComponent },
-              { path: ':id', component: FeedbackDetailComponent },
+              { path: '', component: CustomerFeedbackComponent, data: {title: 'Customer FeedBack'} },
+              { path: ':id', component: FeedbackDetailComponent, data: {title: ' FeedBack'} },
             ]
           },
 
-          { path: 'orders', component: OrdersComponent },
-          { path: 'users', component: UsersComponent },
-          { path: 'orders/create', component: CreateOrderComponent },
+          { path: 'orders', component: OrdersComponent,data: {title: 'Orders'} },
+          { path: 'users', component: UsersComponent,data: {title: 'Users'} },
+          { path: 'orders/create', component: CreateOrderComponent,data: {title: 'Create Order'}  },
           //{ path: 'orders/edit/:id', component: EditOrdersComponent },
-          { path: 'login', component: AdminLoginComponent },
-          { path: 'social', component: SocialNetworkComponent },
-          { path: 'orders/edit/:id', component: EditOrderComponent },
-          { path: 'config', component: ConfigurationComponent },
-          { path: 'shipping-return', component: EditorComponent, data: { page: "return"}},
-          { path: 'shipping-guide', component: EditorComponent, data: { page: "guide"}},
-          { path: 'faq', component: EditorComponent, data: { page: "faq"}}
+          { path: 'login', component: AdminLoginComponent,data: {title: 'Login'} },
+          { path: 'orders/edit/:id', component: EditOrderComponent,data: {title: 'Edit Order'} },
+          { path: 'config', component: ConfigurationComponent,data: {title: 'Config'} },
+          { path: 'shipping-return', component: EditorComponent, data: { page: "return", title : "shipping-return"}},
+          { path: 'shipping-guide', component: EditorComponent, data: { page: "guide",title : "shipping-guide"}},
+          { path: 'faq', component: EditorComponent, data: { page: "faq",title : "faq"}}
         ]
       },
 

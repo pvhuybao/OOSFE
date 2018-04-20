@@ -12,8 +12,10 @@ import { ProductModel } from '../models/product';
 import { ConfigurationService } from '../services/configuration.service';
 import { Currency } from '../models/configuration';
 import { MetaDataService } from '../services/meta-data.service';
+import { Title } from '@angular/platform-browser';
 import { AccountService } from '../services/account.service';
 import { CreateUserModel } from '../models/user/create-user/create-user';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -51,7 +53,8 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private toasterService: ToasterService,
     private metadataService: MetaDataService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private title : Title
   ) { }
 
   ngOnInit() {
@@ -76,15 +79,15 @@ export class ProductDetailComponent implements OnInit {
       this.colorSelected = this.product.productTails[0].color;
       this.sizeSelected = this.product.productTails[0].size;
       this.getSizeByColor(this.colorSelected);
-      this.setPriceImageQuantity(this.colorSelected, this.sizeSelected);
+      this.setPriceImageQuantity(this.colorSelected,this.sizeSelected);
+      this.title.setTitle( this.product.name +  ' - ' + ' OOS ');   
 
-      this.listColor = this.getColorOption();
-      if (this.product.discount === 0)
-        this.DiscountExisted = false;
-      this.metadataService.setCurrency();
-      this.currency = this.metadataService.getCurrency();
-
-    });
+      this.listColor = this.getColorOption(); 
+      if(this.product.discount === 0)
+        this.DiscountExisted = false; 
+        this.metadataService.setCurrency();    
+        this.currency = this.metadataService.getCurrency(); 
+    }); 
     this.addFacebookComment();
   }
 

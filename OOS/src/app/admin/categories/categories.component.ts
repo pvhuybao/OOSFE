@@ -4,6 +4,7 @@ import { CategoryService } from '../services/category.service';
 import { EventEmitter, Output } from '@angular/core';
 
 import { CategoryModel } from '../models/category';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private categoryService: CategoryService
   ) { }
-
+   
   ngOnInit() {
     this.getListCategory();
   }

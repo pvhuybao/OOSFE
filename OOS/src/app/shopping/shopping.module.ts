@@ -48,6 +48,7 @@ import { WishlistAccountComponent } from './account/wishlist-account/wishlist-ac
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { NouisliderModule } from 'ng2-nouislider';
 
+
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
 
